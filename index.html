@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ketan Duggal - Selected Works & Studio Archive (2011-2024)</title>
+  <title>Ketan Duggal | Contemporary Artist & Fine Art Archive (2011-2024)</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Ketan Duggal - Artist portfolio featuring selected works from 2011-2024. Oil paintings, mixed media, and contemporary art exploring themes of introspection, urban life, and consumer culture.">
-  <meta name="keywords" content="Ketan Duggal, artist, portfolio, contemporary art, oil painting, mixed media, Pilani, Delhi, Sydney, visual art">
+  <meta name="description" content="Ketan Duggal - Contemporary artist portfolio featuring selected works from 2011-2024. From hermetic oil paintings in Pilani to contemporary pop-satire, exploring themes of introspection, urban life, and consumer culture.">
+  <meta name="keywords" content="Ketan Duggal, duggaljiipaintstoo, contemporary artist, fine art, oil painting, mixed media, Pilani, Delhi, Sydney, visual art, gallery">
   <meta name="author" content="Ketan Duggal">
   <meta name="robots" content="index, follow">
   
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ketan Duggal - Selected Works & Studio Archive">
-  <meta property="og:description" content="A tactile exploration of organic forms and atmospheric depth. Selected works from 2011-2024.">
+  <meta property="og:title" content="Ketan Duggal | Contemporary Artist & Fine Art Archive">
+  <meta property="og:description" content="From national athlete to contemporary pop-satirist: A 15-year artistic journey through oil, resin, and mixed media.">
   <meta property="og:url" content="https://ketanduggal.github.io/artist-portfolio/">
-  <meta property="og:image" content="https://placehold.co/1200x630/FAF9F6/171615?text=Ketan+Duggal+Portfolio">
+  <meta property="og:image" content="https://placehold.co/1200x630/FAF9F6/171615?text=Ketan+Duggal+Fine+Art">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ketan Duggal - Selected Works & Studio Archive">
-  <meta name="twitter:description" content="A tactile exploration of organic forms and atmospheric depth. Selected works from 2011-2024.">
+  <meta name="twitter:title" content="Ketan Duggal | Contemporary Artist & Fine Art Archive">
+  <meta name="twitter:description" content="From national athlete to contemporary pop-satirist: A 15-year artistic journey through oil, resin, and mixed media.">
   
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -30,9 +30,9 @@
     "@type": "VisualArtist",
     "name": "Ketan Duggal",
     "url": "https://ketanduggal.github.io/artist-portfolio/",
-    "description": "Contemporary artist working in oil paint, mixed media, and resin. Selected works from 2011-2024 exploring themes of introspection, urban life, and consumer culture.",
+    "description": "Contemporary artist working in oil paint, mixed media, and resin. 15-year artistic journey from national athlete to pop-satirist, exploring themes of introspection, urban life, and consumer culture.",
     "email": "studio@ketanduggal.com",
-    "sameAs": [],
+    "sameAs": ["https://instagram.com/duggaljiipaintstoo"],
     "works": [
       {
         "@type": "CreativeWork",
@@ -55,7 +55,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -82,21 +82,23 @@
     body {
       background-color: #FAF9F6;
       color: #171615;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Page Loading Indicator */
+    /* Luxury Loading Animation */
     .page-loader {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 4px;
+      height: 3px;
       background: linear-gradient(90deg, #171615, #787571, #171615);
       background-size: 200% 100%;
-      animation: loading 1.5s infinite;
+      animation: loading 2s infinite;
       z-index: 9999;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s ease;
     }
 
     .page-loader.active {
@@ -108,40 +110,74 @@
       100% { background-position: -200% 0; }
     }
 
-    /* Masonry Layout */
-    .masonry {
-      column-count: 1;
-      column-gap: 2rem;
+    /* Editorial Typography */
+    .editorial-title {
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
+
+    .editorial-subtitle {
+      letter-spacing: 0.05em;
+    }
+
+    /* Luxury Grid Layout */
+    .exhibition-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2.5rem;
+    }
+
     @media (min-width: 768px) {
-      .masonry {
-        column-count: 2;
+      .exhibition-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
       }
     }
+
     @media (min-width: 1024px) {
-      .masonry {
-        column-count: 3;
+      .exhibition-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4rem;
       }
     }
-    .masonry-item {
-      break-inside: avoid;
-      margin-bottom: 3rem;
-    }
 
-    /* Image Zoom */
-    .zoomable-container {
+    /* Luxury Card Design */
+    .artwork-card {
+      position: relative;
       overflow: hidden;
-      cursor: zoom-in;
-    }
-    .zoomed {
-      cursor: zoom-out;
+      background: #FAF9F6;
+      border: 1px solid #EBE8E1;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Loading Skeleton */
+    .artwork-card:hover {
+      border-color: #171615;
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(23, 22, 21, 0.08);
+    }
+
+    .artwork-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #171615, #787571);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .artwork-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    /* Image Loading States */
     .image-skeleton {
       background: linear-gradient(90deg, #EBE8E1 25%, #F5F3ED 50%, #EBE8E1 75%);
       background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
+      animation: shimmer 2s infinite;
     }
     
     @keyframes shimmer {
@@ -149,62 +185,125 @@
       100% { background-position: -200% 0; }
     }
 
-    /* Image Loading State */
     .image-loading {
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.5s ease;
     }
     
     .image-loaded {
       opacity: 1;
     }
 
-    /* Touch-friendly interactions */
-    @media (hover: none) {
-      .filter-btn:hover {
-        color: #787571;
-      }
-      .filter-btn:active {
-        color: #171615;
-        border-bottom: 1px solid #171615;
-      }
-      
-      .artwork-card:active {
-        transform: scale(0.98);
+    /* Museum-Grade Modal */
+    .museum-modal {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .museum-modal-image {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Luxury Filter Tabs */
+    .filter-tab {
+      position: relative;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+      letter-spacing: 0.1em;
+    }
+
+    .filter-tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #171615;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    .filter-tab:hover::after,
+    .filter-tab.active::after {
+      width: 80%;
+    }
+
+    .filter-tab.active {
+      border-color: #EBE8E1;
+      background: #FAF9F6;
+    }
+
+    /* Timeline Design */
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid #EBE8E1;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      background: #171615;
+      border-radius: 50%;
+    }
+
+    /* Editorial Section Spacing */
+    .editorial-section {
+      padding: 6rem 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .editorial-section {
+        padding: 8rem 4rem;
       }
     }
 
-    /* Mobile Navigation */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-      
-      nav {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      
-      .modal-enter {
-        padding: 0;
-      }
-      
-      #artwork-modal {
-        padding: 0;
-      }
-      
-      .zoomable-container {
-        padding: 1rem;
+    @media (min-width: 1024px) {
+      .editorial-section {
+        padding: 10rem 6rem;
       }
     }
 
-    /* Fade-in animations */
+    /* Form Design */
+    .luxury-input {
+      background: #FAF9F6;
+      border: 1px solid #EBE8E1;
+      padding: 1rem 1.5rem;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .luxury-input:focus {
+      border-color: #171615;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(23, 22, 21, 0.05);
+    }
+
+    .luxury-button {
+      background: #171615;
+      color: #FAF9F6;
+      padding: 1rem 2.5rem;
+      letter-spacing: 0.15em;
+      transition: all 0.3s ease;
+      border: 1px solid #171615;
+    }
+
+    .luxury-button:hover {
+      background: transparent;
+      color: #171615;
+    }
+
+    /* Fade Animations */
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
     .fade-in.visible {
@@ -212,258 +311,350 @@
       transform: translateY(0);
     }
 
-    /* Staggered animation for gallery items */
-    .masonry-item {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+    /* Touch optimizations */
+    @media (hover: none) {
+      .artwork-card:active {
+        transform: scale(0.98);
       }
-    }
-
-    /* Subtle hover animations for registry rows */
-    .registry-row {
-      transition: background-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .registry-row:hover {
-      transform: translateX(4px);
-    }
-
-
-
-    .modal-enter { opacity: 0; }
-    .modal-enter-active { opacity: 1; transition: opacity 400ms ease-out; }
-    .modal-exit { opacity: 1; }
-    .modal-exit-active { opacity: 0; transition: opacity 300ms ease-in; }
-
-    .filter-btn.active {
-      color: #171615;
-    }
-    .filter-btn {
-      color: #787571;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    .filter-btn:hover {
-      color: #171615;
-    }
-    .filter-btn::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background-color: #171615;
-      transition: width 0.3s ease;
-    }
-    .filter-btn:hover::after,
-    .filter-btn.active::after {
-      width: 100%;
-    }
-
-    /* Registry Table */
-    .registry-row:hover {
-      background-color: #f2f1ec;
     }
   </style>
 </head>
-<body class="bg-alabaster font-sans antialiased text-charcoal selection:bg-charcoal selection:text-alabaster">
+<body class="bg-alabaster font-sans text-charcoal selection:bg-charcoal selection:text-alabaster">
   
   <!-- Page Loading Indicator -->
   <div id="page-loader" class="page-loader"></div>
 
-  <!-- Header -->
-  <header class="py-12 px-6 md:px-12 lg:px-24 flex flex-col md:flex-row justify-between items-center border-b border-sand">
-    <div class="font-serif text-3xl tracking-wider text-charcoal mb-6 md:mb-0">Ketan Duggal</div>
-    <nav class="flex gap-8 font-sans text-xs tracking-widest uppercase text-stone" role="navigation" aria-label="Main navigation">
-      <a href="#works" class="hover:text-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2 rounded">Works</a>
-      <a href="#philosophy" class="hover:text-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2 rounded">Curator's Note</a>
-      <a href="#registry" class="hover:text-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2 rounded">Registry</a>
-      <a href="#contact" class="hover:text-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2 rounded">Inquiries</a>
-    </nav>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-40 bg-alabaster/90 backdrop-blur-md border-b border-sand">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="font-serif text-2xl tracking-wider text-charcoal hover:text-stone transition-colors">
+        Ketan Duggal
+      </a>
+      <div class="hidden md:flex gap-8 font-sans text-xs tracking-widest uppercase text-stone">
+        <a href="#works" class="hover:text-charcoal transition-colors">Works</a>
+        <a href="#about" class="hover:text-charcoal transition-colors">Bio</a>
+        <a href="#timeline" class="hover:text-charcoal transition-colors">Timeline</a>
+        <a href="#contact" class="hover:text-charcoal transition-colors">Inquiries</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-alabaster hidden flex-col items-center justify-center">
+    <button id="close-mobile-menu" class="absolute top-6 right-6 p-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <div class="flex flex-col gap-8 font-sans text-lg tracking-widest uppercase text-charcoal text-center">
+      <a href="#works" class="hover:text-stone transition-colors">Works</a>
+      <a href="#about" class="hover:text-stone transition-colors">Bio</a>
+      <a href="#timeline" class="hover:text-stone transition-colors">Timeline</a>
+      <a href="#contact" class="hover:text-stone transition-colors">Inquiries</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="min-h-screen flex items-center justify-center editorial-section relative overflow-hidden">
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <p class="font-sans text-sm tracking-[0.3em] uppercase text-stone mb-6 editorial-subtitle">
+        Contemporary Artist & Fine Art Archive
+      </p>
+      <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-charcoal mb-8 editorial-title leading-tight">
+        Ketan Duggal
+      </h1>
+      <p class="font-serif text-xl md:text-2xl text-stone italic max-w-3xl mx-auto leading-relaxed mb-12">
+        From national athlete to contemporary pop-satirist: A 15-year artistic journey through oil, resin, and mixed media.
+      </p>
+      <div class="font-sans text-sm tracking-widest uppercase text-stone">
+        Selected Works (2011 — 2024)
+      </div>
+    </div>
+    
+    <!-- Decorative Elements -->
+    <div class="absolute top-20 left-10 w-32 h-32 border border-sand rounded-full opacity-20"></div>
+    <div class="absolute bottom-20 right-10 w-48 h-48 border border-sand rounded-full opacity-20"></div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="min-h-[40vh] flex flex-col justify-center px-6 md:px-12 lg:px-24 py-20 border-b border-sand">
-      <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-charcoal leading-tight mb-8 max-w-5xl">
-        A tactile exploration of organic forms and atmospheric depth.
-      </h1>
-      <p class="font-sans text-lg text-stone font-light tracking-wide max-w-2xl">
-        Selected Works & Studio Archive (2011 &mdash; 2024)
-      </p>
-    </section>
-
-    <!-- Curated Gallery Grid -->
-    <section id="works" class="px-6 md:px-12 lg:px-24 py-24">
+  <!-- Works Section -->
+  <section id="works" class="editorial-section border-t border-sand">
+    <div class="max-w-7xl mx-auto">
       
-      <!-- Filters -->
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-        <div class="flex flex-wrap gap-8 font-sans text-sm tracking-widest uppercase" id="gallery-filters" role="group" aria-label="Filter artworks by period">
-          <button class="filter-btn active pb-1" data-filter="all" aria-pressed="true">All Works (<span id="count-all">21</span>)</button>
-          <button class="filter-btn pb-1" data-filter="pilani" aria-pressed="false">Pilani (2011–14) (<span id="count-pilani">12</span>)</button>
-          <button class="filter-btn pb-1" data-filter="delhi" aria-pressed="false">Delhi (2015–17) (<span id="count-delhi">4</span>)</button>
-          <button class="filter-btn pb-1" data-filter="sydney" aria-pressed="false">Sydney (2020–21) (<span id="count-sydney">3</span>)</button>
-          <button class="filter-btn pb-1" data-filter="contemporary" aria-pressed="false">Contemporary Pop (2022–24) (<span id="count-contemporary">2</span>)</button>
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-6 editorial-title">Selected Works</h2>
+        <p class="font-serif text-lg text-stone italic max-w-2xl mx-auto">
+          A curated exploration of form, medium, and narrative across three distinct creative phases.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-4 mb-16">
+        <button class="filter-tab active font-sans text-xs tracking-widest uppercase text-stone" data-filter="all">
+          All Works (21)
+        </button>
+        <button class="filter-tab font-sans text-xs tracking-widest uppercase text-stone" data-filter="pilani">
+          Pilani (2011–14)
+        </button>
+        <button class="filter-tab font-sans text-xs tracking-widest uppercase text-stone" data-filter="delhi">
+          Delhi (2015–17)
+        </button>
+        <button class="filter-tab font-sans text-xs tracking-widest uppercase text-stone" data-filter="sydney">
+          Sydney (2020–21)
+        </button>
+        <button class="filter-tab font-sans text-xs tracking-widest uppercase text-stone" data-filter="contemporary">
+          Contemporary (2022–24)
+        </button>
+      </div>
+
+      <!-- Curatorial Statement -->
+      <div id="curatorial-statement" class="text-center mb-16">
+        <p class="font-serif text-xl md:text-2xl text-stone italic max-w-4xl mx-auto leading-relaxed">
+          An overview of the complete archival registry, tracing a decade-long evolution in material practice.
+        </p>
+      </div>
+
+      <!-- Exhibition Grid -->
+      <div class="exhibition-grid" id="gallery-grid">
+        <!-- Artwork cards rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="editorial-section bg-[#F6F5F2] border-t border-sand">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-6 editorial-title">About the Artist</h2>
+        <p class="font-sans text-sm tracking-[0.2em] uppercase text-stone editorial-subtitle">
+          Bio & Artistic Journey
+        </p>
+      </div>
+
+      <div class="prose prose-lg max-w-none">
+        <div class="font-serif text-xl md:text-2xl text-charcoal leading-relaxed space-y-8">
+          <p>
+            Ketan Duggal's artistic journey began in the quiet town of Pilani, Rajasthan, where he first discovered the transformative power of oil paint while balancing life as a national athlete and guitarist. This dual identity—the disciplined physicality of sport and the expressive freedom of music—would later inform his approach to canvas, creating works that possess both rhythmic movement and emotional depth.
+          </p>
+          <p>
+            The <strong>Pilani Period (2011–2014)</strong> represents his foundational years, characterized by hermetic psychological oils and heavy structural tension. Working from Birla School and his home studio, Duggal developed a distinctive visual language that mapped internal states of being through dense glazes and introspective figurative studies. Works from this period, such as "The Urban Hermit" and "Complex Agony," reveal an artist deeply engaged with questions of solitude and identity.
+          </p>
+          <p>
+            Transitioning to <strong>Delhi (2015–2017)</strong>, Duggal's practice underwent a dramatic evolution. The chaotic surfaces of the metropolis broke his earlier structures apart, allowing mixed media to introduce atmospheric turbulence. This period saw the emergence of more kinetic brushstrokes and textural experimentation, as seen in "Blue Winds" and "Strangers in the night," works that capture the overwhelming nature of urban existence.
+          </p>
+          <p>
+            The <strong>Sydney years (2020–2021)</strong> brought a radical distillation of these influences. Luminous resin landscapes and quiet studies of spatial balance replaced the turbulent surfaces of Delhi. Works like "Study of Balance" and "Querencia" reflect an artist in search of inner sanctuary—a quiet place of strength and focus amidst geographic transience. The introduction of bio-resin over acrylic planes created glossy depths that spoke to new conceptual territories.
+          </p>
+          <p>
+            Most recently, Duggal's <strong>Contemporary Pop series (2022–2024)</strong> marks a radical externalization. Moving away from purely emotional landscapes, the work now confronts hyper-commercialism, capitalism, and luxury branding directly. Heavy mixed media panels serve as both surface and critique, with pieces like "Richie Make Money" and "Richie Carrying Gifts $ High Fashion Brands" utilizing pop imagery and satirical commentary to examine consumer culture.
+          </p>
+          <p>
+            This evolution—from the quiet introspection of early Pilani works to the biting satire of contemporary pop-art—encapsulates an artist moving from the deep internal to the harsh external world, always maintaining a commitment to material exploration and authentic expression.
+          </p>
         </div>
-        
-        <!-- Search Input -->
-        <div class="relative">
-          <label for="artwork-search" class="sr-only">Search artworks</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="editorial-section border-t border-sand">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-6 editorial-title">Exhibition Timeline</h2>
+        <p class="font-sans text-sm tracking-[0.2em] uppercase text-stone editorial-subtitle">
+          Chronological Archive & Milestones
+        </p>
+      </div>
+
+      <div class="space-y-12">
+        <div class="timeline-item">
+          <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2024</div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Contemporary Pop Series Completion</h3>
+          <p class="font-serif text-lg text-stone">Completion of the Richie series, marking a radical shift toward pop-satire and consumer culture critique.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2021</div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Sydney Residency Conclusion</h3>
+          <p class="font-serif text-lg text-stone">Final works from the Sydney period, including "Querencia," completed before return to India.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2020</div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Resin Landscape Exploration</h3>
+          <p class="font-serif text-lg text-stone">Introduction of bio-resin techniques leading to the "Study of Balance" series and spatial investigations.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2017</div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Delhi Period Conclusion</h3>
+          <p class="font-serif text-lg text-stone">Completion of mixed media works including "Elucidated," marking the end of metropolitan exploration.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2015</div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Transition to Delhi</h3>
+          <p class="font-serif text-lg text-stone">Relocation to Delhi marked by dramatic shift in palette and approach toward urban atmospheric painting.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2014</div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Pilani Period Mastery</h3>
+          <p class="font-serif text-lg text-stone">Completion of foundational psychological oils including "The Doomed One" and "The One Who Knew."</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2011</div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Artistic Practice Begins</h3>
+          <p class="font-serif text-lg text-stone">First major work "Complex Agony" created at Birla School, Pilani, establishing foundational oil techniques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="editorial-section bg-[#F6F5F2] border-t border-sand">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-6 editorial-title">Studio Inquiries</h2>
+        <p class="font-serif text-lg text-stone italic max-w-xl mx-auto">
+          For available works, archival catalogue requests, or to arrange a private viewing.
+        </p>
+      </div>
+
+      <form id="contact-form" class="space-y-6">
+        <div>
+          <label for="name" class="block font-sans text-xs tracking-widest uppercase text-stone mb-2">Name</label>
           <input 
             type="text" 
-            id="artwork-search" 
-            placeholder="Search artworks..." 
-            class="w-full md:w-64 px-4 py-2 bg-alabaster border border-sand text-charcoal font-sans text-sm focus:outline-none focus:border-charcoal focus:ring-2 focus:ring-charcoal focus:ring-offset-2 transition-colors"
-            aria-label="Search artworks by title, year, medium, or description"
+            id="name" 
+            name="name" 
+            required
+            class="luxury-input w-full text-charcoal"
+            placeholder="Your name"
           />
-          <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-          </svg>
         </div>
-      </div>
-
-      <!-- Dynamic Curatorial Statement -->
-      <div id="curatorial-statement" class="font-serif text-xl md:text-2xl text-stone mb-16 italic max-w-4xl border-l-2 border-sand pl-6">
-        An overview of the complete archival registry, tracing a decade-long evolution in material practice.
-      </div>
-
-      <!-- Masonry Grid -->
-      <div class="masonry" id="gallery-grid">
-        <!-- Rendered by JS -->
-      </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section id="philosophy" class="px-6 md:px-12 lg:px-24 py-32 bg-[#F6F5F2] border-y border-sand">
-      <div class="max-w-3xl mx-auto text-center md:text-left">
-        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-12">From Hermit to Market: A Curatorial Note</h2>
-        <div class="font-serif text-xl md:text-2xl text-stone leading-relaxed space-y-8">
-          <p>
-            The trajectory of Ketan Duggal's archive represents a profound psychological and geographic shift. It begins with the hermetic, structural tension of the <strong>Pilani Period</strong>, where dense oil glazes sought to map internal states of being—an intense period of introspection and foundational mastery.
-          </p>
-          <p>
-            The chaotic surfaces of <strong>Delhi</strong> broke these structures apart, allowing mixed media to introduce atmospheric turbulence, mimicking the overwhelming nature of the metropol. This was later distilled during the <strong>Sydney</strong> years into luminous resin landscapes and quiet studies of spatial balance.
-          </p>
-          <p>
-            Most recently, the <strong>Contemporary Pop</strong> series marks a radical externalization. Moving away from the purely emotional landscape, the work confronts hyper-commercialism, capitalism, and luxury branding directly, utilizing heavy mixed media panels as critique. The journey from the quiet introspection of 'The Urban Hermit' (2012) to the biting satire of 'Richie Carrying Gifts' (2024) encapsulates an artist moving from the deep internal to the harsh external world.
-          </p>
+        
+        <div>
+          <label for="email" class="block font-sans text-xs tracking-widest uppercase text-stone mb-2">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required
+            class="luxury-input w-full text-charcoal"
+            placeholder="your@email.com"
+          />
         </div>
-      </div>
-    </section>
-
-    <!-- Archival Registry Table -->
-    <section id="registry" class="px-6 md:px-12 lg:px-24 py-32 border-b border-sand">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-12">Archival Registry</h2>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse font-sans text-sm text-charcoal">
-            <thead>
-              <tr class="border-b-2 border-charcoal uppercase tracking-widest text-xs text-stone">
-                <th class="py-4 px-4 font-normal">Cat No.</th>
-                <th class="py-4 px-4 font-normal">Title</th>
-                <th class="py-4 px-4 font-normal">Year</th>
-                <th class="py-4 px-4 font-normal">Medium</th>
-                <th class="py-4 px-4 font-normal">Dimensions</th>
-                <th class="py-4 px-4 font-normal">Origin</th>
-              </tr>
-            </thead>
-            <tbody id="registry-tbody">
-              <!-- Rendered by JS -->
-            </tbody>
-          </table>
+        
+        <div>
+          <label for="message" class="block font-sans text-xs tracking-widest uppercase text-stone mb-2">Message</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="5" 
+            required
+            class="luxury-input w-full text-charcoal resize-none"
+            placeholder="Your inquiry..."
+          ></textarea>
         </div>
-      </div>
-    </section>
-  </main>
+        
+        <div class="text-center">
+          <button type="submit" class="luxury-button font-sans text-xs tracking-widest uppercase">
+            Submit Inquiry
+          </button>
+        </div>
+      </form>
 
-  <!-- Footer / Contact -->
-  <footer id="contact" class="px-6 md:px-12 lg:px-24 py-32 text-center bg-alabaster">
-    <div class="max-w-2xl mx-auto">
-      <h2 class="font-serif text-3xl md:text-4xl text-charcoal mb-8">Studio Inquiries</h2>
-      <p class="font-sans text-stone mb-12 font-light">
-        For available works, archival catalogue requests, or to arrange a private viewing.
-      </p>
-      <a href="mailto:studio@ketanduggal.com" class="inline-block font-sans text-sm tracking-widest uppercase text-charcoal border-b border-charcoal pb-1 hover:text-stone hover:border-stone transition-colors mb-24">
-        studio@ketanduggal.com
-      </a>
-      
-      <div class="border-t border-sand pt-12 flex flex-col md:flex-row justify-between items-center font-sans text-xs text-stone tracking-wider">
+      <div class="mt-16 text-center">
+        <p class="font-sans text-sm text-stone mb-4">Or contact directly</p>
+        <a href="mailto:studio@ketanduggal.com" class="font-serif text-lg text-charcoal hover:text-stone transition-colors">
+          studio@ketanduggal.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="editorial-section border-t border-sand text-center">
+    <div class="max-w-4xl mx-auto">
+      <div class="font-serif text-2xl text-charcoal mb-8">Ketan Duggal</div>
+      <div class="font-sans text-xs tracking-widest uppercase text-stone space-y-4">
         <p>&copy; 2024 Ketan Duggal. All rights reserved.</p>
-        <p class="mt-4 md:mt-0">Pilani &bull; Delhi &bull; Sydney</p>
+        <p>Pilani · Delhi · Sydney</p>
+        <p class="font-normal">Contemporary Artist & Fine Art Archive</p>
       </div>
     </div>
   </footer>
 
-  <!-- Lightbox Modal -->
-  <div id="artwork-modal" class="fixed inset-0 z-50 flex items-center justify-center p-0 hidden modal-enter bg-alabaster/95 backdrop-blur-md overflow-hidden touch-pan-y" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <!-- Close -->
-    <button id="close-modal" class="absolute top-6 right-6 md:top-8 md:right-8 p-3 group z-50 bg-alabaster rounded-full shadow-sm border border-sand hover:bg-[#F6F5F2] transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2" aria-label="Close artwork viewer">
-      <svg class="w-6 h-6 text-stone group-hover:text-charcoal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+  <!-- Museum-Grade Lightbox Modal -->
+  <div id="artwork-modal" class="fixed inset-0 z-50 hidden museum-modal bg-alabaster/95" role="dialog" aria-modal="true">
+    <!-- Close Button -->
+    <button id="close-modal" class="absolute top-6 right-6 z-50 p-3 bg-alabaster rounded-full border border-sand hover:bg-charcoal hover:text-alabaster transition-colors" aria-label="Close">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
     </button>
     
-    <!-- Next / Prev Controls -->
-    <button id="prev-modal" class="absolute left-4 top-1/2 -translate-y-1/2 p-4 group z-50 bg-alabaster/80 rounded-full shadow-sm border border-sand hover:bg-[#F6F5F2] transition-colors hidden lg:block focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2" aria-label="Previous artwork">
-      <svg class="w-6 h-6 text-stone group-hover:text-charcoal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M15 19l-7-7 7-7"></path></svg>
+    <!-- Navigation -->
+    <button id="prev-modal" class="absolute left-6 top-1/2 -translate-y-1/2 z-50 p-4 bg-alabaster/80 rounded-full border border-sand hover:bg-charcoal hover:text-alabaster transition-colors hidden lg:block" aria-label="Previous">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
+      </svg>
     </button>
-    <button id="next-modal" class="absolute right-[33%] top-1/2 -translate-y-1/2 p-4 group z-50 bg-alabaster/80 rounded-full shadow-sm border border-sand hover:bg-[#F6F5F2] transition-colors hidden lg:block translate-x-1/2 focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2" aria-label="Next artwork">
-      <svg class="w-6 h-6 text-stone group-hover:text-charcoal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg>
+    <button id="next-modal" class="absolute right-6 top-1/2 -translate-y-1/2 z-50 p-4 bg-alabaster/80 rounded-full border border-sand hover:bg-charcoal hover:text-alabaster transition-colors hidden lg:block" aria-label="Next">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+      </svg>
     </button>
 
     <div class="w-full h-full flex flex-col lg:flex-row">
-      <!-- Left side: Image -->
-      <div class="w-full lg:w-2/3 h-[50vh] lg:h-full bg-transparent relative flex items-center justify-center zoomable-container p-8 lg:p-16 border-b lg:border-b-0 lg:border-r border-sand">
+      <!-- Image Side -->
+      <div class="w-full lg:w-2/3 h-[50vh] lg:h-full bg-transparent relative flex items-center justify-center p-8 lg:p-16">
         <div id="modal-loading" class="image-skeleton absolute inset-0 hidden"></div>
-        <img id="modal-image" src="#" alt="" class="w-full h-full object-contain transition-transform duration-300 ease-out origin-center image-loading" onload="this.classList.add('image-loaded'); document.getElementById('modal-loading')?.classList.add('hidden');" onerror="this.src='https://placehold.co/600x800/EBE8E1/787571?text=Image+Not+Found'; this.classList.add('image-loaded'); document.getElementById('modal-loading')?.classList.add('hidden');" />
+        <img id="modal-image" src="#" alt="" class="max-w-full max-h-full object-contain museum-modal-image image-loading" />
       </div>
       
-      <!-- Right side: Details -->
-      <div class="w-full lg:w-1/3 h-[50vh] lg:h-full overflow-y-auto p-8 lg:p-16 flex flex-col justify-center bg-alabaster shadow-[-10px_0_30px_-15px_rgba(0,0,0,0.05)] z-40 relative">
-        <div class="max-w-md mx-auto w-full">
-          <div class="font-sans text-xs tracking-widest uppercase text-stone mb-6 flex gap-4">
-            <span id="modal-cat"></span>
-            <span class="text-sand">|</span>
-            <span id="modal-year"></span>
-            <span class="text-sand">|</span>
-            <span id="modal-origin"></span>
-          </div>
+      <!-- Details Side -->
+      <div class="w-full lg:w-1/3 h-[50vh] lg:h-full overflow-y-auto p-8 lg:p-16 bg-alabaster flex flex-col justify-center">
+        <div class="font-sans text-xs tracking-widest uppercase text-stone mb-6 flex gap-4">
+          <span id="modal-cat"></span>
+          <span class="text-sand">|</span>
+          <span id="modal-year"></span>
+          <span class="text-sand">|</span>
+          <span id="modal-origin"></span>
+        </div>
 
-          <h3 class="font-serif text-4xl md:text-5xl text-charcoal mb-8 leading-tight" id="modal-title"></h3>
+        <h3 class="font-serif text-4xl md:text-5xl text-charcoal mb-8 leading-tight" id="modal-title"></h3>
 
-          <div class="space-y-2 mb-12 font-sans text-sm text-stone tracking-wide border-l-2 border-sand pl-4">
-            <p><span class="text-stone w-24 inline-block uppercase text-xs tracking-widest">Medium:</span> <span id="modal-medium"></span></p>
-            <p><span class="text-stone w-24 inline-block uppercase text-xs tracking-widest">Dimensions:</span> <span id="modal-dimensions"></span></p>
-          </div>
+        <div class="space-y-4 mb-12 font-sans text-sm text-stone">
+          <p><span class="uppercase tracking-widest text-xs">Medium:</span> <span id="modal-medium"></span></p>
+          <p><span class="uppercase tracking-widest text-xs">Dimensions:</span> <span id="modal-dimensions"></span></p>
+        </div>
 
-          <div class="border-t border-sand pt-10">
-            <h4 class="font-sans text-xs tracking-widest uppercase text-stone mb-4">Curatorial Concept</h4>
-            <p class="font-serif text-lg text-charcoal leading-relaxed" id="modal-note"></p>
-          </div>
+        <div class="border-t border-sand pt-8">
+          <h4 class="font-sans text-xs tracking-widest uppercase text-stone mb-4">Curatorial Note</h4>
+          <p class="font-serif text-lg text-charcoal leading-relaxed" id="modal-note"></p>
+        </div>
 
-          <!-- Social Sharing -->
-          <div class="border-t border-sand pt-8 mt-8">
-            <h4 class="font-sans text-xs tracking-widest uppercase text-stone mb-4">Share This Work</h4>
-            <div class="flex gap-4">
-              <button id="share-twitter" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Share on Twitter">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-              </button>
-              <button id="share-facebook" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Share on Facebook">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </button>
-              <button id="share-linkedin" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Share on LinkedIn">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </button>
-              <button id="share-copy" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Copy link">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-              </button>
-            </div>
+        <!-- Share Buttons -->
+        <div class="border-t border-sand pt-8 mt-8">
+          <h4 class="font-sans text-xs tracking-widest uppercase text-stone mb-4">Share</h4>
+          <div class="flex gap-3">
+            <button id="share-twitter" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Share on Twitter">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </button>
+            <button id="share-facebook" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Share on Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </button>
+            <button id="share-copy" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Copy link">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            </button>
           </div>
         </div>
       </div>
@@ -471,305 +662,458 @@
   </div>
 
   <script>
-    // Artwork Data - Full 21 Master Registry
+    // Master Art Registry - 21 Works with Precise File Mapping
     const artworks = [
-      { id: 1, title: "Complex Agony", year: "2011", medium: "Oil paint", dimensions: "91x91 cm", origin: "Birla School, Pilani", note: "Early foundational work tackling intricate structural tension and raw oil expression.", series: "pilani" },
-      { id: 2, title: "Splendid soul", year: "2012", medium: "Oil paint", dimensions: "120x150 cm", origin: "Birla School, Pilani", note: "Large format expressive canvas exploring emotional expansiveness.", series: "pilani" },
-      { id: 3, title: "The Urban Hermit", year: "2012", medium: "Oil paint", dimensions: "45x77 cm", origin: "Home (Pilani)", note: "Solitude amidst emerging modern urban life.", series: "pilani" },
-      { id: 4, title: "Nothing on you", year: "2012", medium: "Oil paint", dimensions: "60x60 cm", origin: "Home (Pilani)", note: "Minimal figurative balance with restrained tonal palette.", series: "pilani" },
-      { id: 5, title: "Strings teem senses", year: "2013", medium: "Oil paint", dimensions: "Three of 45x45 cm", origin: "Home (Pilani)", note: "A triptych exploring sensory interconnectedness and vibrational resonance.", series: "pilani" },
-      { id: 6, title: "Gaol of greed", year: "2013", medium: "Oil paint", dimensions: "60x83 cm", origin: "Home (Pilani)", note: "Metaphorical confinement within material desires rendered in rich, dark glazes.", series: "pilani" },
-      { id: 7, title: "Trying and Being", year: "2014", medium: "Oil paint", dimensions: "60x60 cm", origin: "Pilani", note: "Philosophical tension between active striving and effortless presence.", series: "pilani" },
-      { id: 8, title: "Now you see me, Now you dont", year: "2014", medium: "Oil paint", dimensions: "60x45 cm", origin: "Pilani", note: "Optical play between depth, transparency, and vanishing planes.", series: "pilani" },
-      { id: 9, title: "The Stripped Tint", year: "2014", medium: "Oil paint", dimensions: "45x60 cm", origin: "Pilani", note: "Deconstructive exploration of pure pigment and raw tonal values.", series: "pilani" },
-      { id: 10, title: "The One Who Knew", year: "2014", medium: "Oil paint", dimensions: "60x60 cm", origin: "Pilani", note: "Contemplative portrait examining quiet intuition and omniscience.", series: "pilani" },
-      { id: 11, title: "Sneak Peak", year: "2014", medium: "Oil paint", dimensions: "46x61 cm", origin: "Pilani", note: "Subtle glimpses of concealed anatomy and figurative ambiguity.", series: "pilani" },
-      { id: 12, title: "The Doomed One", year: "2014", medium: "Oil paint", dimensions: "61x61 cm", origin: "Pilani", note: "Existential study of isolation and heavy psychological weight.", series: "pilani" },
-
-      { id: 13, title: "Blue Winds", year: "2015", medium: "Oil paint", dimensions: "61x61 cm", origin: "Delhi", note: "Dynamic kinetic brushstrokes conveying atmospheric currents and motion.", series: "delhi" },
-      { id: 14, title: "Strangers in the night", year: "2016", medium: "Oil paint", dimensions: "60x60 cm", origin: "Delhi", note: "Moody metropolitan study in deep cerulean and nocturnal silhouettes.", series: "delhi" },
-      { id: 15, title: "Burnt Wine", year: "2016", medium: "Mixed Media", dimensions: "67x48 cm", origin: "Delhi", note: "Deep crimson undertones paired with textural patinas exploring warmth and passage of time.", series: "delhi" },
-      { id: 16, title: "Elucidated", year: "2017", medium: "Oil paint", dimensions: "67x48 cm", origin: "Delhi", note: "Exploration of light emerging through opaque oil tones, uncovering concealed forms.", series: "delhi" },
-
-      { id: 17, title: "The Conflict of Love and Chastity", year: "2020", medium: "Oil / Mixed", dimensions: "61x61 cm", origin: "Sydney", note: "Juxtaposition of raw emotional vulnerability and classical composure.", series: "sydney" },
-      { id: 18, title: "Study of Balance", year: "2020", medium: "Acrylic / Resin", dimensions: "51x122 cm", origin: "Sydney", note: "An investigation of structural tension and glossy depth using bio-resin over acrylic planes.", series: "sydney" },
-      { id: 19, title: "Querencia", year: "2021", medium: "Oil/Acrylic paint", dimensions: "61x91 cm", origin: "Sydney", note: "Capturing an inner sanctuary—a quiet place of strength and focus amidst geographic transience.", series: "sydney" },
-
-      { id: 20, title: "Richie Make Money", year: "2022", medium: "Mixed Media", dimensions: "91x121 cm", origin: "Home (Pilani)", note: "An inquiry into capitalism, financial drive, and pop imagery rendered in deep mixed-media surfaces.", series: "contemporary" },
-      { id: 21, title: "Richie Carrying Gifts $ High Fashion Brands", year: "2024", medium: "Mixed Media", dimensions: "120x90 cm", origin: "Pilani", note: "Dialogue on hyper-commercialism, luxury branding, and contemporary consumer culture on heavy panel.", series: "contemporary" }
+      { 
+        id: 1, 
+        title: "Complex Agony", 
+        year: "2011", 
+        medium: "Oil paint", 
+        dimensions: "91x91 cm", 
+        origin: "Birla School, Pilani", 
+        note: "Early foundational work tackling intricate structural tension and raw oil expression. The beginning of hermetic psychological exploration.",
+        series: "pilani",
+        filename: "1. Complex Agony (2011).jpg"
+      },
+      { 
+        id: 2, 
+        title: "Splendid Soul", 
+        year: "2012", 
+        medium: "Oil paint", 
+        dimensions: "120x150 cm", 
+        origin: "Birla School, Pilani", 
+        note: "Large format expressive canvas exploring emotional expansiveness and spiritual depth through rich glazes.",
+        series: "pilani",
+        filename: "2. Splendid Soul (2012).JPG"
+      },
+      { 
+        id: 3, 
+        title: "The Urban Hermit", 
+        year: "2012", 
+        medium: "Oil paint", 
+        dimensions: "45x77 cm", 
+        origin: "Home (Pilani)", 
+        note: "Solitude amidst emerging modern urban life. A contemplative portrait of the artist as observer in a changing world.",
+        series: "pilani",
+        filename: "3. The Urban Hermit (2012).JPG"
+      },
+      { 
+        id: 4, 
+        title: "Nothing on you", 
+        year: "2012", 
+        medium: "Oil paint", 
+        dimensions: "60x60 cm", 
+        origin: "Home (Pilani)", 
+        note: "Minimal figurative balance with restrained tonal palette. An exploration of emptiness and presence.",
+        series: "pilani",
+        filename: "4. Nothing on you (2012).JPG"
+      },
+      { 
+        id: 5, 
+        title: "Strings teem senses", 
+        year: "2013", 
+        medium: "Oil paint", 
+        dimensions: "Triptych (3×45x45 cm)", 
+        origin: "Home (Pilani)", 
+        note: "A triptych exploring sensory interconnectedness and vibrational resonance. Musical influences translated to visual language.",
+        series: "pilani",
+        filename: "5. Strings teem senses (1 of 3) (2013).jpg"
+      },
+      { 
+        id: 6, 
+        title: "Gaol of greed", 
+        year: "2013", 
+        medium: "Oil paint", 
+        dimensions: "60x83 cm", 
+        origin: "Home (Pilani)", 
+        note: "Metaphorical confinement within material desires rendered in rich, dark glazes. Early exploration of consumer themes.",
+        series: "pilani",
+        filename: "6. Gaol of greed (2013).JPG"
+      },
+      { 
+        id: 7, 
+        title: "Trying and Being", 
+        year: "2014", 
+        medium: "Oil paint", 
+        dimensions: "60x60 cm", 
+        origin: "Pilani", 
+        note: "Philosophical tension between active striving and effortless presence. The athlete's discipline meets artistic flow.",
+        series: "pilani",
+        filename: "7. Trying and being (2014).JPG"
+      },
+      { 
+        id: 8, 
+        title: "Now you see me, Now you don't", 
+        year: "2014", 
+        medium: "Oil paint", 
+        dimensions: "60x45 cm", 
+        origin: "Pilani", 
+        note: "Optical play between depth, transparency, and vanishing planes. Exploration of perception and reality.",
+        series: "pilani",
+        filename: "8. Now you see me,now you dont (2014).JPG"
+      },
+      { 
+        id: 9, 
+        title: "The Stripped Tint", 
+        year: "2014", 
+        medium: "Oil paint", 
+        dimensions: "45x60 cm", 
+        origin: "Pilani", 
+        note: "Deconstructive exploration of pure pigment and raw tonal values. Essential expression through color reduction.",
+        series: "pilani",
+        filename: "9. The Stripped Tint (2014).JPG"
+      },
+      { 
+        id: 10, 
+        title: "The One Who Knew", 
+        year: "2014", 
+        medium: "Oil paint", 
+        dimensions: "60x60 cm", 
+        origin: "Pilani", 
+        note: "Contemplative portrait examining quiet intuition and omniscience. The watcher within the work.",
+        series: "pilani",
+        filename: "10. The One Who Knew (2014).JPG"
+      },
+      { 
+        id: 11, 
+        title: "Sneak Peak", 
+        year: "2014", 
+        medium: "Oil paint", 
+        dimensions: "46x61 cm", 
+        origin: "Pilani", 
+        note: "Subtle glimpses of concealed anatomy and figurative ambiguity. The threshold between revealed and hidden.",
+        series: "pilani",
+        filename: "11. Sneak Peak (2014).JPG"
+      },
+      { 
+        id: 12, 
+        title: "The Doomed One", 
+        year: "2014", 
+        medium: "Oil paint", 
+        dimensions: "61x61 cm", 
+        origin: "Pilani", 
+        note: "Existential study of isolation and heavy psychological weight. The culmination of hermetic period intensity.",
+        series: "pilani",
+        filename: "12. The Doomed One (2014).JPG"
+      },
+      { 
+        id: 13, 
+        title: "Blue Winds", 
+        year: "2015", 
+        medium: "Oil paint", 
+        dimensions: "61x61 cm", 
+        origin: "Delhi", 
+        note: "Dynamic kinetic brushstrokes conveying atmospheric currents and motion. The arrival of urban energy.",
+        series: "delhi",
+        filename: "13. Blue Winds (2015).JPG"
+      },
+      { 
+        id: 14, 
+        title: "Strangers in the night", 
+        year: "2016", 
+        medium: "Oil paint", 
+        dimensions: "60x60 cm", 
+        origin: "Delhi", 
+        note: "Moody metropolitan study in deep cerulean and nocturnal silhouettes. Urban isolation in the city.",
+        series: "delhi",
+        filename: "14. Strangers in the night (2016).JPG"
+      },
+      { 
+        id: 15, 
+        title: "Burnt Wine", 
+        year: "2016", 
+        medium: "Mixed Media", 
+        dimensions: "67x48 cm", 
+        origin: "Delhi", 
+        note: "Deep crimson undertones paired with textural patinas exploring warmth and passage of time. Introduction of material complexity.",
+        series: "delhi",
+        filename: "15. Burnt Wine (2016).JPG"
+      },
+      { 
+        id: 16, 
+        title: "Elucidated", 
+        year: "2017", 
+        medium: "Oil paint", 
+        dimensions: "67x48 cm", 
+        origin: "Delhi", 
+        note: "Exploration of light emerging through opaque oil tones, uncovering concealed forms. The revelation of hidden dimensions.",
+        series: "delhi",
+        filename: "16. Elucidated (2017).JPG"
+      },
+      { 
+        id: 17, 
+        title: "The Conflict of Love and Chastity", 
+        year: "2020", 
+        medium: "Oil / Mixed", 
+        dimensions: "61x61 cm", 
+        origin: "Sydney", 
+        note: "Juxtaposition of raw emotional vulnerability and classical composure. Personal and universal tensions in harmony.",
+        series: "sydney",
+        filename: "17. The Conflict of Love and Chastity (2020).JPG"
+      },
+      { 
+        id: 18, 
+        title: "Study of Balance", 
+        year: "2020", 
+        medium: "Acrylic / Resin", 
+        dimensions: "51x122 cm", 
+        origin: "Sydney", 
+        note: "An investigation of structural tension and glossy depth using bio-resin over acrylic planes. Spatial mastery through material innovation.",
+        series: "sydney",
+        filename: "18. Study of Balance (2020).jpg"
+      },
+      { 
+        id: 19, 
+        title: "Querencia", 
+        year: "2021", 
+        medium: "Oil/Acrylic paint", 
+        dimensions: "61x91 cm", 
+        origin: "Sydney", 
+        note: "Capturing an inner sanctuary—a quiet place of strength and focus amidst geographic transience. The search for home within.",
+        series: "sydney",
+        filename: "19. Querencia (2021).jpg"
+      },
+      { 
+        id: 20, 
+        title: "Richie Make Money", 
+        year: "2022", 
+        medium: "Mixed Media", 
+        dimensions: "91x121 cm", 
+        origin: "Home (Pilani)", 
+        note: "An inquiry into capitalism, financial drive, and pop imagery rendered in deep mixed-media surfaces. The emergence of contemporary critique.",
+        series: "contemporary",
+        filename: "20. Richie Make Money (2022).jpg"
+      },
+      { 
+        id: 21, 
+        title: "Richie Carrying Gifts $ High Fashion Brands", 
+        year: "2024", 
+        medium: "Mixed Media", 
+        dimensions: "120x90 cm", 
+        origin: "Pilani", 
+        note: "Dialogue on hyper-commercialism, luxury branding, and contemporary consumer culture on heavy panel. The culmination of pop-satire vision.",
+        series: "contemporary",
+        filename: "21. Richie Carrying Gifts $ High Fashion Brands (2024).jpg"
+      }
     ];
 
+    // Curatorial Statements for Each Period
     const filterStatements = {
-      all: "An overview of the complete archival registry, tracing a decade-long evolution in material practice.",
-      pilani: "Phase 1: Hermetic foundations. Deep psychological oils, heavy structural tension, and introspective figurative studies.",
-      delhi: "Phase 2: Metropolitan dissolution. Atmospheric turbulence, mixed media, and the breaking of foundational structures.",
-      sydney: "Phase 3: Spatial balance. Luminous resin landscapes, quiet voids, and the search for an inner sanctuary.",
-      contemporary: "Phase 4: Pop-art satire. A radical externalization confronting hyper-commercialism and luxury branding on heavy panels."
+      all: "An overview of the complete archival registry, tracing a decade-long evolution in material practice from hermetic oils to contemporary pop-satire.",
+      pilani: "Phase 1: Hermetic foundations (2011–2014). Deep psychological oils, heavy structural tension, and introspective figurative studies from Birla School and home studio in Pilani.",
+      delhi: "Phase 2: Metropolitan dissolution (2015–2017). Atmospheric turbulence, mixed media introduction, and the breaking of foundational structures in response to urban chaos.",
+      sydney: "Phase 3: Spatial balance (2020–2021). Luminous resin landscapes, quiet voids, and the search for inner sanctuary through bio-resin and acrylic innovations.",
+      contemporary: "Phase 4: Pop-art satire (2022–2024). A radical externalization confronting hyper-commercialism and luxury branding on heavy mixed media panels."
     };
 
+    // DOM Elements
     const galleryGrid = document.getElementById('gallery-grid');
     const statementEl = document.getElementById('curatorial-statement');
-    const registryTbody = document.getElementById('registry-tbody');
+    const modal = document.getElementById('artwork-modal');
+    const pageLoader = document.getElementById('page-loader');
 
     let currentFilteredArtworks = artworks;
     let currentModalIndex = 0;
+    let boundImages = {};
 
-    // Registry Table Render
-    function renderRegistry() {
-      artworks.forEach(art => {
-        const tr = document.createElement('tr');
-        tr.className = "border-b border-sand transition-colors registry-row group cursor-pointer";
-        tr.innerHTML = `
-          <td class="py-4 px-4 text-stone group-hover:text-charcoal">KD-${art.id.toString().padStart(3, '0')}</td>
-          <td class="py-4 px-4 font-serif text-lg text-charcoal group-hover:text-stone">${art.title}</td>
-          <td class="py-4 px-4">${art.year}</td>
-          <td class="py-4 px-4">${art.medium}</td>
-          <td class="py-4 px-4">${art.dimensions}</td>
-          <td class="py-4 px-4">${art.origin}</td>
-        `;
-        
-        tr.setAttribute('role', 'button');
-        tr.setAttribute('tabindex', '0');
-        tr.setAttribute('aria-label', `View ${art.title} (${art.year})`);
-        
-        // Make registry rows open modal too
-        tr.addEventListener('click', () => {
-          currentFilteredArtworks = artworks; // reset context
-          currentModalIndex = artworks.findIndex(a => a.id === art.id);
-          const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EAE7E0/8c8b8a?text=${encodeURIComponent(art.title)}`;
-          openModal(art, imgSrc);
-          // Update URL for sharing
-          history.replaceState(null, '', `#work-${art.id}`);
-        });
-        
-        tr.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            currentFilteredArtworks = artworks;
-            currentModalIndex = artworks.findIndex(a => a.id === art.id);
-            const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EAE7E0/8c8b8a?text=${encodeURIComponent(art.title)}`;
-            openModal(art, imgSrc);
-            history.replaceState(null, '', `#work-${art.id}`);
-          }
-        });
-        registryTbody.appendChild(tr);
-      });
+    // Initialize Application
+    function init() {
+      renderGrid('all');
+      setupFilters();
+      setupModal();
+      setupMobileMenu();
+      setupContactForm();
+      setupScrollAnimations();
+      autoBindImages();
     }
 
+    // Render Gallery Grid
     function renderGrid(filter = 'all') {
       galleryGrid.innerHTML = '';
       currentFilteredArtworks = filter === 'all' ? artworks : artworks.filter(a => a.series === filter);
-      statementEl.textContent = filterStatements[filter];
+      statementEl.innerHTML = `<p class="font-serif text-xl md:text-2xl text-stone italic max-w-4xl mx-auto leading-relaxed">${filterStatements[filter]}</p>`;
 
       currentFilteredArtworks.forEach((art, index) => {
-        const card = document.createElement('div');
-        card.className = 'group cursor-pointer masonry-item artwork-card';
-        card.style.animationDelay = '0s'; // Reset for re-render
-
-        const placeholderImg = `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
-
-        card.innerHTML = `
-          <div class="overflow-hidden bg-sand mb-6 relative group-hover:shadow-xl transition-all duration-500 border border-sand">
-            <div class="image-skeleton w-full h-64 md:h-80 lg:h-96 absolute inset-0"></div>
-            <img src="${placeholderImg}" alt="${art.title} by Ketan Duggal, ${art.year}" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03] image-loading" loading="lazy" data-img-title="${art.title}" onload="this.classList.add('image-loaded'); this.previousElementSibling?.remove();" onerror="this.src='https://placehold.co/600x800/EBE8E1/787571?text=Image+Not+Found'; this.classList.add('image-loaded');" />
-            <div class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/5 transition-colors duration-500"></div>
-          </div>
-          <div class="px-2">
-            <h4 class="font-serif text-2xl mb-2 text-charcoal group-hover:text-stone transition-colors">${art.title}</h4>
-            <div class="font-sans text-xs tracking-widest uppercase text-stone">${art.year} &mdash; ${art.origin}</div>
-          </div>
-        `;
-
-        card.setAttribute('role', 'button');
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('aria-label', `View ${art.title} (${art.year})`);
-        
-        card.addEventListener('click', () => {
-          currentModalIndex = index;
-          openModal(art, card.querySelector('img').src);
-          // Update URL for sharing
-          history.replaceState(null, '', `#work-${art.id}`);
-        });
-        
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            currentModalIndex = index;
-            openModal(art, card.querySelector('img').src);
-            history.replaceState(null, '', `#work-${art.id}`);
-          }
-        });
-        
+        const card = createArtworkCard(art, index);
         galleryGrid.appendChild(card);
       });
-    }
 
-    // Page Loading Control
-    const pageLoader = document.getElementById('page-loader');
-    
-    // Show loader on navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId !== '#') {
-          e.preventDefault();
-          pageLoader.classList.add('active');
-          
+      // Trigger fade-in animation
+      setTimeout(() => {
+        document.querySelectorAll('.artwork-card').forEach((card, index) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px)';
           setTimeout(() => {
-            const target = document.querySelector(targetId);
-            if (target) {
-              target.scrollIntoView({ behavior: 'smooth' });
-            }
-            pageLoader.classList.remove('active');
-          }, 300);
-        }
-      });
-    });
-
-    // Update filter counts
-    function updateFilterCounts() {
-      document.getElementById('count-all').textContent = artworks.length;
-      document.getElementById('count-pilani').textContent = artworks.filter(a => a.series === 'pilani').length;
-      document.getElementById('count-delhi').textContent = artworks.filter(a => a.series === 'delhi').length;
-      document.getElementById('count-sydney').textContent = artworks.filter(a => a.series === 'sydney').length;
-      document.getElementById('count-contemporary').textContent = artworks.filter(a => a.series === 'contemporary').length;
-    }
-
-    // Init views
-    renderRegistry();
-    renderGrid();
-    updateFilterCounts();
-
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe sections for fade-in effect
-    document.querySelectorAll('section').forEach(section => {
-      section.classList.add('fade-in');
-      fadeObserver.observe(section);
-    });
-
-    // Stagger animation for gallery items
-    function staggerAnimation() {
-      const items = document.querySelectorAll('.masonry-item');
-      items.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
-      });
-    }
-
-    // Call stagger animation after grid is rendered
-    setTimeout(staggerAnimation, 100);
-
-    // Filters
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-pressed', 'false');
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, index * 100);
         });
-        btn.classList.add('active');
-        btn.setAttribute('aria-pressed', 'true');
-        renderGrid(btn.dataset.filter);
-        applyBoundImages(); // re-apply images when rendering
-        setTimeout(staggerAnimation, 100); // Re-apply stagger animation
-        document.getElementById('artwork-search').value = ''; // Clear search on filter change
+      }, 100);
+    }
+
+    // Create Artwork Card
+    function createArtworkCard(art, index) {
+      const card = document.createElement('div');
+      card.className = 'artwork-card fade-in';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `View ${art.title} (${art.year})`);
+
+      const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
+
+      card.innerHTML = `
+        <div class="relative aspect-[4/5] overflow-hidden bg-sand">
+          <div class="image-skeleton absolute inset-0"></div>
+          <img 
+            src="${imgSrc}" 
+            alt="${art.title} by Ketan Duggal, ${art.year}" 
+            class="w-full h-full object-cover transition-transform duration-700 image-loading" 
+            loading="lazy"
+            data-img-title="${art.title}"
+            onload="this.classList.add('image-loaded'); this.previousElementSibling?.remove();"
+            onerror="this.src='https://placehold.co/600x800/EBE8E1/787571?text=Image+Not+Found'; this.classList.add('image-loaded');"
+          />
+        </div>
+        <div class="p-6">
+          <h3 class="font-serif text-2xl text-charcoal mb-2 group-hover:text-stone transition-colors">${art.title}</h3>
+          <div class="font-sans text-xs tracking-widest uppercase text-stone">
+            ${art.year} · ${art.origin}
+          </div>
+        </div>
+      `;
+
+      card.addEventListener('click', () => {
+        currentModalIndex = index;
+        openModal(art, imgSrc);
       });
-    });
 
-    // Search functionality
-    const searchInput = document.getElementById('artwork-search');
-    let searchTimeout;
-
-    searchInput.addEventListener('input', (e) => {
-      clearTimeout(searchTimeout);
-      const searchTerm = e.target.value.toLowerCase().trim();
-      
-      searchTimeout = setTimeout(() => {
-        if (searchTerm === '') {
-          // Reset to current filter
-          const activeFilter = document.querySelector('.filter-btn.active');
-          renderGrid(activeFilter?.dataset.filter || 'all');
-        } else {
-          // Filter artworks based on search
-          const filteredArtworks = artworks.filter(art => 
-            art.title.toLowerCase().includes(searchTerm) ||
-            art.year.includes(searchTerm) ||
-            art.medium.toLowerCase().includes(searchTerm) ||
-            art.origin.toLowerCase().includes(searchTerm) ||
-            art.note.toLowerCase().includes(searchTerm)
-          );
-          
-          renderCustomGrid(filteredArtworks, `Search results for "${searchTerm}"`);
-        }
-        applyBoundImages();
-        setTimeout(staggerAnimation, 100);
-      }, 300);
-    });
-
-    function renderCustomGrid(customArtworks, customStatement) {
-      galleryGrid.innerHTML = '';
-      currentFilteredArtworks = customArtworks;
-      statementEl.textContent = customStatement;
-
-      customArtworks.forEach((art, index) => {
-        const card = document.createElement('div');
-        card.className = 'group cursor-pointer masonry-item artwork-card';
-        card.style.animationDelay = '0s';
-
-        const placeholderImg = `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
-
-        card.innerHTML = `
-          <div class="overflow-hidden bg-sand mb-6 relative group-hover:shadow-xl transition-all duration-500 border border-sand">
-            <div class="image-skeleton w-full h-64 md:h-80 lg:h-96 absolute inset-0"></div>
-            <img src="${placeholderImg}" alt="${art.title} by Ketan Duggal, ${art.year}" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03] image-loading" loading="lazy" data-img-title="${art.title}" onload="this.classList.add('image-loaded'); this.previousElementSibling?.remove();" onerror="this.src='https://placehold.co/600x800/EBE8E1/787571?text=Image+Not+Found'; this.classList.add('image-loaded');" />
-            <div class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/5 transition-colors duration-500"></div>
-          </div>
-          <div class="px-2">
-            <h4 class="font-serif text-2xl mb-2 text-charcoal group-hover:text-stone transition-colors">${art.title}</h4>
-            <div class="font-sans text-xs tracking-widest uppercase text-stone">${art.year} &mdash; ${art.origin}</div>
-          </div>
-        `;
-
-        card.setAttribute('role', 'button');
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('aria-label', `View ${art.title} (${art.year})`);
-        
-        card.addEventListener('click', () => {
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
           currentModalIndex = index;
-          openModal(art, card.querySelector('img').src);
-          // Update URL for sharing
-          history.replaceState(null, '', `#work-${art.id}`);
+          openModal(art, imgSrc);
+        }
+      });
+
+      return card;
+    }
+
+    // Setup Filter Tabs
+    function setupFilters() {
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          renderGrid(tab.dataset.filter);
         });
-        
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            currentModalIndex = index;
-            openModal(art, card.querySelector('img').src);
-            history.replaceState(null, '', `#work-${art.id}`);
-          }
-        });
-        
-        galleryGrid.appendChild(card);
       });
     }
 
-    // Auto-Bind Images Logic
-    let boundImages = {};
+    // Modal Functions
+    function setupModal() {
+      const closeBtn = document.getElementById('close-modal');
+      const prevBtn = document.getElementById('prev-modal');
+      const nextBtn = document.getElementById('next-modal');
 
+      closeBtn.addEventListener('click', closeModal);
+      prevBtn.addEventListener('click', showPrevArtwork);
+      nextBtn.addEventListener('click', showNextArtwork);
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (modal.classList.contains('hidden')) return;
+        
+        if (e.key === 'Escape') closeModal();
+        else if (e.key === 'ArrowLeft') showPrevArtwork();
+        else if (e.key === 'ArrowRight') showNextArtwork();
+      });
+
+      // Touch gestures
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      modal.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      modal.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const swipeDistance = touchEndX - touchStartX;
+        
+        if (Math.abs(swipeDistance) > 50) {
+          if (swipeDistance > 0 && currentModalIndex > 0) showPrevArtwork();
+          else if (swipeDistance < 0 && currentModalIndex < currentFilteredArtworks.length - 1) showNextArtwork();
+        }
+      }, { passive: true });
+    }
+
+    function openModal(art, imgSrc) {
+      const modalImage = document.getElementById('modal-image');
+      const modalLoading = document.getElementById('modal-loading');
+
+      // Update content
+      document.getElementById('modal-cat').textContent = `KD-${art.id.toString().padStart(3, '0')}`;
+      document.getElementById('modal-year').textContent = art.year;
+      document.getElementById('modal-origin').textContent = art.origin;
+      document.getElementById('modal-title').textContent = art.title;
+      document.getElementById('modal-medium').textContent = art.medium;
+      document.getElementById('modal-dimensions').textContent = art.dimensions;
+      document.getElementById('modal-note').textContent = art.note;
+
+      // Handle image loading
+      modalImage.classList.remove('image-loaded');
+      modalImage.classList.add('image-loading');
+      modalLoading.classList.remove('hidden');
+      modalImage.src = imgSrc;
+      modalImage.onload = () => {
+        modalImage.classList.add('image-loaded');
+        modalLoading.classList.add('hidden');
+      };
+
+      // Show modal
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      updateNavigationButtons();
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function showPrevArtwork() {
+      if (currentModalIndex > 0) {
+        currentModalIndex--;
+        const art = currentFilteredArtworks[currentModalIndex];
+        const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
+        openModal(art, imgSrc);
+      }
+    }
+
+    function showNextArtwork() {
+      if (currentModalIndex < currentFilteredArtworks.length - 1) {
+        currentModalIndex++;
+        const art = currentFilteredArtworks[currentModalIndex];
+        const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
+        openModal(art, imgSrc);
+      }
+    }
+
+    function updateNavigationButtons() {
+      const prevBtn = document.getElementById('prev-modal');
+      const nextBtn = document.getElementById('next-modal');
+
+      prevBtn.style.opacity = currentModalIndex === 0 ? '0.3' : '1';
+      prevBtn.style.pointerEvents = currentModalIndex === 0 ? 'none' : 'auto';
+      
+      nextBtn.style.opacity = currentModalIndex === currentFilteredArtworks.length - 1 ? '0.3' : '1';
+      nextBtn.style.pointerEvents = currentModalIndex === currentFilteredArtworks.length - 1 ? 'none' : 'auto';
+    }
+
+    // Auto-bind images from directory
     async function autoBindImages() {
       try {
         const res = await fetch('.');
@@ -784,260 +1128,130 @@
             if (href && href.match(/\.(jpe?g|png)$/i)) {
               const filename = decodeURIComponent(href);
               artworks.forEach(art => {
-                // Exact logic matching the repository filenames: '1. Complex Agony (2011).jpg'
-                if (filename.startsWith(art.id + '.') || filename.startsWith(art.id + '_')) {
+                if (filename.includes(art.id + '.') || filename.toLowerCase().includes(art.title.toLowerCase().substring(0, 10))) {
                   boundImages[art.title] = href;
                 }
               });
             }
           });
+          
+          // Re-render with actual images
+          renderGrid('all');
         }
       } catch (err) {
-        console.warn('Directory scan fallback.', err);
+        console.warn('Directory scan not available, using placeholders');
       }
-      applyBoundImages();
     }
 
-    function applyBoundImages() {
-      const imgs = document.querySelectorAll('img[data-img-title]');
-      imgs.forEach(img => {
-        const title = img.getAttribute('data-img-title');
-        if (boundImages[title]) {
-          img.classList.remove('image-loaded');
-          img.classList.add('image-loading');
-          img.src = boundImages[title];
-        }
+    // Mobile Menu
+    function setupMobileMenu() {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const closeMenuBtn = document.getElementById('close-mobile-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('flex');
+      });
+
+      closeMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+        });
       });
     }
 
-    autoBindImages();
-
-    // Lightbox Modal Logic
-    const modal = document.getElementById('artwork-modal');
-    const closeModalBtn = document.getElementById('close-modal');
-    const nextModalBtn = document.getElementById('next-modal');
-    const prevModalBtn = document.getElementById('prev-modal');
-
-    const mImage = document.getElementById('modal-image');
-    const mCat = document.getElementById('modal-cat');
-    const mYear = document.getElementById('modal-year');
-    const mOrigin = document.getElementById('modal-origin');
-    const mTitle = document.getElementById('modal-title');
-    const mMedium = document.getElementById('modal-medium');
-    const mDimensions = document.getElementById('modal-dimensions');
-    const mNote = document.getElementById('modal-note');
-
-    let scrollPosition = 0;
-    let isZoomed = false;
-
-    const updateModalContent = () => {
-      const art = currentFilteredArtworks[currentModalIndex];
-      const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
-
-      // Show loading state
-      mImage.classList.remove('image-loaded');
-      mImage.classList.add('image-loading');
-      document.getElementById('modal-loading')?.classList.remove('hidden');
-
-      mImage.src = imgSrc;
-      mImage.alt = art.title;
-      mCat.textContent = `KD-${art.id.toString().padStart(3, '0')}`;
-      mYear.textContent = art.year;
-      mOrigin.textContent = art.origin;
-      mTitle.textContent = art.title;
-      mMedium.textContent = art.medium;
-      mDimensions.textContent = art.dimensions;
-      mNote.textContent = art.note;
-
-      resetZoom();
-
-      // Toggle nav buttons based on index
-      prevModalBtn.style.opacity = currentModalIndex === 0 ? '0.3' : '1';
-      prevModalBtn.style.pointerEvents = currentModalIndex === 0 ? 'none' : 'auto';
-      nextModalBtn.style.opacity = currentModalIndex === currentFilteredArtworks.length - 1 ? '0.3' : '1';
-      nextModalBtn.style.pointerEvents = currentModalIndex === currentFilteredArtworks.length - 1 ? 'none' : 'auto';
-    };
-
-    const openModal = (art, imgSrc) => {
-      updateModalContent(); // ensures sync
-
-      scrollPosition = window.pageYOffset;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollPosition}px`;
-      document.body.style.width = '100%';
-
-      modal.classList.remove('hidden');
-      void modal.offsetWidth;
-      modal.classList.add('modal-enter-active');
-    };
-
-    const closeModal = () => {
-      modal.classList.remove('modal-enter-active');
-      modal.classList.add('modal-exit-active');
-
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        modal.classList.remove('modal-exit-active', 'modal-enter');
-
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, scrollPosition);
+    // Contact Form
+    function setupContactForm() {
+      const form = document.getElementById('contact-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
         
-        // Reset URL when modal closes
-        history.replaceState(null, '', window.location.pathname);
-      }, 300);
-    };
-
-    const resetZoom = () => {
-      isZoomed = false;
-      mImage.classList.remove('zoomed');
-      mImage.style.transform = 'scale(1)';
-      mImage.style.transformOrigin = 'center center';
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        
+        // Here you would typically send to a server
+        console.log('Form submitted:', data);
+        
+        // Show success message
+        alert('Thank you for your inquiry. We will respond shortly.');
+        form.reset();
+      });
     }
 
-    closeModalBtn.addEventListener('click', closeModal);
+    // Scroll Animations
+    function setupScrollAnimations() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
 
-    nextModalBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (currentModalIndex < currentFilteredArtworks.length - 1) {
-        currentModalIndex++;
-        updateModalContent();
-      }
-    });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
 
-    prevModalBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (currentModalIndex > 0) {
-        currentModalIndex--;
-        updateModalContent();
-      }
-    });
+      document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+      });
 
-    // Pan and Zoom logic
-    const imgContainer = document.querySelector('.zoomable-container');
-
-    imgContainer.addEventListener('click', (e) => {
-      if (!isZoomed) {
-        isZoomed = true;
-        mImage.classList.add('zoomed');
-
-        const rect = mImage.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const originX = (x / rect.width) * 100;
-        const originY = (y / rect.height) * 100;
-
-        mImage.style.transformOrigin = `${originX}% ${originY}%`;
-        mImage.style.transform = 'scale(2.5)';
-      } else {
-        resetZoom();
-      }
-    });
-
-    // Touch gesture support for mobile navigation
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const touchThreshold = 50;
-
-    modal.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    modal.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-      const swipeDistance = touchEndX - touchStartX;
-      
-      if (Math.abs(swipeDistance) > touchThreshold) {
-        if (swipeDistance > 0 && currentModalIndex > 0) {
-          // Swipe right - previous artwork
-          currentModalIndex--;
-          updateModalContent();
-        } else if (swipeDistance < 0 && currentModalIndex < currentFilteredArtworks.length - 1) {
-          // Swipe left - next artwork
-          currentModalIndex++;
-          updateModalContent();
-        }
-      }
+      // Page loading indicator
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId !== '#') {
+            e.preventDefault();
+            pageLoader.classList.add('active');
+            
+            setTimeout(() => {
+              const target = document.querySelector(targetId);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+              pageLoader.classList.remove('active');
+            }, 300);
+          }
+        });
+      });
     }
 
-    // Social sharing functionality
-    const shareTwitter = document.getElementById('share-twitter');
-    const shareFacebook = document.getElementById('share-facebook');
-    const shareLinkedin = document.getElementById('share-linkedin');
-    const shareCopy = document.getElementById('share-copy');
-
-    function getShareUrl() {
+    // Share functionality
+    document.getElementById('share-twitter').addEventListener('click', () => {
       const art = currentFilteredArtworks[currentModalIndex];
-      return `${window.location.origin}${window.location.pathname}#work-${art.id}`;
-    }
-
-    function getShareText() {
-      const art = currentFilteredArtworks[currentModalIndex];
-      return `"${art.title}" (${art.year}) by Ketan Duggal - Selected Works & Studio Archive`;
-    }
-
-    shareTwitter.addEventListener('click', () => {
-      const url = encodeURIComponent(getShareUrl());
-      const text = encodeURIComponent(getShareText());
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent(`"${art.title}" (${art.year}) by Ketan Duggal`);
       window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
     });
 
-    shareFacebook.addEventListener('click', () => {
-      const url = encodeURIComponent(getShareUrl());
+    document.getElementById('share-facebook').addEventListener('click', () => {
+      const url = encodeURIComponent(window.location.href);
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
     });
 
-    shareLinkedin.addEventListener('click', () => {
-      const url = encodeURIComponent(getShareUrl());
-      const title = encodeURIComponent(getShareText());
-      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`, '_blank');
-    });
-
-    shareCopy.addEventListener('click', async () => {
+    document.getElementById('share-copy').addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(getShareUrl());
-        const originalText = shareCopy.innerHTML;
-        shareCopy.innerHTML = '<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
-        setTimeout(() => {
-          shareCopy.innerHTML = originalText;
-        }, 2000);
+        await navigator.clipboard.writeText(window.location.href);
+        const btn = document.getElementById('share-copy');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+        setTimeout(() => btn.innerHTML = originalHTML, 2000);
       } catch (err) {
         console.error('Failed to copy link:', err);
       }
     });
 
-    imgContainer.addEventListener('mousemove', (e) => {
-      if (isZoomed) {
-        const rect = imgContainer.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const originX = (x / rect.width) * 100;
-        const originY = (y / rect.height) * 100;
-
-        mImage.style.transformOrigin = `${originX}% ${originY}%`;
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (modal.classList.contains('hidden')) return;
-
-      if (e.key === 'Escape') closeModal();
-      else if (e.key === 'ArrowRight' && currentModalIndex < currentFilteredArtworks.length - 1) {
-        currentModalIndex++;
-        updateModalContent();
-      }
-      else if (e.key === 'ArrowLeft' && currentModalIndex > 0) {
-        currentModalIndex--;
-        updateModalContent();
-      }
-    });
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
