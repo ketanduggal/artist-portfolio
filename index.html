@@ -4,13 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ketan Duggal — Studio & Selected Works</title>
-  
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -32,13 +28,7 @@
     }
   </script>
   <style>
-    body {
-      background-color: #FBFBF9;
-      color: #1A1918;
-    }
-    .masonry-item {
-      break-inside: avoid;
-    }
+    body { background-color: #FBFBF9; color: #1A1918; }
   </style>
 </head>
 <body class="font-sans antialiased selection:bg-ink selection:text-alabaster">
@@ -85,9 +75,7 @@
     </div>
 
     <!-- Artworks Grid Container -->
-    <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
-      <!-- Artworks injected by JavaScript below -->
-    </div>
+    <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12"></div>
   </section>
 
   <!-- Artist Statement / Philosophy -->
@@ -127,9 +115,7 @@
             <th class="py-4 font-normal">Origin</th>
           </tr>
         </thead>
-        <tbody id="archiveTableBody" class="divide-y divide-borderLine/60">
-          <!-- Table Rows populated via JS -->
-        </tbody>
+        <tbody id="archiveTableBody" class="divide-y divide-borderLine/60"></tbody>
       </table>
     </div>
   </section>
@@ -153,7 +139,7 @@
     </div>
   </footer>
 
-  <!-- Artwork Detail Modal / Lightbox -->
+  <!-- Artwork Detail Modal -->
   <div id="artModal" class="fixed inset-0 z-50 bg-alabaster/95 backdrop-blur-md hidden items-center justify-center p-6 md:p-12 transition-opacity">
     <div class="relative max-w-4xl w-full bg-surface border border-borderLine p-8 md:p-12 max-h-[90vh] overflow-y-auto">
       <button onclick="closeModal()" class="absolute top-6 right-6 text-xs uppercase tracking-widest font-light text-muted hover:text-ink">&times; Close</button>
@@ -170,7 +156,6 @@
     </div>
   </div>
 
-  <!-- Data Script -->
   <script>
     const artworks = [
       { id: 21, title: "Richie Carrying Gifts $ High Fashion Brands", year: 2024, medium: "Mixed Media", dimensions: "120x90 cm", origin: "Pilani", desc: "A complex dialogue between hyper-commercialism, luxury iconography, and contemporary wealth narratives using layered collage and resin finishes." },
@@ -196,7 +181,6 @@
       { id: 1, title: "Complex Agony", year: 2011, medium: "Oil paint", dimensions: "91x91 cm", origin: "Birla School, Pilani", desc: "Early foundational work tackling intricate structural tension and raw oil expression." }
     ];
 
-    // Populate Curated Gallery (First 6 Highlights)
     const galleryGrid = document.getElementById('galleryGrid');
     artworks.slice(0, 6).forEach(art => {
       const card = document.createElement('div');
@@ -220,7 +204,6 @@
       galleryGrid.appendChild(card);
     });
 
-    // Populate Catalogue Raisonné Table
     const archiveTable = document.getElementById('archiveTableBody');
     artworks.forEach(art => {
       const row = document.createElement('tr');
@@ -237,7 +220,6 @@
       archiveTable.appendChild(row);
     });
 
-    // Modal Handlers
     function openModal(id) {
       const item = artworks.find(a => a.id === id);
       if (!item) return;
@@ -247,7 +229,6 @@
       document.getElementById('modalDimensions').innerText = item.dimensions;
       document.getElementById('modalOrigin').innerText = item.origin;
       document.getElementById('modalDescription').innerText = item.desc;
-      
       const modal = document.getElementById('artModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
