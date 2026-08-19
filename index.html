@@ -1,244 +1,435 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ketan Duggal — Studio & Selected Works</title>
+  <title>Ketan Duggal - Selected Works & Studio Archive</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             alabaster: '#FBFBF9',
-            surface: '#F4F3EE',
-            ink: '#1A1918',
-            muted: '#73706B',
-            borderLine: '#E7E5DF'
           },
           fontFamily: {
             serif: ['"Cormorant Garamond"', 'serif'],
-            sans: ['"Inter"', 'sans-serif']
+            sans: ['"Inter"', 'sans-serif'],
           }
         }
       }
     }
   </script>
   <style>
-    body { background-color: #FBFBF9; color: #1A1918; }
+    body {
+      background-color: #FBFBF9;
+      color: #1f2937;
+    }
+    .modal-enter {
+      opacity: 0;
+    }
+    .modal-enter-active {
+      opacity: 1;
+      transition: opacity 300ms ease-out;
+    }
+    .modal-exit {
+      opacity: 1;
+    }
+    .modal-exit-active {
+      opacity: 0;
+      transition: opacity 200ms ease-in;
+    }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-ink selection:text-alabaster">
+<body class="bg-alabaster font-sans antialiased text-gray-800">
 
-  <!-- Navigation -->
-  <header class="fixed top-0 left-0 w-full z-40 bg-alabaster/80 backdrop-blur-md border-b border-borderLine">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 py-5 flex justify-between items-center">
-      <a href="#" class="font-serif text-2xl tracking-wide uppercase font-normal">Ketan Duggal</a>
-      <nav class="flex space-x-8 text-xs tracking-widest uppercase font-light text-muted">
-        <a href="#works" class="hover:text-ink transition-colors">Works</a>
-        <a href="#statement" class="hover:text-ink transition-colors">Philosophy</a>
-        <a href="#archive" class="hover:text-ink transition-colors">Archive</a>
-        <a href="#contact" class="hover:text-ink transition-colors">Inquiries</a>
-      </nav>
-    </div>
+  <!-- Header -->
+  <header class="py-8 px-6 md:px-12 lg:px-24 flex justify-between items-center">
+    <div class="font-serif text-2xl tracking-wide text-gray-900">KD</div>
+    <nav class="hidden md:flex gap-8 font-sans text-sm tracking-widest uppercase text-gray-500">
+      <a href="#works" class="hover:text-gray-900 transition-colors">Works</a>
+      <a href="#philosophy" class="hover:text-gray-900 transition-colors">Philosophy</a>
+      <a href="#contact" class="hover:text-gray-900 transition-colors">Contact</a>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto pt-24">
-    <div class="max-w-4xl">
-      <span class="text-xs uppercase tracking-widest text-muted font-light block mb-4">Studio Archive & Visual Arts</span>
-      <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[1.08] mb-8">
-        Form, layered oil, <br><span class="italic font-light">and tactile narratives.</span>
+  <main>
+    <!-- Hero Section -->
+    <section class="min-h-[60vh] flex flex-col justify-center px-6 md:px-12 lg:px-24 mb-20">
+      <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-gray-900 leading-tight mb-6">
+        Ketan Duggal
       </h1>
-      <p class="text-muted font-light text-base md:text-lg max-w-2xl leading-relaxed">
-        A progressive body of work spanning from early exploratory oil compositions in Pilani to large-scale mixed-media panels, bio-resins, and contemporary cultural dialogues.
+      <p class="font-sans text-lg md:text-xl text-gray-500 font-light tracking-wide max-w-2xl">
+        Selected Works & Studio Archive (2011 &mdash; 2024)
       </p>
-    </div>
-    <div class="mt-16 flex items-center space-x-4">
-      <a href="#works" class="inline-block border-b border-ink pb-1 text-xs tracking-widest uppercase font-light hover:text-muted hover:border-muted transition-all">
-        Explore Selected Works &darr;
+    </section>
+
+    <!-- Curated Gallery Grid -->
+    <section id="works" class="px-6 md:px-12 lg:px-24 mb-32">
+      
+      <!-- Period 1: Pilani -->
+      <div class="mb-20">
+        <h3 class="font-serif text-3xl mb-2">Pilani (2011 &mdash; 2014)</h3>
+        <p class="font-sans text-sm text-gray-500 mb-8">Foundational explorations in oil glazes, psychological tension, and figurative structures.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div class="group cursor-pointer artwork-card" data-title="Complex Agony" data-year="2011" data-medium="Oil paint" data-dimensions="91x91 cm" data-origin="Birla School, Pilani" data-image="https://picsum.photos/seed/art1/600/800" data-note="Early foundational work tackling intricate structural tension and raw oil expression.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art1/600/800" alt="Complex Agony" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2011 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Complex Agony</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 91&times;91 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Splendid soul" data-year="2012" data-medium="Oil paint" data-dimensions="120x150 cm" data-origin="Birla School, Pilani" data-note="Large format expressive canvas exploring emotional expansiveness.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art2/600/800" alt="Splendid soul" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2012 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Splendid soul</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 120&times;150 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="The Urban Hermit" data-year="2012" data-medium="Oil paint" data-dimensions="45x77 cm" data-origin="Home (Pilani)" data-note="Solitude amidst emerging modern urban life.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art3/600/800" alt="The Urban Hermit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2012 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">The Urban Hermit</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 45&times;77 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Nothing on you" data-year="2012" data-medium="Oil paint" data-dimensions="60x60 cm" data-origin="Home (Pilani)" data-note="Minimal figurative balance with restrained tonal palette.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art4/600/800" alt="Nothing on you" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2012 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Nothing on you</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 60&times;60 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Strings teem senses" data-year="2013" data-medium="Oil paint" data-dimensions="Three of 45x45 cm" data-origin="Home (Pilani)" data-note="A triptych exploring sensory interconnectedness and vibrational resonance.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art5/600/800" alt="Strings teem senses" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2013 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Strings teem senses</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, Three of 45&times;45 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Gaol of greed" data-year="2013" data-medium="Oil paint" data-dimensions="60x83 cm" data-origin="Home (Pilani)" data-note="Metaphorical confinement within material desires rendered in rich, dark glazes.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art6/600/800" alt="Gaol of greed" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2013 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Gaol of greed</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 60&times;83 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Trying and Being" data-year="2014" data-medium="Oil paint" data-dimensions="60x60 cm" data-origin="Pilani" data-note="Philosophical tension between active striving and effortless presence.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art7/600/800" alt="Trying and Being" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2014 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Trying and Being</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 60&times;60 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Now you see me, Now you dont" data-year="2014" data-medium="Oil paint" data-dimensions="60x45 cm" data-origin="Pilani" data-note="Optical play between depth, transparency, and vanishing planes.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art8/600/800" alt="Now you see me, Now you dont" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2014 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Now you see me, Now you dont</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 60&times;45 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="The Stripped Tint" data-year="2014" data-medium="Oil paint" data-dimensions="45x60 cm" data-origin="Pilani" data-note="Deconstructive exploration of pure pigment and raw tonal values.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art9/600/800" alt="The Stripped Tint" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2014 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">The Stripped Tint</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 45&times;60 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="The One Who Knew" data-year="2014" data-medium="Oil paint" data-dimensions="60x60 cm" data-origin="Pilani" data-note="Contemplative portrait examining quiet intuition and omniscience.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art10/600/800" alt="The One Who Knew" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2014 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">The One Who Knew</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 60&times;60 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Sneak Peak" data-year="2014" data-medium="Oil paint" data-dimensions="46x61 cm" data-origin="Pilani" data-note="Subtle glimpses of concealed anatomy and figurative ambiguity.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art11/600/800" alt="Sneak Peak" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2014 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Sneak Peak</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 46&times;61 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="The Doomed One" data-year="2014" data-medium="Oil paint" data-dimensions="61x61 cm" data-origin="Pilani" data-note="Existential study of isolation and heavy psychological weight.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art12/600/800" alt="The Doomed One" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2014 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">The Doomed One</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 61&times;61 cm</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Period 2: Delhi -->
+      <div class="mb-20">
+        <h3 class="font-serif text-3xl mb-2">Delhi (2015 &mdash; 2017)</h3>
+        <p class="font-sans text-sm text-gray-500 mb-8">Metropolitan movement, atmospheric depth, and initial mixed media integration.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div class="group cursor-pointer artwork-card" data-title="Blue Winds" data-year="2015" data-medium="Oil paint" data-dimensions="61x61 cm" data-origin="Delhi" data-note="Dynamic kinetic brushstrokes conveying atmospheric currents and motion.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art13/600/800" alt="Blue Winds" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2015 &mdash; Delhi</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Blue Winds</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 61&times;61 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Strangers in the night" data-year="2016" data-medium="Oil paint" data-dimensions="60x60 cm" data-origin="Delhi" data-note="Moody metropolitan study in deep cerulean and nocturnal silhouettes.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art14/600/800" alt="Strangers in the night" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2016 &mdash; Delhi</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Strangers in the night</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 60&times;60 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Burnt Wine" data-year="2016" data-medium="Mixed Media" data-dimensions="67x48 cm" data-origin="Delhi" data-note="Deep crimson undertones paired with textural patinas exploring warmth and passage of time.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art15/600/800" alt="Burnt Wine" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2016 &mdash; Delhi</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Burnt Wine</h4>
+            <div class="font-sans text-sm text-gray-500">Mixed Media, 67&times;48 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Elucidated" data-year="2017" data-medium="Oil paint" data-dimensions="67x48 cm" data-origin="Delhi" data-note="Exploration of light emerging through opaque oil tones, uncovering concealed forms.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art16/600/800" alt="Elucidated" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2017 &mdash; Delhi</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Elucidated</h4>
+            <div class="font-sans text-sm text-gray-500">Oil paint, 67&times;48 cm</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Period 3: Sydney -->
+      <div class="mb-20">
+        <h3 class="font-serif text-3xl mb-2">Sydney (2020 &mdash; 2021)</h3>
+        <p class="font-sans text-sm text-gray-500 mb-8">Spatial balance, luminous resin surfaces, and geographic sanctuary.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div class="group cursor-pointer artwork-card" data-title="The Conflict of Love and Chastity" data-year="2020" data-medium="Oil / Mixed" data-dimensions="61x61 cm" data-origin="Sydney" data-note="Juxtaposition of raw emotional vulnerability and classical composure.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art17/600/800" alt="The Conflict of Love and Chastity" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2020 &mdash; Sydney</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">The Conflict of Love and Chastity</h4>
+            <div class="font-sans text-sm text-gray-500">Oil / Mixed, 61&times;61 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Study of Balance" data-year="2020" data-medium="Acrylic / Resin" data-dimensions="51x122 cm" data-origin="Sydney" data-note="An investigation of structural tension and glossy depth using bio-resin over acrylic planes.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art18/600/800" alt="Study of Balance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2020 &mdash; Sydney</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Study of Balance</h4>
+            <div class="font-sans text-sm text-gray-500">Acrylic / Resin, 51&times;122 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Querencia" data-year="2021" data-medium="Oil/Acrylic paint" data-dimensions="61x91 cm" data-origin="Sydney" data-note="Capturing an inner sanctuary—a quiet place of strength and focus amidst geographic transience.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art19/600/800" alt="Querencia" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2021 &mdash; Sydney</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Querencia</h4>
+            <div class="font-sans text-sm text-gray-500">Oil/Acrylic paint, 61&times;91 cm</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Period 4: Contemporary Mixed Media -->
+      <div class="mb-16">
+        <h3 class="font-serif text-3xl mb-2">Contemporary & Pop Dialogues (2022 &mdash; 2024)</h3>
+        <p class="font-sans text-sm text-gray-500 mb-8">Large-scale mixed media panels, pop iconography, and wealth commentary.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div class="group cursor-pointer artwork-card" data-title="Richie Make Money" data-year="2022" data-medium="Mixed Media" data-dimensions="91x121 cm" data-origin="Home (Pilani)" data-note="An inquiry into capitalism, financial drive, and pop imagery rendered in deep mixed-media surfaces.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art20/600/800" alt="Richie Make Money" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2022 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Richie Make Money</h4>
+            <div class="font-sans text-sm text-gray-500">Mixed Media, 91&times;121 cm</div>
+          </div>
+
+          <div class="group cursor-pointer artwork-card" data-title="Richie Carrying Gifts $ High Fashion Brands" data-year="2024" data-medium="Mixed Media" data-dimensions="120x90 cm" data-origin="Pilani" data-note="Dialogue on hyper-commercialism, luxury branding, and contemporary consumer culture on heavy panel.">
+            <div class="overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="https://picsum.photos/seed/art21/600/800" alt="Richie Carrying Gifts $ High Fashion Brands" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-1">2024 &mdash; Pilani</div>
+            <h4 class="font-serif text-xl mb-1 group-hover:text-gray-600 transition-colors">Richie Carrying Gifts $ High Fashion Brands</h4>
+            <div class="font-sans text-sm text-gray-500">Mixed Media, 120&times;90 cm</div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="px-6 md:px-12 lg:px-24 py-32 bg-gray-50 mb-32 border-y border-gray-200">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-4xl md:text-5xl text-gray-900 mb-12 text-center">Studio Philosophy</h2>
+        <div class="font-serif text-xl md:text-2xl text-gray-600 leading-relaxed space-y-8 text-justify md:text-left">
+          <p>
+            My practice is rooted in the tactile exploration of oils, glazes, and mixed media. It is an ongoing dialogue between structure and dissolution, where each layer acts as a record of time and memory.
+          </p>
+          <p>
+            The transition from the structured forms of Pilani to the chaotic layers of Delhi, and eventually the atmospheric light of Sydney, represents a continuous shedding of the unnecessary. What remains is a distillation of emotion, captured through the physicality of the medium itself.
+          </p>
+          <p>
+            In recent works, the canvas ceases to be a mere surface and becomes an object in its own right, breaking the two-dimensional plane to invite a visceral, haptic engagement.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact" class="px-6 md:px-12 lg:px-24 py-24 text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="font-serif text-3xl md:text-4xl text-gray-900 mb-6">Inquiries</h2>
+      <p class="font-sans text-gray-500 mb-12">
+        For available works, exhibition details, or to schedule a studio visit.
+      </p>
+      <a href="mailto:studio@ketanduggal.com" class="inline-block font-sans text-sm tracking-widest uppercase text-gray-900 border-b border-gray-900 pb-1 hover:text-gray-500 hover:border-gray-500 transition-colors mb-16">
+        studio@ketanduggal.com
       </a>
-    </div>
-  </section>
-
-  <!-- Selected Works Gallery Grid -->
-  <section id="works" class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-borderLine">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
-      <div>
-        <span class="text-xs uppercase tracking-widest text-muted font-light block mb-2">01 / Curated Collection</span>
-        <h2 class="font-serif text-4xl md:text-5xl font-light">Selected Artworks</h2>
-      </div>
-      <p class="text-xs tracking-widest uppercase text-muted mt-4 md:mt-0 font-light">2011 — 2024 Retrospective</p>
-    </div>
-
-    <!-- Artworks Grid Container -->
-    <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12"></div>
-  </section>
-
-  <!-- Artist Statement / Philosophy -->
-  <section id="statement" class="py-28 bg-surface border-t border-b border-borderLine">
-    <div class="max-w-4xl mx-auto px-6 md:px-12">
-      <span class="text-xs uppercase tracking-widest text-muted font-light block mb-4 text-center">02 / Studio Philosophy</span>
-      <h2 class="font-serif text-3xl md:text-5xl font-light text-center leading-snug mb-12">
-        "Every layer of oil and resin holds an unspoken memory of space, pressure, and stillness."
-      </h2>
-      <div class="space-y-6 text-muted font-light leading-relaxed text-base md:text-lg">
-        <p>
-          The practice bridges classical academic oil techniques with dynamic mixed-media experimentation. Developed across varying geographies—from the reflective quiet of Pilani to the intense metropolitan rhythms of Delhi and Sydney—the works investigate physical balance, layered consciousness, and pop-cultural metaphors.
-        </p>
-        <p>
-          Each panel is approached not merely as a surface for pigment, but as a sculptured ground where glazes, raw wood textures, and reflective resins intersect.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Complete Archive Table -->
-  <section id="archive" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-    <div class="mb-12">
-      <span class="text-xs uppercase tracking-widest text-muted font-light block mb-2">03 / Complete Index</span>
-      <h2 class="font-serif text-4xl font-light">Catalogue Raisonné</h2>
-    </div>
-    
-    <div class="overflow-x-auto">
-      <table class="w-full text-left text-sm font-light">
-        <thead>
-          <tr class="border-b border-borderLine text-xs uppercase tracking-widest text-muted">
-            <th class="py-4 font-normal">#</th>
-            <th class="py-4 font-normal">Title</th>
-            <th class="py-4 font-normal">Year</th>
-            <th class="py-4 font-normal">Medium</th>
-            <th class="py-4 font-normal">Dimensions</th>
-            <th class="py-4 font-normal">Origin</th>
-          </tr>
-        </thead>
-        <tbody id="archiveTableBody" class="divide-y divide-borderLine/60"></tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Inquiries / Footer -->
-  <footer id="contact" class="py-24 px-6 md:px-12 border-t border-borderLine bg-alabaster">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div>
-        <h3 class="font-serif text-3xl md:text-4xl font-light mb-4">Studio Inquiries</h3>
-        <p class="text-muted font-light text-sm md:text-base max-w-md mb-8">
-          For archival records, viewings, or institutional collaborations, kindly reach out directly to the studio.
-        </p>
-        <a href="mailto:studio@ketanduggal.com" class="text-xs uppercase tracking-widest font-light border-b border-ink pb-1 hover:text-muted transition-colors">
-          Contact Studio &rarr;
-        </a>
-      </div>
-      <div class="flex flex-col justify-between items-start md:items-end text-xs text-muted font-light">
+      
+      <div class="border-t border-gray-200 pt-16 mt-8 flex flex-col md:flex-row justify-between items-center font-sans text-xs text-gray-400 tracking-wider">
         <p>&copy; 2026 Ketan Duggal. All rights reserved.</p>
         <p class="mt-4 md:mt-0">Pilani &bull; Delhi &bull; Sydney</p>
       </div>
     </div>
   </footer>
 
-  <!-- Artwork Detail Modal -->
-  <div id="artModal" class="fixed inset-0 z-50 bg-alabaster/95 backdrop-blur-md hidden items-center justify-center p-6 md:p-12 transition-opacity">
-    <div class="relative max-w-4xl w-full bg-surface border border-borderLine p-8 md:p-12 max-h-[90vh] overflow-y-auto">
-      <button onclick="closeModal()" class="absolute top-6 right-6 text-xs uppercase tracking-widest font-light text-muted hover:text-ink">&times; Close</button>
-      <div class="mt-4">
-        <span id="modalYear" class="text-xs uppercase tracking-widest text-muted block mb-1"></span>
-        <h3 id="modalTitle" class="font-serif text-4xl md:text-5xl font-light mb-4"></h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 py-4 border-t border-b border-borderLine text-xs font-light text-muted uppercase tracking-wider mb-6">
-          <div><strong class="text-ink block mb-1">Medium</strong><span id="modalMedium"></span></div>
-          <div><strong class="text-ink block mb-1">Dimensions</strong><span id="modalDimensions"></span></div>
-          <div><strong class="text-ink block mb-1">Origin</strong><span id="modalOrigin"></span></div>
+  <!-- Lightbox Modal -->
+  <div id="artwork-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12 hidden modal-enter bg-white/95 backdrop-blur-sm">
+    <button id="close-modal" class="absolute top-6 right-6 md:top-12 md:right-12 p-2 group" aria-label="Close modal">
+      <svg class="w-8 h-8 text-gray-400 group-hover:text-gray-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    
+    <div class="max-w-6xl w-full max-h-full overflow-y-auto flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+      <div class="w-full lg:w-3/5">
+        <img id="modal-image" src="" alt="" class="w-full h-auto max-h-[70vh] lg:max-h-[85vh] object-contain shadow-2xl" />
+      </div>
+      
+      <div class="w-full lg:w-2/5 flex flex-col justify-center">
+        <div class="font-sans text-xs tracking-widest uppercase text-gray-400 mb-4" id="modal-meta">
+          <span id="modal-year"></span> &mdash; <span id="modal-origin"></span>
         </div>
-        <p id="modalDescription" class="text-muted font-light leading-relaxed text-sm md:text-base"></p>
+        <h3 class="font-serif text-3xl md:text-4xl text-gray-900 mb-4" id="modal-title"></h3>
+        
+        <div class="space-y-1 mb-8 font-sans text-sm text-gray-500">
+          <p id="modal-medium"></p>
+          <p id="modal-dimensions"></p>
+        </div>
+        
+        <div class="border-t border-gray-200 pt-8">
+          <p class="font-serif text-lg text-gray-600 leading-relaxed italic" id="modal-note"></p>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    const artworks = [
-      { id: 21, title: "Richie Carrying Gifts $ High Fashion Brands", year: 2024, medium: "Mixed Media", dimensions: "120x90 cm", origin: "Pilani", desc: "A complex dialogue between hyper-commercialism, luxury iconography, and contemporary wealth narratives using layered collage and resin finishes." },
-      { id: 20, title: "Richie Make Money", year: 2022, medium: "Mixed Media", dimensions: "91x121 cm", origin: "Home (Pilani)", desc: "A vibrant inquiry into capitalism, financial ambition, and pop imagery rendered in deep mixed-media surfaces." },
-      { id: 19, title: "Querencia", year: 2021, medium: "Oil/Acrylic paint", dimensions: "61x91 cm", origin: "Sydney", desc: "Capturing a sanctuary of the soul—a quiet inner space of balance and focus amidst geographic transience." },
-      { id: 18, title: "Study of Balance", year: 2020, medium: "Acrylic / Resin", dimensions: "51x122 cm", origin: "Sydney", desc: "An investigation of tension, glossy depth, and modern equilibrium using bio-resin over acrylic planes." },
-      { id: 17, title: "The Conflict of Love and Chastity", year: 2020, medium: "Oil / Mixed", dimensions: "61x61 cm", origin: "Sydney", desc: "A layered emotional canvas juxtaposing raw vulnerability with restrained classical composure." },
-      { id: 16, title: "Elucidated", year: 2017, medium: "Oil paint", dimensions: "67x48 cm", origin: "Delhi", desc: "Exploration of light emerging through opaque oil tones, uncovering concealed forms." },
-      { id: 15, title: "Burnt Wine", year: 2016, medium: "Mixed Media", dimensions: "67x48 cm", origin: "Delhi", desc: "Deep crimson undertones paired with textural patinas exploring warmth and passage of time." },
-      { id: 14, title: "Strangers in the night", year: 2016, medium: "Oil paint", dimensions: "60x60 cm", origin: "Delhi", desc: "A moody metropolitan study in deep cerulean and nocturnal silhouettes." },
-      { id: 13, title: "Blue Winds", year: 2015, medium: "Oil paint", dimensions: "61x61 cm", origin: "Delhi", desc: "Dynamic kinetic brushstrokes conveying atmospheric currents and motion." },
-      { id: 12, title: "The Doomed One", year: 2014, medium: "Oil paint", dimensions: "61x61 cm", origin: "Pilani", desc: "An existential study of isolation and heavy psychological weight rendered in expressive oils." },
-      { id: 11, title: "Sneak Peak", year: 2014, medium: "Oil paint", dimensions: "46x61 cm", origin: "Pilani", desc: "Subtle glimpses of concealed anatomy and figurative ambiguity." },
-      { id: 10, title: "The One Who Knew", year: 2014, medium: "Oil paint", dimensions: "60x60 cm", origin: "Pilani", desc: "A contemplative portrait examining quiet intuition and omniscience." },
-      { id: 9, title: "The Stripped Tint", year: 2014, medium: "Oil paint", dimensions: "45x60 cm", origin: "Pilani", desc: "Deconstructive exploration of pure pigment and raw tonal values." },
-      { id: 8, title: "Now you see me, Now you dont", year: 2014, medium: "Oil paint", dimensions: "60x45 cm", origin: "Pilani", desc: "Optical play between depth, transparency, and vanishing planes." },
-      { id: 7, title: "Trying and Being", year: 2014, medium: "Oil paint", dimensions: "60x60 cm", origin: "Pilani", desc: "Philosophical tension between active striving and effortless presence." },
-      { id: 6, title: "Gaol of greed", year: 2013, medium: "Oil paint", dimensions: "60x83 cm", origin: "Home (Pilani)", desc: "Metaphorical imprisonment within material desires rendered in rich, dark glazes." },
-      { id: 5, title: "Strings teem senses", year: 2013, medium: "Oil paint", dimensions: "Three 45x45 cm", origin: "Home (Pilani)", desc: "A triptych exploring sensory interconnectedness and sonic resonance in color." },
-      { id: 4, title: "Nothing on you", year: 2012, medium: "Oil paint", dimensions: "60x60 cm", origin: "Home (Pilani)", desc: "Minimal figurative balance with restrained palette." },
-      { id: 3, title: "The Urban Hermit", year: 2012, medium: "Oil paint", dimensions: "45x77 cm", origin: "Home (Pilani)", desc: "Solitude amidst emerging modern urban life." },
-      { id: 2, title: "Splendid soul", year: 2012, medium: "Oil paint", dimensions: "120x150 cm", origin: "Birla School, Pilani", desc: "Large format expressive canvas exploring emotional expansiveness." },
-      { id: 1, title: "Complex Agony", year: 2011, medium: "Oil paint", dimensions: "91x91 cm", origin: "Birla School, Pilani", desc: "Early foundational work tackling intricate structural tension and raw oil expression." }
-    ];
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('artwork-modal');
+      const closeModalBtn = document.getElementById('close-modal');
+      const cards = document.querySelectorAll('.artwork-card');
+      
+      const mImage = document.getElementById('modal-image');
+      const mYear = document.getElementById('modal-year');
+      const mOrigin = document.getElementById('modal-origin');
+      const mTitle = document.getElementById('modal-title');
+      const mMedium = document.getElementById('modal-medium');
+      const mDimensions = document.getElementById('modal-dimensions');
+      const mNote = document.getElementById('modal-note');
 
-    const galleryGrid = document.getElementById('galleryGrid');
-    artworks.slice(0, 6).forEach(art => {
-      const card = document.createElement('div');
-      card.className = "group cursor-pointer flex flex-col";
-      card.onclick = () => openModal(art.id);
-      card.innerHTML = `
-        <div class="w-full aspect-[4/5] bg-surface border border-borderLine flex items-center justify-center p-8 transition-all group-hover:border-ink/40">
-          <div class="text-center">
-            <span class="font-serif italic text-2xl text-muted/60 block mb-2 font-light">#${art.id}</span>
-            <p class="text-xs uppercase tracking-widest text-muted font-light">${art.medium}</p>
-          </div>
-        </div>
-        <div class="mt-4 flex justify-between items-baseline">
-          <div>
-            <h4 class="font-serif text-xl font-normal group-hover:underline underline-offset-4 decoration-1">${art.title}</h4>
-            <p class="text-xs text-muted font-light mt-1">${art.dimensions} &bull; ${art.origin}</p>
-          </div>
-          <span class="text-xs font-light text-muted">${art.year}</span>
-        </div>
-      `;
-      galleryGrid.appendChild(card);
+      let scrollPosition = 0;
+
+      const openModal = (card) => {
+        const { title, year, medium, dimensions, origin, image, note } = card.dataset;
+        
+        mImage.src = image;
+        mImage.alt = title;
+        mYear.textContent = year;
+        mOrigin.textContent = origin;
+        mTitle.textContent = title;
+        mMedium.textContent = medium;
+        mDimensions.textContent = dimensions;
+        mNote.textContent = note;
+        
+        scrollPosition = window.pageYOffset;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.style.width = '100%';
+
+        modal.classList.remove('hidden');
+        void modal.offsetWidth;
+        modal.classList.add('modal-enter-active');
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('modal-enter-active');
+        modal.classList.add('modal-exit-active');
+        
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          modal.classList.remove('modal-exit-active', 'modal-enter');
+          
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.width = '';
+          window.scrollTo(0, scrollPosition);
+        }, 200);
+      };
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+      });
+
+      closeModalBtn.addEventListener('click', closeModal);
+      
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+      });
     });
-
-    const archiveTable = document.getElementById('archiveTableBody');
-    artworks.forEach(art => {
-      const row = document.createElement('tr');
-      row.className = "hover:bg-surface/50 transition-colors cursor-pointer";
-      row.onclick = () => openModal(art.id);
-      row.innerHTML = `
-        <td class="py-3 text-muted">${art.id}</td>
-        <td class="py-3 font-serif text-base text-ink">${art.title}</td>
-        <td class="py-3 text-muted">${art.year}</td>
-        <td class="py-3 text-muted">${art.medium}</td>
-        <td class="py-3 text-muted">${art.dimensions}</td>
-        <td class="py-3 text-muted">${art.origin}</td>
-      `;
-      archiveTable.appendChild(row);
-    });
-
-    function openModal(id) {
-      const item = artworks.find(a => a.id === id);
-      if (!item) return;
-      document.getElementById('modalYear').innerText = `${item.year} — ${item.origin}`;
-      document.getElementById('modalTitle').innerText = item.title;
-      document.getElementById('modalMedium').innerText = item.medium;
-      document.getElementById('modalDimensions').innerText = item.dimensions;
-      document.getElementById('modalOrigin').innerText = item.origin;
-      document.getElementById('modalDescription').innerText = item.desc;
-      const modal = document.getElementById('artModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('artModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
   </script>
 </body>
 </html>
