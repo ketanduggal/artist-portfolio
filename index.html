@@ -3,7 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ketan Duggal - Selected Works & Studio Archive</title>
+  <title>Ketan Duggal - Selected Works & Studio Archive (2011-2024)</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Ketan Duggal - Artist portfolio featuring selected works from 2011-2024. Oil paintings, mixed media, and contemporary art exploring themes of introspection, urban life, and consumer culture.">
+  <meta name="keywords" content="Ketan Duggal, artist, portfolio, contemporary art, oil painting, mixed media, Pilani, Delhi, Sydney, visual art">
+  <meta name="author" content="Ketan Duggal">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ketan Duggal - Selected Works & Studio Archive">
+  <meta property="og:description" content="A tactile exploration of organic forms and atmospheric depth. Selected works from 2011-2024.">
+  <meta property="og:url" content="https://ketanduggal.github.io/artist-portfolio/">
+  <meta property="og:image" content="https://placehold.co/1200x630/FAF9F6/171615?text=Ketan+Duggal+Portfolio">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ketan Duggal - Selected Works & Studio Archive">
+  <meta name="twitter:description" content="A tactile exploration of organic forms and atmospheric depth. Selected works from 2011-2024.">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VisualArtist",
+    "name": "Ketan Duggal",
+    "url": "https://ketanduggal.github.io/artist-portfolio/",
+    "description": "Contemporary artist working in oil paint, mixed media, and resin. Selected works from 2011-2024 exploring themes of introspection, urban life, and consumer culture.",
+    "email": "studio@ketanduggal.com",
+    "sameAs": [],
+    "works": [
+      {
+        "@type": "CreativeWork",
+        "name": "Complex Agony",
+        "dateCreated": "2011",
+        "artMedium": "Oil paint",
+        "artform": "Painting"
+      },
+      {
+        "@type": "CreativeWork", 
+        "name": "Richie Carrying Gifts $ High Fashion Brands",
+        "dateCreated": "2024",
+        "artMedium": "Mixed Media",
+        "artform": "Painting"
+      }
+    ]
+  }
+  </script>
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +75,37 @@
     }
   </script>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: #FAF9F6;
       color: #171615;
+    }
+
+    /* Page Loading Indicator */
+    .page-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #171615, #787571, #171615);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .page-loader.active {
+      opacity: 1;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
     }
 
     /* Masonry Layout */
@@ -61,21 +137,135 @@
       cursor: zoom-out;
     }
 
+    /* Loading Skeleton */
+    .image-skeleton {
+      background: linear-gradient(90deg, #EBE8E1 25%, #F5F3ED 50%, #EBE8E1 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Image Loading State */
+    .image-loading {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .image-loaded {
+      opacity: 1;
+    }
+
+    /* Touch-friendly interactions */
+    @media (hover: none) {
+      .filter-btn:hover {
+        color: #787571;
+      }
+      .filter-btn:active {
+        color: #171615;
+        border-bottom: 1px solid #171615;
+      }
+      
+      .artwork-card:active {
+        transform: scale(0.98);
+      }
+    }
+
+    /* Mobile Navigation */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      
+      .modal-enter {
+        padding: 0;
+      }
+      
+      #artwork-modal {
+        padding: 0;
+      }
+      
+      .zoomable-container {
+        padding: 1rem;
+      }
+    }
+
+    /* Fade-in animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered animation for gallery items */
+    .masonry-item {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Subtle hover animations for registry rows */
+    .registry-row {
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .registry-row:hover {
+      transform: translateX(4px);
+    }
+
+
+
     .modal-enter { opacity: 0; }
     .modal-enter-active { opacity: 1; transition: opacity 400ms ease-out; }
     .modal-exit { opacity: 1; }
     .modal-exit-active { opacity: 0; transition: opacity 300ms ease-in; }
 
     .filter-btn.active {
-      border-bottom: 1px solid #171615;
       color: #171615;
     }
     .filter-btn {
       color: #787571;
       transition: all 0.3s ease;
+      position: relative;
     }
     .filter-btn:hover {
       color: #171615;
+    }
+    .filter-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: #171615;
+      transition: width 0.3s ease;
+    }
+    .filter-btn:hover::after,
+    .filter-btn.active::after {
+      width: 100%;
     }
 
     /* Registry Table */
@@ -85,15 +275,18 @@
   </style>
 </head>
 <body class="bg-alabaster font-sans antialiased text-charcoal selection:bg-charcoal selection:text-alabaster">
+  
+  <!-- Page Loading Indicator -->
+  <div id="page-loader" class="page-loader"></div>
 
   <!-- Header -->
   <header class="py-12 px-6 md:px-12 lg:px-24 flex flex-col md:flex-row justify-between items-center border-b border-sand">
     <div class="font-serif text-3xl tracking-wider text-charcoal mb-6 md:mb-0">Ketan Duggal</div>
-    <nav class="flex gap-8 font-sans text-xs tracking-widest uppercase text-stone">
-      <a href="#works" class="hover:text-charcoal transition-colors">Works</a>
-      <a href="#philosophy" class="hover:text-charcoal transition-colors">Curator's Note</a>
-      <a href="#registry" class="hover:text-charcoal transition-colors">Registry</a>
-      <a href="#contact" class="hover:text-charcoal transition-colors">Inquiries</a>
+    <nav class="flex gap-8 font-sans text-xs tracking-widest uppercase text-stone" role="navigation" aria-label="Main navigation">
+      <a href="#works" class="hover:text-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2 rounded">Works</a>
+      <a href="#philosophy" class="hover:text-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2 rounded">Curator's Note</a>
+      <a href="#registry" class="hover:text-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2 rounded">Registry</a>
+      <a href="#contact" class="hover:text-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2 rounded">Inquiries</a>
     </nav>
   </header>
 
@@ -112,12 +305,29 @@
     <section id="works" class="px-6 md:px-12 lg:px-24 py-24">
       
       <!-- Filters -->
-      <div class="flex flex-wrap gap-8 mb-8 font-sans text-sm tracking-widest uppercase" id="gallery-filters">
-        <button class="filter-btn active pb-1" data-filter="all">All Works (21)</button>
-        <button class="filter-btn pb-1" data-filter="pilani">Pilani (2011–14)</button>
-        <button class="filter-btn pb-1" data-filter="delhi">Delhi (2015–17)</button>
-        <button class="filter-btn pb-1" data-filter="sydney">Sydney (2020–21)</button>
-        <button class="filter-btn pb-1" data-filter="contemporary">Contemporary Pop (2022–24)</button>
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+        <div class="flex flex-wrap gap-8 font-sans text-sm tracking-widest uppercase" id="gallery-filters" role="group" aria-label="Filter artworks by period">
+          <button class="filter-btn active pb-1" data-filter="all" aria-pressed="true">All Works (<span id="count-all">21</span>)</button>
+          <button class="filter-btn pb-1" data-filter="pilani" aria-pressed="false">Pilani (2011–14) (<span id="count-pilani">12</span>)</button>
+          <button class="filter-btn pb-1" data-filter="delhi" aria-pressed="false">Delhi (2015–17) (<span id="count-delhi">4</span>)</button>
+          <button class="filter-btn pb-1" data-filter="sydney" aria-pressed="false">Sydney (2020–21) (<span id="count-sydney">3</span>)</button>
+          <button class="filter-btn pb-1" data-filter="contemporary" aria-pressed="false">Contemporary Pop (2022–24) (<span id="count-contemporary">2</span>)</button>
+        </div>
+        
+        <!-- Search Input -->
+        <div class="relative">
+          <label for="artwork-search" class="sr-only">Search artworks</label>
+          <input 
+            type="text" 
+            id="artwork-search" 
+            placeholder="Search artworks..." 
+            class="w-full md:w-64 px-4 py-2 bg-alabaster border border-sand text-charcoal font-sans text-sm focus:outline-none focus:border-charcoal focus:ring-2 focus:ring-charcoal focus:ring-offset-2 transition-colors"
+            aria-label="Search artworks by title, year, medium, or description"
+          />
+          <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
       </div>
 
       <!-- Dynamic Curatorial Statement -->
@@ -193,24 +403,25 @@
   </footer>
 
   <!-- Lightbox Modal -->
-  <div id="artwork-modal" class="fixed inset-0 z-50 flex items-center justify-center p-0 hidden modal-enter bg-alabaster/95 backdrop-blur-md overflow-hidden">
+  <div id="artwork-modal" class="fixed inset-0 z-50 flex items-center justify-center p-0 hidden modal-enter bg-alabaster/95 backdrop-blur-md overflow-hidden touch-pan-y" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <!-- Close -->
-    <button id="close-modal" class="absolute top-6 right-6 md:top-8 md:right-8 p-3 group z-50 bg-alabaster rounded-full shadow-sm border border-sand hover:bg-[#F6F5F2] transition-colors" aria-label="Close modal">
+    <button id="close-modal" class="absolute top-6 right-6 md:top-8 md:right-8 p-3 group z-50 bg-alabaster rounded-full shadow-sm border border-sand hover:bg-[#F6F5F2] transition-colors focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2" aria-label="Close artwork viewer">
       <svg class="w-6 h-6 text-stone group-hover:text-charcoal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
     </button>
     
     <!-- Next / Prev Controls -->
-    <button id="prev-modal" class="absolute left-4 top-1/2 -translate-y-1/2 p-4 group z-50 bg-alabaster/80 rounded-full shadow-sm border border-sand hover:bg-[#F6F5F2] transition-colors hidden lg:block" aria-label="Previous artwork">
+    <button id="prev-modal" class="absolute left-4 top-1/2 -translate-y-1/2 p-4 group z-50 bg-alabaster/80 rounded-full shadow-sm border border-sand hover:bg-[#F6F5F2] transition-colors hidden lg:block focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2" aria-label="Previous artwork">
       <svg class="w-6 h-6 text-stone group-hover:text-charcoal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M15 19l-7-7 7-7"></path></svg>
     </button>
-    <button id="next-modal" class="absolute right-[33%] top-1/2 -translate-y-1/2 p-4 group z-50 bg-alabaster/80 rounded-full shadow-sm border border-sand hover:bg-[#F6F5F2] transition-colors hidden lg:block translate-x-1/2" aria-label="Next artwork">
+    <button id="next-modal" class="absolute right-[33%] top-1/2 -translate-y-1/2 p-4 group z-50 bg-alabaster/80 rounded-full shadow-sm border border-sand hover:bg-[#F6F5F2] transition-colors hidden lg:block translate-x-1/2 focus:outline-none focus:ring-2 focus:ring-charcoal focus:ring-offset-2" aria-label="Next artwork">
       <svg class="w-6 h-6 text-stone group-hover:text-charcoal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg>
     </button>
 
     <div class="w-full h-full flex flex-col lg:flex-row">
       <!-- Left side: Image -->
       <div class="w-full lg:w-2/3 h-[50vh] lg:h-full bg-transparent relative flex items-center justify-center zoomable-container p-8 lg:p-16 border-b lg:border-b-0 lg:border-r border-sand">
-        <img id="modal-image" src="#" alt="" class="w-full h-full object-contain transition-transform duration-300 ease-out origin-center" />
+        <div id="modal-loading" class="image-skeleton absolute inset-0 hidden"></div>
+        <img id="modal-image" src="#" alt="" class="w-full h-full object-contain transition-transform duration-300 ease-out origin-center image-loading" onload="this.classList.add('image-loaded'); document.getElementById('modal-loading')?.classList.add('hidden');" onerror="this.src='https://placehold.co/600x800/EBE8E1/787571?text=Image+Not+Found'; this.classList.add('image-loaded'); document.getElementById('modal-loading')?.classList.add('hidden');" />
       </div>
       
       <!-- Right side: Details -->
@@ -234,6 +445,25 @@
           <div class="border-t border-sand pt-10">
             <h4 class="font-sans text-xs tracking-widest uppercase text-stone mb-4">Curatorial Concept</h4>
             <p class="font-serif text-lg text-charcoal leading-relaxed" id="modal-note"></p>
+          </div>
+
+          <!-- Social Sharing -->
+          <div class="border-t border-sand pt-8 mt-8">
+            <h4 class="font-sans text-xs tracking-widest uppercase text-stone mb-4">Share This Work</h4>
+            <div class="flex gap-4">
+              <button id="share-twitter" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Share on Twitter">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+              </button>
+              <button id="share-facebook" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Share on Facebook">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </button>
+              <button id="share-linkedin" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Share on LinkedIn">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </button>
+              <button id="share-copy" class="p-2 border border-sand hover:border-charcoal hover:bg-charcoal hover:text-alabaster transition-colors rounded" aria-label="Copy link">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -297,12 +527,30 @@
           <td class="py-4 px-4">${art.dimensions}</td>
           <td class="py-4 px-4">${art.origin}</td>
         `;
+        
+        tr.setAttribute('role', 'button');
+        tr.setAttribute('tabindex', '0');
+        tr.setAttribute('aria-label', `View ${art.title} (${art.year})`);
+        
         // Make registry rows open modal too
         tr.addEventListener('click', () => {
           currentFilteredArtworks = artworks; // reset context
           currentModalIndex = artworks.findIndex(a => a.id === art.id);
           const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EAE7E0/8c8b8a?text=${encodeURIComponent(art.title)}`;
           openModal(art, imgSrc);
+          // Update URL for sharing
+          history.replaceState(null, '', `#work-${art.id}`);
+        });
+        
+        tr.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            currentFilteredArtworks = artworks;
+            currentModalIndex = artworks.findIndex(a => a.id === art.id);
+            const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EAE7E0/8c8b8a?text=${encodeURIComponent(art.title)}`;
+            openModal(art, imgSrc);
+            history.replaceState(null, '', `#work-${art.id}`);
+          }
         });
         registryTbody.appendChild(tr);
       });
@@ -316,12 +564,14 @@
       currentFilteredArtworks.forEach((art, index) => {
         const card = document.createElement('div');
         card.className = 'group cursor-pointer masonry-item artwork-card';
+        card.style.animationDelay = '0s'; // Reset for re-render
 
         const placeholderImg = `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
 
         card.innerHTML = `
           <div class="overflow-hidden bg-sand mb-6 relative group-hover:shadow-xl transition-all duration-500 border border-sand">
-            <img src="${placeholderImg}" alt="${art.title}" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" data-img-title="${art.title}" />
+            <div class="image-skeleton w-full h-64 md:h-80 lg:h-96 absolute inset-0"></div>
+            <img src="${placeholderImg}" alt="${art.title} by Ketan Duggal, ${art.year}" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03] image-loading" loading="lazy" data-img-title="${art.title}" onload="this.classList.add('image-loaded'); this.previousElementSibling?.remove();" onerror="this.src='https://placehold.co/600x800/EBE8E1/787571?text=Image+Not+Found'; this.classList.add('image-loaded');" />
             <div class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/5 transition-colors duration-500"></div>
           </div>
           <div class="px-2">
@@ -330,28 +580,192 @@
           </div>
         `;
 
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `View ${art.title} (${art.year})`);
+        
         card.addEventListener('click', () => {
           currentModalIndex = index;
           openModal(art, card.querySelector('img').src);
+          // Update URL for sharing
+          history.replaceState(null, '', `#work-${art.id}`);
         });
+        
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            currentModalIndex = index;
+            openModal(art, card.querySelector('img').src);
+            history.replaceState(null, '', `#work-${art.id}`);
+          }
+        });
+        
         galleryGrid.appendChild(card);
       });
+    }
+
+    // Page Loading Control
+    const pageLoader = document.getElementById('page-loader');
+    
+    // Show loader on navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId !== '#') {
+          e.preventDefault();
+          pageLoader.classList.add('active');
+          
+          setTimeout(() => {
+            const target = document.querySelector(targetId);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+            pageLoader.classList.remove('active');
+          }, 300);
+        }
+      });
+    });
+
+    // Update filter counts
+    function updateFilterCounts() {
+      document.getElementById('count-all').textContent = artworks.length;
+      document.getElementById('count-pilani').textContent = artworks.filter(a => a.series === 'pilani').length;
+      document.getElementById('count-delhi').textContent = artworks.filter(a => a.series === 'delhi').length;
+      document.getElementById('count-sydney').textContent = artworks.filter(a => a.series === 'sydney').length;
+      document.getElementById('count-contemporary').textContent = artworks.filter(a => a.series === 'contemporary').length;
     }
 
     // Init views
     renderRegistry();
     renderGrid();
+    updateFilterCounts();
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections for fade-in effect
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.add('fade-in');
+      fadeObserver.observe(section);
+    });
+
+    // Stagger animation for gallery items
+    function staggerAnimation() {
+      const items = document.querySelectorAll('.masonry-item');
+      items.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.1}s`;
+      });
+    }
+
+    // Call stagger animation after grid is rendered
+    setTimeout(staggerAnimation, 100);
 
     // Filters
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         renderGrid(btn.dataset.filter);
         applyBoundImages(); // re-apply images when rendering
+        setTimeout(staggerAnimation, 100); // Re-apply stagger animation
+        document.getElementById('artwork-search').value = ''; // Clear search on filter change
       });
     });
+
+    // Search functionality
+    const searchInput = document.getElementById('artwork-search');
+    let searchTimeout;
+
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      const searchTerm = e.target.value.toLowerCase().trim();
+      
+      searchTimeout = setTimeout(() => {
+        if (searchTerm === '') {
+          // Reset to current filter
+          const activeFilter = document.querySelector('.filter-btn.active');
+          renderGrid(activeFilter?.dataset.filter || 'all');
+        } else {
+          // Filter artworks based on search
+          const filteredArtworks = artworks.filter(art => 
+            art.title.toLowerCase().includes(searchTerm) ||
+            art.year.includes(searchTerm) ||
+            art.medium.toLowerCase().includes(searchTerm) ||
+            art.origin.toLowerCase().includes(searchTerm) ||
+            art.note.toLowerCase().includes(searchTerm)
+          );
+          
+          renderCustomGrid(filteredArtworks, `Search results for "${searchTerm}"`);
+        }
+        applyBoundImages();
+        setTimeout(staggerAnimation, 100);
+      }, 300);
+    });
+
+    function renderCustomGrid(customArtworks, customStatement) {
+      galleryGrid.innerHTML = '';
+      currentFilteredArtworks = customArtworks;
+      statementEl.textContent = customStatement;
+
+      customArtworks.forEach((art, index) => {
+        const card = document.createElement('div');
+        card.className = 'group cursor-pointer masonry-item artwork-card';
+        card.style.animationDelay = '0s';
+
+        const placeholderImg = `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
+
+        card.innerHTML = `
+          <div class="overflow-hidden bg-sand mb-6 relative group-hover:shadow-xl transition-all duration-500 border border-sand">
+            <div class="image-skeleton w-full h-64 md:h-80 lg:h-96 absolute inset-0"></div>
+            <img src="${placeholderImg}" alt="${art.title} by Ketan Duggal, ${art.year}" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03] image-loading" loading="lazy" data-img-title="${art.title}" onload="this.classList.add('image-loaded'); this.previousElementSibling?.remove();" onerror="this.src='https://placehold.co/600x800/EBE8E1/787571?text=Image+Not+Found'; this.classList.add('image-loaded');" />
+            <div class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/5 transition-colors duration-500"></div>
+          </div>
+          <div class="px-2">
+            <h4 class="font-serif text-2xl mb-2 text-charcoal group-hover:text-stone transition-colors">${art.title}</h4>
+            <div class="font-sans text-xs tracking-widest uppercase text-stone">${art.year} &mdash; ${art.origin}</div>
+          </div>
+        `;
+
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `View ${art.title} (${art.year})`);
+        
+        card.addEventListener('click', () => {
+          currentModalIndex = index;
+          openModal(art, card.querySelector('img').src);
+          // Update URL for sharing
+          history.replaceState(null, '', `#work-${art.id}`);
+        });
+        
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            currentModalIndex = index;
+            openModal(art, card.querySelector('img').src);
+            history.replaceState(null, '', `#work-${art.id}`);
+          }
+        });
+        
+        galleryGrid.appendChild(card);
+      });
+    }
 
     // Auto-Bind Images Logic
     let boundImages = {};
@@ -389,6 +803,8 @@
       imgs.forEach(img => {
         const title = img.getAttribute('data-img-title');
         if (boundImages[title]) {
+          img.classList.remove('image-loaded');
+          img.classList.add('image-loading');
           img.src = boundImages[title];
         }
       });
@@ -417,6 +833,11 @@
     const updateModalContent = () => {
       const art = currentFilteredArtworks[currentModalIndex];
       const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
+
+      // Show loading state
+      mImage.classList.remove('image-loaded');
+      mImage.classList.add('image-loading');
+      document.getElementById('modal-loading')?.classList.remove('hidden');
 
       mImage.src = imgSrc;
       mImage.alt = art.title;
@@ -462,6 +883,9 @@
         document.body.style.top = '';
         document.body.style.width = '';
         window.scrollTo(0, scrollPosition);
+        
+        // Reset URL when modal closes
+        history.replaceState(null, '', window.location.pathname);
       }, 300);
     };
 
@@ -509,6 +933,82 @@
         mImage.style.transform = 'scale(2.5)';
       } else {
         resetZoom();
+      }
+    });
+
+    // Touch gesture support for mobile navigation
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const touchThreshold = 50;
+
+    modal.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    modal.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeDistance = touchEndX - touchStartX;
+      
+      if (Math.abs(swipeDistance) > touchThreshold) {
+        if (swipeDistance > 0 && currentModalIndex > 0) {
+          // Swipe right - previous artwork
+          currentModalIndex--;
+          updateModalContent();
+        } else if (swipeDistance < 0 && currentModalIndex < currentFilteredArtworks.length - 1) {
+          // Swipe left - next artwork
+          currentModalIndex++;
+          updateModalContent();
+        }
+      }
+    }
+
+    // Social sharing functionality
+    const shareTwitter = document.getElementById('share-twitter');
+    const shareFacebook = document.getElementById('share-facebook');
+    const shareLinkedin = document.getElementById('share-linkedin');
+    const shareCopy = document.getElementById('share-copy');
+
+    function getShareUrl() {
+      const art = currentFilteredArtworks[currentModalIndex];
+      return `${window.location.origin}${window.location.pathname}#work-${art.id}`;
+    }
+
+    function getShareText() {
+      const art = currentFilteredArtworks[currentModalIndex];
+      return `"${art.title}" (${art.year}) by Ketan Duggal - Selected Works & Studio Archive`;
+    }
+
+    shareTwitter.addEventListener('click', () => {
+      const url = encodeURIComponent(getShareUrl());
+      const text = encodeURIComponent(getShareText());
+      window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+    });
+
+    shareFacebook.addEventListener('click', () => {
+      const url = encodeURIComponent(getShareUrl());
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    });
+
+    shareLinkedin.addEventListener('click', () => {
+      const url = encodeURIComponent(getShareUrl());
+      const title = encodeURIComponent(getShareText());
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`, '_blank');
+    });
+
+    shareCopy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(getShareUrl());
+        const originalText = shareCopy.innerHTML;
+        shareCopy.innerHTML = '<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+        setTimeout(() => {
+          shareCopy.innerHTML = originalText;
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy link:', err);
       }
     });
 
