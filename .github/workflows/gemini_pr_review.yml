@@ -1,0 +1,67 @@
+name: Gemini PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install google-genai requests
+
+      - name: Run Review Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO_NAME: ${{ github.repository }}
+        run: |
+          python - << 'EOF'
+          import os
+          import subprocess
+          import requests
+          from google import genai
+
+          # Get PR git diff
+          diff = subprocess.check_output(["git", "diff", "origin/${{ github.base_ref }}...HEAD"]).decode("utf-8")
+
+          if not diff.strip():
+              print("No changes found.")
+              exit(0)
+
+          # Call Gemini
+          client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+          prompt = f"Provide a concise, constructive code review for the following git diff. Highlight potential bugs, security issues, and style improvements:\n\n```diff\n{diff[:15000]}\n```"
+          
+          response = client.models.generate_content(
+              model="gemini-2.5-flash",
+              contents=prompt
+          )
+
+          # Post review as a PR comment
+          token = os.environ["GITHUB_TOKEN"]
+          repo = os.environ["REPO_NAME"]
+          pr_num = os.environ["PR_NUMBER"]
+          url = f"https://api.github.com/repos/{repo}/issues/{pr_num}/comments"
+          headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+          payload = {"body": f"### 🤖 Gemini Code Review\n\n{response.text}"}
+          
+          requests.post(url, json=payload, headers=headers)
+          EOF
