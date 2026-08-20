@@ -914,7 +914,6 @@
 
     let currentFilteredArtworks = artworks;
     let currentModalIndex = 0;
-    let boundImages = {};
 
     // Initialize Application
     function init() {
@@ -924,7 +923,6 @@
       setupMobileMenu();
       setupContactForm();
       setupScrollAnimations();
-      autoBindImages();
     }
 
     // Render Gallery Grid
@@ -960,7 +958,7 @@
       card.setAttribute('tabindex', '0');
       card.setAttribute('aria-label', `View ${art.title} (${art.year})`);
 
-      const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
+      const imgSrc = art.filename;
 
       card.innerHTML = `
         <div class="relative aspect-[4/5] overflow-hidden bg-sand">
@@ -970,7 +968,6 @@
             alt="${art.title} by Ketan Duggal, ${art.year}" 
             class="w-full h-full object-cover transition-transform duration-700 image-loading" 
             loading="lazy"
-            data-img-title="${art.title}"
             onload="this.classList.add('image-loaded'); this.previousElementSibling?.remove();"
             onerror="this.src='https://placehold.co/600x800/EBE8E1/787571?text=Image+Not+Found'; this.classList.add('image-loaded');"
           />
@@ -1062,11 +1059,11 @@
       document.getElementById('modal-dimensions').textContent = art.dimensions;
       document.getElementById('modal-note').textContent = art.note;
 
-      // Handle image loading
+      // Handle image loading - use direct filename
       modalImage.classList.remove('image-loaded');
       modalImage.classList.add('image-loading');
       modalLoading.classList.remove('hidden');
-      modalImage.src = imgSrc;
+      modalImage.src = art.filename;
       modalImage.onload = () => {
         modalImage.classList.add('image-loaded');
         modalLoading.classList.add('hidden');
@@ -1088,8 +1085,7 @@
       if (currentModalIndex > 0) {
         currentModalIndex--;
         const art = currentFilteredArtworks[currentModalIndex];
-        const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
-        openModal(art, imgSrc);
+        openModal(art, art.filename);
       }
     }
 
@@ -1097,8 +1093,7 @@
       if (currentModalIndex < currentFilteredArtworks.length - 1) {
         currentModalIndex++;
         const art = currentFilteredArtworks[currentModalIndex];
-        const imgSrc = boundImages[art.title] || `https://placehold.co/600x800/EBE8E1/787571?text=${encodeURIComponent(art.title)}`;
-        openModal(art, imgSrc);
+        openModal(art, art.filename);
       }
     }
 
@@ -1113,35 +1108,7 @@
       nextBtn.style.pointerEvents = currentModalIndex === currentFilteredArtworks.length - 1 ? 'none' : 'auto';
     }
 
-    // Auto-bind images from directory
-    async function autoBindImages() {
-      try {
-        const res = await fetch('.');
-        if (res.ok) {
-          const text = await res.text();
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(text, 'text/html');
-          const links = Array.from(doc.querySelectorAll('a'));
-          
-          links.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.match(/\.(jpe?g|png)$/i)) {
-              const filename = decodeURIComponent(href);
-              artworks.forEach(art => {
-                if (filename.includes(art.id + '.') || filename.toLowerCase().includes(art.title.toLowerCase().substring(0, 10))) {
-                  boundImages[art.title] = href;
-                }
-              });
-            }
-          });
-          
-          // Re-render with actual images
-          renderGrid('all');
-        }
-      } catch (err) {
-        console.warn('Directory scan not available, using placeholders');
-      }
-    }
+
 
     // Mobile Menu
     function setupMobileMenu() {
