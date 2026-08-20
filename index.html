@@ -5,26 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ketan Duggal | Contemporary Visual Artist</title>
   
-  <!-- Fonts -->
+  <!-- Google Fonts: Editorial Luxury Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Three.js for 3D WebGL Graphics -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-primary: #fdfdfc;
-      --bg-secondary: #f7f6f3;
-      --bg-dark: #0f0f11;
-      --text-main: #121212;
-      --text-muted: #6e6e6e;
+      --bg-primary: #faf9f5;
+      --bg-secondary: #f3f1eb;
+      --bg-dark: #0e0e10;
+      --text-main: #141414;
+      --text-muted: #6a6a6a;
       --accent-gold: #b39256;
+      --accent-gold-light: #d8be8a;
       --border-color: rgba(0, 0, 0, 0.08);
+      --border-dark: rgba(255, 255, 255, 0.12);
+      --card-mat: #ffffff;
       --font-heading: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -51,7 +51,7 @@
     a {
       color: inherit;
       text-decoration: none;
-      transition: var(--transition);
+      transition: var(--transition-smooth);
     }
 
     img {
@@ -66,17 +66,19 @@
       padding: 0 40px;
     }
 
-    /* Navigation */
+    /* ================================================= */
+    /* NAVIGATION BAR                                    */
+    /* ================================================= */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(253, 253, 252, 0.94);
-      backdrop-filter: blur(12px);
+      background: rgba(250, 249, 245, 0.94);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-color);
       z-index: 1000;
-      transition: var(--transition);
+      transition: var(--transition-smooth);
     }
 
     .nav-container {
@@ -91,10 +93,11 @@
 
     .brand-logo {
       font-family: var(--font-sans);
-      font-size: 15px;
-      font-weight: 400;
+      font-size: 14px;
+      font-weight: 500;
       letter-spacing: 0.45em;
       text-transform: uppercase;
+      color: var(--text-main);
     }
 
     .nav-menu {
@@ -110,6 +113,23 @@
       text-transform: uppercase;
       letter-spacing: 0.22em;
       color: var(--text-muted);
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--text-main);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
     }
 
     .nav-link:hover, .nav-link.active {
@@ -118,84 +138,145 @@
 
     .nav-link.highlight {
       color: var(--accent-gold);
+      font-weight: 600;
     }
 
     /* ================================================= */
-    /* 3D HERO SHOWCASE SECTION                          */
+    /* 3D CINEMATIC HERO SECTION                         */
     /* ================================================= */
-    .hero-3d {
+    .hero-3d-wrapper {
       position: relative;
       height: 100vh;
-      min-height: 720px;
-      background: radial-gradient(circle at 50% 40%, #ffffff 0%, #f4f3ef 100%);
+      min-height: 750px;
+      background: radial-gradient(circle at 50% 35%, #ffffff 0%, #ece9e2 100%);
       overflow: hidden;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       padding-top: 84px;
+      perspective: 1400px;
     }
 
-    #webglHeroCanvas {
+    /* Ambient particles canvas */
+    #particleCanvas {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: 1;
-      cursor: grab;
+      pointer-events: none;
     }
 
-    #webglHeroCanvas:active {
+    /* 3D Floating Stage Carousel */
+    .stage-3d {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-style: preserve-3d;
+      z-index: 2;
+      cursor: grab;
+      user-select: none;
+      margin-bottom: 20px;
+    }
+
+    .stage-3d:active {
       cursor: grabbing;
     }
 
-    .hero-content {
+    .carousel-3d-track {
       position: relative;
-      z-index: 2;
-      max-width: 900px;
-      padding: 0 20px;
+      width: 280px;
+      height: 360px;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+    }
+
+    .canvas-3d-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 360px;
+      background: #ffffff;
+      padding: 12px;
+      border: 1px solid rgba(179, 146, 86, 0.4);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18), 0 0 25px rgba(179, 146, 86, 0.15);
+      border-radius: 4px;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .canvas-3d-card:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.25), 0 0 35px rgba(179, 146, 86, 0.3);
+    }
+
+    .canvas-3d-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+      filter: saturate(1.05);
+    }
+
+    .canvas-3d-tag {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(14, 14, 16, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 8px 12px;
+      color: #fff;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 2px;
+    }
+
+    /* Hero Text & Actions */
+    .hero-text-block {
+      position: relative;
+      z-index: 3;
       text-align: center;
-      pointer-events: none; /* Allows interaction with 3D canvas underneath */
+      max-width: 860px;
+      padding: 0 20px;
     }
 
-    .hero-content a, .hero-content button {
-      pointer-events: auto;
-    }
-
-    .hero-tagline {
-      font-size: 11px;
+    .hero-badge {
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.4em;
       color: var(--accent-gold);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: inline-block;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 4px 14px;
-      border-radius: 20px;
-      backdrop-filter: blur(4px);
+      font-weight: 600;
     }
 
-    .hero-title {
+    .hero-headline {
       font-family: var(--font-heading);
-      font-size: clamp(38px, 5.5vw, 74px);
+      font-size: clamp(36px, 5vw, 68px);
       font-weight: 300;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       line-height: 1.15;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 20px rgba(255, 255, 255, 0.8);
+      margin-bottom: 16px;
     }
 
-    .hero-subtitle {
+    .hero-description {
       font-size: 13px;
       color: var(--text-muted);
       max-width: 580px;
-      margin: 0 auto 32px auto;
+      margin: 0 auto 28px auto;
       font-weight: 300;
-      letter-spacing: 0.05em;
-      background: rgba(253, 253, 252, 0.7);
-      padding: 8px 16px;
-      border-radius: 6px;
-      backdrop-filter: blur(6px);
+      line-height: 1.7;
     }
 
     .hero-actions {
@@ -205,49 +286,31 @@
       flex-wrap: wrap;
     }
 
-    .hero-3d-hint {
-      position: absolute;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      color: var(--text-muted);
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 6px 14px;
-      border-radius: 20px;
-      border: 1px solid var(--border-color);
-      pointer-events: none;
-    }
-
     .btn-luxury {
       display: inline-block;
-      padding: 14px 34px;
+      padding: 13px 32px;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.28em;
       font-weight: 500;
       border: 1px solid var(--text-main);
-      background: rgba(255, 255, 255, 0.9);
+      background: #ffffff;
       color: var(--text-main);
       cursor: pointer;
-      backdrop-filter: blur(4px);
-      transition: var(--transition);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      transition: var(--transition-smooth);
     }
 
     .btn-luxury:hover {
       background: var(--text-main);
       color: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
 
     .btn-luxury.gold {
       border-color: var(--accent-gold);
       color: var(--accent-gold);
+      background: #ffffff;
     }
 
     .btn-luxury.gold:hover {
@@ -255,14 +318,28 @@
       color: #fff;
     }
 
-    /* Section Common Styles */
+    .drag-instruction {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* ================================================= */
+    /* CURATED ART GALLERY (TRUE-PROPORTION MASONRY)    */
+    /* ================================================= */
     section {
       padding: 120px 0;
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     .section-subtitle {
@@ -272,6 +349,7 @@
       color: var(--accent-gold);
       margin-bottom: 12px;
       display: block;
+      font-weight: 500;
     }
 
     .section-title {
@@ -281,105 +359,127 @@
       letter-spacing: 0.05em;
     }
 
-    /* Gallery Filter */
+    /* Filter Bar */
     .filter-bar {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
       margin-bottom: 50px;
     }
 
     .filter-btn {
       background: transparent;
-      border: none;
+      border: 1px solid transparent;
       font-family: var(--font-sans);
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       color: var(--text-muted);
-      padding: 8px 18px;
+      padding: 8px 20px;
       cursor: pointer;
-      border-radius: 20px;
-      transition: var(--transition);
+      border-radius: 30px;
+      transition: var(--transition-smooth);
     }
 
     .filter-btn:hover, .filter-btn.active {
       color: var(--text-main);
-      background-color: var(--bg-secondary);
+      background-color: #fff;
+      border-color: var(--border-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
 
-    /* 3D Perspective Card Tilt Gallery */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 40px;
-      perspective: 1200px;
+    /* Masonry Layout */
+    .masonry-gallery {
+      column-count: 3;
+      column-gap: 36px;
     }
 
-    .art-card {
-      background: #fff;
-      transition: transform 0.2s ease, box-shadow 0.4s ease;
+    @media (max-width: 1024px) {
+      .masonry-gallery { column-count: 2; column-gap: 24px; }
+    }
+
+    @media (max-width: 640px) {
+      .masonry-gallery { column-count: 1; }
+    }
+
+    /* Art Card with Museum Mat Styling */
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 36px;
+      background: var(--card-mat);
+      border: 1px solid var(--border-color);
+      padding: 20px 20px 16px 20px;
+      border-radius: 3px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
       cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
       position: relative;
-      transform-style: preserve-3d;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      border-radius: 2px;
-      padding: 12px;
     }
 
-    .art-card:hover {
-      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.08);
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+      border-color: rgba(179, 146, 86, 0.35);
     }
 
-    .art-card-img-wrapper {
+    /* Image Frame */
+    .artwork-frame {
       position: relative;
-      overflow: hidden;
-      aspect-ratio: 4/5;
       background-color: var(--bg-secondary);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin-bottom: 16px;
     }
 
-    .art-card img {
+    .artwork-frame img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      height: auto;
+      object-fit: contain; /* Preserves 100% natural, uncropped original proportions */
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .art-card:hover img {
-      transform: scale(1.03);
+    .gallery-item:hover .artwork-frame img {
+      transform: scale(1.02);
     }
 
-    .art-card-info {
-      padding: 18px 4px 6px 4px;
+    .artwork-caption {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .art-card-title {
+    .artwork-title {
       font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: 0.04em;
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
     }
 
-    .art-card-year {
+    .artwork-year {
       font-size: 11px;
-      color: var(--text-muted);
+      color: var(--accent-gold);
       letter-spacing: 0.1em;
+      font-weight: 500;
     }
 
-    .art-card-meta {
+    .artwork-details {
+      display: flex;
+      justify-content: space-between;
       font-size: 11px;
       color: var(--text-muted);
-      margin-top: 4px;
-      padding: 0 4px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
     }
 
-    /* INNER CIRCLE SECTION */
+    /* ================================================= */
+    /* INNER CIRCLE SECTION (KIM ROSE AESTHETIC)        */
+    /* ================================================= */
     .inner-circle-section {
       background-color: var(--bg-secondary);
       border-top: 1px solid var(--border-color);
@@ -387,13 +487,14 @@
     }
 
     .inner-circle-card {
-      background: #fff;
+      background: #ffffff;
       border: 1px solid var(--border-color);
-      max-width: 960px;
+      max-width: 940px;
       margin: 0 auto 80px auto;
-      padding: 60px 50px;
+      padding: 60px 48px;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
     }
 
     .drop-badge {
@@ -405,32 +506,32 @@
       font-weight: 600;
       color: #fff;
       background: var(--text-main);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .drop-title {
       font-family: var(--font-heading);
-      font-size: clamp(34px, 4.5vw, 52px);
+      font-size: clamp(32px, 4vw, 48px);
       font-weight: 300;
       letter-spacing: 0.06em;
       margin-bottom: 14px;
     }
 
-    .drop-dates-grid {
+    .drop-times-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 16px;
-      max-width: 780px;
-      margin: 30px auto;
-      padding: 24px 0;
+      max-width: 760px;
+      margin: 28px auto;
+      padding: 22px 0;
       border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
       font-size: 11px;
       color: var(--text-muted);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
     }
 
-    .drop-dates-grid strong {
+    .drop-times-grid strong {
       display: block;
       color: var(--text-main);
       font-size: 12px;
@@ -438,8 +539,8 @@
     }
 
     .inner-circle-form {
-      max-width: 580px;
-      margin: 40px auto 0 auto;
+      max-width: 560px;
+      margin: 36px auto 0 auto;
       display: grid;
       gap: 16px;
       text-align: left;
@@ -453,13 +554,13 @@
 
     .input-field {
       width: 100%;
-      padding: 14px 18px;
-      background: #fbfbfa;
+      padding: 13px 18px;
+      background: #faf9f7;
       border: 1px solid var(--border-color);
       font-family: var(--font-sans);
       font-size: 12px;
       letter-spacing: 0.05em;
-      transition: var(--transition);
+      transition: var(--transition-smooth);
     }
 
     .input-field:focus {
@@ -478,29 +579,20 @@
       line-height: 1.5;
     }
 
-    .consent-label input {
-      margin-top: 2px;
-    }
-
     .form-success-msg {
       display: none;
-      padding: 20px;
+      padding: 18px;
       background: #eef7ee;
       border: 1px solid #cce5cc;
       color: #2b662b;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       text-align: center;
       margin-top: 20px;
     }
 
-    /* Archival Drops Grid */
-    .archival-drops-heading {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
+    /* Archival Series Grid */
     .archival-drops-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -512,19 +604,20 @@
     .drop-archive-card {
       background: #fff;
       border: 1px solid var(--border-color);
-      padding: 28px;
-      transition: var(--transition);
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+      transition: var(--transition-smooth);
     }
 
     .drop-archive-card:hover {
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
     }
 
     .drop-archive-img {
       aspect-ratio: 16/10;
       overflow: hidden;
       background-color: var(--bg-secondary);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .drop-archive-img img {
@@ -538,16 +631,16 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.25em;
-      color: #b03a2e;
+      color: #a3382c;
       margin-bottom: 6px;
       display: inline-block;
     }
 
     .drop-archive-title {
       font-family: var(--font-heading);
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 400;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .drop-archive-desc {
@@ -556,7 +649,9 @@
       line-height: 1.7;
     }
 
-    /* Exhibitions Section */
+    /* ================================================= */
+    /* EXHIBITIONS & BIOGRAPHY                           */
+    /* ================================================= */
     .exhibitions-table {
       max-width: 900px;
       margin: 0 auto;
@@ -565,22 +660,20 @@
 
     .exhibition-row {
       display: grid;
-      grid-template-columns: 100px 1fr 180px;
-      padding: 28px 0;
+      grid-template-columns: 90px 1fr 200px;
+      padding: 26px 10px;
       border-bottom: 1px solid var(--border-color);
       align-items: center;
-      transition: var(--transition);
+      transition: var(--transition-smooth);
     }
 
     .exhibition-row:hover {
-      padding-left: 10px;
-      padding-right: 10px;
       background-color: #fff;
     }
 
     .ex-year {
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.15em;
       color: var(--accent-gold);
     }
@@ -589,7 +682,6 @@
       font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
-      letter-spacing: 0.04em;
     }
 
     .ex-location {
@@ -600,7 +692,7 @@
       text-align: right;
     }
 
-    /* Bio / Statement Section */
+    /* Bio Layout */
     .bio-grid {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -608,198 +700,171 @@
       align-items: center;
     }
 
-    .bio-image-wrapper {
-      position: relative;
-      aspect-ratio: 4/5;
-      overflow: hidden;
-      background-color: var(--bg-secondary);
+    .bio-img-frame {
+      background: #fff;
+      padding: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.04);
     }
 
-    .bio-image-wrapper img {
+    .bio-img-frame img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .bio-text p {
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 20px;
-      font-weight: 300;
+      height: auto;
+      object-fit: contain;
     }
 
     .quote-statement {
       font-family: var(--font-heading);
-      font-size: 26px;
+      font-size: 25px;
       font-style: italic;
       line-height: 1.4;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
       color: var(--text-main);
       border-left: 2px solid var(--accent-gold);
-      padding-left: 24px;
+      padding-left: 20px;
     }
 
-    /* Contact / Inquiries Section */
-    .contact-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 20px;
-      margin-top: 40px;
-      text-align: left;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .form-group label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-    }
-
-    .form-control {
-      padding: 14px 18px;
-      background: #fff;
-      border: 1px solid var(--border-color);
-      font-family: var(--font-sans);
-      font-size: 13px;
-      transition: var(--transition);
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--text-main);
-    }
-
-    textarea.form-control {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    /* Modal / Lightbox */
-    .modal {
+    /* ================================================= */
+    /* COLLECTOR INQUIRY MODAL (VIEWING ROOM)           */
+    /* ================================================= */
+    .modal-backdrop {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(18, 18, 18, 0.92);
-      backdrop-filter: blur(16px);
+      background: rgba(14, 14, 16, 0.94);
+      backdrop-filter: blur(20px);
       z-index: 2000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 40px;
+      padding: 30px;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
-    .modal.active {
+    .modal-backdrop.active {
       display: flex;
       opacity: 1;
     }
 
-    .modal-card {
-      background: #fff;
-      max-width: 1080px;
+    .modal-viewing-room {
+      background: #ffffff;
+      max-width: 1160px;
       width: 100%;
       max-height: 90vh;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.3fr 0.9fr;
       overflow: hidden;
       position: relative;
-      animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 4px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
     }
 
-    @keyframes modalSlideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .modal-img-container {
-      background-color: var(--bg-secondary);
+    .modal-canvas-display {
+      background: #18181c;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 30px;
       overflow: hidden;
+      position: relative;
     }
 
-    .modal-img-container img {
-      max-height: 85vh;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    .modal-canvas-display img {
+      max-height: 80vh;
+      max-width: 100%;
+      height: auto;
+      width: auto;
+      object-fit: contain; /* True uncropped proportions */
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
     }
 
-    .modal-body {
-      padding: 50px 40px;
+    .modal-info-panel {
+      padding: 44px 36px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      background: #ffffff;
     }
 
-    .modal-close {
+    .modal-close-btn {
       position: absolute;
-      top: 20px;
-      right: 24px;
+      top: 16px;
+      right: 20px;
       background: none;
       border: none;
-      font-size: 26px;
+      font-size: 28px;
       cursor: pointer;
       color: var(--text-muted);
       z-index: 10;
     }
 
-    .modal-title {
-      font-family: var(--font-heading);
-      font-size: 34px;
-      font-weight: 400;
-      margin-bottom: 6px;
+    .modal-nav-controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
-    .modal-subtitle {
+    .modal-nav-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-nav-btn:hover {
+      background: var(--text-main);
+      color: #fff;
+    }
+
+    .modal-art-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .modal-art-era {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       color: var(--accent-gold);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    .modal-meta-table {
+    .spec-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       font-size: 12px;
     }
 
-    .modal-meta-table td {
+    .spec-table td {
       padding: 8px 0;
       border-bottom: 1px solid var(--border-color);
     }
 
-    .modal-meta-table td:first-child {
+    .spec-table td:first-child {
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.15em;
       font-size: 10px;
-      width: 35%;
+      letter-spacing: 0.15em;
+      width: 38%;
     }
 
-    .modal-narrative {
+    .modal-narrative-text {
       font-size: 13px;
       color: #444;
       line-height: 1.7;
-      margin-bottom: 30px;
+      margin-bottom: 26px;
+      font-weight: 300;
     }
 
     /* Footer */
@@ -817,18 +882,18 @@
     }
 
     .footer-brand {
-      font-family: var(--font-sans);
       font-size: 14px;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      font-weight: 500;
     }
 
     .footer-col-title {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.25em;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       color: var(--text-muted);
     }
 
@@ -836,47 +901,37 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       font-size: 12px;
     }
 
     .footer-bottom {
       border-top: 1px solid var(--border-color);
-      padding-top: 30px;
+      padding-top: 26px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 11px;
       color: var(--text-muted);
-      letter-spacing: 0.1em;
     }
 
-    /* Responsive */
-    @media (max-width: 992px) {
+    @media (max-width: 900px) {
       .bio-grid { grid-template-columns: 1fr; }
-      .modal-card { grid-template-columns: 1fr; max-height: 95vh; }
-      .modal-img-container { max-height: 45vh; }
+      .modal-viewing-room { grid-template-columns: 1fr; max-height: 95vh; }
+      .modal-canvas-display { max-height: 45vh; }
       .footer-grid { grid-template-columns: 1fr; }
       .nav-menu { display: none; }
-    }
-
-    @media (max-width: 600px) {
-      .container { padding: 0 20px; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .form-row-2 { grid-template-columns: 1fr; }
-      .exhibition-row { grid-template-columns: 1fr; gap: 8px; }
-      .ex-location { text-align: left; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Navigation -->
   <header>
     <div class="nav-container">
       <a href="#home" class="brand-logo">K E T A N &nbsp;/&nbsp; D U G G A L</a>
       <ul class="nav-menu">
-        <li><a href="#gallery" class="nav-link">Art Gallery</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
         <li><a href="#inner-circle" class="nav-link highlight">Inner Circle</a></li>
         <li><a href="#exhibitions" class="nav-link">Exhibitions</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
@@ -885,28 +940,35 @@
     </div>
   </header>
 
-  <!-- 3D HERO SHOWCASE SECTION -->
-  <section id="home" class="hero-3d">
-    <!-- WebGL Canvas for 3D Three.js scene -->
-    <canvas id="webglHeroCanvas"></canvas>
+  <!-- 3D Cinematic Interactive Hero -->
+  <section id="home" class="hero-3d-wrapper">
+    <canvas id="particleCanvas"></canvas>
 
-    <div class="hero-content">
-      <span class="hero-tagline">3D Spatial Experience &bull; Fine Art</span>
-      <h1 class="hero-title">Transmuting Isolation into Form & Materiality</h1>
-      <p class="hero-subtitle">Exploring classical oil glazes, fluid resin landscapes, and modern pop iconography across a decade of visual inquiry.</p>
+    <!-- 3D Spatial Canvas Stage -->
+    <div class="stage-3d" id="spatial3dStage">
+      <div class="carousel-3d-track" id="carousel3dTrack">
+        <!-- Injected via JavaScript with 3D depth angles -->
+      </div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-text-block">
+      <span class="hero-badge">Fine Art &bull; 2011–2024 Archive</span>
+      <h1 class="hero-headline">Transmuting Isolation into Form & Materiality</h1>
+      <p class="hero-description">
+        Classical oil glazes, fluid bio-resin landscapes, and contemporary pop satire across a decade of visual inquiry.
+      </p>
       <div class="hero-actions">
         <a href="#gallery" class="btn-luxury">Explore Gallery</a>
         <a href="#inner-circle" class="btn-luxury gold">Join Inner Circle</a>
       </div>
-    </div>
-
-    <div class="hero-3d-hint">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8l4 4-4 4M8 12h8"/></svg>
-      Drag to rotate 3D gallery
+      <div class="drag-instruction">
+        &larr; Drag to orbit 3D gallery &rarr;
+      </div>
     </div>
   </section>
 
-  <!-- Gallery Section with 3D Card Tilt -->
+  <!-- Gallery Section: True-to-Scale Masonry Grid -->
   <section id="gallery">
     <div class="container">
       <div class="section-header">
@@ -914,7 +976,7 @@
         <h2 class="section-title">Curated Art Gallery</h2>
       </div>
 
-      <!-- Phase Filtering -->
+      <!-- Phase Filter Bar -->
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">All Works (21)</button>
         <button class="filter-btn" data-filter="phase1">Pilani Foundations (2011–2014)</button>
@@ -922,14 +984,14 @@
         <button class="filter-btn" data-filter="phase3">Social Satire & Pop Art (2022–2024)</button>
       </div>
 
-      <!-- Artwork Grid with 3D Tilt -->
-      <div class="gallery-grid" id="artworkGrid">
-        <!-- Rendered via JavaScript -->
+      <!-- True Proportion Masonry Gallery -->
+      <div class="masonry-gallery" id="galleryContainer">
+        <!-- Rendered with true aspect ratios -->
       </div>
     </div>
   </section>
 
-  <!-- INNER CIRCLE SECTION -->
+  <!-- Inner Circle VIP Section -->
   <section id="inner-circle" class="inner-circle-section">
     <div class="container">
       <div class="section-header">
@@ -937,16 +999,16 @@
         <h2 class="section-title">The Inner Circle</h2>
       </div>
 
-      <!-- Drop Release Card -->
+      <!-- Release Card -->
       <div class="inner-circle-card">
         <span class="drop-badge">Next Collector Release</span>
         <h3 class="drop-title">GOLD LEAF & RESIN MINIS</h3>
         <p style="font-size: 13px; color: var(--text-muted); max-width: 620px; margin: 0 auto; font-weight: 300;">
-          A limited series of hand-poured fluid bio-resin and 24k gold leaf panel miniatures created in the Pilani studio. Inner Circle members receive early password-protected acquisition access before public release.
+          A limited studio series of hand-poured fluid bio-resin and 24k gold leaf panel miniatures created in the Pilani studio. Inner Circle members receive early password-protected acquisition access before public release.
         </p>
 
         <!-- Timezone Drop Grid -->
-        <div class="drop-dates-grid">
+        <div class="drop-times-grid">
           <div>
             <strong>NEW DELHI / IST</strong>
             <span>7:00 PM (SAT)</span>
@@ -992,9 +1054,9 @@
       </div>
 
       <!-- Archival / Sold-Out Drops Section -->
-      <div class="archival-drops-heading">
+      <div class="section-header" style="margin-bottom: 36px;">
         <span class="section-subtitle">Archive</span>
-        <h3 class="section-title" style="font-size: 32px;">Previous Sold-Out Collections</h3>
+        <h3 class="section-title" style="font-size: 30px;">Previous Sold-Out Collections</h3>
       </div>
 
       <div class="archival-drops-grid">
@@ -1003,7 +1065,7 @@
             <img src="18. Study of Balance (2020).jpg" alt="Study of Balance Series">
           </div>
           <span class="drop-status-soldout">Private Collection &bull; Sold Out</span>
-          <h4 class="drop-archive-title">Study of Balance (Fluid Landscapes)</h4>
+          <h4 class="drop-archive-title">Study of Balance (Liquid Landscapes)</h4>
           <p class="drop-archive-desc">
             A milestone horizontal liquid landscape exploring the boundary between conscious control and organic fluid surrender using multi-layered clear bio-resin.
           </p>
@@ -1078,11 +1140,11 @@
     </div>
   </section>
 
-  <!-- About / Artist Statement Section -->
+  <!-- About Section -->
   <section id="about" style="background-color: var(--bg-secondary);">
     <div class="container">
       <div class="bio-grid">
-        <div class="bio-image-wrapper">
+        <div class="bio-img-frame">
           <img src="2. Splendid Soul (2012).JPG" alt="Splendid Soul by Ketan Duggal">
         </div>
         <div class="bio-text">
@@ -1104,20 +1166,20 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact / Inquiries Section -->
   <section id="contact">
     <div class="container">
       <div class="contact-wrapper">
-        <span class="section-subtitle">Acquisitions & Private Commissions</span>
+        <span class="section-subtitle">Acquisitions & Commissions</span>
         <h2 class="section-title">Collector Inquiries</h2>
-        <p style="color: var(--text-muted); margin-top: 14px; font-weight: 300;">
-          For original artwork acquisitions, gallery collaborations, or private commission inquiries, please send a message below.
+        <p style="color: var(--text-muted); margin-top: 12px; font-weight: 300;">
+          For original artwork acquisitions, private viewings, or commission inquiries, please submit below.
         </p>
 
         <form class="contact-form" action="mailto:ketanduggal2k11@gmail.com" method="post" enctype="text/plain">
           <div class="form-group">
-            <label>Name</label>
-            <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+            <label>Full Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Your name" required>
           </div>
           <div class="form-group">
             <label>Email Address</label>
@@ -1125,13 +1187,13 @@
           </div>
           <div class="form-group">
             <label>Artwork of Interest</label>
-            <input type="text" id="inquiryArtwork" name="artwork" class="form-control" placeholder="e.g. Querencia (2021) or Richie Carrying Gifts (2024)">
+            <input type="text" id="inquiryArtwork" name="artwork" class="form-control" placeholder="e.g. Querencia (2021) or Study of Balance (2020)">
           </div>
           <div class="form-group">
             <label>Message</label>
-            <textarea name="message" class="form-control" placeholder="Provide details regarding your inquiry..."></textarea>
+            <textarea name="message" class="form-control" placeholder="Please detail your acquisition inquiry..."></textarea>
           </div>
-          <button type="submit" class="btn-luxury" style="margin-top: 10px;">Send Inquiry</button>
+          <button type="submit" class="btn-luxury" style="margin-top: 8px;">Send Inquiry</button>
         </form>
       </div>
     </div>
@@ -1173,19 +1235,28 @@
     </div>
   </footer>
 
-  <!-- Lightbox Modal -->
-  <div class="modal" id="artModal">
-    <div class="modal-card">
-      <button class="modal-close" id="modalCloseBtn">&times;</button>
-      <div class="modal-img-container">
+  <!-- Museum Viewing Room Modal -->
+  <div class="modal-backdrop" id="viewingRoomModal">
+    <div class="modal-viewing-room">
+      <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      
+      <!-- True Aspect Ratio Display -->
+      <div class="modal-canvas-display">
         <img src="" alt="" id="modalImg">
       </div>
-      <div class="modal-body">
+
+      <!-- Artwork Details & Narrative -->
+      <div class="modal-info-panel">
         <div>
-          <h3 class="modal-title" id="modalTitle">Artwork Title</h3>
-          <div class="modal-subtitle" id="modalSubtitle">Series &bull; Year</div>
-          
-          <table class="modal-meta-table">
+          <div class="modal-nav-controls">
+            <button class="modal-nav-btn" id="prevArtBtn">&larr; Previous</button>
+            <button class="modal-nav-btn" id="nextArtBtn">Next &rarr;</button>
+          </div>
+
+          <h3 class="modal-art-title" id="modalTitle">Artwork Title</h3>
+          <div class="modal-art-era" id="modalEra">Era &bull; Location</div>
+
+          <table class="spec-table">
             <tr>
               <td>Medium</td>
               <td id="modalMedium">Oil on canvas</td>
@@ -1195,13 +1266,13 @@
               <td id="modalDimensions">60 &times; 60 cm</td>
             </tr>
             <tr>
-              <td>Origin</td>
-              <td id="modalOrigin">Pilani, India</td>
+              <td>Year & Origin</td>
+              <td id="modalOrigin">2014 &bull; Pilani</td>
             </tr>
           </table>
 
-          <p class="modal-narrative" id="modalNarrative">
-            Curatorial narrative text describing the creation, psychological themes, and materiality of the artwork.
+          <p class="modal-narrative-text" id="modalStory">
+            Curatorial narrative text describing the painting.
           </p>
         </div>
 
@@ -1210,235 +1281,235 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
+  <!-- Data & Scripts -->
   <script>
     const artworks = [
       {
-        id: 1,
+        id: 0,
         title: "Complex Agony",
         year: "2011",
         medium: "Oil paint on canvas",
-        dimensions: "60 × 60 cm",
+        dimensions: "60 × 60 cm (Square)",
         origin: "Birla School, Pilani",
         phase: "phase1",
         image: "1. Complex Agony (2011).jpg",
         story: "The genesis of the artist's visual inquiry. Created over six months as his first canvas painting, this work features a figure clutching her hands over her heart—a visceral excavation of emotional density, self-preservation, and resilience."
       },
       {
-        id: 2,
+        id: 1,
         title: "Splendid Soul",
         year: "2012",
         medium: "Oil paint on canvas",
-        dimensions: "120 × 150 cm",
+        dimensions: "120 × 150 cm (Portrait)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "2. Splendid Soul (2012).JPG",
         story: "The artist's largest early work; a testament to finding grace, splendor, and internal confidence amidst the chaos of struggle using dramatic, classical chiaroscuro lighting."
       },
       {
-        id: 3,
+        id: 2,
         title: "The Urban Hermit",
         year: "2012",
         medium: "Oil paint on canvas",
-        dimensions: "45 × 77 cm",
+        dimensions: "45 × 77 cm (Tall Vertical)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "3. The Urban Hermit (2012).JPG",
         story: "The definitive archetype of the early period. Captures the quiet weight of introspection and a figure seeking retreat from institutional noise to build an authentic inner voice."
       },
       {
-        id: 4,
+        id: 3,
         title: "Nothing on you",
         year: "2012",
         medium: "Oil paint on canvas",
-        dimensions: "60 × 60 cm",
+        dimensions: "60 × 60 cm (Square)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "4. Nothing on you (2012).JPG",
         story: "A haunting, ethereal portrait using muted atmospheric tones to create a sense of lingering, ghostly presence and quiet emotional resonance."
       },
       {
-        id: 5,
+        id: 4,
         title: "Strings Teem Senses",
         year: "2013",
         medium: "Oil paint on canvas (Triptych)",
-        dimensions: "45 × 45 cm (3 panels)",
+        dimensions: "45 × 45 cm each (3 panels)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "5. Strings teem senses (1 of 3) (2013).jpg",
         story: "An exploration of sensory vibration, translating the physical tuning and rhythm of guitar strings (EADGBe) into visual geometry and emotional flow across multiple panels."
       },
       {
-        id: 6,
+        id: 5,
         title: "Gaol of Greed",
         year: "2013",
         medium: "Oil paint on canvas",
-        dimensions: "60 × 83 cm",
+        dimensions: "60 × 83 cm (Portrait)",
         origin: "Home Studio, Pilani",
         phase: "phase1",
         image: "6. Gaol of greed (2013).JPG",
         story: "A heavy, textured commentary on societal entrapment and the psychological burden of being 'jailed' by material and synthetic desires."
       },
       {
-        id: 7,
+        id: 6,
         title: "Trying and Being",
         year: "2014",
         medium: "Oil paint on canvas",
-        dimensions: "60 × 60 cm",
+        dimensions: "60 × 60 cm (Square)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "7. Trying and being (2014).JPG",
         story: "A high-intensity study of existence, focusing on the visceral reality of physical presence, identity formation, and internal perseverance."
       },
       {
-        id: 8,
+        id: 7,
         title: "Now you see me, now you don't",
         year: "2014",
         medium: "Mixed Medium on Canvas",
-        dimensions: "60 × 45 cm",
+        dimensions: "60 × 45 cm (Horizontal)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "8. Now you see me,now you dont (2014).JPG",
         story: "A cool-toned portrait playing with presence and absence; explores the concealed layers of identity we choose to withhold from public view."
       },
       {
-        id: 9,
+        id: 8,
         title: "The Stripped Tint",
         year: "2014",
         medium: "Oil & Acrylic on Canvas",
-        dimensions: "45 × 60 cm",
+        dimensions: "45 × 60 cm (Portrait)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "9. The Stripped Tint (2014).JPG",
         story: "An introspective study of a bowed figure examining moral weight, humility, and the quiet tension of an awakened conscience."
       },
       {
-        id: 10,
+        id: 9,
         title: "The One Who Knew",
         year: "2014",
         medium: "Oil on Canvas",
-        dimensions: "60 × 60 cm",
+        dimensions: "60 × 60 cm (Square)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "10. The One Who Knew (2014).JPG",
         story: "A vibrant, warm-toned portrait carrying the symbolic burden and silent reverence of personal memory."
       },
       {
-        id: 11,
+        id: 10,
         title: "Sneak Peak",
         year: "2014",
         medium: "Oil on Canvas",
-        dimensions: "46 × 61 cm",
+        dimensions: "46 × 61 cm (Portrait)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "11. Sneak Peak (2014).JPG",
         story: "An initial excavation of the concept of sanctuary—the search for a psychological space where one feels most rooted and authentic."
       },
       {
-        id: 12,
+        id: 11,
         title: "The Doomed One",
         year: "2014",
         medium: "Mixed Medium on Canvas",
-        dimensions: "61 × 61 cm",
+        dimensions: "61 × 61 cm (Square)",
         origin: "Pilani, Rajasthan",
         phase: "phase1",
         image: "12. The Doomed One (2014).JPG",
         story: "An unflinching look at existential weight; a monochromatic study exploring the raw interplay between human form and fluid paint."
       },
       {
-        id: 13,
+        id: 12,
         title: "Blue Winds",
         year: "2015",
         medium: "Oil paint on canvas",
-        dimensions: "61 × 61 cm",
+        dimensions: "61 × 61 cm (Square)",
         origin: "Delhi, India",
         phase: "phase2",
         image: "13. Blue Winds (2015).JPG",
         story: "A pivotal transition work moving away from strict figuration into dynamic atmospheric abstraction, using sweeping azure strokes to depict movement."
       },
       {
-        id: 14,
+        id: 13,
         title: "Strangers in the night",
         year: "2016",
         medium: "Acrylic on Canvas",
-        dimensions: "60 × 60 cm",
+        dimensions: "60 × 60 cm (Square)",
         origin: "Delhi, India",
         phase: "phase2",
         image: "14. Strangers in the night (2016).JPG",
         story: "A bridge work moving toward high-intensity emotional abstraction and warm chromatic fields, capturing fleeting urban encounters."
       },
       {
-        id: 15,
+        id: 14,
         title: "Burnt Wine",
         year: "2016",
         medium: "Mixed Media",
-        dimensions: "67 × 48 cm",
+        dimensions: "67 × 48 cm (Portrait)",
         origin: "Delhi, India",
         phase: "phase2",
         image: "15. Burnt Wine (2016).JPG",
         story: "Marks the artist's first major move into mixed media, focusing on surface friction, organic unfolding of dense materials, and earthy textures."
       },
       {
-        id: 16,
+        id: 15,
         title: "Elucidated",
         year: "2017",
         medium: "Oil paint on canvas",
-        dimensions: "67 × 48 cm",
+        dimensions: "67 × 48 cm (Portrait)",
         origin: "Delhi, India",
         phase: "phase2",
         image: "16. Elucidated (2017).JPG",
         story: "A shift toward luminosity and optical clarity; cool blue and white glazes signaling clarity of thought and artistic maturity."
       },
       {
-        id: 17,
+        id: 16,
         title: "The Conflict of Love and Chastity",
         year: "2020",
         medium: "Oil & Mixed Media",
-        dimensions: "61 × 61 cm",
+        dimensions: "61 × 61 cm (Square)",
         origin: "Sydney, Australia",
         phase: "phase2",
         image: "17. The Conflict of Love and Chastity (2020).JPG",
         story: "Created in Sydney, this work introduces a high-contrast 'glitch' effect across classical portraiture traditions, capturing contemporary friction."
       },
       {
-        id: 18,
+        id: 17,
         title: "Study of Balance",
         year: "2020",
         medium: "Acrylic & Fluid Resin",
-        dimensions: "51 × 122 cm",
+        dimensions: "51 × 122 cm (Wide Panorama)",
         origin: "Sydney, Australia",
         phase: "phase2",
         image: "18. Study of Balance (2020).jpg",
         story: "A landmark experiment in fluid resin. Designed as a horizontal liquid landscape, meditating on the delicate balance between intentional control and fluid surrender."
       },
       {
-        id: 19,
+        id: 18,
         title: "Querencia",
         year: "2021",
         medium: "Mixed Media & Gold Leaf",
-        dimensions: "61 × 91 cm",
+        dimensions: "61 × 91 cm (Horizontal)",
         origin: "Sydney, Australia",
         phase: "phase2",
         image: "19. Querencia (2021).jpg",
         story: "A mature resolution of the search for a safe space. Incorporates graphic figuration against a luminous gold-leaf background symbolizing psychological sanctuary."
       },
       {
-        id: 20,
+        id: 19,
         title: "Richie Make Money",
         year: "2022",
         medium: "Mixed Media & Pop Art",
-        dimensions: "91 × 121 cm",
+        dimensions: "91 × 121 cm (Horizontal)",
         origin: "Pilani, Rajasthan",
         phase: "phase3",
         image: "20. Richie Make Money (2022).jpg",
         story: "Marks the pivot where 'The Hermit' steps into 'The Market.' A vibrant, satirical inquiry into wealth accumulation and how modern systems define individual worth."
       },
       {
-        id: 21,
+        id: 20,
         title: "Richie Carrying Gifts & High Fashion Brands",
         year: "2024",
         medium: "Mixed Media Collage",
-        dimensions: "120 × 90 cm",
+        dimensions: "120 × 90 cm (Portrait)",
         origin: "Pilani, Rajasthan",
         phase: "phase3",
         image: "21. Richie Carrying Gifts $ High Fashion Brands (2024).jpg",
@@ -1447,279 +1518,205 @@
     ];
 
     // =========================================================
-    // 3D THREE.JS HERO ENGINE
+    // 1. 3D HERO ROTATING STAGE ENGINE (CSS 3D + INERTIA)
     // =========================================================
-    function init3DHero() {
-      const canvas = document.getElementById('webglHeroCanvas');
-      if (!canvas || !window.THREE) return;
+    const featured3DArtworks = [
+      artworks[18], // Querencia (2021)
+      artworks,  // Splendid Soul (2012)
+      artworks[17], // Study of Balance (2020)
+      artworks[19], // Richie Make Money (2022)
+      artworks[13], // Strangers in the Night (2016)
+      artworks[20]  // Richie Carrying Gifts (2024)
+    ];
 
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.set(0, 0, 14);
+    const carouselTrack = document.getElementById('carousel3dTrack');
+    const stage = document.getElementById('spatial3dStage');
+    const radius = 340; // 3D cylinder depth
 
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    featured3DArtworks.forEach((art, index) => {
+      const angle = (index / featured3DArtworks.length) * 360;
+      const card = document.createElement('div');
+      card.className = 'canvas-3d-card';
+      card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+      card.innerHTML = `
+        <img src="${encodeURI(art.image)}" alt="${art.title}" class="canvas-3d-img">
+        <div class="canvas-3d-tag">
+          <span>${art.title}</span>
+          <span style="color: var(--accent-gold);">${art.year}</span>
+        </div>
+      `;
+      card.addEventListener('click', () => openViewingRoom(art.id));
+      carouselTrack.appendChild(card);
+    });
 
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
-      scene.add(ambientLight);
+    let currentRotationY = 0;
+    let targetRotationY = 0;
+    let isDraggingStage = false;
+    let startX = 0;
 
-      const dirLight = new THREE.DirectionalLight(0xfff5e6, 1.2);
-      dirLight.position.set(10, 20, 15);
-      scene.add(dirLight);
-
-      const pointLight = new THREE.PointLight(0xd4af37, 1.8, 50);
-      pointLight.position.set(0, 0, 8);
-      scene.add(pointLight);
-
-      // Group for the 3D rotating artwork carousel
-      const carouselGroup = new THREE.Group();
-      scene.add(carouselGroup);
-
-      // Featured Artworks for 3D Carousel
-      const featured3DImages = [
-        "19. Querencia (2021).jpg",
-        "2. Splendid Soul (2012).JPG",
-        "18. Study of Balance (2020).jpg",
-        "20. Richie Make Money (2022).jpg",
-        "14. Strangers in the night (2016).JPG",
-        "21. Richie Carrying Gifts $ High Fashion Brands (2024).jpg"
-      ];
-
-      const textureLoader = new THREE.TextureLoader();
-      const radius = 6.2;
-      const cardWidth = 3.2;
-      const cardHeight = 4.2;
-
-      featured3DImages.forEach((imgSrc, index) => {
-        const angle = (index / featured3DImages.length) * Math.PI * 2;
-        
-        // 3D Frame & Canvas Geometry
-        const geometry = new THREE.BoxGeometry(cardWidth, cardHeight, 0.12);
-        
-        // Materials (Gold side borders & canvas front)
-        const frameMat = new THREE.MeshStandardMaterial({
-          color: 0xb39256,
-          metalness: 0.8,
-          roughness: 0.25
-        });
-
-        const texture = textureLoader.load(encodeURI(imgSrc));
-        const frontMat = new THREE.MeshStandardMaterial({
-          map: texture,
-          roughness: 0.45,
-          metalness: 0.05
-        });
-
-        const materials = [frameMat, frameMat, frameMat, frameMat, frontMat, frameMat];
-        const mesh = new THREE.Mesh(geometry, materials);
-
-        mesh.position.x = Math.sin(angle) * radius;
-        mesh.position.z = Math.cos(angle) * radius;
-        mesh.rotation.y = angle;
-
-        carouselGroup.add(mesh);
-      });
-
-      // Floating 3D Gold Dust / Particles
-      const particleCount = 180;
-      const particleGeo = new THREE.BufferGeometry();
-      const positions = new Float32Array(particleCount * 3);
-
-      for (let i = 0; i < particleCount * 3; i += 3) {
-        positions[i] = (Math.random() - 0.5) * 30;
-        positions[i + 1] = (Math.random() - 0.5) * 20;
-        positions[i + 2] = (Math.random() - 0.5) * 20;
+    function animateCarousel() {
+      if (!isDraggingStage) {
+        targetRotationY -= 0.18; // Smooth automatic orbit
       }
-
-      particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      const particleMat = new THREE.PointsMaterial({
-        color: 0xc5a059,
-        size: 0.08,
-        transparent: true,
-        opacity: 0.75
-      });
-
-      const particles = new THREE.Points(particleGeo, particleMat);
-      scene.add(particles);
-
-      // Interaction Variables
-      let isDragging = false;
-      let previousMousePosition = { x: 0, y: 0 };
-      let targetRotationY = 0;
-      let targetRotationX = 0;
-      let mouseX = 0;
-      let mouseY = 0;
-
-      // Mouse Drag & Orbit
-      window.addEventListener('mousedown', (e) => {
-        if (e.target === canvas) {
-          isDragging = true;
-          previousMousePosition = { x: e.clientX, y: e.clientY };
-        }
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-
-        pointLight.position.x = mouseX * 8;
-        pointLight.position.y = mouseY * 6;
-
-        if (isDragging) {
-          const deltaX = e.clientX - previousMousePosition.x;
-          const deltaY = e.clientY - previousMousePosition.y;
-
-          targetRotationY += deltaX * 0.006;
-          targetRotationX += deltaY * 0.003;
-
-          previousMousePosition = { x: e.clientX, y: e.clientY };
-        }
-      });
-
-      window.addEventListener('mouseup', () => { isDragging = false; });
-
-      // Touch Controls for Mobile
-      window.addEventListener('touchstart', (e) => {
-        if (e.target === canvas && e.touches.length === 1) {
-          isDragging = true;
-          previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        }
-      });
-
-      window.addEventListener('touchmove', (e) => {
-        if (isDragging && e.touches.length === 1) {
-          const deltaX = e.touches[0].clientX - previousMousePosition.x;
-          targetRotationY += deltaX * 0.008;
-          previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        }
-      });
-
-      window.addEventListener('touchend', () => { isDragging = false; });
-
-      // Resize
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-
-      // Animation Loop
-      function animate() {
-        requestAnimationFrame(animate);
-
-        // Idle slow spin + smoothed user drag
-        if (!isDragging) {
-          targetRotationY += 0.0015;
-        }
-
-        carouselGroup.rotation.y += (targetRotationY - carouselGroup.rotation.y) * 0.05;
-        carouselGroup.rotation.x += (targetRotationX + (mouseY * 0.15) - carouselGroup.rotation.x) * 0.05;
-
-        // Subtle floating particles motion
-        particles.rotation.y += 0.0005;
-        particles.rotation.x += 0.0002;
-
-        renderer.render(scene, camera);
-      }
-
-      animate();
+      currentRotationY += (targetRotationY - currentRotationY) * 0.08;
+      carouselTrack.style.transform = `rotateY(${currentRotationY}deg)`;
+      requestAnimationFrame(animateCarousel);
     }
+    animateCarousel();
+
+    stage.addEventListener('mousedown', (e) => {
+      isDraggingStage = true;
+      startX = e.clientX;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (isDraggingStage) {
+        const deltaX = e.clientX - startX;
+        targetRotationY += deltaX * 0.35;
+        startX = e.clientX;
+      }
+    });
+
+    window.addEventListener('mouseup', () => { isDraggingStage = false; });
+
+    // Touch Support for Mobile
+    stage.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDraggingStage = true;
+        startX = e.touches[0].clientX;
+      }
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (isDraggingStage && e.touches.length === 1) {
+        const deltaX = e.touches[0].clientX - startX;
+        targetRotationY += deltaX * 0.45;
+        startX = e.touches[0].clientX;
+      }
+    });
+
+    window.addEventListener('touchend', () => { isDraggingStage = false; });
 
     // =========================================================
-    // 3D PERSPECTIVE TILT ON GALLERY CARDS
+    // 2. GOLD DUST FLOATING CANVAS PARTICLES
     // =========================================================
-    function applyCardTilt(card) {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+    const pCanvas = document.getElementById('particleCanvas');
+    const pCtx = pCanvas.getContext('2d');
+    let particles = [];
 
-        const rotateX = ((y - centerY) / centerY) * -8;
-        const rotateY = ((x - centerX) / centerX) * 8;
+    function resizeParticles() {
+      pCanvas.width = window.innerWidth;
+      pCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeParticles);
+    resizeParticles();
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    for (let i = 0; i < 45; i++) {
+      particles.push({
+        x: Math.random() * pCanvas.width,
+        y: Math.random() * pCanvas.height,
+        size: Math.random() * 2.2 + 0.8,
+        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: (Math.random() - 0.5) * 0.4 - 0.2,
+        opacity: Math.random() * 0.6 + 0.2
       });
     }
 
+    function renderParticles() {
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+      pCtx.fillStyle = '#b39256';
+      
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.y < 0) p.y = pCanvas.height;
+        if (p.x < 0) p.x = pCanvas.width;
+        if (p.x > pCanvas.width) p.x = 0;
+
+        pCtx.globalAlpha = p.opacity;
+        pCtx.beginPath();
+        pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        pCtx.fill();
+      });
+
+      requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
+
     // =========================================================
-    // DOM ELEMENTS & GALLERY RENDER
+    // 3. TRUE-TO-SCALE MASONRY GALLERY ENGINE
     // =========================================================
-    const grid = document.getElementById('artworkGrid');
+    const gallery = document.getElementById('galleryContainer');
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const modal = document.getElementById('artModal');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const modalImg = document.getElementById('modalImg');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalSubtitle = document.getElementById('modalSubtitle');
-    const modalMedium = document.getElementById('modalMedium');
-    const modalDimensions = document.getElementById('modalDimensions');
-    const modalOrigin = document.getElementById('modalOrigin');
-    const modalNarrative = document.getElementById('modalNarrative');
-    const inquiryArtwork = document.getElementById('inquiryArtwork');
-    const innerCircleForm = document.getElementById('innerCircleForm');
-    const innerCircleSuccess = document.getElementById('innerCircleSuccess');
 
-    function renderArtworks(filter = 'all') {
-      grid.innerHTML = '';
+    function renderGallery(filter = 'all') {
+      gallery.innerHTML = '';
       const filtered = filter === 'all' ? artworks : artworks.filter(a => a.phase === filter);
 
       filtered.forEach(art => {
-        const card = document.createElement('div');
-        card.className = 'art-card';
-        card.innerHTML = `
-          <div class="art-card-img-wrapper">
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.innerHTML = `
+          <div class="artwork-frame">
             <img src="${encodeURI(art.image)}" alt="${art.title}" loading="lazy">
           </div>
-          <div class="art-card-info">
-            <h4 class="art-card-title">${art.title}</h4>
-            <span class="art-card-year">${art.year}</span>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">${art.title}</h4>
+            <span class="artwork-year">${art.year}</span>
           </div>
-          <div class="art-card-meta">${art.medium} &bull; ${art.dimensions}</div>
+          <div class="artwork-details">
+            <span>${art.medium}</span>
+            <span>${art.dimensions}</span>
+          </div>
         `;
 
-        applyCardTilt(card);
-        card.addEventListener('click', () => openModal(art));
-        grid.appendChild(card);
+        item.addEventListener('click', () => openViewingRoom(art.id));
+        gallery.appendChild(item);
       });
     }
 
-    // Filter Buttons
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        renderArtworks(btn.dataset.filter);
+        renderGallery(btn.dataset.filter);
       });
     });
 
-    // Inner Circle Form
-    innerCircleForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      innerCircleForm.style.display = 'none';
-      innerCircleSuccess.style.display = 'block';
-    });
+    // =========================================================
+    // 4. VIEWING ROOM MODAL LIGHTBOX
+    // =========================================================
+    const modal = document.getElementById('viewingRoomModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalEra = document.getElementById('modalEra');
+    const modalMedium = document.getElementById('modalMedium');
+    const modalDimensions = document.getElementById('modalDimensions');
+    const modalOrigin = document.getElementById('modalOrigin');
+    const modalStory = document.getElementById('modalStory');
+    const modalInquireBtn = document.getElementById('modalInquireBtn');
+    const inquiryArtwork = document.getElementById('inquiryArtwork');
+    const prevBtn = document.getElementById('prevArtBtn');
+    const nextBtn = document.getElementById('nextArtBtn');
 
-    // Modal
-    function openModal(art) {
+    let currentArtIndex = 0;
+
+    function openViewingRoom(index) {
+      currentArtIndex = index;
+      const art = artworks[index];
+
       modalImg.src = encodeURI(art.image);
       modalImg.alt = art.title;
       modalTitle.textContent = art.title;
-      modalSubtitle.textContent = `${art.year} \u2022 ${art.origin}`;
+      modalEra.textContent = `${art.year} \u2022 ${art.origin}`;
       modalMedium.textContent = art.medium;
       modalDimensions.textContent = art.dimensions;
-      modalOrigin.textContent = art.origin;
-      modalNarrative.textContent = art.story;
+      modalOrigin.textContent = `${art.year} \u2022 ${art.origin}`;
+      modalStory.textContent = art.story;
 
-      document.getElementById('modalInquireBtn').onclick = () => {
-        closeModal();
+      modalInquireBtn.onclick = () => {
+        closeViewingRoom();
         inquiryArtwork.value = `${art.title} (${art.year})`;
       };
 
@@ -1727,20 +1724,40 @@
       document.body.style.overflow = 'hidden';
     }
 
-    function closeModal() {
+    function closeViewingRoom() {
       modal.classList.remove('active');
       document.body.style.overflow = '';
     }
 
-    modalCloseBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-    // Initialize Everything
-    window.addEventListener('DOMContentLoaded', () => {
-      init3DHero();
-      renderArtworks();
+    prevBtn.addEventListener('click', () => {
+      const nextIndex = (currentArtIndex - 1 + artworks.length) % artworks.length;
+      openViewingRoom(nextIndex);
     });
+
+    nextBtn.addEventListener('click', () => {
+      const nextIndex = (currentArtIndex + 1) % artworks.length;
+      openViewingRoom(nextIndex);
+    });
+
+    document.getElementById('modalCloseBtn').addEventListener('click', closeViewingRoom);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeViewingRoom(); });
+    
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeViewingRoom();
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    });
+
+    // Form Submission
+    document.getElementById('innerCircleForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('innerCircleForm').style.display = 'none';
+      document.getElementById('innerCircleSuccess').style.display = 'block';
+    });
+
+    // Initial Load
+    renderGallery();
   </script>
 </body>
 </html>
