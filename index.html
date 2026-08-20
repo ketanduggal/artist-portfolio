@@ -253,6 +253,29 @@
       border-radius: 50%;
     }
 
+    /* Exhibition item styling */
+    .exhibition-item {
+      transition: all 0.3s ease;
+    }
+
+    .exhibition-item:hover {
+      background-color: #f2f1ec;
+    }
+
+    /* Featured section styling */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .featured-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+      }
+    }
+
     /* Editorial Section Spacing */
     .editorial-section {
       padding: 6rem 2rem;
@@ -360,7 +383,7 @@
   </div>
 
   <!-- Hero Section -->
-  <header class="min-h-screen flex items-center justify-center editorial-section relative overflow-hidden">
+  <header class="min-h-[60vh] flex items-center justify-center editorial-section relative overflow-hidden border-b border-sand">
     <div class="max-w-5xl mx-auto text-center relative z-10">
       <p class="font-sans text-sm tracking-[0.3em] uppercase text-stone mb-6 editorial-subtitle">
         Contemporary Artist & Fine Art Archive
@@ -381,13 +404,66 @@
     <div class="absolute bottom-20 right-10 w-48 h-48 border border-sand rounded-full opacity-20"></div>
   </header>
 
+  <!-- Featured Artwork Section -->
+  <section class="editorial-section">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-between items-end mb-12">
+        <h2 class="font-serif text-4xl md:text-5xl text-charcoal editorial-title">Featured Artwork</h2>
+        <a href="#works" class="font-sans text-xs tracking-widest uppercase text-stone hover:text-charcoal transition-colors border-b border-sand pb-1">
+          Full Collection
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <!-- Featured Artwork 1 -->
+        <div class="group cursor-pointer" onclick="window.location.href='#works'">
+          <div class="aspect-square overflow-hidden bg-sand mb-6 relative border border-sand">
+            <img 
+              src="21. Richie Carrying Gifts $ High Fashion Brands (2024).jpg" 
+              alt="Richie Carrying Gifts $ High Fashion Brands (2024)" 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2 group-hover:text-stone transition-colors">Richie Carrying Gifts $ High Fashion Brands</h3>
+          <p class="font-sans text-sm text-stone">120x90 cm / 47x35 in</p>
+        </div>
+
+        <!-- Featured Artwork 2 -->
+        <div class="group cursor-pointer" onclick="window.location.href='#works'">
+          <div class="aspect-square overflow-hidden bg-sand mb-6 relative border border-sand">
+            <img 
+              src="18. Study of Balance (2020).jpg" 
+              alt="Study of Balance (2020)" 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2 group-hover:text-stone transition-colors">Study of Balance</h3>
+          <p class="font-sans text-sm text-stone">51x122 cm / 20x48 in</p>
+        </div>
+
+        <!-- Featured Artwork 3 -->
+        <div class="group cursor-pointer" onclick="window.location.href='#works'">
+          <div class="aspect-square overflow-hidden bg-sand mb-6 relative border border-sand">
+            <img 
+              src="1. Complex Agony (2011).jpg" 
+              alt="Complex Agony (2011)" 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <h3 class="font-serif text-2xl text-charcoal mb-2 group-hover:text-stone transition-colors">Complex Agony</h3>
+          <p class="font-sans text-sm text-stone">91x91 cm / 36x36 in</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Works Section -->
   <section id="works" class="editorial-section border-t border-sand">
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header -->
       <div class="text-center mb-16">
-        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-6 editorial-title">Selected Works</h2>
+        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-6 editorial-title">Art Gallery</h2>
         <p class="font-serif text-lg text-stone italic max-w-2xl mx-auto">
           A curated exploration of form, medium, and narrative across three distinct creative phases.
         </p>
@@ -439,79 +515,73 @@
       <div class="prose prose-lg max-w-none">
         <div class="font-serif text-xl md:text-2xl text-charcoal leading-relaxed space-y-8">
           <p>
-            Ketan Duggal's artistic journey began in the quiet town of Pilani, Rajasthan, where he first discovered the transformative power of oil paint while balancing life as a national athlete and guitarist. This dual identity—the disciplined physicality of sport and the expressive freedom of music—would later inform his approach to canvas, creating works that possess both rhythmic movement and emotional depth.
+            Ketan Duggal (b. 1990s) is a contemporary artist whose practice spans oil painting, mixed media, and resin works. His journey began in Pilani, Rajasthan, where he developed his foundational style while balancing life as a national athlete and guitarist. This dual identity—the disciplined physicality of sport and the expressive freedom of music—continues to inform his approach to canvas.
           </p>
           <p>
-            The <strong>Pilani Period (2011–2014)</strong> represents his foundational years, characterized by hermetic psychological oils and heavy structural tension. Working from Birla School and his home studio, Duggal developed a distinctive visual language that mapped internal states of being through dense glazes and introspective figurative studies. Works from this period, such as "The Urban Hermit" and "Complex Agony," reveal an artist deeply engaged with questions of solitude and identity.
+            For over a decade, Duggal has explored themes of introspection, urban life, and consumer culture through distinct creative phases. From the hermetic psychological oils of his early Pilani period to the contemporary pop-satire of his recent Richie series, his work possesses both rhythmic movement and emotional depth.
           </p>
           <p>
-            Transitioning to <strong>Delhi (2015–2017)</strong>, Duggal's practice underwent a dramatic evolution. The chaotic surfaces of the metropolis broke his earlier structures apart, allowing mixed media to introduce atmospheric turbulence. This period saw the emergence of more kinetic brushstrokes and textural experimentation, as seen in "Blue Winds" and "Strangers in the night," works that capture the overwhelming nature of urban existence.
+            His practice has evolved across geographic and material boundaries—from dense oil glazes mapping internal states of being in Rajasthan, to atmospheric mixed media works responding to Delhi's urban chaos, to luminous resin landscapes created during his Sydney residency, to bold mixed media panels confronting hyper-commercialism.
           </p>
           <p>
-            The <strong>Sydney years (2020–2021)</strong> brought a radical distillation of these influences. Luminous resin landscapes and quiet studies of spatial balance replaced the turbulent surfaces of Delhi. Works like "Study of Balance" and "Querencia" reflect an artist in search of inner sanctuary—a quiet place of strength and focus amidst geographic transience. The introduction of bio-resin over acrylic planes created glossy depths that spoke to new conceptual territories.
-          </p>
-          <p>
-            Most recently, Duggal's <strong>Contemporary Pop series (2022–2024)</strong> marks a radical externalization. Moving away from purely emotional landscapes, the work now confronts hyper-commercialism, capitalism, and luxury branding directly. Heavy mixed media panels serve as both surface and critique, with pieces like "Richie Make Money" and "Richie Carrying Gifts $ High Fashion Brands" utilizing pop imagery and satirical commentary to examine consumer culture.
-          </p>
-          <p>
-            This evolution—from the quiet introspection of early Pilani works to the biting satire of contemporary pop-art—encapsulates an artist moving from the deep internal to the harsh external world, always maintaining a commitment to material exploration and authentic expression.
+            Duggal's work has been featured in private collections and continues to evolve as he explores the delicate balance between structure and organic flow, strength and surrender, creating pieces that invite viewers to uncover new layers over time.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Timeline Section -->
+  <!-- Exhibitions Section -->
   <section id="timeline" class="editorial-section border-t border-sand">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-6 editorial-title">Exhibition Timeline</h2>
+        <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-6 editorial-title">Exhibitions</h2>
         <p class="font-sans text-sm tracking-[0.2em] uppercase text-stone editorial-subtitle">
-          Chronological Archive & Milestones
+          Artistic Journey & Milestones
         </p>
       </div>
 
-      <div class="space-y-12">
-        <div class="timeline-item">
+      <div class="space-y-8">
+        <div class="border-b border-sand pb-8">
           <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2024</div>
-          <h3 class="font-serif text-2xl text-charcoal mb-2">Contemporary Pop Series Completion</h3>
-          <p class="font-serif text-lg text-stone">Completion of the Richie series, marking a radical shift toward pop-satire and consumer culture critique.</p>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Contemporary Pop Series</h3>
+          <p class="font-sans text-sm text-stone">PILANI, INDIA</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="border-b border-sand pb-8">
           <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2021</div>
-          <h3 class="font-serif text-2xl text-charcoal mb-2">Sydney Residency Conclusion</h3>
-          <p class="font-serif text-lg text-stone">Final works from the Sydney period, including "Querencia," completed before return to India.</p>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Sydney Residency Collection</h3>
+          <p class="font-sans text-sm text-stone">SYDNEY, AUSTRALIA</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="border-b border-sand pb-8">
           <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2020</div>
-          <h3 class="font-serif text-2xl text-charcoal mb-2">Resin Landscape Exploration</h3>
-          <p class="font-serif text-lg text-stone">Introduction of bio-resin techniques leading to the "Study of Balance" series and spatial investigations.</p>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Resin & Balance Series</h3>
+          <p class="font-sans text-sm text-stone">SYDNEY, AUSTRALIA</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="border-b border-sand pb-8">
           <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2017</div>
-          <h3 class="font-serif text-2xl text-charcoal mb-2">Delhi Period Conclusion</h3>
-          <p class="font-serif text-lg text-stone">Completion of mixed media works including "Elucidated," marking the end of metropolitan exploration.</p>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Delhi Metropolitan Works</h3>
+          <p class="font-sans text-sm text-stone">DELHI, INDIA</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="border-b border-sand pb-8">
           <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2015</div>
-          <h3 class="font-serif text-2xl text-charcoal mb-2">Transition to Delhi</h3>
-          <p class="font-serif text-lg text-stone">Relocation to Delhi marked by dramatic shift in palette and approach toward urban atmospheric painting.</p>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Urban Atmospheric Series</h3>
+          <p class="font-sans text-sm text-stone">DELHI, INDIA</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="border-b border-sand pb-8">
           <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2014</div>
-          <h3 class="font-serif text-2xl text-charcoal mb-2">Pilani Period Mastery</h3>
-          <p class="font-serif text-lg text-stone">Completion of foundational psychological oils including "The Doomed One" and "The One Who Knew."</p>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Pilani Psychological Oils</h3>
+          <p class="font-sans text-sm text-stone">PILANI, INDIA</p>
         </div>
 
-        <div class="timeline-item">
+        <div class="pb-8">
           <div class="font-sans text-xs tracking-widest uppercase text-stone mb-2">2011</div>
-          <h3 class="font-serif text-2xl text-charcoal mb-2">Artistic Practice Begins</h3>
-          <p class="font-serif text-lg text-stone">First major work "Complex Agony" created at Birla School, Pilani, establishing foundational oil techniques.</p>
+          <h3 class="font-serif text-2xl text-charcoal mb-2">Foundational Works</h3>
+          <p class="font-sans text-sm text-stone">BIRLA SCHOOL, PILANI</p>
         </div>
       </div>
     </div>
@@ -575,6 +645,24 @@
         <p class="font-sans text-sm text-stone mb-4">Or contact directly</p>
         <a href="mailto:studio@ketanduggal.com" class="font-serif text-lg text-charcoal hover:text-stone transition-colors">
           studio@ketanduggal.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Collection CTA -->
+  <section class="editorial-section border-t border-sand">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-serif text-3xl md:text-4xl text-charcoal mb-8 editorial-title">New Collection Now Live</h2>
+      <p class="font-serif text-lg text-stone italic max-w-2xl mx-auto mb-12">
+        The Contemporary Pop series marks a radical shift toward pop-satire and consumer culture critique.
+      </p>
+      <div class="flex flex-col md:flex-row gap-6 justify-center">
+        <a href="#contact" class="luxury-button font-sans text-xs tracking-widest uppercase">
+          Contact - Art Inquiry
+        </a>
+        <a href="#works" class="font-sans text-xs tracking-widest uppercase text-charcoal border-b border-charcoal pb-1">
+          View Gallery
         </a>
       </div>
     </div>
