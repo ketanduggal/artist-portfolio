@@ -10,10 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Three.js for 3D WebGL Graphics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
   <style>
     :root {
       --bg-primary: #fdfdfc;
       --bg-secondary: #f7f6f3;
+      --bg-dark: #0f0f11;
       --text-main: #121212;
       --text-muted: #6e6e6e;
       --accent-gold: #b39256;
@@ -27,6 +31,10 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -52,7 +60,6 @@
       display: block;
     }
 
-    /* Container */
     .container {
       max-width: 1440px;
       margin: 0 auto;
@@ -65,7 +72,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(253, 253, 252, 0.92);
+      background: rgba(253, 253, 252, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
       z-index: 1000;
@@ -84,7 +91,7 @@
 
     .brand-logo {
       font-family: var(--font-sans);
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 400;
       letter-spacing: 0.45em;
       text-transform: uppercase;
@@ -92,8 +99,9 @@
 
     .nav-menu {
       display: flex;
-      gap: 36px;
+      gap: 32px;
       list-style: none;
+      align-items: center;
     }
 
     .nav-link {
@@ -108,36 +116,37 @@
       color: var(--text-main);
     }
 
-    /* Hero Section */
-    .hero {
+    .nav-link.highlight {
+      color: var(--accent-gold);
+    }
+
+    /* ================================================= */
+    /* 3D HERO SHOWCASE SECTION                          */
+    /* ================================================= */
+    .hero-3d {
       position: relative;
       height: 100vh;
-      min-height: 700px;
+      min-height: 720px;
+      background: radial-gradient(circle at 50% 40%, #ffffff 0%, #f4f3ef 100%);
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       padding-top: 84px;
-      background-color: var(--bg-secondary);
-      overflow: hidden;
     }
 
-    .hero-bg {
+    #webglHeroCanvas {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      opacity: 0.35;
-      filter: saturate(0.85);
-      transform: scale(1.05);
-      animation: zoomSlow 20s infinite alternate ease-in-out;
+      z-index: 1;
+      cursor: grab;
     }
 
-    @keyframes zoomSlow {
-      from { transform: scale(1); }
-      to { transform: scale(1.08); }
+    #webglHeroCanvas:active {
+      cursor: grabbing;
     }
 
     .hero-content {
@@ -145,6 +154,12 @@
       z-index: 2;
       max-width: 900px;
       padding: 0 20px;
+      text-align: center;
+      pointer-events: none; /* Allows interaction with 3D canvas underneath */
+    }
+
+    .hero-content a, .hero-content button {
+      pointer-events: auto;
     }
 
     .hero-tagline {
@@ -152,25 +167,62 @@
       text-transform: uppercase;
       letter-spacing: 0.4em;
       color: var(--accent-gold);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 4px 14px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
     }
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(40px, 6vw, 76px);
+      font-size: clamp(38px, 5.5vw, 74px);
       font-weight: 300;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       line-height: 1.15;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(255, 255, 255, 0.8);
     }
 
     .hero-subtitle {
       font-size: 13px;
       color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 36px auto;
+      max-width: 580px;
+      margin: 0 auto 32px auto;
       font-weight: 300;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
+      background: rgba(253, 253, 252, 0.7);
+      padding: 8px 16px;
+      border-radius: 6px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-3d-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--text-muted);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      pointer-events: none;
     }
 
     .btn-luxury {
@@ -181,9 +233,10 @@
       letter-spacing: 0.28em;
       font-weight: 500;
       border: 1px solid var(--text-main);
-      background: transparent;
+      background: rgba(255, 255, 255, 0.9);
       color: var(--text-main);
       cursor: pointer;
+      backdrop-filter: blur(4px);
       transition: var(--transition);
     }
 
@@ -192,7 +245,17 @@
       color: #fff;
     }
 
-    /* Section Styles */
+    .btn-luxury.gold {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    .btn-luxury.gold:hover {
+      background: var(--accent-gold);
+      color: #fff;
+    }
+
+    /* Section Common Styles */
     section {
       padding: 120px 0;
     }
@@ -246,18 +309,27 @@
       background-color: var(--bg-secondary);
     }
 
-    /* Gallery Grid */
+    /* 3D Perspective Card Tilt Gallery */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 40px;
+      perspective: 1200px;
     }
 
     .art-card {
       background: #fff;
-      transition: var(--transition);
+      transition: transform 0.2s ease, box-shadow 0.4s ease;
       cursor: pointer;
       position: relative;
+      transform-style: preserve-3d;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-radius: 2px;
+      padding: 12px;
+    }
+
+    .art-card:hover {
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.08);
     }
 
     .art-card-img-wrapper {
@@ -275,11 +347,11 @@
     }
 
     .art-card:hover img {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
 
     .art-card-info {
-      padding: 20px 0 10px 0;
+      padding: 18px 4px 6px 4px;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
@@ -303,7 +375,185 @@
       font-size: 11px;
       color: var(--text-muted);
       margin-top: 4px;
+      padding: 0 4px;
       letter-spacing: 0.06em;
+    }
+
+    /* INNER CIRCLE SECTION */
+    .inner-circle-section {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .inner-circle-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      max-width: 960px;
+      margin: 0 auto 80px auto;
+      padding: 60px 50px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.03);
+    }
+
+    .drop-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-weight: 600;
+      color: #fff;
+      background: var(--text-main);
+      margin-bottom: 24px;
+    }
+
+    .drop-title {
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 4.5vw, 52px);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+
+    .drop-dates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      max-width: 780px;
+      margin: 30px auto;
+      padding: 24px 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+    }
+
+    .drop-dates-grid strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .inner-circle-form {
+      max-width: 580px;
+      margin: 40px auto 0 auto;
+      display: grid;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 14px 18px;
+      background: #fbfbfa;
+      border: 1px solid var(--border-color);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      transition: var(--transition);
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--text-main);
+      background: #fff;
+    }
+
+    .consent-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    .consent-label input {
+      margin-top: 2px;
+    }
+
+    .form-success-msg {
+      display: none;
+      padding: 20px;
+      background: #eef7ee;
+      border: 1px solid #cce5cc;
+      color: #2b662b;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Archival Drops Grid */
+    .archival-drops-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .archival-drops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 36px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .drop-archive-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      padding: 28px;
+      transition: var(--transition);
+    }
+
+    .drop-archive-card:hover {
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.04);
+    }
+
+    .drop-archive-img {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background-color: var(--bg-secondary);
+      margin-bottom: 20px;
+    }
+
+    .drop-archive-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .drop-status-soldout {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: #b03a2e;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .drop-archive-title {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .drop-archive-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.7;
     }
 
     /* Exhibitions Section */
@@ -325,7 +575,7 @@
     .exhibition-row:hover {
       padding-left: 10px;
       padding-right: 10px;
-      background-color: var(--bg-secondary);
+      background-color: #fff;
     }
 
     .ex-year {
@@ -556,7 +806,7 @@
     footer {
       border-top: 1px solid var(--border-color);
       padding: 80px 0 40px 0;
-      background-color: var(--bg-secondary);
+      background-color: #fff;
     }
 
     .footer-grid {
@@ -613,6 +863,7 @@
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
       .gallery-grid { grid-template-columns: 1fr; }
+      .form-row-2 { grid-template-columns: 1fr; }
       .exhibition-row { grid-template-columns: 1fr; gap: 8px; }
       .ex-location { text-align: left; }
     }
@@ -626,6 +877,7 @@
       <a href="#home" class="brand-logo">K E T A N &nbsp;/&nbsp; D U G G A L</a>
       <ul class="nav-menu">
         <li><a href="#gallery" class="nav-link">Art Gallery</a></li>
+        <li><a href="#inner-circle" class="nav-link highlight">Inner Circle</a></li>
         <li><a href="#exhibitions" class="nav-link">Exhibitions</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#contact" class="nav-link">Inquiries</a></li>
@@ -633,18 +885,28 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <img src="19. Querencia (2021).jpg" alt="Querencia by Ketan Duggal" class="hero-bg">
+  <!-- 3D HERO SHOWCASE SECTION -->
+  <section id="home" class="hero-3d">
+    <!-- WebGL Canvas for 3D Three.js scene -->
+    <canvas id="webglHeroCanvas"></canvas>
+
     <div class="hero-content">
-      <span class="hero-tagline">Fine Art & Contemporary Painting</span>
+      <span class="hero-tagline">3D Spatial Experience &bull; Fine Art</span>
       <h1 class="hero-title">Transmuting Isolation into Form & Materiality</h1>
       <p class="hero-subtitle">Exploring classical oil glazes, fluid resin landscapes, and modern pop iconography across a decade of visual inquiry.</p>
-      <a href="#gallery" class="btn-luxury">Explore Collection</a>
+      <div class="hero-actions">
+        <a href="#gallery" class="btn-luxury">Explore Gallery</a>
+        <a href="#inner-circle" class="btn-luxury gold">Join Inner Circle</a>
+      </div>
+    </div>
+
+    <div class="hero-3d-hint">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8l4 4-4 4M8 12h8"/></svg>
+      Drag to rotate 3D gallery
     </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Gallery Section with 3D Card Tilt -->
   <section id="gallery">
     <div class="container">
       <div class="section-header">
@@ -660,15 +922,121 @@
         <button class="filter-btn" data-filter="phase3">Social Satire & Pop Art (2022–2024)</button>
       </div>
 
-      <!-- Artwork Grid -->
+      <!-- Artwork Grid with 3D Tilt -->
       <div class="gallery-grid" id="artworkGrid">
-        <!-- Rendered via JavaScript for high maintainability -->
+        <!-- Rendered via JavaScript -->
       </div>
     </div>
   </section>
 
+  <!-- INNER CIRCLE SECTION -->
+  <section id="inner-circle" class="inner-circle-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Private Collector Vault</span>
+        <h2 class="section-title">The Inner Circle</h2>
+      </div>
+
+      <!-- Drop Release Card -->
+      <div class="inner-circle-card">
+        <span class="drop-badge">Next Collector Release</span>
+        <h3 class="drop-title">GOLD LEAF & RESIN MINIS</h3>
+        <p style="font-size: 13px; color: var(--text-muted); max-width: 620px; margin: 0 auto; font-weight: 300;">
+          A limited series of hand-poured fluid bio-resin and 24k gold leaf panel miniatures created in the Pilani studio. Inner Circle members receive early password-protected acquisition access before public release.
+        </p>
+
+        <!-- Timezone Drop Grid -->
+        <div class="drop-dates-grid">
+          <div>
+            <strong>NEW DELHI / IST</strong>
+            <span>7:00 PM (SAT)</span>
+          </div>
+          <div>
+            <strong>NEW YORK / ET</strong>
+            <span>9:30 AM (SAT)</span>
+          </div>
+          <div>
+            <strong>LONDON / GMT</strong>
+            <span>2:30 PM (SAT)</span>
+          </div>
+          <div>
+            <strong>TOKYO / JST</strong>
+            <span>10:30 PM (SAT)</span>
+          </div>
+          <div>
+            <strong>SYDNEY / AEST</strong>
+            <span>11:30 PM (SAT)</span>
+          </div>
+        </div>
+
+        <!-- VIP Sign-up Form -->
+        <form class="inner-circle-form" id="innerCircleForm">
+          <div class="form-row-2">
+            <input type="text" class="input-field" placeholder="FIRST NAME" required>
+            <input type="text" class="input-field" placeholder="LAST NAME" required>
+          </div>
+          <input type="email" class="input-field" placeholder="EMAIL ADDRESS" required>
+          <input type="tel" class="input-field" placeholder="PHONE NUMBER / WHATSAPP (OPTIONAL)">
+          
+          <label class="consent-label">
+            <input type="checkbox" required checked>
+            <span>I agree to receive private collector drop notifications, early acquisition invitations, and studio dispatches from Ketan Duggal Art.</span>
+          </label>
+
+          <button type="submit" class="btn-luxury gold" style="width: 100%; margin-top: 10px;">Request Inner Circle Access</button>
+        </form>
+
+        <div class="form-success-msg" id="innerCircleSuccess">
+          &#10003; Welcome to the Inner Circle. You will receive private drop access and collector updates directly in your inbox.
+        </div>
+      </div>
+
+      <!-- Archival / Sold-Out Drops Section -->
+      <div class="archival-drops-heading">
+        <span class="section-subtitle">Archive</span>
+        <h3 class="section-title" style="font-size: 32px;">Previous Sold-Out Collections</h3>
+      </div>
+
+      <div class="archival-drops-grid">
+        <div class="drop-archive-card">
+          <div class="drop-archive-img">
+            <img src="18. Study of Balance (2020).jpg" alt="Study of Balance Series">
+          </div>
+          <span class="drop-status-soldout">Private Collection &bull; Sold Out</span>
+          <h4 class="drop-archive-title">Study of Balance (Fluid Landscapes)</h4>
+          <p class="drop-archive-desc">
+            A milestone horizontal liquid landscape exploring the boundary between conscious control and organic fluid surrender using multi-layered clear bio-resin.
+          </p>
+        </div>
+
+        <div class="drop-archive-card">
+          <div class="drop-archive-img">
+            <img src="21. Richie Carrying Gifts $ High Fashion Brands (2024).jpg" alt="Richie Series">
+          </div>
+          <span class="drop-status-soldout">Private Collection &bull; Sold Out</span>
+          <h4 class="drop-archive-title">Richie Social Satire Series</h4>
+          <p class="drop-archive-desc">
+            A maximalist mixed-media critique of hyper-consumerism and luxury brand culture, examining the performance of identity in contemporary society.
+          </p>
+        </div>
+
+        <div class="drop-archive-card">
+          <div class="drop-archive-img">
+            <img src="3. The Urban Hermit (2012).JPG" alt="The Urban Hermit Archetype">
+          </div>
+          <span class="drop-status-soldout">Archive &bull; Permanent Collection</span>
+          <h4 class="drop-archive-title">The Urban Hermit Foundations</h4>
+          <p class="drop-archive-desc">
+            The formative archetype of the Pilani era. Heavy figurative oil brushwork capturing introspection and retreat from institutional noise.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Exhibitions Section -->
-  <section id="exhibitions" style="background-color: var(--bg-secondary);">
+  <section id="exhibitions">
     <div class="container">
       <div class="section-header">
         <span class="section-subtitle">History & Showcases</span>
@@ -711,7 +1079,7 @@
   </section>
 
   <!-- About / Artist Statement Section -->
-  <section id="about">
+  <section id="about" style="background-color: var(--bg-secondary);">
     <div class="container">
       <div class="bio-grid">
         <div class="bio-image-wrapper">
@@ -737,7 +1105,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" style="background-color: var(--bg-secondary);">
+  <section id="contact">
     <div class="container">
       <div class="contact-wrapper">
         <span class="section-subtitle">Acquisitions & Private Commissions</span>
@@ -783,6 +1151,7 @@
           <div class="footer-col-title">Navigation</div>
           <ul class="footer-links">
             <li><a href="#gallery">Art Gallery</a></li>
+            <li><a href="#inner-circle">Inner Circle Drops</a></li>
             <li><a href="#exhibitions">Exhibitions</a></li>
             <li><a href="#about">About the Artist</a></li>
             <li><a href="#contact">Private Inquiries</a></li>
@@ -1077,7 +1446,212 @@
       }
     ];
 
-    // DOM Elements
+    // =========================================================
+    // 3D THREE.JS HERO ENGINE
+    // =========================================================
+    function init3DHero() {
+      const canvas = document.getElementById('webglHeroCanvas');
+      if (!canvas || !window.THREE) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(0, 0, 14);
+
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+      scene.add(ambientLight);
+
+      const dirLight = new THREE.DirectionalLight(0xfff5e6, 1.2);
+      dirLight.position.set(10, 20, 15);
+      scene.add(dirLight);
+
+      const pointLight = new THREE.PointLight(0xd4af37, 1.8, 50);
+      pointLight.position.set(0, 0, 8);
+      scene.add(pointLight);
+
+      // Group for the 3D rotating artwork carousel
+      const carouselGroup = new THREE.Group();
+      scene.add(carouselGroup);
+
+      // Featured Artworks for 3D Carousel
+      const featured3DImages = [
+        "19. Querencia (2021).jpg",
+        "2. Splendid Soul (2012).JPG",
+        "18. Study of Balance (2020).jpg",
+        "20. Richie Make Money (2022).jpg",
+        "14. Strangers in the night (2016).JPG",
+        "21. Richie Carrying Gifts $ High Fashion Brands (2024).jpg"
+      ];
+
+      const textureLoader = new THREE.TextureLoader();
+      const radius = 6.2;
+      const cardWidth = 3.2;
+      const cardHeight = 4.2;
+
+      featured3DImages.forEach((imgSrc, index) => {
+        const angle = (index / featured3DImages.length) * Math.PI * 2;
+        
+        // 3D Frame & Canvas Geometry
+        const geometry = new THREE.BoxGeometry(cardWidth, cardHeight, 0.12);
+        
+        // Materials (Gold side borders & canvas front)
+        const frameMat = new THREE.MeshStandardMaterial({
+          color: 0xb39256,
+          metalness: 0.8,
+          roughness: 0.25
+        });
+
+        const texture = textureLoader.load(encodeURI(imgSrc));
+        const frontMat = new THREE.MeshStandardMaterial({
+          map: texture,
+          roughness: 0.45,
+          metalness: 0.05
+        });
+
+        const materials = [frameMat, frameMat, frameMat, frameMat, frontMat, frameMat];
+        const mesh = new THREE.Mesh(geometry, materials);
+
+        mesh.position.x = Math.sin(angle) * radius;
+        mesh.position.z = Math.cos(angle) * radius;
+        mesh.rotation.y = angle;
+
+        carouselGroup.add(mesh);
+      });
+
+      // Floating 3D Gold Dust / Particles
+      const particleCount = 180;
+      const particleGeo = new THREE.BufferGeometry();
+      const positions = new Float32Array(particleCount * 3);
+
+      for (let i = 0; i < particleCount * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 30;
+        positions[i + 1] = (Math.random() - 0.5) * 20;
+        positions[i + 2] = (Math.random() - 0.5) * 20;
+      }
+
+      particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const particleMat = new THREE.PointsMaterial({
+        color: 0xc5a059,
+        size: 0.08,
+        transparent: true,
+        opacity: 0.75
+      });
+
+      const particles = new THREE.Points(particleGeo, particleMat);
+      scene.add(particles);
+
+      // Interaction Variables
+      let isDragging = false;
+      let previousMousePosition = { x: 0, y: 0 };
+      let targetRotationY = 0;
+      let targetRotationX = 0;
+      let mouseX = 0;
+      let mouseY = 0;
+
+      // Mouse Drag & Orbit
+      window.addEventListener('mousedown', (e) => {
+        if (e.target === canvas) {
+          isDragging = true;
+          previousMousePosition = { x: e.clientX, y: e.clientY };
+        }
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+
+        pointLight.position.x = mouseX * 8;
+        pointLight.position.y = mouseY * 6;
+
+        if (isDragging) {
+          const deltaX = e.clientX - previousMousePosition.x;
+          const deltaY = e.clientY - previousMousePosition.y;
+
+          targetRotationY += deltaX * 0.006;
+          targetRotationX += deltaY * 0.003;
+
+          previousMousePosition = { x: e.clientX, y: e.clientY };
+        }
+      });
+
+      window.addEventListener('mouseup', () => { isDragging = false; });
+
+      // Touch Controls for Mobile
+      window.addEventListener('touchstart', (e) => {
+        if (e.target === canvas && e.touches.length === 1) {
+          isDragging = true;
+          previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }
+      });
+
+      window.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length === 1) {
+          const deltaX = e.touches[0].clientX - previousMousePosition.x;
+          targetRotationY += deltaX * 0.008;
+          previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }
+      });
+
+      window.addEventListener('touchend', () => { isDragging = false; });
+
+      // Resize
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      // Animation Loop
+      function animate() {
+        requestAnimationFrame(animate);
+
+        // Idle slow spin + smoothed user drag
+        if (!isDragging) {
+          targetRotationY += 0.0015;
+        }
+
+        carouselGroup.rotation.y += (targetRotationY - carouselGroup.rotation.y) * 0.05;
+        carouselGroup.rotation.x += (targetRotationX + (mouseY * 0.15) - carouselGroup.rotation.x) * 0.05;
+
+        // Subtle floating particles motion
+        particles.rotation.y += 0.0005;
+        particles.rotation.x += 0.0002;
+
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    }
+
+    // =========================================================
+    // 3D PERSPECTIVE TILT ON GALLERY CARDS
+    // =========================================================
+    function applyCardTilt(card) {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      });
+    }
+
+    // =========================================================
+    // DOM ELEMENTS & GALLERY RENDER
+    // =========================================================
     const grid = document.getElementById('artworkGrid');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const modal = document.getElementById('artModal');
@@ -1090,8 +1664,9 @@
     const modalOrigin = document.getElementById('modalOrigin');
     const modalNarrative = document.getElementById('modalNarrative');
     const inquiryArtwork = document.getElementById('inquiryArtwork');
+    const innerCircleForm = document.getElementById('innerCircleForm');
+    const innerCircleSuccess = document.getElementById('innerCircleSuccess');
 
-    // Render Grid
     function renderArtworks(filter = 'all') {
       grid.innerHTML = '';
       const filtered = filter === 'all' ? artworks : artworks.filter(a => a.phase === filter);
@@ -1101,7 +1676,7 @@
         card.className = 'art-card';
         card.innerHTML = `
           <div class="art-card-img-wrapper">
-            <img src="${encodeURI(art.image)}" alt="${art.title}">
+            <img src="${encodeURI(art.image)}" alt="${art.title}" loading="lazy">
           </div>
           <div class="art-card-info">
             <h4 class="art-card-title">${art.title}</h4>
@@ -1110,12 +1685,13 @@
           <div class="art-card-meta">${art.medium} &bull; ${art.dimensions}</div>
         `;
 
+        applyCardTilt(card);
         card.addEventListener('click', () => openModal(art));
         grid.appendChild(card);
       });
     }
 
-    // Filter Click Handlers
+    // Filter Buttons
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
@@ -1124,7 +1700,14 @@
       });
     });
 
-    // Modal Handlers
+    // Inner Circle Form
+    innerCircleForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      innerCircleForm.style.display = 'none';
+      innerCircleSuccess.style.display = 'block';
+    });
+
+    // Modal
     function openModal(art) {
       modalImg.src = encodeURI(art.image);
       modalImg.alt = art.title;
@@ -1150,15 +1733,14 @@
     }
 
     modalCloseBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-    // Initial Render
-    renderArtworks();
+    // Initialize Everything
+    window.addEventListener('DOMContentLoaded', () => {
+      init3DHero();
+      renderArtworks();
+    });
   </script>
 </body>
 </html>
