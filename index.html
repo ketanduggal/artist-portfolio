@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ketan Duggal | Contemporary Visual Artist</title>
   
-  <!-- Typography -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -159,24 +159,23 @@
     }
 
     /* ================================================= */
-    /* 3D INTERACTIVE HERO STAGE ROTUNDA                 */
+    /* 3D INTERACTIVE HERO ROTUNDA (PERFECTLY CENTERED)  */
     /* ================================================= */
     .hero-3d-stage {
       position: relative;
-      height: 100vh;
-      min-height: 780px;
-      background: radial-gradient(circle at 50% 35%, #181822 0%, #08080a 100%);
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% 40%, #1a1a24 0%, #08080a 100%);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding-top: 84px;
+      padding: 100px 20px 40px 20px;
       perspective: 1400px;
     }
 
     body.light-theme .hero-3d-stage {
-      background: radial-gradient(circle at 50% 35%, #ffffff 0%, #ece9e2 100%);
+      background: radial-gradient(circle at 50% 40%, #ffffff 0%, #ece9e2 100%);
     }
 
     #particleBgCanvas {
@@ -193,7 +192,7 @@
     .rotunda-3d-viewport {
       position: relative;
       width: 100%;
-      height: 380px;
+      height: 420px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -201,7 +200,7 @@
       z-index: 2;
       cursor: grab;
       user-select: none;
-      margin-bottom: 20px;
+      margin: 10px auto 20px auto;
     }
 
     .rotunda-3d-viewport:active {
@@ -210,8 +209,8 @@
 
     .rotunda-3d-cylinder {
       position: relative;
-      width: 270px;
-      height: 350px;
+      width: 250px;
+      height: 340px;
       transform-style: preserve-3d;
       transition: transform 0.1s ease-out;
     }
@@ -220,12 +219,12 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 270px;
-      height: 350px;
+      width: 250px;
+      height: 340px;
       background: #141419;
       padding: 12px;
-      border: 1px solid rgba(203, 163, 88, 0.4);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(203, 163, 88, 0.2);
+      border: 1px solid rgba(203, 163, 88, 0.45);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(203, 163, 88, 0.2);
       border-radius: 4px;
       transform-style: preserve-3d;
       backface-visibility: hidden;
@@ -240,7 +239,7 @@
 
     .rotunda-3d-card:hover {
       border-color: var(--accent-gold);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px var(--accent-gold-glow);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px var(--accent-gold-glow);
     }
 
     .rotunda-3d-img {
@@ -252,10 +251,10 @@
 
     .rotunda-3d-tag {
       position: absolute;
-      bottom: 18px;
-      left: 18px;
-      right: 18px;
-      background: rgba(10, 10, 13, 0.88);
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: rgba(10, 10, 13, 0.9);
       backdrop-filter: blur(8px);
       padding: 8px 12px;
       color: #fff;
@@ -267,12 +266,12 @@
       border-radius: 2px;
     }
 
-    /* Hero Text & Actions */
+    /* Clean Hero Text & Actions */
     .hero-hud-content {
       position: relative;
       z-index: 3;
       text-align: center;
-      max-width: 860px;
+      max-width: 800px;
       padding: 0 20px;
     }
 
@@ -281,42 +280,44 @@
       text-transform: uppercase;
       letter-spacing: 0.35em;
       color: var(--accent-gold);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       display: inline-block;
       font-weight: 600;
     }
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(34px, 5vw, 68px);
+      font-size: clamp(32px, 4.5vw, 54px);
       font-weight: 300;
       letter-spacing: 0.05em;
       line-height: 1.15;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .hero-desc {
       font-size: 13px;
       color: var(--text-muted);
-      max-width: 580px;
-      margin: 0 auto 28px auto;
+      max-width: 520px;
+      margin: 0 auto 24px auto;
       font-weight: 300;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     .hero-actions {
       display: flex;
       gap: 16px;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
+      margin-bottom: 16px;
     }
 
     .btn-luxury {
       display: inline-block;
-      padding: 13px 32px;
+      padding: 12px 30px;
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.26em;
+      letter-spacing: 0.24em;
       font-weight: 500;
       border: 1px solid var(--text-main);
       background: rgba(18, 18, 24, 0.8);
@@ -352,12 +353,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
-      margin-top: 22px;
+      gap: 12px;
     }
 
     .control-3d-btn {
-      background: rgba(18, 18, 24, 0.7);
+      background: rgba(18, 18, 24, 0.75);
       border: 1px solid var(--border-color);
       color: var(--text-main);
       font-size: 10px;
@@ -365,7 +365,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       cursor: pointer;
-      padding: 6px 14px;
+      padding: 6px 16px;
       border-radius: 20px;
       transition: var(--transition);
     }
@@ -1054,7 +1054,7 @@
     <!-- Golden Dust Particle Canvas -->
     <canvas id="particleBgCanvas"></canvas>
 
-    <!-- 3D Hardware Accelerated Exhibition Rotunda -->
+    <!-- 3D Hardware Accelerated Exhibition Rotunda (Full Height Centered) -->
     <div class="rotunda-3d-viewport" id="rotundaStage">
       <div class="rotunda-3d-cylinder" id="rotundaCylinder">
         <!-- 3D Masterpiece 1: Querencia -->
@@ -1108,12 +1108,12 @@
       </div>
     </div>
 
-    <!-- Hero Content -->
+    <!-- Clean Hero Text & Actions -->
     <div class="hero-hud-content">
-      <span class="hero-badge">3D Spatial Experience &bull; Master Archive</span>
-      <h1 class="hero-title">Transmuting Isolation into Form & Materiality</h1>
+      <span class="hero-badge">Contemporary Visual Artist &bull; 2011–2024 Archive</span>
+      <h1 class="hero-title">Welcome to My Gallery</h1>
       <p class="hero-desc">
-        Classical oil glazes, fluid bio-resin landscapes, and contemporary pop satire across a decade of visual inquiry.
+        Oil paintings, fluid bio-resin landscapes, and contemporary pop satire by Ketan Duggal.
       </p>
       <div class="hero-actions">
         <a href="#gallery" class="btn-luxury">Explore Gallery</a>
@@ -1121,7 +1121,6 @@
       </div>
       <div class="hero-3d-controls">
         <button class="control-3d-btn" id="btnRotateLeft">&larr; Rotate Left</button>
-        <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted);">&bull; Drag 3D Rotunda &bull;</span>
         <button class="control-3d-btn" id="btnRotateRight">Rotate Right &rarr;</button>
       </div>
     </div>
@@ -1465,9 +1464,7 @@
     </div>
   </section>
 
-  <!-- ================================================= -->
-  <!-- COLLECTORS CIRCLE VIP SECTION                     -->
-  <!-- ================================================= -->
+  <!-- Collectors Circle VIP Section -->
   <section id="collectors-circle" class="collectors-circle-section">
     <div class="container">
       <div class="section-header">
@@ -2003,7 +2000,7 @@
 
     function animateRotunda() {
       if (!isDragging) {
-        targetY -= 0.18; // Continuous smooth rotation
+        targetY -= 0.18; // Smooth continuous idle rotation
       }
       currentY += (targetY - currentY) * 0.08;
       cylinder.style.transform = `rotateY(${currentY}deg)`;
