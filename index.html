@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ketan Duggal | Contemporary Visual Artist</title>
   
-  <!-- Fonts -->
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Three.js (3D WebGL Graphics Engine) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <style>
     :root {
@@ -81,7 +78,7 @@
       padding: 0 40px;
     }
 
-    /* Header & Navigation */
+    /* Navigation */
     header {
       position: fixed;
       top: 0;
@@ -162,49 +159,121 @@
     }
 
     /* ================================================= */
-    /* 3D VIRTUAL EXHIBITION HERO ROTUNDA                */
+    /* 3D INTERACTIVE HERO STAGE ROTUNDA                 */
     /* ================================================= */
-    .hero-3d-section {
+    .hero-3d-stage {
       position: relative;
       height: 100vh;
-      min-height: 750px;
-      background: radial-gradient(circle at 50% 40%, #15151c 0%, #08080a 100%);
+      min-height: 780px;
+      background: radial-gradient(circle at 50% 35%, #181822 0%, #08080a 100%);
       overflow: hidden;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       padding-top: 84px;
+      perspective: 1400px;
     }
 
-    body.light-theme .hero-3d-section {
-      background: radial-gradient(circle at 50% 40%, #ffffff 0%, #ece9e2 100%);
+    body.light-theme .hero-3d-stage {
+      background: radial-gradient(circle at 50% 35%, #ffffff 0%, #ece9e2 100%);
     }
 
-    #threeCanvas {
+    #particleBgCanvas {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: 1;
-      cursor: grab;
-    }
-
-    #threeCanvas:active {
-      cursor: grabbing;
-    }
-
-    .hero-hud {
-      position: relative;
-      z-index: 2;
-      max-width: 860px;
-      padding: 0 20px;
-      text-align: center;
       pointer-events: none;
     }
 
-    .hero-hud a, .hero-hud button {
-      pointer-events: auto;
+    /* 3D Rotunda Viewport */
+    .rotunda-3d-viewport {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-style: preserve-3d;
+      z-index: 2;
+      cursor: grab;
+      user-select: none;
+      margin-bottom: 20px;
+    }
+
+    .rotunda-3d-viewport:active {
+      cursor: grabbing;
+    }
+
+    .rotunda-3d-cylinder {
+      position: relative;
+      width: 270px;
+      height: 350px;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+    }
+
+    .rotunda-3d-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 270px;
+      height: 350px;
+      background: #141419;
+      padding: 12px;
+      border: 1px solid rgba(203, 163, 88, 0.4);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(203, 163, 88, 0.2);
+      border-radius: 4px;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      cursor: pointer;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    body.light-theme .rotunda-3d-card {
+      background: #ffffff;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 0 25px rgba(179, 146, 86, 0.2);
+    }
+
+    .rotunda-3d-card:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px var(--accent-gold-glow);
+    }
+
+    .rotunda-3d-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .rotunda-3d-tag {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      right: 18px;
+      background: rgba(10, 10, 13, 0.88);
+      backdrop-filter: blur(8px);
+      padding: 8px 12px;
+      color: #fff;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 2px;
+    }
+
+    /* Hero Text & Actions */
+    .hero-hud-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 860px;
+      padding: 0 20px;
     }
 
     .hero-badge {
@@ -212,38 +281,25 @@
       text-transform: uppercase;
       letter-spacing: 0.35em;
       color: var(--accent-gold);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: inline-block;
-      background: rgba(18, 18, 24, 0.75);
-      padding: 6px 16px;
-      border-radius: 20px;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(8px);
-    }
-
-    body.light-theme .hero-badge {
-      background: rgba(255, 255, 255, 0.85);
+      font-weight: 600;
     }
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(36px, 5.5vw, 72px);
+      font-size: clamp(34px, 5vw, 68px);
       font-weight: 300;
       letter-spacing: 0.05em;
       line-height: 1.15;
-      margin-bottom: 18px;
-      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
-    }
-
-    body.light-theme .hero-title {
-      text-shadow: 0 2px 20px rgba(255, 255, 255, 0.8);
+      margin-bottom: 16px;
     }
 
     .hero-desc {
       font-size: 13px;
       color: var(--text-muted);
       max-width: 580px;
-      margin: 0 auto 30px auto;
+      margin: 0 auto 28px auto;
       font-weight: 300;
       line-height: 1.7;
     }
@@ -292,48 +348,35 @@
       box-shadow: 0 10px 30px var(--accent-gold-glow);
     }
 
-    /* 3D Navigation Controls Overlay */
     .hero-3d-controls {
-      position: absolute;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 14px;
-      background: rgba(18, 18, 24, 0.8);
-      padding: 8px 18px;
-      border-radius: 30px;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
-    }
-
-    body.light-theme .hero-3d-controls {
-      background: rgba(255, 255, 255, 0.9);
+      margin-top: 22px;
     }
 
     .control-3d-btn {
-      background: transparent;
-      border: none;
+      background: rgba(18, 18, 24, 0.7);
+      border: 1px solid var(--border-color);
       color: var(--text-main);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.15em;
+      text-transform: uppercase;
       cursor: pointer;
-      padding: 4px 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
       transition: var(--transition);
     }
 
-    .control-3d-btn:hover {
-      color: var(--accent-gold);
+    body.light-theme .control-3d-btn {
+      background: rgba(255, 255, 255, 0.85);
     }
 
-    .control-hint-text {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
+    .control-3d-btn:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
     }
 
     /* ================================================= */
@@ -435,7 +478,7 @@
 
     .artwork-frame {
       position: relative;
-      background-color: #070709;
+      background-color: #08080b;
       border: 1px solid rgba(255, 255, 255, 0.04);
       display: flex;
       justify-content: center;
@@ -452,7 +495,7 @@
     .artwork-frame img {
       width: 100%;
       height: auto;
-      object-fit: contain; /* True 100% natural, uncropped original proportions */
+      object-fit: contain; /* True uncropped natural proportions */
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -1006,13 +1049,68 @@
     </div>
   </header>
 
-  <!-- 3D WEBGL HERO ROTUNDA -->
-  <section id="home" class="hero-3d-section">
-    <canvas id="threeCanvas"></canvas>
+  <!-- 3D INTERACTIVE HERO STAGE ROTUNDA -->
+  <section id="home" class="hero-3d-stage">
+    <!-- Golden Dust Particle Canvas -->
+    <canvas id="particleBgCanvas"></canvas>
 
-    <!-- Overlay HUD -->
-    <div class="hero-hud">
-      <span class="hero-badge">3D Virtual Gallery &bull; 2011–2024 Archive</span>
+    <!-- 3D Hardware Accelerated Exhibition Rotunda -->
+    <div class="rotunda-3d-viewport" id="rotundaStage">
+      <div class="rotunda-3d-cylinder" id="rotundaCylinder">
+        <!-- 3D Masterpiece 1: Querencia -->
+        <div class="rotunda-3d-card" style="transform: rotateY(0deg) translateZ(360px);" onclick="openViewingRoom(18)">
+          <img src="19.%20Querencia%20(2021).jpg" alt="Querencia" class="rotunda-3d-img">
+          <div class="rotunda-3d-tag">
+            <span>Querencia</span>
+            <span style="color: var(--accent-gold);">2021</span>
+          </div>
+        </div>
+        <!-- 3D Masterpiece 2: Splendid Soul -->
+        <div class="rotunda-3d-card" style="transform: rotateY(60deg) translateZ(360px);" onclick="openViewingRoom(1)">
+          <img src="2.%20Splendid%20Soul%20(2012).JPG" alt="Splendid Soul" class="rotunda-3d-img">
+          <div class="rotunda-3d-tag">
+            <span>Splendid Soul</span>
+            <span style="color: var(--accent-gold);">2012</span>
+          </div>
+        </div>
+        <!-- 3D Masterpiece 3: Study of Balance -->
+        <div class="rotunda-3d-card" style="transform: rotateY(120deg) translateZ(360px);" onclick="openViewingRoom(17)">
+          <img src="18.%20Study%20of%20Balance%20(2020).jpg" alt="Study of Balance" class="rotunda-3d-img">
+          <div class="rotunda-3d-tag">
+            <span>Study of Balance</span>
+            <span style="color: var(--accent-gold);">2020</span>
+          </div>
+        </div>
+        <!-- 3D Masterpiece 4: Richie Make Money -->
+        <div class="rotunda-3d-card" style="transform: rotateY(180deg) translateZ(360px);" onclick="openViewingRoom(19)">
+          <img src="20.%20Richie%20Make%20Money%20(2022).jpg" alt="Richie Make Money" class="rotunda-3d-img">
+          <div class="rotunda-3d-tag">
+            <span>Richie Make Money</span>
+            <span style="color: var(--accent-gold);">2022</span>
+          </div>
+        </div>
+        <!-- 3D Masterpiece 5: The Conflict of Love and Chastity -->
+        <div class="rotunda-3d-card" style="transform: rotateY(240deg) translateZ(360px);" onclick="openViewingRoom(16)">
+          <img src="17.%20The%20Conflict%20of%20Love%20and%20Chastity%20(2020).JPG" alt="The Conflict of Love and Chastity" class="rotunda-3d-img">
+          <div class="rotunda-3d-tag">
+            <span>Love & Chastity</span>
+            <span style="color: var(--accent-gold);">2020</span>
+          </div>
+        </div>
+        <!-- 3D Masterpiece 6: Richie Carrying Gifts -->
+        <div class="rotunda-3d-card" style="transform: rotateY(300deg) translateZ(360px);" onclick="openViewingRoom(20)">
+          <img src="21.%20Richie%20Carrying%20Gifts%20$%20High%20Fashion%20Brands%20(2024).jpg" alt="Richie Carrying Gifts" class="rotunda-3d-img">
+          <div class="rotunda-3d-tag">
+            <span>Richie Pop Satire</span>
+            <span style="color: var(--accent-gold);">2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-hud-content">
+      <span class="hero-badge">3D Spatial Experience &bull; Master Archive</span>
       <h1 class="hero-title">Transmuting Isolation into Form & Materiality</h1>
       <p class="hero-desc">
         Classical oil glazes, fluid bio-resin landscapes, and contemporary pop satire across a decade of visual inquiry.
@@ -1021,13 +1119,11 @@
         <a href="#gallery" class="btn-luxury">Explore Gallery</a>
         <a href="#inner-circle" class="btn-luxury gold">Join Inner Circle</a>
       </div>
-    </div>
-
-    <!-- 3D Controls Bar -->
-    <div class="hero-3d-controls">
-      <button class="control-3d-btn" id="btn3DPrev">&larr; Rotate Left</button>
-      <span class="control-hint-text">&bull; Drag 3D Space &bull;</span>
-      <button class="control-3d-btn" id="btn3DNext">Rotate Right &rarr;</button>
+      <div class="hero-3d-controls">
+        <button class="control-3d-btn" id="btnRotateLeft">&larr; Rotate Left</button>
+        <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted);">&bull; Drag 3D Rotunda &bull;</span>
+        <button class="control-3d-btn" id="btnRotateRight">Rotate Right &rarr;</button>
+      </div>
     </div>
   </section>
 
@@ -1047,9 +1143,324 @@
         <button class="filter-btn" data-filter="phase3">Social Satire & Pop Art (2022–2024)</button>
       </div>
 
-      <!-- True Proportion Masonry Gallery Container -->
+      <!-- True Proportion Masonry Gallery with all 21 pre-rendered paintings -->
       <div class="masonry-gallery" id="galleryContainer">
-        <!-- Rendered via JavaScript -->
+
+        <!-- 1. Complex Agony (2011) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(0)">
+          <div class="artwork-frame">
+            <img src="1.%20Complex%20Agony%20(2011).jpg" alt="Complex Agony" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Complex Agony</h4>
+            <span class="artwork-year">2011</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil paint on canvas</span>
+            <span>60 &times; 60 cm</span>
+          </div>
+        </div>
+
+        <!-- 2. Splendid Soul (2012) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(1)">
+          <div class="artwork-frame">
+            <img src="2.%20Splendid%20Soul%20(2012).JPG" alt="Splendid Soul" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Splendid Soul</h4>
+            <span class="artwork-year">2012</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil paint on canvas</span>
+            <span>120 &times; 150 cm</span>
+          </div>
+        </div>
+
+        <!-- 3. The Urban Hermit (2012) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(2)">
+          <div class="artwork-frame">
+            <img src="3.%20The%20Urban%20Hermit%20(2012).JPG" alt="The Urban Hermit" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">The Urban Hermit</h4>
+            <span class="artwork-year">2012</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil paint on canvas</span>
+            <span>45 &times; 77 cm</span>
+          </div>
+        </div>
+
+        <!-- 4. Nothing on you (2012) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(3)">
+          <div class="artwork-frame">
+            <img src="4.%20Nothing%20on%20you%20(2012).JPG" alt="Nothing on you" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Nothing on you</h4>
+            <span class="artwork-year">2012</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil paint on canvas</span>
+            <span>60 &times; 60 cm</span>
+          </div>
+        </div>
+
+        <!-- 5. Strings Teem Senses (2013) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(4)">
+          <div class="artwork-frame">
+            <img src="5.%20Strings%20teem%20senses%20(1%20of%203)%20(2013).jpg" alt="Strings Teem Senses" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Strings Teem Senses</h4>
+            <span class="artwork-year">2013</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil on canvas (Triptych)</span>
+            <span>45 &times; 45 cm (3 panels)</span>
+          </div>
+        </div>
+
+        <!-- 6. Gaol of Greed (2013) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(5)">
+          <div class="artwork-frame">
+            <img src="6.%20Gaol%20of%20greed%20(2013).JPG" alt="Gaol of Greed" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Gaol of Greed</h4>
+            <span class="artwork-year">2013</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil paint on canvas</span>
+            <span>60 &times; 83 cm</span>
+          </div>
+        </div>
+
+        <!-- 7. Trying and Being (2014) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(6)">
+          <div class="artwork-frame">
+            <img src="7.%20Trying%20and%20being%20(2014).JPG" alt="Trying and Being" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Trying and Being</h4>
+            <span class="artwork-year">2014</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil paint on canvas</span>
+            <span>60 &times; 60 cm</span>
+          </div>
+        </div>
+
+        <!-- 8. Now you see me, now you don't (2014) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(7)">
+          <div class="artwork-frame">
+            <img src="8.%20Now%20you%20see%20me,now%20you%20dont%20(2014).JPG" alt="Now you see me" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Now you see me, now you don't</h4>
+            <span class="artwork-year">2014</span>
+          </div>
+          <div class="artwork-details">
+            <span>Mixed Medium on Canvas</span>
+            <span>60 &times; 45 cm</span>
+          </div>
+        </div>
+
+        <!-- 9. The Stripped Tint (2014) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(8)">
+          <div class="artwork-frame">
+            <img src="9.%20The%20Stripped%20Tint%20(2014).JPG" alt="The Stripped Tint" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">The Stripped Tint</h4>
+            <span class="artwork-year">2014</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil & Acrylic on Canvas</span>
+            <span>45 &times; 60 cm</span>
+          </div>
+        </div>
+
+        <!-- 10. The One Who Knew (2014) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(9)">
+          <div class="artwork-frame">
+            <img src="10.%20The%20One%20Who%20Knew%20(2014).JPG" alt="The One Who Knew" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">The One Who Knew</h4>
+            <span class="artwork-year">2014</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil on Canvas</span>
+            <span>60 &times; 60 cm</span>
+          </div>
+        </div>
+
+        <!-- 11. Sneak Peak (2014) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(10)">
+          <div class="artwork-frame">
+            <img src="11.%20Sneak%20Peak%20(2014).JPG" alt="Sneak Peak" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Sneak Peak</h4>
+            <span class="artwork-year">2014</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil on Canvas</span>
+            <span>46 &times; 61 cm</span>
+          </div>
+        </div>
+
+        <!-- 12. The Doomed One (2014) -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(11)">
+          <div class="artwork-frame">
+            <img src="12.%20The%20Doomed%20One%20(2014).JPG" alt="The Doomed One" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">The Doomed One</h4>
+            <span class="artwork-year">2014</span>
+          </div>
+          <div class="artwork-details">
+            <span>Mixed Medium on Canvas</span>
+            <span>61 &times; 61 cm</span>
+          </div>
+        </div>
+
+        <!-- 13. Blue Winds (2015) -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(12)">
+          <div class="artwork-frame">
+            <img src="13.%20Blue%20Winds%20(2015).JPG" alt="Blue Winds" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Blue Winds</h4>
+            <span class="artwork-year">2015</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil paint on canvas</span>
+            <span>61 &times; 61 cm</span>
+          </div>
+        </div>
+
+        <!-- 14. Strangers in the night (2016) -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(13)">
+          <div class="artwork-frame">
+            <img src="14.%20Strangers%20in%20the%20night%20(2016).JPG" alt="Strangers in the night" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Strangers in the night</h4>
+            <span class="artwork-year">2016</span>
+          </div>
+          <div class="artwork-details">
+            <span>Acrylic on Canvas</span>
+            <span>60 &times; 60 cm</span>
+          </div>
+        </div>
+
+        <!-- 15. Burnt Wine (2016) -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(14)">
+          <div class="artwork-frame">
+            <img src="15.%20Burnt%20Wine%20(2016).JPG" alt="Burnt Wine" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Burnt Wine</h4>
+            <span class="artwork-year">2016</span>
+          </div>
+          <div class="artwork-details">
+            <span>Mixed Media</span>
+            <span>67 &times; 48 cm</span>
+          </div>
+        </div>
+
+        <!-- 16. Elucidated (2017) -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(15)">
+          <div class="artwork-frame">
+            <img src="16.%20Elucidated%20(2017).JPG" alt="Elucidated" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Elucidated</h4>
+            <span class="artwork-year">2017</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil paint on canvas</span>
+            <span>67 &times; 48 cm</span>
+          </div>
+        </div>
+
+        <!-- 17. The Conflict of Love and Chastity (2020) -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(16)">
+          <div class="artwork-frame">
+            <img src="17.%20The%20Conflict%20of%20Love%20and%20Chastity%20(2020).JPG" alt="The Conflict of Love and Chastity" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">The Conflict of Love and Chastity</h4>
+            <span class="artwork-year">2020</span>
+          </div>
+          <div class="artwork-details">
+            <span>Oil & Mixed Media</span>
+            <span>61 &times; 61 cm</span>
+          </div>
+        </div>
+
+        <!-- 18. Study of Balance (2020) -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(17)">
+          <div class="artwork-frame">
+            <img src="18.%20Study%20of%20Balance%20(2020).jpg" alt="Study of Balance" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Study of Balance</h4>
+            <span class="artwork-year">2020</span>
+          </div>
+          <div class="artwork-details">
+            <span>Acrylic & Fluid Resin</span>
+            <span>51 &times; 122 cm (Wide Panorama)</span>
+          </div>
+        </div>
+
+        <!-- 19. Querencia (2021) -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(18)">
+          <div class="artwork-frame">
+            <img src="19.%20Querencia%20(2021).jpg" alt="Querencia" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Querencia</h4>
+            <span class="artwork-year">2021</span>
+          </div>
+          <div class="artwork-details">
+            <span>Mixed Media & Gold Leaf</span>
+            <span>61 &times; 91 cm</span>
+          </div>
+        </div>
+
+        <!-- 20. Richie Make Money (2022) -->
+        <div class="gallery-item" data-phase="phase3" onclick="openViewingRoom(19)">
+          <div class="artwork-frame">
+            <img src="20.%20Richie%20Make%20Money%20(2022).jpg" alt="Richie Make Money" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Richie Make Money</h4>
+            <span class="artwork-year">2022</span>
+          </div>
+          <div class="artwork-details">
+            <span>Mixed Media & Pop Art</span>
+            <span>91 &times; 121 cm</span>
+          </div>
+        </div>
+
+        <!-- 21. Richie Carrying Gifts (2024) -->
+        <div class="gallery-item" data-phase="phase3" onclick="openViewingRoom(20)">
+          <div class="artwork-frame">
+            <img src="21.%20Richie%20Carrying%20Gifts%20$%20High%20Fashion%20Brands%20(2024).jpg" alt="Richie Carrying Gifts" loading="lazy">
+          </div>
+          <div class="artwork-caption">
+            <h4 class="artwork-title">Richie Carrying Gifts & Brands</h4>
+            <span class="artwork-year">2024</span>
+          </div>
+          <div class="artwork-details">
+            <span>Mixed Media Collage</span>
+            <span>120 &times; 90 cm</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1125,7 +1536,7 @@
       <div class="archival-drops-grid">
         <div class="drop-archive-card">
           <div class="drop-archive-img">
-            <img src="18. Study of Balance (2020).jpg" alt="Study of Balance Series">
+            <img src="18.%20Study%20of%20Balance%20(2020).jpg" alt="Study of Balance Series">
           </div>
           <span class="drop-status-soldout">Private Collection &bull; Sold Out</span>
           <h4 class="drop-archive-title">Study of Balance (Liquid Landscapes)</h4>
@@ -1136,7 +1547,7 @@
 
         <div class="drop-archive-card">
           <div class="drop-archive-img">
-            <img src="21. Richie Carrying Gifts $ High Fashion Brands (2024).jpg" alt="Richie Series">
+            <img src="21.%20Richie%20Carrying%20Gifts%20$%20High%20Fashion%20Brands%20(2024).jpg" alt="Richie Series">
           </div>
           <span class="drop-status-soldout">Private Collection &bull; Sold Out</span>
           <h4 class="drop-archive-title">Richie Social Satire Series</h4>
@@ -1147,7 +1558,7 @@
 
         <div class="drop-archive-card">
           <div class="drop-archive-img">
-            <img src="3. The Urban Hermit (2012).JPG" alt="The Urban Hermit Archetype">
+            <img src="3.%20The%20Urban%20Hermit%20(2012).JPG" alt="The Urban Hermit Archetype">
           </div>
           <span class="drop-status-soldout">Archive &bull; Permanent Collection</span>
           <h4 class="drop-archive-title">The Urban Hermit Foundations</h4>
@@ -1208,7 +1619,7 @@
     <div class="container">
       <div class="bio-grid">
         <div class="bio-img-frame">
-          <img src="2. Splendid Soul (2012).JPG" alt="Splendid Soul by Ketan Duggal">
+          <img src="2.%20Splendid%20Soul%20(2012).JPG" alt="Splendid Soul by Ketan Duggal">
         </div>
         <div class="bio-text">
           <span class="section-subtitle">Artist Statement</span>
@@ -1303,12 +1714,10 @@
     <div class="modal-viewing-room">
       <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
       
-      <!-- True Aspect Ratio Display -->
       <div class="modal-canvas-display">
         <img src="" alt="" id="modalImg">
       </div>
 
-      <!-- Artwork Details & Narrative -->
       <div class="modal-info-panel">
         <div>
           <div class="modal-nav-controls">
@@ -1344,7 +1753,7 @@
     </div>
   </div>
 
-  <!-- Data & Scripts -->
+  <!-- Interactive Logic -->
   <script>
     const artworks = [
       {
@@ -1581,278 +1990,138 @@
     ];
 
     // =========================================================
-    // 1. 3D THREE.JS VIRTUAL ROTUNDA ENGINE
+    // 1. 3D ROTUNDA ORBIT ENGINE (CSS 3D HARDWARE ACCELERATED)
     // =========================================================
-    let targetRotY = 0;
+    const cylinder = document.getElementById('rotundaCylinder');
+    const stage = document.getElementById('rotundaStage');
+    let currentY = 0;
+    let targetY = 0;
+    let isDragging = false;
+    let startX = 0;
 
-    function initThreeHero() {
-      const canvas = document.getElementById('threeCanvas');
-      if (!canvas || !window.THREE) return;
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.set(0, 0, 15);
-
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
-      scene.add(ambientLight);
-
-      const spotLight = new THREE.SpotLight(0xffeedd, 2.5, 50, Math.PI / 4, 0.5);
-      spotLight.position.set(0, 12, 16);
-      scene.add(spotLight);
-
-      const mouseLight = new THREE.PointLight(0xcba358, 2.2, 35);
-      mouseLight.position.set(0, 0, 8);
-      scene.add(mouseLight);
-
-      // Rotunda Group for 3D paintings
-      const rotundaGroup = new THREE.Group();
-      scene.add(rotundaGroup);
-
-      // 8 Masterpieces in 3D Rotunda
-      const featuredIndices =;
-      const radius = 6.8;
-
-      // Function to create instantaneous canvas plaque texture (no wait / no CORS lag)
-      function createPlaqueTexture(title, year) {
-        const c = document.createElement('canvas');
-        c.width = 512;
-        c.height = 640;
-        const ctx = c.getContext('2d');
-        
-        ctx.fillStyle = '#111116';
-        ctx.fillRect(0, 0, 512, 640);
-
-        ctx.strokeStyle = '#cba358';
-        ctx.lineWidth = 6;
-        ctx.strokeRect(20, 20, 472, 600);
-
-        ctx.fillStyle = '#f5f4f0';
-        ctx.font = '34px "Cormorant Garamond", serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(title, 256, 300);
-
-        ctx.fillStyle = '#cba358';
-        ctx.font = '16px "Montserrat", sans-serif';
-        ctx.fillText(year, 256, 350);
-
-        return new THREE.CanvasTexture(c);
+    function animateRotunda() {
+      if (!isDragging) {
+        targetY -= 0.18; // Smooth continuous idle rotation
       }
+      currentY += (targetY - currentY) * 0.08;
+      cylinder.style.transform = `rotateY(${currentY}deg)`;
+      requestAnimationFrame(animateRotunda);
+    }
+    animateRotunda();
 
-      featuredIndices.forEach((artIdx, idx) => {
-        const art = artworks[artIdx];
-        const angle = (idx / featuredIndices.length) * Math.PI * 2;
-        
-        // 3D Physical Canvas Geometry
-        const geometry = new THREE.BoxGeometry(3.2, 4.2, 0.16);
+    stage.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+    });
 
-        // Gold Bevel Edge Material
-        const edgeMat = new THREE.MeshStandardMaterial({
-          color: 0xcba358,
-          metalness: 0.85,
-          roughness: 0.2
-        });
-
-        // Front Face Material
-        const frontMat = new THREE.MeshStandardMaterial({
-          map: createPlaqueTexture(art.title, art.year),
-          roughness: 0.4,
-          metalness: 0.05
-        });
-
-        // Load actual image texture asynchronously
-        const img = new Image();
-        img.crossOrigin = "anonymous";
-        img.src = encodeURI(art.image);
-        img.onload = () => {
-          const tex = new THREE.Texture(img);
-          tex.needsUpdate = true;
-          frontMat.map = tex;
-          frontMat.needsUpdate = true;
-        };
-
-        const materials = [edgeMat, edgeMat, edgeMat, edgeMat, frontMat, edgeMat];
-        const mesh = new THREE.Mesh(geometry, materials);
-
-        mesh.position.x = Math.sin(angle) * radius;
-        mesh.position.z = Math.cos(angle) * radius;
-        mesh.rotation.y = angle;
-        mesh.userData = { artworkId: art.id };
-
-        rotundaGroup.add(mesh);
-      });
-
-      // Floating Gold Dust Particle Field
-      const particleCount = 200;
-      const particleGeo = new THREE.BufferGeometry();
-      const posArray = new Float32Array(particleCount * 3);
-
-      for (let i = 0; i < particleCount * 3; i += 3) {
-        posArray[i] = (Math.random() - 0.5) * 36;
-        posArray[i + 1] = (Math.random() - 0.5) * 22;
-        posArray[i + 2] = (Math.random() - 0.5) * 22;
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const deltaX = e.clientX - startX;
+        targetY += deltaX * 0.35;
+        startX = e.clientX;
       }
+    });
 
-      particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-      const particleMat = new THREE.PointsMaterial({
-        color: 0xd4af37,
-        size: 0.08,
-        transparent: true,
-        opacity: 0.8
-      });
+    window.addEventListener('mouseup', () => { isDragging = false; });
 
-      const particleMesh = new THREE.Points(particleGeo, particleMat);
-      scene.add(particleMesh);
-
-      // Drag & Mouse Tracking
-      let isDragging = false;
-      let prevMousePos = { x: 0, y: 0 };
-      let mouseX = 0;
-      let mouseY = 0;
-
-      window.addEventListener('mousedown', (e) => {
-        if (e.target === canvas) {
-          isDragging = true;
-          prevMousePos = { x: e.clientX, y: e.clientY };
-        }
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-
-        mouseLight.position.x = mouseX * 8;
-        mouseLight.position.y = mouseY * 6;
-
-        if (isDragging) {
-          const deltaX = e.clientX - prevMousePos.x;
-          targetRotY += deltaX * 0.007;
-          prevMousePos = { x: e.clientX, y: e.clientY };
-        }
-      });
-
-      window.addEventListener('mouseup', () => { isDragging = false; });
-
-      // Touch for Mobile
-      window.addEventListener('touchstart', (e) => {
-        if (e.target === canvas && e.touches.length === 1) {
-          isDragging = true;
-          prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        }
-      });
-
-      window.addEventListener('touchmove', (e) => {
-        if (isDragging && e.touches.length === 1) {
-          const deltaX = e.touches[0].clientX - prevMousePos.x;
-          targetRotY += deltaX * 0.009;
-          prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        }
-      });
-
-      window.addEventListener('touchend', () => { isDragging = false; });
-
-      // Click to Open Viewing Room on 3D Painting
-      const raycaster = new THREE.Raycaster();
-      const mouseVec = new THREE.Vector2();
-
-      canvas.addEventListener('click', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouseVec.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-        mouseVec.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
-        raycaster.setFromCamera(mouseVec, camera);
-        const intersects = raycaster.intersectObjects(rotundaGroup.children);
-
-        if (intersects.length > 0) {
-          const clicked = intersects[0].object;
-          if (clicked.userData && clicked.userData.artworkId !== undefined) {
-            openViewingRoom(clicked.userData.artworkId);
-          }
-        }
-      });
-
-      // Controls buttons
-      document.getElementById('btn3DPrev').addEventListener('click', () => {
-        targetRotY += Math.PI / 4;
-      });
-
-      document.getElementById('btn3DNext').addEventListener('click', () => {
-        targetRotY -= Math.PI / 4;
-      });
-
-      // Resize handler
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-
-      // Animation Loop
-      function animate() {
-        requestAnimationFrame(animate);
-
-        if (!isDragging) {
-          targetRotY += 0.0016; // Idle smooth rotation
-        }
-
-        rotundaGroup.rotation.y += (targetRotY - rotundaGroup.rotation.y) * 0.06;
-        rotundaGroup.rotation.x += (mouseY * 0.1 - rotundaGroup.rotation.x) * 0.06;
-
-        particleMesh.rotation.y += 0.0005;
-        particleMesh.rotation.x += 0.0002;
-
-        renderer.render(scene, camera);
+    // Touch controls for mobile
+    stage.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
       }
+    });
 
-      animate();
+    window.addEventListener('touchmove', (e) => {
+      if (isDragging && e.touches.length === 1) {
+        const deltaX = e.touches[0].clientX - startX;
+        targetY += deltaX * 0.45;
+        startX = e.touches[0].clientX;
+      }
+    });
+
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    // On-screen 3D buttons
+    document.getElementById('btnRotateLeft').addEventListener('click', () => {
+      targetY += 60;
+    });
+
+    document.getElementById('btnRotateRight').addEventListener('click', () => {
+      targetY -= 60;
+    });
+
+    // =========================================================
+    // 2. GOLD DUST FLOATING CANVAS PARTICLES
+    // =========================================================
+    const pCanvas = document.getElementById('particleBgCanvas');
+    const pCtx = pCanvas.getContext('2d');
+    let particles = [];
+
+    function resizeParticles() {
+      pCanvas.width = window.innerWidth;
+      pCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeParticles);
+    resizeParticles();
+
+    for (let i = 0; i < 40; i++) {
+      particles.push({
+        x: Math.random() * pCanvas.width,
+        y: Math.random() * pCanvas.height,
+        size: Math.random() * 2 + 0.8,
+        speedX: (Math.random() - 0.5) * 0.35,
+        speedY: (Math.random() - 0.5) * 0.35 - 0.15,
+        opacity: Math.random() * 0.6 + 0.2
+      });
     }
 
+    function renderParticles() {
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+      pCtx.fillStyle = '#cba358';
+      
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.y < 0) p.y = pCanvas.height;
+        if (p.x < 0) p.x = pCanvas.width;
+        if (p.x > pCanvas.width) p.x = 0;
+
+        pCtx.globalAlpha = p.opacity;
+        pCtx.beginPath();
+        pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        pCtx.fill();
+      });
+
+      requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
+
     // =========================================================
-    // 2. TRUE-SCALE MASONRY GALLERY RENDERER
+    // 3. GALLERY FILTERING LOGIC
     // =========================================================
-    const galleryContainer = document.getElementById('galleryContainer');
     const filterBtns = document.querySelectorAll('.filter-btn');
-
-    function renderGallery(filter = 'all') {
-      galleryContainer.innerHTML = '';
-      const filtered = filter === 'all' ? artworks : artworks.filter(a => a.phase === filter);
-
-      filtered.forEach(art => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        item.innerHTML = `
-          <div class="artwork-frame">
-            <img src="${encodeURI(art.image)}" alt="${art.title}" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">${art.title}</h4>
-            <span class="artwork-year">${art.year}</span>
-          </div>
-          <div class="artwork-details">
-            <span>${art.medium}</span>
-            <span>${art.dimensions}</span>
-          </div>
-        `;
-
-        item.addEventListener('click', () => openViewingRoom(art.id));
-        galleryContainer.appendChild(item);
-      });
-    }
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        renderGallery(btn.dataset.filter);
+        const filter = btn.dataset.filter;
+
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.dataset.phase === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
       });
     });
 
     // =========================================================
-    // 3. CURATORIAL VIEWING ROOM MODAL
+    // 4. CURATORIAL VIEWING ROOM MODAL
     // =========================================================
     const modal = document.getElementById('viewingRoomModal');
     const modalImg = document.getElementById('modalImg');
@@ -1934,12 +2203,6 @@
       e.preventDefault();
       document.getElementById('innerCircleForm').style.display = 'none';
       document.getElementById('innerCircleSuccess').style.display = 'block';
-    });
-
-    // Initialize Engine & Render Gallery on Load
-    window.addEventListener('DOMContentLoaded', () => {
-      initThreeHero();
-      renderGallery();
     });
   </script>
 </body>
