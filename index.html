@@ -119,12 +119,12 @@
       50% { opacity: 0.4; transform: scale(0.75); }
     }
 
-    /* Fixed Floating Kage Chapter Dock at bottom */
+    /* Fixed Floating Kage Chapter Dock at bottom (Hidden on top hero, visible on scroll) */
     .kage-floating-dock {
       position: fixed;
       bottom: 24px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(20px);
       z-index: 1000;
       background: var(--glass-bg);
       backdrop-filter: blur(24px) saturate(200%);
@@ -135,7 +135,15 @@
       display: flex;
       gap: 6px;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: var(--transition);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .kage-floating-dock.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
     }
 
     .dock-link {
@@ -757,33 +765,6 @@
       background: var(--accent-gold);
       color: #08080a;
       box-shadow: 0 10px 30px var(--accent-gold-glow);
-    }
-
-    .hero-rotunda-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .rotunda-btn {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      color: var(--text-main);
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      cursor: pointer;
-      padding: 6px 18px;
-      border-radius: 20px;
-      transition: var(--transition);
-    }
-
-    .rotunda-btn:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
     }
 
     /* ================================================= */
@@ -1570,10 +1551,6 @@
         <a href="#gallery" class="btn-luxury">Explore Vault</a>
         <a href="#collectors-circle" class="btn-luxury gold">Get VIP Drop Access</a>
       </div>
-      <div class="hero-rotunda-nav">
-        <button class="rotunda-btn" id="btnRotateLeft">&larr; Rotate Left</button>
-        <button class="rotunda-btn" id="btnRotateRight">Rotate Right &rarr;</button>
-      </div>
     </div>
   </section>
 
@@ -1918,7 +1895,7 @@
           </div>
           <div class="artwork-details">
             <span>Acrylic & Fluid Bio-Resin</span>
-            <span>51 &times; 122 cm (Wide Panorama)</span>
+            <span>51 &times; 122 cm (Wide Panorama 1:2.4)</span>
           </div>
         </div>
 
@@ -1933,7 +1910,7 @@
           </div>
           <div class="artwork-details">
             <span>Mixed Media & 24K Gold Leaf</span>
-            <span>61 &times; 91 cm</span>
+            <span>61 &times; 91 cm (Landscape 2:3)</span>
           </div>
         </div>
 
@@ -1948,7 +1925,7 @@
           </div>
           <div class="artwork-details">
             <span>Mixed Media & Street Pop</span>
-            <span>91 &times; 121 cm</span>
+            <span>91 &times; 121 cm (Landscape 3:4)</span>
           </div>
         </div>
 
@@ -1963,7 +1940,7 @@
           </div>
           <div class="artwork-details">
             <span>Mixed Media Luxury Collage</span>
-            <span>120 &times; 90 cm</span>
+            <span>120 &times; 90 cm (Portrait 3:4)</span>
           </div>
         </div>
 
@@ -2744,10 +2721,6 @@
 
     window.addEventListener('touchend', () => { isDragging = false; });
 
-    // Buttons
-    document.getElementById('btnRotateLeft').addEventListener('click', () => { targetY += 60; });
-    document.getElementById('btnRotateRight').addEventListener('click', () => { targetY -= 60; });
-
     // =========================================================
     // 2. GOLD DUST FLOATING PARTICLES
     // =========================================================
@@ -2829,11 +2802,16 @@
       gallerySec.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // ScrollSpy for Floating Dock
-    const sections = document.querySelectorAll('section');
-    const dockLinks = document.querySelectorAll('.dock-link');
-
+    // ScrollSpy for Floating Dock & Smooth Fade-in on Scroll
+    const dockEl = document.querySelector('.kage-floating-dock');
     window.addEventListener('scroll', () => {
+      // Hide dock at the top hero, show it smoothly when scrolling down
+      if (window.pageYOffset > 220) {
+        if (dockEl) dockEl.classList.add('visible');
+      } else {
+        if (dockEl) dockEl.classList.remove('visible');
+      }
+
       let currentSection = '';
       sections.forEach(sec => {
         const top = sec.offsetTop - 120;
