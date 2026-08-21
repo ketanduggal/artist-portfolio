@@ -5,49 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ketan Duggal | Contemporary Visual Artist</title>
   
-  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-primary: #0a0a0d;
-      --bg-surface: #121217;
-      --bg-secondary: #181820;
+      --bg-primary: #08080a;
+      --bg-surface: #101015;
+      --bg-secondary: #16161d;
       --text-main: #f5f4f0;
       --text-muted: #8e8d89;
       --accent-gold: #cba358;
       --accent-gold-glow: rgba(203, 163, 88, 0.4);
       --border-color: rgba(255, 255, 255, 0.08);
-      --card-mat: #141419;
+      --card-mat: #121217;
       --font-heading: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
       --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    body.light-theme {
-      --bg-primary: #faf9f6;
-      --bg-surface: #ffffff;
-      --bg-secondary: #f2f0eb;
-      --text-main: #141414;
-      --text-muted: #6e6d68;
-      --accent-gold: #b39256;
-      --accent-gold-glow: rgba(179, 146, 86, 0.25);
-      --border-color: rgba(0, 0, 0, 0.08);
-      --card-mat: #ffffff;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       background-color: var(--bg-primary);
       color: var(--text-main);
@@ -57,518 +36,194 @@
       letter-spacing: 0.04em;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      transition: background-color 0.5s ease, color 0.5s ease;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
 
     /* Navigation */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(10, 10, 13, 0.88);
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(8, 8, 10, 0.88);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-color);
       z-index: 1000;
-      transition: var(--transition);
     }
-
-    body.light-theme header {
-      background: rgba(250, 249, 246, 0.92);
-    }
-
     .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 84px;
-      padding: 0 40px;
-      max-width: 1560px;
-      margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 84px; padding: 0 40px; max-width: 1600px; margin: 0 auto;
     }
-
     .brand-logo {
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      color: var(--text-main);
+      font-size: 13px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase;
     }
-
-    .nav-menu {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-      align-items: center;
-    }
-
+    .nav-menu { display: flex; gap: 32px; list-style: none; align-items: center; }
     .nav-link {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--text-muted);
-      position: relative;
-      padding: 6px 0;
+      font-size: 11px; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.22em; color: var(--text-muted);
     }
-
-    .nav-link:hover, .nav-link.active {
-      color: var(--text-main);
-    }
-
-    .nav-link.highlight {
-      color: var(--accent-gold);
-      font-weight: 600;
-    }
-
-    .theme-toggle-btn {
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 6px 14px;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: 20px;
-      transition: var(--transition);
-    }
-
-    .theme-toggle-btn:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-    }
+    .nav-link:hover, .nav-link.active { color: var(--text-main); }
+    .nav-link.highlight { color: var(--accent-gold); font-weight: 600; }
 
     /* ================================================= */
-    /* 3D INTERACTIVE HERO STAGE ROTUNDA                 */
+    /* KAGE-INSPIRED HERO WITH VERTICAL TITLE            */
     /* ================================================= */
-    .hero-3d-stage {
+    .kage-hero {
       position: relative;
-      height: 100vh;
-      min-height: 780px;
-      background: radial-gradient(circle at 50% 35%, #181822 0%, #08080a 100%);
-      overflow: hidden;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
       padding-top: 84px;
-      perspective: 1400px;
+      overflow: hidden;
+      background: radial-gradient(circle at 65% 45%, #1c1514 0%, #08080a 75%);
     }
 
-    body.light-theme .hero-3d-stage {
-      background: radial-gradient(circle at 50% 35%, #ffffff 0%, #ece9e2 100%);
+    .kage-hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.38; filter: saturate(1.1) brightness(0.85);
+      z-index: 1; transform: scale(1.04);
     }
 
-    #particleBgCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
+    #emberCanvas {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 2; pointer-events: none;
     }
 
-    /* 3D Rotunda Viewport */
-    .rotunda-3d-viewport {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transform-style: preserve-3d;
-      z-index: 2;
-      cursor: grab;
-      user-select: none;
-      margin-bottom: 20px;
-    }
-
-    .rotunda-3d-viewport:active {
-      cursor: grabbing;
-    }
-
-    .rotunda-3d-cylinder {
-      position: relative;
-      width: 270px;
-      height: 350px;
-      transform-style: preserve-3d;
-      transition: transform 0.1s ease-out;
-    }
-
-    .rotunda-3d-card {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 270px;
-      height: 350px;
-      background: #141419;
-      padding: 12px;
-      border: 1px solid rgba(203, 163, 88, 0.4);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(203, 163, 88, 0.2);
-      border-radius: 4px;
-      transform-style: preserve-3d;
-      backface-visibility: hidden;
-      cursor: pointer;
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    body.light-theme .rotunda-3d-card {
-      background: #ffffff;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 0 25px rgba(179, 146, 86, 0.2);
-    }
-
-    .rotunda-3d-card:hover {
-      border-color: var(--accent-gold);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px var(--accent-gold-glow);
-    }
-
-    .rotunda-3d-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 2px;
-    }
-
-    .rotunda-3d-tag {
-      position: absolute;
-      bottom: 18px;
-      left: 18px;
-      right: 18px;
-      background: rgba(10, 10, 13, 0.88);
-      backdrop-filter: blur(8px);
-      padding: 8px 12px;
-      color: #fff;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      display: flex;
-      justify-content: space-between;
-      border-radius: 2px;
-    }
-
-    /* Hero Text & Actions */
-    .hero-hud-content {
+    .kage-hero-layout {
       position: relative;
       z-index: 3;
-      text-align: center;
-      max-width: 860px;
-      padding: 0 20px;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 40px;
     }
 
-    .hero-badge {
-      font-size: 10px;
+    .kage-hero-left {
+      max-width: 680px;
+    }
+
+    .kage-chapter-tag {
+      font-size: 11px;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.35em;
       color: var(--accent-gold);
-      margin-bottom: 12px;
-      display: inline-block;
-      font-weight: 600;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(34px, 5vw, 68px);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-
-    .hero-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      max-width: 580px;
-      margin: 0 auto 28px auto;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    .hero-actions {
+      margin-bottom: 24px;
       display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
     }
 
-    .btn-luxury {
-      display: inline-block;
-      padding: 13px 32px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.26em;
-      font-weight: 500;
-      border: 1px solid var(--text-main);
-      background: rgba(18, 18, 24, 0.8);
+    .kage-chapter-tag::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--accent-gold);
+    }
+
+    .kage-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 300;
+      line-height: 1.18;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .kage-hero-desc {
+      font-size: 14px;
+      color: #b5b3ad;
+      line-height: 1.8;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+
+    .kage-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 34px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(203, 163, 88, 0.4);
       color: var(--text-main);
-      cursor: pointer;
-      backdrop-filter: blur(6px);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      border-radius: 40px;
+      backdrop-filter: blur(12px);
       transition: var(--transition);
     }
 
-    body.light-theme .btn-luxury {
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    .btn-luxury:hover {
-      background: var(--text-main);
-      color: var(--bg-primary);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .btn-luxury.gold {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-      background: rgba(203, 163, 88, 0.08);
-    }
-
-    .btn-luxury.gold:hover {
+    .kage-pill-btn:hover {
       background: var(--accent-gold);
-      color: #0a0a0d;
+      color: #08080a;
       box-shadow: 0 10px 30px var(--accent-gold-glow);
     }
 
-    .hero-3d-controls {
+    /* Vertical Right Title */
+    .kage-hero-right {
       display: flex;
+      justify-content: flex-end;
       align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 22px;
+      height: 100%;
     }
 
-    .control-3d-btn {
-      background: rgba(18, 18, 24, 0.7);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      cursor: pointer;
-      padding: 6px 14px;
-      border-radius: 20px;
-      transition: var(--transition);
-    }
-
-    body.light-theme .control-3d-btn {
-      background: rgba(255, 255, 255, 0.85);
-    }
-
-    .control-3d-btn:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-    }
-
-    /* ================================================= */
-    /* CURATED ART GALLERY (TRUE-SCALE MASONRY)         */
-    /* ================================================= */
-    section {
-      padding: 120px 0;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-subtitle {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-      color: var(--accent-gold);
-      margin-bottom: 12px;
-      display: block;
-      font-weight: 500;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-
-    /* Filter Bar */
-    .filter-bar {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 50px;
-    }
-
-    .filter-btn {
-      background: transparent;
-      border: 1px solid transparent;
+    .kage-vertical-title {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
       font-family: var(--font-sans);
-      font-size: 11px;
+      font-size: clamp(52px, 8vw, 108px);
+      font-weight: 800;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-      padding: 8px 20px;
-      cursor: pointer;
-      border-radius: 30px;
-      transition: var(--transition);
-    }
-
-    .filter-btn:hover, .filter-btn.active {
-      color: var(--text-main);
-      background-color: var(--bg-surface);
-      border-color: var(--border-color);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Masonry Layout */
-    .masonry-gallery {
-      column-count: 3;
-      column-gap: 36px;
-    }
-
-    @media (max-width: 1024px) {
-      .masonry-gallery { column-count: 2; column-gap: 24px; }
-    }
-
-    @media (max-width: 640px) {
-      .masonry-gallery { column-count: 1; }
-    }
-
-    /* Artwork Cards */
-    .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 36px;
-      background: var(--card-mat);
-      border: 1px solid var(--border-color);
-      padding: 20px 20px 16px 20px;
-      border-radius: 3px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-      cursor: pointer;
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-      position: relative;
-    }
-
-    body.light-theme .gallery-item {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4);
-      border-color: var(--accent-gold);
-    }
-
-    .artwork-frame {
-      position: relative;
-      background-color: #08080b;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
-
-    body.light-theme .artwork-frame {
-      background-color: #f2f0eb;
-      border-color: rgba(0, 0, 0, 0.04);
-    }
-
-    .artwork-frame img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .gallery-item:hover .artwork-frame img {
-      transform: scale(1.02);
-    }
-
-    .artwork-caption {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 8px;
-      margin-bottom: 6px;
-    }
-
-    .artwork-title {
-      font-family: var(--font-heading);
-      font-size: 21px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-    }
-
-    .artwork-year {
-      font-size: 11px;
-      color: var(--accent-gold);
-      letter-spacing: 0.1em;
-      font-weight: 600;
-    }
-
-    .artwork-details {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
+      color: #ffffff;
+      line-height: 1;
+      user-select: none;
+      text-shadow: 0 8px 32px rgba(0, 0, 0, 0.9);
+      opacity: 0.94;
     }
 
     /* ================================================= */
-    /* COLLECTORS CIRCLE VIP SECTION                     */
+    /* COLLECTORS CIRCLE SECTION                         */
     /* ================================================= */
     .collectors-circle-section {
       background-color: var(--bg-surface);
       border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
+      padding: 120px 0;
     }
 
     .collectors-circle-card {
       background: var(--bg-primary);
       border: 1px solid var(--border-color);
-      max-width: 940px;
-      margin: 0 auto 80px auto;
+      max-width: 960px;
+      margin: 0 auto;
       padding: 60px 48px;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
       border-radius: 4px;
     }
 
     .drop-badge {
       display: inline-block;
-      padding: 6px 16px;
+      padding: 6px 18px;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.3em;
-      font-weight: 600;
-      color: #0a0a0d;
+      font-weight: 700;
+      color: #08080a;
       background: var(--accent-gold);
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .drop-title {
       font-family: var(--font-heading);
-      font-size: clamp(32px, 4vw, 48px);
+      font-size: clamp(34px, 4.5vw, 54px);
       font-weight: 300;
       letter-spacing: 0.06em;
       margin-bottom: 14px;
@@ -578,7 +233,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 16px;
-      max-width: 760px;
+      max-width: 780px;
       margin: 28px auto;
       padding: 22px 0;
       border-top: 1px solid var(--border-color);
@@ -595,8 +250,8 @@
       margin-bottom: 4px;
     }
 
-    .collectors-circle-form {
-      max-width: 560px;
+    .collectors-form {
+      max-width: 580px;
       margin: 36px auto 0 auto;
       display: grid;
       gap: 16px;
@@ -611,7 +266,7 @@
 
     .input-field {
       width: 100%;
-      padding: 13px 18px;
+      padding: 14px 18px;
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       color: var(--text-main);
@@ -649,379 +304,133 @@
       margin-top: 20px;
     }
 
-    /* Archival Series Grid */
-    .archival-drops-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 36px;
-      max-width: 1180px;
-      margin: 0 auto;
+    /* ================================================= */
+    /* CURATED ART GALLERY (TRUE MASONRY GRID)          */
+    /* ================================================= */
+    section { padding: 120px 0; }
+    .section-header { text-align: center; margin-bottom: 50px; }
+    .section-subtitle {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.35em;
+      color: var(--accent-gold); margin-bottom: 12px; display: block; font-weight: 500;
+    }
+    .section-title {
+      font-family: var(--font-heading); font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300; letter-spacing: 0.05em;
     }
 
-    .drop-archive-card {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      padding: 24px;
-      transition: var(--transition);
+    .filter-bar {
+      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 50px;
+    }
+    .filter-btn {
+      background: transparent; border: 1px solid transparent;
+      font-family: var(--font-sans); font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--text-muted); padding: 8px 20px;
+      cursor: pointer; border-radius: 30px; transition: var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      color: var(--text-main); background-color: var(--bg-surface);
+      border-color: var(--border-color); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
     }
 
-    .drop-archive-card:hover {
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+    .masonry-gallery { column-count: 3; column-gap: 36px; }
+    @media (max-width: 1024px) { .masonry-gallery { column-count: 2; column-gap: 24px; } }
+    @media (max-width: 640px) { .masonry-gallery { column-count: 1; } }
+
+    .gallery-item {
+      break-inside: avoid; margin-bottom: 36px;
+      background: var(--card-mat); border: 1px solid var(--border-color);
+      padding: 20px 20px 16px 20px; border-radius: 3px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4);
       border-color: var(--accent-gold);
     }
 
-    .drop-archive-img {
-      aspect-ratio: 16/10;
-      overflow: hidden;
-      background-color: var(--bg-surface);
-      margin-bottom: 18px;
+    .artwork-frame {
+      position: relative; background-color: #060608;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex; justify-content: center; align-items: center;
+      overflow: hidden; margin-bottom: 16px;
     }
-
-    .drop-archive-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .artwork-frame img {
+      width: 100%; height: auto; object-fit: contain;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .gallery-item:hover .artwork-frame img { transform: scale(1.02); }
 
-    .drop-status-soldout {
-      font-size: 9px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      color: #e06c5f;
-      margin-bottom: 6px;
-      display: inline-block;
+    .artwork-caption {
+      display: flex; justify-content: space-between; align-items: baseline;
+      border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 6px;
     }
+    .artwork-title { font-family: var(--font-heading); font-size: 21px; font-weight: 500; }
+    .artwork-year { font-size: 11px; color: var(--accent-gold); font-weight: 600; }
+    .artwork-details { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); }
 
-    .drop-archive-title {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 400;
-      margin-bottom: 8px;
-    }
-
-    .drop-archive-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    /* ================================================= */
-    /* EXHIBITIONS & BIOGRAPHY                           */
-    /* ================================================= */
-    .exhibitions-table {
-      max-width: 900px;
-      margin: 0 auto;
-      border-top: 1px solid var(--border-color);
-    }
-
+    /* Exhibitions & Bio */
+    .exhibitions-table { max-width: 900px; margin: 0 auto; border-top: 1px solid var(--border-color); }
     .exhibition-row {
-      display: grid;
-      grid-template-columns: 90px 1fr 200px;
-      padding: 26px 10px;
-      border-bottom: 1px solid var(--border-color);
-      align-items: center;
-      transition: var(--transition);
+      display: grid; grid-template-columns: 90px 1fr 200px;
+      padding: 26px 10px; border-bottom: 1px solid var(--border-color);
+      align-items: center; transition: var(--transition);
     }
+    .exhibition-row:hover { background-color: var(--bg-surface); }
+    .ex-year { font-size: 12px; font-weight: 600; color: var(--accent-gold); }
+    .ex-title { font-family: var(--font-heading); font-size: 20px; }
+    .ex-location { font-size: 11px; text-transform: uppercase; color: var(--text-muted); text-align: right; }
 
-    .exhibition-row:hover {
-      background-color: var(--bg-surface);
-    }
+    .bio-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 70px; align-items: center; }
+    .bio-img-frame { background: var(--bg-surface); padding: 16px; border: 1px solid var(--border-color); }
 
-    .ex-year {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      color: var(--accent-gold);
-    }
-
-    .ex-title {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 400;
-    }
-
-    .ex-location {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-      text-align: right;
-    }
-
-    /* Bio Layout */
-    .bio-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .bio-img-frame {
-      background: var(--bg-surface);
-      padding: 16px;
-      border: 1px solid var(--border-color);
-    }
-
-    .bio-img-frame img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .quote-statement {
-      font-family: var(--font-heading);
-      font-size: 25px;
-      font-style: italic;
-      line-height: 1.4;
-      margin-bottom: 24px;
-      color: var(--text-main);
-      border-left: 2px solid var(--accent-gold);
-      padding-left: 20px;
-    }
-
-    /* Contact Inquiries */
-    .contact-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 20px;
-      margin-top: 40px;
-      text-align: left;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .form-group label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-    }
-
-    .form-control {
-      padding: 14px 18px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-      font-size: 13px;
-      transition: var(--transition);
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--accent-gold);
-    }
-
-    textarea.form-control {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    /* ================================================= */
-    /* MUSEUM VIEWING ROOM MODAL                         */
-    /* ================================================= */
+    /* Modal */
     .modal-backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10, 10, 13, 0.96);
-      backdrop-filter: blur(24px);
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(10, 10, 13, 0.96); backdrop-filter: blur(24px);
+      z-index: 2000; display: none; align-items: center; justify-content: center; padding: 30px;
+      opacity: 0; transition: opacity 0.4s ease;
     }
-
-    .modal-backdrop.active {
-      display: flex;
-      opacity: 1;
-    }
-
+    .modal-backdrop.active { display: flex; opacity: 1; }
     .modal-viewing-room {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      max-width: 1180px;
-      width: 100%;
-      max-height: 90vh;
-      display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      overflow: hidden;
-      position: relative;
-      border-radius: 4px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      max-width: 1180px; width: 100%; max-height: 90vh;
+      display: grid; grid-template-columns: 1.3fr 0.9fr; overflow: hidden; position: relative;
+      border-radius: 4px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
     }
-
     .modal-canvas-display {
-      background: #08080a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      overflow: hidden;
-      position: relative;
+      background: #060608; display: flex; align-items: center; justify-content: center;
+      padding: 30px; overflow: hidden;
     }
-
     .modal-canvas-display img {
-      max-height: 80vh;
-      max-width: 100%;
-      height: auto;
-      width: auto;
-      object-fit: contain;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7);
+      max-height: 80vh; max-width: 100%; object-fit: contain;
     }
-
     .modal-info-panel {
-      padding: 44px 36px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: var(--bg-surface);
+      padding: 44px 36px; overflow-y: auto; display: flex; flex-direction: column; justify-content: space-between;
     }
-
     .modal-close-btn {
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: var(--text-muted);
-      z-index: 10;
+      position: absolute; top: 16px; right: 20px; background: none; border: none;
+      font-size: 28px; cursor: pointer; color: var(--text-muted); z-index: 10;
     }
-
-    .modal-nav-controls {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
+    .modal-nav-controls { display: flex; gap: 12px; margin-bottom: 20px; }
     .modal-nav-btn {
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      padding: 6px 14px;
-      cursor: pointer;
-      transition: var(--transition);
+      background: transparent; border: 1px solid var(--border-color); color: var(--text-main);
+      font-size: 11px; text-transform: uppercase; padding: 6px 14px; cursor: pointer;
     }
-
-    .modal-nav-btn:hover {
-      background: var(--accent-gold);
-      color: #0a0a0d;
-      border-color: var(--accent-gold);
-    }
-
-    .modal-art-title {
-      font-family: var(--font-heading);
-      font-size: 32px;
-      font-weight: 400;
-      margin-bottom: 4px;
-    }
-
-    .modal-art-era {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--accent-gold);
-      margin-bottom: 20px;
-    }
-
-    .spec-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 22px;
-      font-size: 12px;
-    }
-
-    .spec-table td {
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .spec-table td:first-child {
-      color: var(--text-muted);
-      text-transform: uppercase;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      width: 38%;
-    }
-
-    .modal-narrative-text {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 26px;
-      font-weight: 300;
-    }
+    .modal-nav-btn:hover { background: var(--accent-gold); color: #08080a; }
+    .spec-table { width: 100%; border-collapse: collapse; margin-bottom: 22px; font-size: 12px; }
+    .spec-table td { padding: 8px 0; border-bottom: 1px solid var(--border-color); }
+    .spec-table td:first-child { color: var(--text-muted); text-transform: uppercase; font-size: 10px; width: 38%; }
 
     /* Footer */
-    footer {
-      border-top: 1px solid var(--border-color);
-      padding: 80px 0 40px 0;
-      background-color: var(--bg-surface);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-
-    .footer-brand {
-      font-size: 14px;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      font-weight: 500;
-    }
-
-    .footer-col-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      margin-bottom: 18px;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 12px;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--border-color);
-      padding-top: 26px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
+    footer { border-top: 1px solid var(--border-color); padding: 80px 0 40px 0; background-color: var(--bg-surface); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+    .footer-brand { font-size: 14px; letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 14px; font-weight: 500; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 12px; }
 
     @media (max-width: 900px) {
+      .kage-hero-layout { grid-template-columns: 1fr; }
+      .kage-vertical-title { writing-mode: horizontal-tb; transform: none; font-size: 42px; margin-top: 30px; }
       .bio-grid { grid-template-columns: 1fr; }
       .modal-viewing-room { grid-template-columns: 1fr; max-height: 95vh; }
       .modal-canvas-display { max-height: 45vh; }
@@ -1042,432 +451,37 @@
         <li><a href="#exhibitions" class="nav-link">Exhibitions</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#contact" class="nav-link">Inquiries</a></li>
-        <li>
-          <button class="theme-toggle-btn" id="themeToggleBtn">Studio Light</button>
-        </li>
       </ul>
     </div>
   </header>
 
-  <!-- 3D INTERACTIVE HERO STAGE ROTUNDA -->
-  <section id="home" class="hero-3d-stage">
-    <!-- Golden Dust Particle Canvas -->
-    <canvas id="particleBgCanvas"></canvas>
+  <!-- KAGE-INSPIRED HERO SECTION WITH VERTICAL RAGS TO RICHES TITLE -->
+  <section id="home" class="kage-hero">
+    <img src="20.%20Richie%20Make%20Money%20(2022).jpg" alt="Richie Make Money by Ketan Duggal" class="kage-hero-bg">
+    <canvas id="emberCanvas"></canvas>
 
-    <!-- 3D Hardware Accelerated Exhibition Rotunda -->
-    <div class="rotunda-3d-viewport" id="rotundaStage">
-      <div class="rotunda-3d-cylinder" id="rotundaCylinder">
-        <!-- 3D Masterpiece 1: Querencia -->
-        <div class="rotunda-3d-card" style="transform: rotateY(0deg) translateZ(360px);" onclick="openViewingRoom(18)">
-          <img src="19.%20Querencia%20(2021).jpg" alt="Querencia" class="rotunda-3d-img">
-          <div class="rotunda-3d-tag">
-            <span>Querencia</span>
-            <span style="color: var(--accent-gold);">2021</span>
-          </div>
-        </div>
-        <!-- 3D Masterpiece 2: Splendid Soul -->
-        <div class="rotunda-3d-card" style="transform: rotateY(60deg) translateZ(360px);" onclick="openViewingRoom(1)">
-          <img src="2.%20Splendid%20Soul%20(2012).JPG" alt="Splendid Soul" class="rotunda-3d-img">
-          <div class="rotunda-3d-tag">
-            <span>Splendid Soul</span>
-            <span style="color: var(--accent-gold);">2012</span>
-          </div>
-        </div>
-        <!-- 3D Masterpiece 3: Study of Balance -->
-        <div class="rotunda-3d-card" style="transform: rotateY(120deg) translateZ(360px);" onclick="openViewingRoom(17)">
-          <img src="18.%20Study%20of%20Balance%20(2020).jpg" alt="Study of Balance" class="rotunda-3d-img">
-          <div class="rotunda-3d-tag">
-            <span>Study of Balance</span>
-            <span style="color: var(--accent-gold);">2020</span>
-          </div>
-        </div>
-        <!-- 3D Masterpiece 4: Richie Make Money -->
-        <div class="rotunda-3d-card" style="transform: rotateY(180deg) translateZ(360px);" onclick="openViewingRoom(19)">
-          <img src="20.%20Richie%20Make%20Money%20(2022).jpg" alt="Richie Make Money" class="rotunda-3d-img">
-          <div class="rotunda-3d-tag">
-            <span>Richie Make Money</span>
-            <span style="color: var(--accent-gold);">2022</span>
-          </div>
-        </div>
-        <!-- 3D Masterpiece 5: The Conflict of Love and Chastity -->
-        <div class="rotunda-3d-card" style="transform: rotateY(240deg) translateZ(360px);" onclick="openViewingRoom(16)">
-          <img src="17.%20The%20Conflict%20of%20Love%20and%20Chastity%20(2020).JPG" alt="The Conflict of Love and Chastity" class="rotunda-3d-img">
-          <div class="rotunda-3d-tag">
-            <span>Love & Chastity</span>
-            <span style="color: var(--accent-gold);">2020</span>
-          </div>
-        </div>
-        <!-- 3D Masterpiece 6: Richie Carrying Gifts -->
-        <div class="rotunda-3d-card" style="transform: rotateY(300deg) translateZ(360px);" onclick="openViewingRoom(20)">
-          <img src="21.%20Richie%20Carrying%20Gifts%20$%20High%20Fashion%20Brands%20(2024).jpg" alt="Richie Carrying Gifts" class="rotunda-3d-img">
-          <div class="rotunda-3d-tag">
-            <span>Richie Pop Satire</span>
-            <span style="color: var(--accent-gold);">2024</span>
-          </div>
-        </div>
+    <div class="kage-hero-layout">
+      <!-- Left Column: Chapter Info & Actions -->
+      <div class="kage-hero-left">
+        <div class="kage-chapter-tag">SERIES 01 &bull; THE POP ART VAULT</div>
+        <h1 class="kage-hero-title">Transmuting Isolation into Form & Materiality</h1>
+        <p class="kage-hero-desc">
+          A maximalist Pop Art inquiry examining how value, identity, and status are negotiated in a brand-obsessed world. The transition from the isolated studio to hyper-consumer satire.
+        </p>
+        <a href="#collectors-circle" class="kage-pill-btn">
+          <span>Request Collector Access</span>
+          <span>&nearr;</span>
+        </a>
       </div>
-    </div>
 
-    <!-- Hero Content -->
-    <div class="hero-hud-content">
-      <span class="hero-badge">3D Spatial Experience &bull; Master Archive</span>
-      <h1 class="hero-title">Transmuting Isolation into Form & Materiality</h1>
-      <p class="hero-desc">
-        Classical oil glazes, fluid bio-resin landscapes, and contemporary pop satire across a decade of visual inquiry.
-      </p>
-      <div class="hero-actions">
-        <a href="#gallery" class="btn-luxury">Explore Gallery</a>
-        <a href="#collectors-circle" class="btn-luxury gold">Join Collectors Circle</a>
-      </div>
-      <div class="hero-3d-controls">
-        <button class="control-3d-btn" id="btnRotateLeft">&larr; Rotate Left</button>
-        <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted);">&bull; Drag 3D Rotunda &bull;</span>
-        <button class="control-3d-btn" id="btnRotateRight">Rotate Right &rarr;</button>
+      <!-- Right Column: Vertical 'RAGS TO RICHES' Title -->
+      <div class="kage-hero-right">
+        <div class="kage-vertical-title">RAGS TO RICHES</div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Section: True-to-Scale Masonry Grid -->
-  <section id="gallery">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Catalog 2011–2024</span>
-        <h2 class="section-title">Curated Art Gallery</h2>
-      </div>
-
-      <!-- Phase Filter Bar -->
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All Works (21)</button>
-        <button class="filter-btn" data-filter="phase1">Pilani Foundations (2011–2014)</button>
-        <button class="filter-btn" data-filter="phase2">Transitions & Fluidity (2015–2021)</button>
-        <button class="filter-btn" data-filter="phase3">Social Satire & Pop Art (2022–2024)</button>
-      </div>
-
-      <!-- True Proportion Masonry Gallery with all 21 pre-rendered paintings -->
-      <div class="masonry-gallery" id="galleryContainer">
-
-        <!-- 1. Complex Agony (2011) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(0)">
-          <div class="artwork-frame">
-            <img src="1.%20Complex%20Agony%20(2011).jpg" alt="Complex Agony" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Complex Agony</h4>
-            <span class="artwork-year">2011</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil paint on canvas</span>
-            <span>60 &times; 60 cm</span>
-          </div>
-        </div>
-
-        <!-- 2. Splendid Soul (2012) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(1)">
-          <div class="artwork-frame">
-            <img src="2.%20Splendid%20Soul%20(2012).JPG" alt="Splendid Soul" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Splendid Soul</h4>
-            <span class="artwork-year">2012</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil paint on canvas</span>
-            <span>120 &times; 150 cm</span>
-          </div>
-        </div>
-
-        <!-- 3. The Urban Hermit (2012) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(2)">
-          <div class="artwork-frame">
-            <img src="3.%20The%20Urban%20Hermit%20(2012).JPG" alt="The Urban Hermit" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">The Urban Hermit</h4>
-            <span class="artwork-year">2012</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil paint on canvas</span>
-            <span>45 &times; 77 cm</span>
-          </div>
-        </div>
-
-        <!-- 4. Nothing on you (2012) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(3)">
-          <div class="artwork-frame">
-            <img src="4.%20Nothing%20on%20you%20(2012).JPG" alt="Nothing on you" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Nothing on you</h4>
-            <span class="artwork-year">2012</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil paint on canvas</span>
-            <span>60 &times; 60 cm</span>
-          </div>
-        </div>
-
-        <!-- 5. Strings Teem Senses (2013) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(4)">
-          <div class="artwork-frame">
-            <img src="5.%20Strings%20teem%20senses%20(1%20of%203)%20(2013).jpg" alt="Strings Teem Senses" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Strings Teem Senses</h4>
-            <span class="artwork-year">2013</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil on canvas (Triptych)</span>
-            <span>45 &times; 45 cm (3 panels)</span>
-          </div>
-        </div>
-
-        <!-- 6. Gaol of Greed (2013) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(5)">
-          <div class="artwork-frame">
-            <img src="6.%20Gaol%20of%20greed%20(2013).JPG" alt="Gaol of Greed" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Gaol of Greed</h4>
-            <span class="artwork-year">2013</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil paint on canvas</span>
-            <span>60 &times; 83 cm</span>
-          </div>
-        </div>
-
-        <!-- 7. Trying and Being (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(6)">
-          <div class="artwork-frame">
-            <img src="7.%20Trying%20and%20being%20(2014).JPG" alt="Trying and Being" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Trying and Being</h4>
-            <span class="artwork-year">2014</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil paint on canvas</span>
-            <span>60 &times; 60 cm</span>
-          </div>
-        </div>
-
-        <!-- 8. Now you see me, now you don't (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(7)">
-          <div class="artwork-frame">
-            <img src="8.%20Now%20you%20see%20me,now%20you%20dont%20(2014).JPG" alt="Now you see me" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Now you see me, now you don't</h4>
-            <span class="artwork-year">2014</span>
-          </div>
-          <div class="artwork-details">
-            <span>Mixed Medium on Canvas</span>
-            <span>60 &times; 45 cm</span>
-          </div>
-        </div>
-
-        <!-- 9. The Stripped Tint (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(8)">
-          <div class="artwork-frame">
-            <img src="9.%20The%20Stripped%20Tint%20(2014).JPG" alt="The Stripped Tint" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">The Stripped Tint</h4>
-            <span class="artwork-year">2014</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil & Acrylic on Canvas</span>
-            <span>45 &times; 60 cm</span>
-          </div>
-        </div>
-
-        <!-- 10. The One Who Knew (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(9)">
-          <div class="artwork-frame">
-            <img src="10.%20The%20One%20Who%20Knew%20(2014).JPG" alt="The One Who Knew" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">The One Who Knew</h4>
-            <span class="artwork-year">2014</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil on Canvas</span>
-            <span>60 &times; 60 cm</span>
-          </div>
-        </div>
-
-        <!-- 11. Sneak Peak (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(10)">
-          <div class="artwork-frame">
-            <img src="11.%20Sneak%20Peak%20(2014).JPG" alt="Sneak Peak" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Sneak Peak</h4>
-            <span class="artwork-year">2014</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil on Canvas</span>
-            <span>46 &times; 61 cm</span>
-          </div>
-        </div>
-
-        <!-- 12. The Doomed One (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(11)">
-          <div class="artwork-frame">
-            <img src="12.%20The%20Doomed%20One%20(2014).JPG" alt="The Doomed One" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">The Doomed One</h4>
-            <span class="artwork-year">2014</span>
-          </div>
-          <div class="artwork-details">
-            <span>Mixed Medium on Canvas</span>
-            <span>61 &times; 61 cm</span>
-          </div>
-        </div>
-
-        <!-- 13. Blue Winds (2015) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(12)">
-          <div class="artwork-frame">
-            <img src="13.%20Blue%20Winds%20(2015).JPG" alt="Blue Winds" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Blue Winds</h4>
-            <span class="artwork-year">2015</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil paint on canvas</span>
-            <span>61 &times; 61 cm</span>
-          </div>
-        </div>
-
-        <!-- 14. Strangers in the night (2016) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(13)">
-          <div class="artwork-frame">
-            <img src="14.%20Strangers%20in%20the%20night%20(2016).JPG" alt="Strangers in the night" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Strangers in the night</h4>
-            <span class="artwork-year">2016</span>
-          </div>
-          <div class="artwork-details">
-            <span>Acrylic on Canvas</span>
-            <span>60 &times; 60 cm</span>
-          </div>
-        </div>
-
-        <!-- 15. Burnt Wine (2016) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(14)">
-          <div class="artwork-frame">
-            <img src="15.%20Burnt%20Wine%20(2016).JPG" alt="Burnt Wine" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Burnt Wine</h4>
-            <span class="artwork-year">2016</span>
-          </div>
-          <div class="artwork-details">
-            <span>Mixed Media</span>
-            <span>67 &times; 48 cm</span>
-          </div>
-        </div>
-
-        <!-- 16. Elucidated (2017) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(15)">
-          <div class="artwork-frame">
-            <img src="16.%20Elucidated%20(2017).JPG" alt="Elucidated" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Elucidated</h4>
-            <span class="artwork-year">2017</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil paint on canvas</span>
-            <span>67 &times; 48 cm</span>
-          </div>
-        </div>
-
-        <!-- 17. The Conflict of Love and Chastity (2020) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(16)">
-          <div class="artwork-frame">
-            <img src="17.%20The%20Conflict%20of%20Love%20and%20Chastity%20(2020).JPG" alt="The Conflict of Love and Chastity" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">The Conflict of Love and Chastity</h4>
-            <span class="artwork-year">2020</span>
-          </div>
-          <div class="artwork-details">
-            <span>Oil & Mixed Media</span>
-            <span>61 &times; 61 cm</span>
-          </div>
-        </div>
-
-        <!-- 18. Study of Balance (2020) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(17)">
-          <div class="artwork-frame">
-            <img src="18.%20Study%20of%20Balance%20(2020).jpg" alt="Study of Balance" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Study of Balance</h4>
-            <span class="artwork-year">2020</span>
-          </div>
-          <div class="artwork-details">
-            <span>Acrylic & Fluid Resin</span>
-            <span>51 &times; 122 cm (Wide Panorama)</span>
-          </div>
-        </div>
-
-        <!-- 19. Querencia (2021) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(18)">
-          <div class="artwork-frame">
-            <img src="19.%20Querencia%20(2021).jpg" alt="Querencia" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Querencia</h4>
-            <span class="artwork-year">2021</span>
-          </div>
-          <div class="artwork-details">
-            <span>Mixed Media & Gold Leaf</span>
-            <span>61 &times; 91 cm</span>
-          </div>
-        </div>
-
-        <!-- 20. Richie Make Money (2022) -->
-        <div class="gallery-item" data-phase="phase3" onclick="openViewingRoom(19)">
-          <div class="artwork-frame">
-            <img src="20.%20Richie%20Make%20Money%20(2022).jpg" alt="Richie Make Money" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Richie Make Money</h4>
-            <span class="artwork-year">2022</span>
-          </div>
-          <div class="artwork-details">
-            <span>Mixed Media & Pop Art</span>
-            <span>91 &times; 121 cm</span>
-          </div>
-        </div>
-
-        <!-- 21. Richie Carrying Gifts (2024) -->
-        <div class="gallery-item" data-phase="phase3" onclick="openViewingRoom(20)">
-          <div class="artwork-frame">
-            <img src="21.%20Richie%20Carrying%20Gifts%20$%20High%20Fashion%20Brands%20(2024).jpg" alt="Richie Carrying Gifts" loading="lazy">
-          </div>
-          <div class="artwork-caption">
-            <h4 class="artwork-title">Richie Carrying Gifts & Brands</h4>
-            <span class="artwork-year">2024</span>
-          </div>
-          <div class="artwork-details">
-            <span>Mixed Media Collage</span>
-            <span>120 &times; 90 cm</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================= -->
-  <!-- COLLECTORS CIRCLE VIP SECTION                     -->
-  <!-- ================================================= -->
+  <!-- Collectors Circle VIP Section -->
   <section id="collectors-circle" class="collectors-circle-section">
     <div class="container">
       <div class="section-header">
@@ -1475,7 +489,6 @@
         <h2 class="section-title">Collectors Circle</h2>
       </div>
 
-      <!-- Release Card -->
       <div class="collectors-circle-card">
         <span class="drop-badge">Next Collector Release</span>
         <h3 class="drop-title">RAGS TO RICHES</h3>
@@ -1485,91 +498,180 @@
 
         <!-- Timezone Drop Grid -->
         <div class="drop-times-grid">
-          <div>
-            <strong>NEW DELHI / IST</strong>
-            <span>7:00 PM (SAT)</span>
-          </div>
-          <div>
-            <strong>NEW YORK / ET</strong>
-            <span>9:30 AM (SAT)</span>
-          </div>
-          <div>
-            <strong>LONDON / GMT</strong>
-            <span>2:30 PM (SAT)</span>
-          </div>
-          <div>
-            <strong>TOKYO / JST</strong>
-            <span>10:30 PM (SAT)</span>
-          </div>
-          <div>
-            <strong>SYDNEY / AEST</strong>
-            <span>11:30 PM (SAT)</span>
-          </div>
+          <div><strong>NEW DELHI / IST</strong><span>7:00 PM (SAT)</span></div>
+          <div><strong>NEW YORK / ET</strong><span>9:30 AM (SAT)</span></div>
+          <div><strong>LONDON / GMT</strong><span>2:30 PM (SAT)</span></div>
+          <div><strong>TOKYO / JST</strong><span>10:30 PM (SAT)</span></div>
+          <div><strong>SYDNEY / AEST</strong><span>11:30 PM (SAT)</span></div>
         </div>
 
-        <!-- VIP Sign-up Form -->
-        <form class="collectors-circle-form" id="innerCircleForm">
+        <form class="collectors-form" id="collectorsForm">
           <div class="form-row-2">
             <input type="text" class="input-field" placeholder="FIRST NAME" required>
             <input type="text" class="input-field" placeholder="LAST NAME" required>
           </div>
           <input type="email" class="input-field" placeholder="EMAIL ADDRESS" required>
           <input type="tel" class="input-field" placeholder="PHONE NUMBER / WHATSAPP (OPTIONAL)">
-          
           <label class="consent-label">
             <input type="checkbox" required checked>
             <span>I agree to receive private collector drop notifications, early acquisition invitations, and studio dispatches from Ketan Duggal Art.</span>
           </label>
-
-          <button type="submit" class="btn-luxury gold" style="width: 100%; margin-top: 10px;">Request Collectors Circle Access</button>
+          <button type="submit" class="kage-pill-btn" style="width: 100%; justify-content: center; margin-top: 10px;">
+            <span>Request Collectors Circle Access</span>
+            <span>&nearr;</span>
+          </button>
         </form>
 
-        <div class="form-success-msg" id="innerCircleSuccess">
+        <div class="form-success-msg" id="collectorsSuccess">
           &#10003; Welcome to the Collectors Circle. You will receive private drop access and collector updates directly in your inbox.
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Archival / Sold-Out Drops Section -->
-      <div class="section-header" style="margin-bottom: 36px;">
-        <span class="section-subtitle">Archive</span>
-        <h3 class="section-title" style="font-size: 30px;">Previous Sold-Out Collections</h3>
+  <!-- Curated Art Gallery: True Masonry Grid (All 21 Paintings) -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Catalog 2011–2024</span>
+        <h2 class="section-title">Curated Art Gallery</h2>
       </div>
 
-      <div class="archival-drops-grid">
-        <div class="drop-archive-card">
-          <div class="drop-archive-img">
-            <img src="18.%20Study%20of%20Balance%20(2020).jpg" alt="Study of Balance Series">
-          </div>
-          <span class="drop-status-soldout">Private Collection &bull; Sold Out</span>
-          <h4 class="drop-archive-title">Study of Balance (Liquid Landscapes)</h4>
-          <p class="drop-archive-desc">
-            A milestone horizontal liquid landscape exploring the boundary between conscious control and organic fluid surrender using multi-layered clear bio-resin.
-          </p>
-        </div>
-
-        <div class="drop-archive-card">
-          <div class="drop-archive-img">
-            <img src="21.%20Richie%20Carrying%20Gifts%20$%20High%20Fashion%20Brands%20(2024).jpg" alt="Richie Series">
-          </div>
-          <span class="drop-status-soldout">Private Collection &bull; Sold Out</span>
-          <h4 class="drop-archive-title">Richie Pop Satire Series</h4>
-          <p class="drop-archive-desc">
-            A maximalist mixed-media critique of hyper-consumerism and luxury brand culture, examining the performance of identity in contemporary society.
-          </p>
-        </div>
-
-        <div class="drop-archive-card">
-          <div class="drop-archive-img">
-            <img src="3.%20The%20Urban%20Hermit%20(2012).JPG" alt="The Urban Hermit Archetype">
-          </div>
-          <span class="drop-status-soldout">Archive &bull; Permanent Collection</span>
-          <h4 class="drop-archive-title">The Urban Hermit Foundations</h4>
-          <p class="drop-archive-desc">
-            The formative archetype of the Pilani era. Heavy figurative oil brushwork capturing introspection and retreat from institutional noise.
-          </p>
-        </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Works (21)</button>
+        <button class="filter-btn" data-filter="phase1">Pilani Foundations (2011–2014)</button>
+        <button class="filter-btn" data-filter="phase2">Transitions & Fluidity (2015–2021)</button>
+        <button class="filter-btn" data-filter="phase3">Social Satire & Pop Art (2022–2024)</button>
       </div>
 
+      <div class="masonry-gallery" id="galleryContainer">
+        <!-- 1 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(0)">
+          <div class="artwork-frame"><img src="1.%20Complex%20Agony%20(2011).jpg" alt="Complex Agony" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Complex Agony</h4><span class="artwork-year">2011</span></div>
+          <div class="artwork-details"><span>Oil paint on canvas</span><span>60 &times; 60 cm</span></div>
+        </div>
+        <!-- 2 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(1)">
+          <div class="artwork-frame"><img src="2.%20Splendid%20Soul%20(2012).JPG" alt="Splendid Soul" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Splendid Soul</h4><span class="artwork-year">2012</span></div>
+          <div class="artwork-details"><span>Oil paint on canvas</span><span>120 &times; 150 cm</span></div>
+        </div>
+        <!-- 3 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(2)">
+          <div class="artwork-frame"><img src="3.%20The%20Urban%20Hermit%20(2012).JPG" alt="The Urban Hermit" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">The Urban Hermit</h4><span class="artwork-year">2012</span></div>
+          <div class="artwork-details"><span>Oil paint on canvas</span><span>45 &times; 77 cm</span></div>
+        </div>
+        <!-- 4 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(3)">
+          <div class="artwork-frame"><img src="4.%20Nothing%20on%20you%20(2012).JPG" alt="Nothing on you" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Nothing on you</h4><span class="artwork-year">2012</span></div>
+          <div class="artwork-details"><span>Oil paint on canvas</span><span>60 &times; 60 cm</span></div>
+        </div>
+        <!-- 5 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(4)">
+          <div class="artwork-frame"><img src="5.%20Strings%20teem%20senses%20(1%20of%203)%20(2013).jpg" alt="Strings Teem Senses" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Strings Teem Senses</h4><span class="artwork-year">2013</span></div>
+          <div class="artwork-details"><span>Oil on canvas (Triptych)</span><span>45 &times; 45 cm</span></div>
+        </div>
+        <!-- 6 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(5)">
+          <div class="artwork-frame"><img src="6.%20Gaol%20of%20greed%20(2013).JPG" alt="Gaol of Greed" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Gaol of Greed</h4><span class="artwork-year">2013</span></div>
+          <div class="artwork-details"><span>Oil paint on canvas</span><span>60 &times; 83 cm</span></div>
+        </div>
+        <!-- 7 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(6)">
+          <div class="artwork-frame"><img src="7.%20Trying%20and%20being%20(2014).JPG" alt="Trying and Being" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Trying and Being</h4><span class="artwork-year">2014</span></div>
+          <div class="artwork-details"><span>Oil paint on canvas</span><span>60 &times; 60 cm</span></div>
+        </div>
+        <!-- 8 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(7)">
+          <div class="artwork-frame"><img src="8.%20Now%20you%20see%20me,now%20you%20dont%20(2014).JPG" alt="Now you see me" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Now you see me, now you don't</h4><span class="artwork-year">2014</span></div>
+          <div class="artwork-details"><span>Mixed Medium on Canvas</span><span>60 &times; 45 cm</span></div>
+        </div>
+        <!-- 9 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(8)">
+          <div class="artwork-frame"><img src="9.%20The%20Stripped%20Tint%20(2014).JPG" alt="The Stripped Tint" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">The Stripped Tint</h4><span class="artwork-year">2014</span></div>
+          <div class="artwork-details"><span>Oil & Acrylic on Canvas</span><span>45 &times; 60 cm</span></div>
+        </div>
+        <!-- 10 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(9)">
+          <div class="artwork-frame"><img src="10.%20The%20One%20Who%20Knew%20(2014).JPG" alt="The One Who Knew" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">The One Who Knew</h4><span class="artwork-year">2014</span></div>
+          <div class="artwork-details"><span>Oil on Canvas</span><span>60 &times; 60 cm</span></div>
+        </div>
+        <!-- 11 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(10)">
+          <div class="artwork-frame"><img src="11.%20Sneak%20Peak%20(2014).JPG" alt="Sneak Peak" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Sneak Peak</h4><span class="artwork-year">2014</span></div>
+          <div class="artwork-details"><span>Oil on Canvas</span><span>46 &times; 61 cm</span></div>
+        </div>
+        <!-- 12 -->
+        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(11)">
+          <div class="artwork-frame"><img src="12.%20The%20Doomed%20One%20(2014).JPG" alt="The Doomed One" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">The Doomed One</h4><span class="artwork-year">2014</span></div>
+          <div class="artwork-details"><span>Mixed Medium on Canvas</span><span>61 &times; 61 cm</span></div>
+        </div>
+        <!-- 13 -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(12)">
+          <div class="artwork-frame"><img src="13.%20Blue%20Winds%20(2015).JPG" alt="Blue Winds" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Blue Winds</h4><span class="artwork-year">2015</span></div>
+          <div class="artwork-details"><span>Oil paint on canvas</span><span>61 &times; 61 cm</span></div>
+        </div>
+        <!-- 14 -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(13)">
+          <div class="artwork-frame"><img src="14.%20Strangers%20in%20the%20night%20(2016).JPG" alt="Strangers in the night" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Strangers in the night</h4><span class="artwork-year">2016</span></div>
+          <div class="artwork-details"><span>Acrylic on Canvas</span><span>60 &times; 60 cm</span></div>
+        </div>
+        <!-- 15 -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(14)">
+          <div class="artwork-frame"><img src="15.%20Burnt%20Wine%20(2016).JPG" alt="Burnt Wine" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Burnt Wine</h4><span class="artwork-year">2016</span></div>
+          <div class="artwork-details"><span>Mixed Media</span><span>67 &times; 48 cm</span></div>
+        </div>
+        <!-- 16 -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(15)">
+          <div class="artwork-frame"><img src="16.%20Elucidated%20(2017).JPG" alt="Elucidated" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Elucidated</h4><span class="artwork-year">2017</span></div>
+          <div class="artwork-details"><span>Oil paint on canvas</span><span>67 &times; 48 cm</span></div>
+        </div>
+        <!-- 17 -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(16)">
+          <div class="artwork-frame"><img src="17.%20The%20Conflict%20of%20Love%20and%20Chastity%20(2020).JPG" alt="Love and Chastity" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">The Conflict of Love & Chastity</h4><span class="artwork-year">2020</span></div>
+          <div class="artwork-details"><span>Oil & Mixed Media</span><span>61 &times; 61 cm</span></div>
+        </div>
+        <!-- 18 -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(17)">
+          <div class="artwork-frame"><img src="18.%20Study%20of%20Balance%20(2020).jpg" alt="Study of Balance" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Study of Balance</h4><span class="artwork-year">2020</span></div>
+          <div class="artwork-details"><span>Acrylic & Fluid Resin</span><span>51 &times; 122 cm (Wide Panorama)</span></div>
+        </div>
+        <!-- 19 -->
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(18)">
+          <div class="artwork-frame"><img src="19.%20Querencia%20(2021).jpg" alt="Querencia" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Querencia</h4><span class="artwork-year">2021</span></div>
+          <div class="artwork-details"><span>Mixed Media & Gold Leaf</span><span>61 &times; 91 cm</span></div>
+        </div>
+        <!-- 20 -->
+        <div class="gallery-item" data-phase="phase3" onclick="openViewingRoom(19)">
+          <div class="artwork-frame"><img src="20.%20Richie%20Make%20Money%20(2022).jpg" alt="Richie Make Money" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Richie Make Money</h4><span class="artwork-year">2022</span></div>
+          <div class="artwork-details"><span>Mixed Media & Pop Art</span><span>91 &times; 121 cm</span></div>
+        </div>
+        <!-- 21 -->
+        <div class="gallery-item" data-phase="phase3" onclick="openViewingRoom(20)">
+          <div class="artwork-frame"><img src="21.%20Richie%20Carrying%20Gifts%20$%20High%20Fashion%20Brands%20(2024).jpg" alt="Richie Carrying Gifts" loading="lazy"></div>
+          <div class="artwork-caption"><h4 class="artwork-title">Richie Carrying Gifts & Brands</h4><span class="artwork-year">2024</span></div>
+          <div class="artwork-details"><span>Mixed Media Collage</span><span>120 &times; 90 cm</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1642,7 +744,7 @@
     </div>
   </section>
 
-  <!-- Contact / Inquiries Section -->
+  <!-- Contact Inquiries -->
   <section id="contact">
     <div class="container">
       <div class="contact-wrapper">
@@ -1663,13 +765,16 @@
           </div>
           <div class="form-group">
             <label>Artwork of Interest</label>
-            <input type="text" id="inquiryArtwork" name="artwork" class="form-control" placeholder="e.g. Querencia (2021) or Richie Make Money (2022)">
+            <input type="text" id="inquiryArtwork" name="artwork" class="form-control" placeholder="e.g. Richie Make Money (2022) or Querencia (2021)">
           </div>
           <div class="form-group">
             <label>Message</label>
             <textarea name="message" class="form-control" placeholder="Please detail your acquisition inquiry..."></textarea>
           </div>
-          <button type="submit" class="btn-luxury" style="margin-top: 8px;">Send Inquiry</button>
+          <button type="submit" class="kage-pill-btn" style="margin-top: 12px;">
+            <span>Send Inquiry</span>
+            <span>&nearr;</span>
+          </button>
         </form>
       </div>
     </div>
@@ -1703,7 +808,6 @@
           </ul>
         </div>
       </div>
-
       <div class="footer-bottom">
         <div>&copy; 2026 Ketan Duggal. All rights reserved.</div>
         <div>Pilani, Rajasthan, India</div>
@@ -1711,398 +815,102 @@
     </div>
   </footer>
 
-  <!-- Museum Viewing Room Modal -->
+  <!-- Viewing Room Modal -->
   <div class="modal-backdrop" id="viewingRoomModal">
     <div class="modal-viewing-room">
       <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
-      
       <div class="modal-canvas-display">
         <img src="" alt="" id="modalImg">
       </div>
-
       <div class="modal-info-panel">
         <div>
           <div class="modal-nav-controls">
             <button class="modal-nav-btn" id="prevArtBtn">&larr; Previous</button>
             <button class="modal-nav-btn" id="nextArtBtn">Next &rarr;</button>
           </div>
-
           <h3 class="modal-art-title" id="modalTitle">Artwork Title</h3>
           <div class="modal-art-era" id="modalEra">Era &bull; Location</div>
-
           <table class="spec-table">
-            <tr>
-              <td>Medium</td>
-              <td id="modalMedium">Oil on canvas</td>
-            </tr>
-            <tr>
-              <td>Dimensions</td>
-              <td id="modalDimensions">60 &times; 60 cm</td>
-            </tr>
-            <tr>
-              <td>Year & Origin</td>
-              <td id="modalOrigin">2014 &bull; Pilani</td>
-            </tr>
+            <tr><td>Medium</td><td id="modalMedium">Oil on canvas</td></tr>
+            <tr><td>Dimensions</td><td id="modalDimensions">60 &times; 60 cm</td></tr>
+            <tr><td>Year & Origin</td><td id="modalOrigin">2014 &bull; Pilani</td></tr>
           </table>
-
-          <p class="modal-narrative-text" id="modalStory">
-            Curatorial narrative text describing the painting.
-          </p>
+          <p class="modal-narrative-text" id="modalStory">Curatorial narrative text describing the painting.</p>
         </div>
-
-        <a href="#contact" class="btn-luxury" id="modalInquireBtn" style="text-align: center;">Inquire About This Piece</a>
+        <a href="#contact" class="kage-pill-btn" id="modalInquireBtn" style="justify-content: center;">
+          <span>Inquire About This Piece</span>
+          <span>&nearr;</span>
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- Interactive Logic -->
   <script>
     const artworks = [
-      {
-        id: 0,
-        title: "Complex Agony",
-        year: "2011",
-        medium: "Oil paint on canvas",
-        dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Birla School, Pilani",
-        phase: "phase1",
-        image: "1. Complex Agony (2011).jpg",
-        story: "The genesis of the artist's visual inquiry. Created over six months as his first canvas painting, this work features a figure clutching her hands over her heart—a visceral excavation of emotional density, self-preservation, and resilience."
-      },
-      {
-        id: 1,
-        title: "Splendid Soul",
-        year: "2012",
-        medium: "Oil paint on canvas",
-        dimensions: "120 × 150 cm (Portrait)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "2. Splendid Soul (2012).JPG",
-        story: "The artist's largest early work; a testament to finding grace, splendor, and internal confidence amidst the chaos of struggle using dramatic, classical chiaroscuro lighting."
-      },
-      {
-        id: 2,
-        title: "The Urban Hermit",
-        year: "2012",
-        medium: "Oil paint on canvas",
-        dimensions: "45 × 77 cm (Tall Vertical)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "3. The Urban Hermit (2012).JPG",
-        story: "The definitive archetype of the early period. Captures the quiet weight of introspection and a figure seeking retreat from institutional noise to build an authentic inner voice."
-      },
-      {
-        id: 3,
-        title: "Nothing on you",
-        year: "2012",
-        medium: "Oil paint on canvas",
-        dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "4. Nothing on you (2012).JPG",
-        story: "A haunting, ethereal portrait using muted atmospheric tones to create a sense of lingering, ghostly presence and quiet emotional resonance."
-      },
-      {
-        id: 4,
-        title: "Strings Teem Senses",
-        year: "2013",
-        medium: "Oil paint on canvas (Triptych)",
-        dimensions: "45 × 45 cm each (3 panels)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "5. Strings teem senses (1 of 3) (2013).jpg",
-        story: "An exploration of sensory vibration, translating the physical tuning and rhythm of guitar strings (EADGBe) into visual geometry and emotional flow across multiple panels."
-      },
-      {
-        id: 5,
-        title: "Gaol of Greed",
-        year: "2013",
-        medium: "Oil paint on canvas",
-        dimensions: "60 × 83 cm (Portrait)",
-        origin: "Home Studio, Pilani",
-        phase: "phase1",
-        image: "6. Gaol of greed (2013).JPG",
-        story: "A heavy, textured commentary on societal entrapment and the psychological burden of being 'jailed' by material and synthetic desires."
-      },
-      {
-        id: 6,
-        title: "Trying and Being",
-        year: "2014",
-        medium: "Oil paint on canvas",
-        dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "7. Trying and being (2014).JPG",
-        story: "A high-intensity study of existence, focusing on the visceral reality of physical presence, identity formation, and internal perseverance."
-      },
-      {
-        id: 7,
-        title: "Now you see me, now you don't",
-        year: "2014",
-        medium: "Mixed Medium on Canvas",
-        dimensions: "60 × 45 cm (Horizontal)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "8. Now you see me,now you dont (2014).JPG",
-        story: "A cool-toned portrait playing with presence and absence; explores the concealed layers of identity we choose to withhold from public view."
-      },
-      {
-        id: 8,
-        title: "The Stripped Tint",
-        year: "2014",
-        medium: "Oil & Acrylic on Canvas",
-        dimensions: "45 × 60 cm (Portrait)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "9. The Stripped Tint (2014).JPG",
-        story: "An introspective study of a bowed figure examining moral weight, humility, and the quiet tension of an awakened conscience."
-      },
-      {
-        id: 9,
-        title: "The One Who Knew",
-        year: "2014",
-        medium: "Oil on Canvas",
-        dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "10. The One Who Knew (2014).JPG",
-        story: "A vibrant, warm-toned portrait carrying the symbolic burden and silent reverence of personal memory."
-      },
-      {
-        id: 10,
-        title: "Sneak Peak",
-        year: "2014",
-        medium: "Oil on Canvas",
-        dimensions: "46 × 61 cm (Portrait)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "11. Sneak Peak (2014).JPG",
-        story: "An initial excavation of the concept of sanctuary—the search for a psychological space where one feels most rooted and authentic."
-      },
-      {
-        id: 11,
-        title: "The Doomed One",
-        year: "2014",
-        medium: "Mixed Medium on Canvas",
-        dimensions: "61 × 61 cm (Square 1:1)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase1",
-        image: "12. The Doomed One (2014).JPG",
-        story: "An unflinching look at existential weight; a monochromatic study exploring the raw interplay between human form and fluid paint."
-      },
-      {
-        id: 12,
-        title: "Blue Winds",
-        year: "2015",
-        medium: "Oil paint on canvas",
-        dimensions: "61 × 61 cm (Square 1:1)",
-        origin: "Delhi, India",
-        phase: "phase2",
-        image: "13. Blue Winds (2015).JPG",
-        story: "A pivotal transition work moving away from strict figuration into dynamic atmospheric abstraction, using sweeping azure strokes to depict movement."
-      },
-      {
-        id: 13,
-        title: "Strangers in the night",
-        year: "2016",
-        medium: "Acrylic on Canvas",
-        dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Delhi, India",
-        phase: "phase2",
-        image: "14. Strangers in the night (2016).JPG",
-        story: "A bridge work moving toward high-intensity emotional abstraction and warm chromatic fields, capturing fleeting urban encounters."
-      },
-      {
-        id: 14,
-        title: "Burnt Wine",
-        year: "2016",
-        medium: "Mixed Media",
-        dimensions: "67 × 48 cm (Portrait)",
-        origin: "Delhi, India",
-        phase: "phase2",
-        image: "15. Burnt Wine (2016).JPG",
-        story: "Marks the artist's first major move into mixed media, focusing on surface friction, organic unfolding of dense materials, and earthy textures."
-      },
-      {
-        id: 15,
-        title: "Elucidated",
-        year: "2017",
-        medium: "Oil paint on canvas",
-        dimensions: "67 × 48 cm (Portrait)",
-        origin: "Delhi, India",
-        phase: "phase2",
-        image: "16. Elucidated (2017).JPG",
-        story: "A shift toward luminosity and optical clarity; cool blue and white glazes signaling clarity of thought and artistic maturity."
-      },
-      {
-        id: 16,
-        title: "The Conflict of Love and Chastity",
-        year: "2020",
-        medium: "Oil & Mixed Media",
-        dimensions: "61 × 61 cm (Square 1:1)",
-        origin: "Sydney, Australia",
-        phase: "phase2",
-        image: "17. The Conflict of Love and Chastity (2020).JPG",
-        story: "Created in Sydney, this work introduces a high-contrast 'glitch' effect across classical portraiture traditions, capturing contemporary friction."
-      },
-      {
-        id: 17,
-        title: "Study of Balance",
-        year: "2020",
-        medium: "Acrylic & Fluid Resin",
-        dimensions: "51 × 122 cm (Wide Panorama 1:2.4)",
-        origin: "Sydney, Australia",
-        phase: "phase2",
-        image: "18. Study of Balance (2020).jpg",
-        story: "A landmark experiment in fluid resin. Designed as a horizontal liquid landscape, meditating on the delicate balance between intentional control and fluid surrender."
-      },
-      {
-        id: 18,
-        title: "Querencia",
-        year: "2021",
-        medium: "Mixed Media & Gold Leaf",
-        dimensions: "61 × 91 cm (Landscape 2:3)",
-        origin: "Sydney, Australia",
-        phase: "phase2",
-        image: "19. Querencia (2021).jpg",
-        story: "A mature resolution of the search for a safe space. Incorporates graphic figuration against a luminous gold-leaf background symbolizing psychological sanctuary."
-      },
-      {
-        id: 19,
-        title: "Richie Make Money",
-        year: "2022",
-        medium: "Mixed Media & Pop Art",
-        dimensions: "91 × 121 cm (Landscape 3:4)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase3",
-        image: "20. Richie Make Money (2022).jpg",
-        story: "Marks the pivot where 'The Hermit' steps into 'The Market.' A vibrant, satirical inquiry into wealth accumulation and how modern systems define individual worth."
-      },
-      {
-        id: 20,
-        title: "Richie Carrying Gifts & High Fashion Brands",
-        year: "2024",
-        medium: "Mixed Media Collage",
-        dimensions: "120 × 90 cm (Portrait 3:4)",
-        origin: "Pilani, Rajasthan",
-        phase: "phase3",
-        image: "21. Richie Carrying Gifts $ High Fashion Brands (2024).jpg",
-        story: "A maximalist critique of hyper-consumerism. The iconic pop figure is portrayed physically burdened by modern luxury status symbols, examining the performance of identity in brand culture."
-      }
+      { id: 0, title: "Complex Agony", year: "2011", medium: "Oil paint on canvas", dimensions: "60 × 60 cm (Square 1:1)", origin: "Birla School, Pilani", phase: "phase1", image: "1. Complex Agony (2011).jpg", story: "The genesis of the artist's visual inquiry. Created over six months as his first canvas painting, this work features a figure clutching her hands over her heart—a visceral excavation of emotional density, self-preservation, and resilience." },
+      { id: 1, title: "Splendid Soul", year: "2012", medium: "Oil paint on canvas", dimensions: "120 × 150 cm (Portrait)", origin: "Pilani, Rajasthan", phase: "phase1", image: "2. Splendid Soul (2012).JPG", story: "The artist's largest early work; a testament to finding grace, splendor, and internal confidence amidst the chaos of struggle using dramatic, classical chiaroscuro lighting." },
+      { id: 2, title: "The Urban Hermit", year: "2012", medium: "Oil paint on canvas", dimensions: "45 × 77 cm (Tall Vertical)", origin: "Pilani, Rajasthan", phase: "phase1", image: "3. The Urban Hermit (2012).JPG", story: "The definitive archetype of the early period. Captures the quiet weight of introspection and a figure seeking retreat from institutional noise to build an authentic inner voice." },
+      { id: 3, title: "Nothing on you", year: "2012", medium: "Oil paint on canvas", dimensions: "60 × 60 cm (Square 1:1)", origin: "Pilani, Rajasthan", phase: "phase1", image: "4. Nothing on you (2012).JPG", story: "A haunting, ethereal portrait using muted atmospheric tones to create a sense of lingering, ghostly presence and quiet emotional resonance." },
+      { id: 4, title: "Strings Teem Senses", year: "2013", medium: "Oil paint on canvas (Triptych)", dimensions: "45 × 45 cm each (3 panels)", origin: "Pilani, Rajasthan", phase: "phase1", image: "5. Strings teem senses (1 of 3) (2013).jpg", story: "An exploration of sensory vibration, translating the physical tuning and rhythm of guitar strings (EADGBe) into visual geometry and emotional flow across multiple panels." },
+      { id: 5, title: "Gaol of Greed", year: "2013", medium: "Oil paint on canvas", dimensions: "60 × 83 cm (Portrait)", origin: "Home Studio, Pilani", phase: "phase1", image: "6. Gaol of greed (2013).JPG", story: "A heavy, textured commentary on societal entrapment and the psychological burden of being 'jailed' by material and synthetic desires." },
+      { id: 6, title: "Trying and Being", year: "2014", medium: "Oil paint on canvas", dimensions: "60 × 60 cm (Square 1:1)", origin: "Pilani, Rajasthan", phase: "phase1", image: "7. Trying and being (2014).JPG", story: "A high-intensity study of existence, focusing on the visceral reality of physical presence, identity formation, and internal perseverance." },
+      { id: 7, title: "Now you see me, now you don't", year: "2014", medium: "Mixed Medium on Canvas", dimensions: "60 × 45 cm (Horizontal)", origin: "Pilani, Rajasthan", phase: "phase1", image: "8. Now you see me,now you dont (2014).JPG", story: "A cool-toned portrait playing with presence and absence; explores the concealed layers of identity we choose to withhold from public view." },
+      { id: 8, title: "The Stripped Tint", year: "2014", medium: "Oil & Acrylic on Canvas", dimensions: "45 × 60 cm (Portrait)", origin: "Pilani, Rajasthan", phase: "phase1", image: "9. The Stripped Tint (2014).JPG", story: "An introspective study of a bowed figure examining moral weight, humility, and the quiet tension of an awakened conscience." },
+      { id: 9, title: "The One Who Knew", year: "2014", medium: "Oil on Canvas", dimensions: "60 × 60 cm (Square 1:1)", origin: "Pilani, Rajasthan", phase: "phase1", image: "10. The One Who Knew (2014).JPG", story: "A vibrant, warm-toned portrait carrying the symbolic burden and silent reverence of personal memory." },
+      { id: 10, title: "Sneak Peak", year: "2014", medium: "Oil on Canvas", dimensions: "46 × 61 cm (Portrait)", origin: "Pilani, Rajasthan", phase: "phase1", image: "11. Sneak Peak (2014).JPG", story: "An initial excavation of the concept of sanctuary—the search for a psychological space where one feels most rooted and authentic." },
+      { id: 11, title: "The Doomed One", year: "2014", medium: "Mixed Medium on Canvas", dimensions: "61 × 61 cm (Square 1:1)", origin: "Pilani, Rajasthan", phase: "phase1", image: "12. The Doomed One (2014).JPG", story: "An unflinching look at existential weight; a monochromatic study exploring the raw interplay between human form and fluid paint." },
+      { id: 12, title: "Blue Winds", year: "2015", medium: "Oil paint on canvas", dimensions: "61 × 61 cm (Square 1:1)", origin: "Delhi, India", phase: "phase2", image: "13. Blue Winds (2015).JPG", story: "A pivotal transition work moving away from strict figuration into dynamic atmospheric abstraction, using sweeping azure strokes to depict movement." },
+      { id: 13, title: "Strangers in the night", year: "2016", medium: "Acrylic on Canvas", dimensions: "60 × 60 cm (Square 1:1)", origin: "Delhi, India", phase: "phase2", image: "14. Strangers in the night (2016).JPG", story: "A bridge work moving toward high-intensity emotional abstraction and warm chromatic fields, capturing fleeting urban encounters." },
+      { id: 14, title: "Burnt Wine", year: "2016", medium: "Mixed Media", dimensions: "67 × 48 cm (Portrait)", origin: "Delhi, India", phase: "phase2", image: "15. Burnt Wine (2016).JPG", story: "Marks the artist's first major move into mixed media, focusing on surface friction, organic unfolding of dense materials, and earthy textures." },
+      { id: 15, title: "Elucidated", year: "2017", medium: "Oil paint on canvas", dimensions: "67 × 48 cm (Portrait)", origin: "Delhi, India", phase: "phase2", image: "16. Elucidated (2017).JPG", story: "A shift toward luminosity and optical clarity; cool blue and white glazes signaling clarity of thought and artistic maturity." },
+      { id: 16, title: "The Conflict of Love and Chastity", year: "2020", medium: "Oil & Mixed Media", dimensions: "61 × 61 cm (Square 1:1)", origin: "Sydney, Australia", phase: "phase2", image: "17. The Conflict of Love and Chastity (2020).JPG", story: "Created in Sydney, this work introduces a high-contrast 'glitch' effect across classical portraiture traditions, capturing contemporary friction." },
+      { id: 17, title: "Study of Balance", year: "2020", medium: "Acrylic & Fluid Resin", dimensions: "51 × 122 cm (Wide Panorama 1:2.4)", origin: "Sydney, Australia", phase: "phase2", image: "18. Study of Balance (2020).jpg", story: "A landmark experiment in fluid resin. Designed as a horizontal liquid landscape, meditating on the delicate balance between intentional control and fluid surrender." },
+      { id: 18, title: "Querencia", year: "2021", medium: "Mixed Media & Gold Leaf", dimensions: "61 × 91 cm (Landscape 2:3)", origin: "Sydney, Australia", phase: "phase2", image: "19. Querencia (2021).jpg", story: "A mature resolution of the search for a safe space. Incorporates graphic figuration against a luminous gold-leaf background symbolizing psychological sanctuary." },
+      { id: 19, title: "Richie Make Money", year: "2022", medium: "Mixed Media & Pop Art", dimensions: "91 × 121 cm (Landscape 3:4)", origin: "Pilani, Rajasthan", phase: "phase3", image: "20. Richie Make Money (2022).jpg", story: "Marks the pivot where 'The Hermit' steps into 'The Market.' A vibrant, satirical inquiry into wealth accumulation and how modern systems define individual worth." },
+      { id: 20, title: "Richie Carrying Gifts & High Fashion Brands", year: "2024", medium: "Mixed Media Collage", dimensions: "120 × 90 cm (Portrait 3:4)", origin: "Pilani, Rajasthan", phase: "phase3", image: "21. Richie Carrying Gifts $ High Fashion Brands (2024).jpg", story: "A maximalist critique of hyper-consumerism. The iconic pop figure is portrayed physically burdened by modern luxury status symbols, examining the performance of identity in brand culture." }
     ];
 
-    // =========================================================
-    // 1. 3D ROTUNDA ORBIT ENGINE (CSS 3D HARDWARE ACCELERATED)
-    // =========================================================
-    const cylinder = document.getElementById('rotundaCylinder');
-    const stage = document.getElementById('rotundaStage');
-    let currentY = 0;
-    let targetY = 0;
-    let isDragging = false;
-    let startX = 0;
-
-    function animateRotunda() {
-      if (!isDragging) {
-        targetY -= 0.18; // Continuous smooth rotation
-      }
-      currentY += (targetY - currentY) * 0.08;
-      cylinder.style.transform = `rotateY(${currentY}deg)`;
-      requestAnimationFrame(animateRotunda);
-    }
-    animateRotunda();
-
-    stage.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.clientX;
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        const deltaX = e.clientX - startX;
-        targetY += deltaX * 0.35;
-        startX = e.clientX;
-      }
-    });
-
-    window.addEventListener('mouseup', () => { isDragging = false; });
-
-    // Touch for mobile
-    stage.addEventListener('touchstart', (e) => {
-      if (e.touches.length === 1) {
-        isDragging = true;
-        startX = e.touches[0].clientX;
-      }
-    });
-
-    window.addEventListener('touchmove', (e) => {
-      if (isDragging && e.touches.length === 1) {
-        const deltaX = e.touches[0].clientX - startX;
-        targetY += deltaX * 0.45;
-        startX = e.touches[0].clientX;
-      }
-    });
-
-    window.addEventListener('touchend', () => { isDragging = false; });
-
-    // On-screen 3D buttons
-    document.getElementById('btnRotateLeft').addEventListener('click', () => {
-      targetY += 60;
-    });
-
-    document.getElementById('btnRotateRight').addEventListener('click', () => {
-      targetY -= 60;
-    });
-
-    // =========================================================
-    // 2. GOLD DUST FLOATING CANVAS PARTICLES
-    // =========================================================
-    const pCanvas = document.getElementById('particleBgCanvas');
+    // Ember Background Particles
+    const pCanvas = document.getElementById('emberCanvas');
     const pCtx = pCanvas.getContext('2d');
-    let particles = [];
+    let embers = [];
 
-    function resizeParticles() {
+    function resizeCanvas() {
       pCanvas.width = window.innerWidth;
       pCanvas.height = window.innerHeight;
     }
-    window.addEventListener('resize', resizeParticles);
-    resizeParticles();
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-    for (let i = 0; i < 40; i++) {
-      particles.push({
+    for (let i = 0; i < 45; i++) {
+      embers.push({
         x: Math.random() * pCanvas.width,
         y: Math.random() * pCanvas.height,
         size: Math.random() * 2 + 0.8,
-        speedX: (Math.random() - 0.5) * 0.35,
-        speedY: (Math.random() - 0.5) * 0.35 - 0.15,
-        opacity: Math.random() * 0.6 + 0.2
+        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: (Math.random() - 0.5) * 0.4 - 0.2,
+        opacity: Math.random() * 0.7 + 0.2
       });
     }
 
-    function renderParticles() {
+    function renderEmbers() {
       pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
       pCtx.fillStyle = '#cba358';
-      
-      particles.forEach(p => {
-        p.x += p.speedX;
-        p.y += p.speedY;
-
+      embers.forEach(p => {
+        p.x += p.speedX; p.y += p.speedY;
         if (p.y < 0) p.y = pCanvas.height;
         if (p.x < 0) p.x = pCanvas.width;
         if (p.x > pCanvas.width) p.x = 0;
-
         pCtx.globalAlpha = p.opacity;
         pCtx.beginPath();
         pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         pCtx.fill();
       });
-
-      requestAnimationFrame(renderParticles);
+      requestAnimationFrame(renderEmbers);
     }
-    renderParticles();
+    renderEmbers();
 
-    // =========================================================
-    // 3. GALLERY FILTERING LOGIC
-    // =========================================================
+    // Gallery Filter Logic
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -2111,7 +919,6 @@
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filter = btn.dataset.filter;
-
         galleryItems.forEach(item => {
           if (filter === 'all' || item.dataset.phase === filter) {
             item.style.display = 'block';
@@ -2122,9 +929,7 @@
       });
     });
 
-    // =========================================================
-    // 4. CURATORIAL VIEWING ROOM MODAL
-    // =========================================================
+    // Modal Viewing Room Logic
     const modal = document.getElementById('viewingRoomModal');
     const modalImg = document.getElementById('modalImg');
     const modalTitle = document.getElementById('modalTitle');
@@ -2143,7 +948,6 @@
     function openViewingRoom(index) {
       currentArtIndex = index;
       const art = artworks[index];
-
       modalImg.src = encodeURI(art.image);
       modalImg.alt = art.title;
       modalTitle.textContent = art.title;
@@ -2169,14 +973,12 @@
 
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const nextIndex = (currentArtIndex - 1 + artworks.length) % artworks.length;
-      openViewingRoom(nextIndex);
+      openViewingRoom((currentArtIndex - 1 + artworks.length) % artworks.length);
     });
 
     nextBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const nextIndex = (currentArtIndex + 1) % artworks.length;
-      openViewingRoom(nextIndex);
+      openViewingRoom((currentArtIndex + 1) % artworks.length);
     });
 
     document.getElementById('modalCloseBtn').addEventListener('click', closeViewingRoom);
@@ -2189,22 +991,11 @@
       if (e.key === 'ArrowRight') nextBtn.click();
     });
 
-    // Theme Toggle
-    const themeBtn = document.getElementById('themeToggleBtn');
-    themeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light-theme');
-      if (document.body.classList.contains('light-theme')) {
-        themeBtn.textContent = 'Noir Gallery';
-      } else {
-        themeBtn.textContent = 'Studio Light';
-      }
-    });
-
-    // Collectors Circle Form
-    document.getElementById('innerCircleForm').addEventListener('submit', (e) => {
+    // Form submission
+    document.getElementById('collectorsForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      document.getElementById('innerCircleForm').style.display = 'none';
-      document.getElementById('innerCircleSuccess').style.display = 'block';
+      document.getElementById('collectorsForm').style.display = 'none';
+      document.getElementById('collectorsSuccess').style.display = 'block';
     });
   </script>
 </body>
