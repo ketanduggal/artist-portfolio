@@ -15,9 +15,9 @@
       --bg-primary: #08080a;
       --bg-surface: #101015;
       --bg-secondary: #14141c;
-      --glass-bg: rgba(18, 18, 26, 0.68);
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --glass-border-glow: rgba(203, 163, 88, 0.35);
+      --glass-bg: rgba(18, 18, 26, 0.72);
+      --glass-border: rgba(255, 255, 255, 0.09);
+      --glass-border-glow: rgba(203, 163, 88, 0.4);
       --text-main: #f5f4f0;
       --text-muted: #8e8d89;
       --text-accent: #cba358;
@@ -34,9 +34,9 @@
       --bg-primary: #f7f6f2;
       --bg-surface: #ffffff;
       --bg-secondary: #ebe8e1;
-      --glass-bg: rgba(255, 255, 255, 0.78);
+      --glass-bg: rgba(255, 255, 255, 0.82);
       --glass-border: rgba(0, 0, 0, 0.08);
-      --glass-border-glow: rgba(179, 146, 86, 0.3);
+      --glass-border-glow: rgba(179, 146, 86, 0.35);
       --text-main: #121214;
       --text-muted: #6a6964;
       --text-accent: #b39256;
@@ -45,15 +45,8 @@
       --card-mat: #ffffff;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--bg-primary);
@@ -67,23 +60,9 @@
       transition: background-color 0.5s ease, color 0.5s ease;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 36px;
-    }
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 36px; }
 
     /* ================================================= */
     /* KAGE GLASSMORPHISM HUD COMPONENTS                 */
@@ -189,12 +168,58 @@
       background: rgba(0, 0, 0, 0.06);
     }
 
-    .dock-link.active .dock-num {
-      opacity: 1;
+    .dock-link.active .dock-num { opacity: 1; }
+
+    @media (max-width: 820px) {
+      .kage-floating-dock { display: none; }
     }
 
-    @media (max-width: 768px) {
-      .kage-floating-dock { display: none; }
+    /* Floating Studio Ambience Soundscape Player Panel */
+    .kage-soundscape-panel {
+      position: fixed;
+      top: 92px;
+      right: 28px;
+      z-index: 999;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      border-radius: 30px;
+    }
+
+    .soundscape-waves {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 14px;
+    }
+
+    .soundscape-bar {
+      width: 2px;
+      height: 4px;
+      background-color: var(--accent-gold);
+      border-radius: 2px;
+      transition: height 0.2s ease;
+    }
+
+    .soundscape-playing .soundscape-bar:nth-child(1) { animation: wave 1s infinite ease-in-out; }
+    .soundscape-playing .soundscape-bar:nth-child(2) { animation: wave 1.2s infinite ease-in-out 0.2s; }
+    .soundscape-playing .soundscape-bar:nth-child(3) { animation: wave 0.8s infinite ease-in-out 0.4s; }
+    .soundscape-playing .soundscape-bar:nth-child(4) { animation: wave 1.1s infinite ease-in-out 0.1s; }
+
+    @keyframes wave {
+      0%, 100% { height: 4px; }
+      50% { height: 14px; }
+    }
+
+    .soundscape-text {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
     }
 
     /* Kage Floating Stat Counter Bar */
@@ -213,9 +238,7 @@
       border-right: 1px solid var(--glass-border);
     }
 
-    .kage-stat-item:last-child {
-      border-right: none;
-    }
+    .kage-stat-item:last-child { border-right: none; }
 
     @media (max-width: 640px) {
       .kage-stat-item { border-right: none; border-bottom: 1px solid var(--glass-border); }
@@ -280,6 +303,202 @@
       font-size: 12px;
       color: var(--text-muted);
       line-height: 1.7;
+    }
+
+    /* ================================================= */
+    /* EXACT KAGE 5-PANEL OVERLAY MATRIX (COLLECTORS)   */
+    /* ================================================= */
+    .kage-matrix-wrapper {
+      max-width: 1240px;
+      margin: 40px auto 70px auto;
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(12, 12, 18, 0.78);
+      backdrop-filter: blur(28px) saturate(200%);
+      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    body.light-theme .kage-matrix-wrapper {
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .kage-matrix-top-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .kage-matrix-bot-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 900px) {
+      .kage-matrix-top-row, .kage-matrix-bot-row { grid-template-columns: 1fr; }
+      .kage-matrix-top-row .kage-matrix-cell { border-bottom: 1px solid var(--glass-border); }
+      .kage-matrix-bot-row .kage-matrix-cell { border-bottom: 1px solid var(--glass-border); }
+      .kage-matrix-bot-row .kage-matrix-cell:last-child { border-bottom: none; }
+    }
+
+    .kage-matrix-cell {
+      padding: 38px 34px 34px 34px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .kage-matrix-top-row .kage-matrix-cell:first-child {
+      border-right: 1px solid var(--glass-border);
+    }
+
+    .kage-matrix-bot-row .kage-matrix-cell:nth-child(1),
+    .kage-matrix-bot-row .kage-matrix-cell:nth-child(2) {
+      border-right: 1px solid var(--glass-border);
+    }
+
+    @media (max-width: 900px) {
+      .kage-matrix-top-row .kage-matrix-cell:first-child,
+      .kage-matrix-bot-row .kage-matrix-cell:nth-child(1),
+      .kage-matrix-bot-row .kage-matrix-cell:nth-child(2) {
+        border-right: none;
+      }
+    }
+
+    .kage-matrix-cell:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Active Highlighted Cell (Matching Panel 04 from Kage screenshot) */
+    .kage-matrix-cell.active-kage-cell {
+      background: radial-gradient(circle at 50% 30%, rgba(180, 40, 30, 0.16) 0%, rgba(14, 14, 20, 0.85) 100%);
+      box-shadow: inset 0 0 35px rgba(200, 50, 40, 0.12);
+    }
+
+    body.light-theme .kage-matrix-cell.active-kage-cell {
+      background: radial-gradient(circle at 50% 30%, rgba(203, 163, 88, 0.15) 0%, rgba(255, 255, 255, 0.95) 100%);
+    }
+
+    .kage-matrix-cell.active-kage-cell .cell-index {
+      color: #e06c5f;
+      font-weight: 700;
+    }
+
+    .cell-index {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: block;
+      opacity: 0.8;
+    }
+
+    .cell-title {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .cell-kanji {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      opacity: 0.7;
+      letter-spacing: 0.1em;
+    }
+
+    .cell-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-top: 14px;
+      margin-bottom: 26px;
+      max-width: 92%;
+    }
+
+    .cell-spec-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: auto;
+      display: inline-block;
+    }
+
+    .active-kage-cell .cell-spec-badge {
+      color: var(--accent-gold);
+    }
+
+    /* Kage 4-Practice / Craft Cards Overlay */
+    .kage-craft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+    }
+
+    .kage-craft-card {
+      padding: 28px 24px;
+      position: relative;
+    }
+
+    .kage-craft-idx {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .kage-craft-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .kage-craft-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Aceternity Style Bento Grid Studio Intel */
+    .kage-bento-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+    }
+
+    @media (max-width: 960px) {
+      .kage-bento-grid { grid-template-columns: 1fr; }
+    }
+
+    .bento-card {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     /* Top Navigation Header */
@@ -761,6 +980,41 @@
       margin-bottom: 14px;
     }
 
+    /* Live Countdown Overlay Clock */
+    .kage-countdown-box {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 24px auto;
+    }
+
+    .countdown-unit {
+      background: rgba(10, 10, 14, 0.7);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      text-align: center;
+    }
+
+    .countdown-val {
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .countdown-lbl {
+      font-family: var(--font-mono);
+      font-size: 8.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: block;
+    }
+
     .drop-times-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1212,11 +1466,23 @@
   <nav class="kage-floating-dock">
     <a href="#home" class="dock-link active"><span class="dock-num">00</span>Home</a>
     <a href="#gallery" class="dock-link"><span class="dock-num">01</span>Vault</a>
-    <a href="#collectors-circle" class="dock-link"><span class="dock-num">02</span>VIP Drop</a>
-    <a href="#exhibitions" class="dock-link"><span class="dock-num">03</span>Timeline</a>
-    <a href="#about" class="dock-link"><span class="dock-num">04</span>Manifesto</a>
-    <a href="#contact" class="dock-link"><span class="dock-num">05</span>Inquiries</a>
+    <a href="#craft" class="dock-link"><span class="dock-num">02</span>Disciplines</a>
+    <a href="#collectors-circle" class="dock-link"><span class="dock-num">03</span>VIP Drop</a>
+    <a href="#exhibitions" class="dock-link"><span class="dock-num">04</span>Timeline</a>
+    <a href="#about" class="dock-link"><span class="dock-num">05</span>Manifesto</a>
+    <a href="#contact" class="dock-link"><span class="dock-num">06</span>Inquiries</a>
   </nav>
+
+  <!-- Floating Studio Ambience Soundscape Player Overlay Panel -->
+  <div class="kage-panel kage-soundscape-panel" id="soundscapeToggle" title="Toggle 432Hz Studio Rain Ambience">
+    <div class="soundscape-waves" id="soundscapeWaves">
+      <div class="soundscape-bar"></div>
+      <div class="soundscape-bar"></div>
+      <div class="soundscape-bar"></div>
+      <div class="soundscape-bar"></div>
+    </div>
+    <span class="soundscape-text" id="soundscapeLabel">Studio Soundscape // 432Hz</span>
+  </div>
 
   <!-- Navigation Header -->
   <header>
@@ -1226,6 +1492,7 @@
       </a>
       <ul class="nav-menu">
         <li><a href="#gallery" class="nav-link">The Archive</a></li>
+        <li><a href="#craft" class="nav-link">Disciplines</a></li>
         <li><a href="#collectors-circle" class="nav-link highlight">VIP Vault</a></li>
         <li><a href="#exhibitions" class="nav-link">Showcases</a></li>
         <li><a href="#about" class="nav-link">Manifesto</a></li>
@@ -1553,7 +1820,7 @@
         <!-- 12. The Doomed One (2014) -->
         <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(11)">
           <div class="artwork-frame">
-            <img src="12.%20The%20Doomed%20One%20(2014).JPG" alt="The Doomed One" loading="lazy">
+            <img src="12.%20The%20Doomed One%20(2014).JPG" alt="The Doomed One" loading="lazy">
           </div>
           <div class="artwork-caption">
             <h4 class="artwork-title">The Doomed One</h4>
@@ -1704,15 +1971,131 @@
     </div>
   </section>
 
+  <!-- KAGE PRACTICE // STUDIO DISCIPLINES OVERLAY -->
+  <section id="craft" style="background: var(--bg-surface); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+    <div class="container">
+      <div class="section-header">
+        <span class="kage-badge">CHAPTER 02 // STUDIO DISCIPLINES</span>
+        <h2 class="section-title" style="margin-top: 14px;">The 4 Studio Disciplines</h2>
+        <p class="section-desc">
+          Old-master layering meets hyper-modern fluid chemistry. How raw ideas are materialized in the Pilani studio.
+        </p>
+      </div>
+
+      <div class="kage-craft-grid">
+        <div class="kage-panel kage-craft-card">
+          <span class="kage-craft-idx">01 // IMPASTO & GLAZES</span>
+          <h3 class="kage-craft-title">Heavy Oil Glazing</h3>
+          <p class="kage-craft-desc">
+            Traditional multi-layered oil glazes built over months of studio retreat. Creating rich, light-trapping shadows and emotional density.
+          </p>
+        </div>
+
+        <div class="kage-panel kage-craft-card">
+          <span class="kage-craft-idx">02 // LIQUID FLOW STATES</span>
+          <h3 class="kage-craft-title">Clear Bio-Resin</h3>
+          <p class="kage-craft-desc">
+            High-gloss, ultra-transparent spatial surfaces that freeze fluid acrylic pigments in suspended glass-like animation.
+          </p>
+        </div>
+
+        <div class="kage-panel kage-craft-card">
+          <span class="kage-craft-idx">03 // SANCTUARY ILLUMINATION</span>
+          <h3 class="kage-craft-title">24K Gold Guilding</h3>
+          <p class="kage-craft-desc">
+            Hand-applied genuine 24-karat gold leaf backgrounds, offering an ethereal sanctuary glow against dark expressive silhouettes.
+          </p>
+        </div>
+
+        <div class="kage-panel kage-craft-card">
+          <span class="kage-craft-idx">04 // HYPE CULTURE CRITIQUE</span>
+          <h3 class="kage-craft-title">Pop Luxury Satire</h3>
+          <p class="kage-craft-desc">
+            Maximalist street collage examining modern flex culture, luxury brand obsessions, and how status is traded in contemporary society.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- VIP VAULT // COLLECTORS CIRCLE -->
   <section id="collectors-circle" class="vault-section">
     <div class="container">
       <div class="section-header">
-        <span class="kage-badge">CHAPTER 02 // VIP VAULT</span>
+        <span class="kage-badge">CHAPTER 03 // VIP VAULT</span>
         <h2 class="section-title" style="margin-top: 14px;">The Inner Circle</h2>
         <p class="section-desc">
           Zero public drops. Verified collectors get early access codes and private viewing passes before the vault opens.
         </p>
+      </div>
+
+      <!-- EXACT KAGE 5-PANEL OVERLAY MATRIX -->
+      <div class="kage-matrix-wrapper">
+        <!-- Top Row (2 wide panels) -->
+        <div class="kage-matrix-top-row">
+          <!-- 01 The Vault Allocation -->
+          <div class="kage-matrix-cell" onclick="selectVipTier(1)">
+            <div>
+              <span class="cell-index">01</span>
+              <h3 class="cell-title">The Vault Allocation <span class="cell-kanji">蔵割</span></h3>
+              <p class="cell-desc">
+                Guaranteed first-look acquisition rights on all original unreleased oil & resin canvases before public disclosure.
+              </p>
+            </div>
+            <span class="cell-spec-badge">48h Early Access</span>
+          </div>
+
+          <!-- 02 Rags to Riches -->
+          <div class="kage-matrix-cell" onclick="selectVipTier(2)">
+            <div>
+              <span class="cell-index">02</span>
+              <h3 class="cell-title">Rags to Riches <span class="cell-kanji">黄金</span></h3>
+              <p class="cell-desc">
+                Limited series analyzing hyper-consumerism, luxury flex symbols, and modern wealth performance.
+              </p>
+            </div>
+            <span class="cell-spec-badge">Password Locked</span>
+          </div>
+        </div>
+
+        <!-- Bottom Row (3 panels) -->
+        <div class="kage-matrix-bot-row">
+          <!-- 03 24K Monogram Seal -->
+          <div class="kage-matrix-cell" onclick="selectVipTier(3)">
+            <div>
+              <span class="cell-index">03</span>
+              <h3 class="cell-title">24K Monogram Seal <span class="cell-kanji">刻印</span></h3>
+              <p class="cell-desc">
+                Physical certificate of provenance stamped with genuine 24-karat studio gold leaf and unique serial key.
+              </p>
+            </div>
+            <span class="cell-spec-badge">1/1 Provenance</span>
+          </div>
+
+          <!-- 04 Private Viewing Pass (ACTIVE HIGHLIGHT CELL) -->
+          <div class="kage-matrix-cell active-kage-cell" onclick="selectVipTier(4)">
+            <div>
+              <span class="cell-index">04</span>
+              <h3 class="cell-title">Private Viewing Pass <span class="cell-kanji">招待</span></h3>
+              <p class="cell-desc">
+                One-on-one private salon viewings at the Pilani studio or curated private collector showcases.
+              </p>
+            </div>
+            <span class="cell-spec-badge">VIP Pass Only</span>
+          </div>
+
+          <!-- 05 Bespoke Commissions -->
+          <div class="kage-matrix-cell" onclick="selectVipTier(5)">
+            <div>
+              <span class="cell-index">05</span>
+              <h3 class="cell-title">Bespoke Commissions <span class="cell-kanji">委嘱</span></h3>
+              <p class="cell-desc">
+                Direct creative collaboration with Ketan Duggal for architectural-scale custom panel commissions.
+              </p>
+            </div>
+            <span class="cell-spec-badge">Direct Line</span>
+          </div>
+        </div>
       </div>
 
       <!-- Featured Drop Panel -->
@@ -1722,6 +2105,26 @@
         <p style="font-size: 13px; color: var(--text-muted); max-width: 620px; margin: 0 auto; line-height: 1.7;">
           A limited street-luxury studio series tearing into hyper-consumerism, flex culture, and wealth symbolism straight from the Pilani studio. Locked behind password access for Circle members.
         </p>
+
+        <!-- Live Countdown Overlay Clock -->
+        <div class="kage-countdown-box">
+          <div class="countdown-unit">
+            <span class="countdown-val" id="daysVal">04</span>
+            <span class="countdown-lbl">Days</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-val" id="hoursVal">18</span>
+            <span class="countdown-lbl">Hours</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-val" id="minsVal">22</span>
+            <span class="countdown-lbl">Mins</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-val" id="secsVal">45</span>
+            <span class="countdown-lbl">Secs</span>
+          </div>
+        </div>
 
         <!-- Global Drop Times Grid -->
         <div class="drop-times-grid">
@@ -1813,11 +2216,62 @@
     </div>
   </section>
 
+  <!-- ACETERNITY BENTO GRID // STUDIO INTEL OVERLAY -->
+  <section style="padding: 90px 0; background: var(--bg-primary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="kage-badge">STUDIO INTEL // BENTO OVERLAY</span>
+        <h2 class="section-title" style="margin-top: 14px;">Studio Specifications</h2>
+      </div>
+
+      <div class="kage-bento-grid">
+        <div class="kage-panel bento-card">
+          <div>
+            <span class="kage-badge">LOCATION & TIME</span>
+            <h3 style="font-family: var(--font-heading); font-size: 26px; margin: 14px 0 6px 0;">Pilani Headquarters</h3>
+            <p style="font-size: 12px; color: var(--text-muted);">
+              28.3639&deg; N, 75.6010&deg; E &bull; Rajasthan, India. All works conceived and created in climate-controlled studio spaces.
+            </p>
+          </div>
+          <div style="margin-top: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold);">
+            LOCAL TIME: <span id="studioClock">IST 05:30 PM</span>
+          </div>
+        </div>
+
+        <div class="kage-panel bento-card">
+          <div>
+            <span class="kage-badge">AUTHENTICITY</span>
+            <h3 style="font-family: var(--font-heading); font-size: 26px; margin: 14px 0 6px 0;">Physical COA Seal</h3>
+            <p style="font-size: 12px; color: var(--text-muted);">
+              Every original canvas includes a physical Certificate of Authenticity embossed with genuine 24k studio wax seal.
+            </p>
+          </div>
+          <div style="margin-top: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold);">
+            &#10003; 100% VERIFIED PROVENANCE
+          </div>
+        </div>
+
+        <div class="kage-panel bento-card">
+          <div>
+            <span class="kage-badge">PRESERVATION</span>
+            <h3 style="font-family: var(--font-heading); font-size: 26px; margin: 14px 0 6px 0;">Museum Grade Archival</h3>
+            <p style="font-size: 12px; color: var(--text-muted);">
+              Cotton rag canvases, UV-stabilized clear bio-resins, and lightfast pigments engineered for century-long archival preservation.
+            </p>
+          </div>
+          <div style="margin-top: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold);">
+            &#9670; 100+ YEARS ARCHIVE GRADE
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SHOWCASES // TIMELINE -->
   <section id="exhibitions">
     <div class="container">
       <div class="section-header">
-        <span class="kage-badge">CHAPTER 03 // TIMELINE</span>
+        <span class="kage-badge">CHAPTER 04 // TIMELINE</span>
         <h2 class="section-title" style="margin-top: 14px;">Showcase History</h2>
         <p class="section-desc">Selected juried exhibitions, institutional showcases, and independent studio platform grants.</p>
       </div>
@@ -1861,7 +2315,7 @@
   <section id="about" style="background-color: var(--bg-surface);">
     <div class="container">
       <div class="section-header" style="margin-bottom: 50px;">
-        <span class="kage-badge">CHAPTER 04 // THE MANIFESTO</span>
+        <span class="kage-badge">CHAPTER 05 // THE MANIFESTO</span>
         <h2 class="section-title" style="margin-top: 14px;">Studio Philosophy</h2>
       </div>
 
@@ -1891,7 +2345,7 @@
   <section id="contact">
     <div class="container">
       <div class="kage-panel inquiry-wrapper">
-        <span class="kage-badge">CHAPTER 05 // DIRECT LINE</span>
+        <span class="kage-badge">CHAPTER 06 // DIRECT LINE</span>
         <h2 class="section-title" style="margin-top: 14px;">Private Collector Inquiries</h2>
         <p style="color: var(--text-muted); margin-top: 10px; font-size: 13px;">
           For original piece acquisitions, bespoke commissions, or private viewings, hit the direct line below.
@@ -1934,6 +2388,7 @@
           <div class="footer-col-title">Index</div>
           <ul class="footer-links">
             <li><a href="#gallery">The Vault Archive</a></li>
+            <li><a href="#craft">Studio Disciplines</a></li>
             <li><a href="#collectors-circle">VIP Circle Drops</a></li>
             <li><a href="#exhibitions">Showcase History</a></li>
             <li><a href="#about">Studio Manifesto</a></li>
@@ -2396,7 +2851,108 @@
     });
 
     // =========================================================
-    // 4. VIEWING ROOM MODAL
+    // 4. LIVE STUDIO CLOCK & DROP COUNTDOWN
+    // =========================================================
+    function updateClock() {
+      const now = new Date();
+      const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+      const timeStr = now.toLocaleTimeString('en-US', options);
+      const clockEl = document.getElementById('studioClock');
+      if (clockEl) clockEl.textContent = 'IST ' + timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Countdown Timer
+    let targetDrop = new Date().getTime() + (4 * 24 * 60 * 60 * 1000) + (18 * 60 * 60 * 1000);
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDrop - now;
+      if (diff <= 0) return;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('daysVal').textContent = String(days).padStart(2, '0');
+      document.getElementById('hoursVal').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minsVal').textContent = String(mins).padStart(2, '0');
+      document.getElementById('secsVal').textContent = String(secs).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // =========================================================
+    // 5. KAGE MATRIX VIP TIER INTERACTIVITY
+    // =========================================================
+    const matrixCells = document.querySelectorAll('.kage-matrix-cell');
+    function selectVipTier(index) {
+      matrixCells.forEach((cell, idx) => {
+        if (idx === (index - 1)) {
+          cell.classList.add('active-kage-cell');
+        } else {
+          cell.classList.remove('active-kage-cell');
+        }
+      });
+      const formEl = document.getElementById('innerCircleForm');
+      if (formEl) formEl.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // =========================================================
+    // 6. WEB AUDIO AMBIENCE SOUNDSCAPE (432Hz SYNTH)
+    // =========================================================
+    let audioCtx = null;
+    let isPlayingAmbience = false;
+    let osc1, osc2, gainNode;
+
+    const soundscapeBtn = document.getElementById('soundscapeToggle');
+    const soundscapeWaves = document.getElementById('soundscapeWaves');
+    const soundscapeLabel = document.getElementById('soundscapeLabel');
+
+    soundscapeBtn.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (isPlayingAmbience) {
+        if (gainNode) gainNode.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5);
+        isPlayingAmbience = false;
+        soundscapeWaves.classList.remove('soundscape-playing');
+        soundscapeLabel.textContent = 'Ambience // Muted';
+      } else {
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        
+        // 432Hz Warm Harmonic Drone Synth
+        osc1 = audioCtx.createOscillator();
+        osc2 = audioCtx.createOscillator();
+        gainNode = audioCtx.createGain();
+
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(216, audioCtx.currentTime);
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(432, audioCtx.currentTime);
+
+        gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime);
+        gainNode.gain.setTargetAtTime(0.06, audioCtx.currentTime, 1);
+
+        osc1.connect(gainNode);
+        osc2.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc1.start();
+        osc2.start();
+
+        isPlayingAmbience = true;
+        soundscapeWaves.classList.add('soundscape-playing');
+        soundscapeLabel.textContent = 'Studio Ambience // 432Hz Live';
+      }
+    });
+
+    // =========================================================
+    // 7. VIEWING ROOM MODAL
     // =========================================================
     const modal = document.getElementById('viewingRoomModal');
     const modalImg = document.getElementById('modalImg');
@@ -2420,10 +2976,10 @@
       modalImg.src = encodeURI(art.image);
       modalImg.alt = art.title;
       modalTitle.textContent = art.title;
-      modalEra.textContent = `${art.year} // ${art.origin}`;
+      modalEra.textContent = `${art.year} //${art.origin}`;
       modalMedium.textContent = art.medium;
       modalDimensions.textContent = art.dimensions;
-      modalOrigin.textContent = `${art.year} // ${art.origin}`;
+      modalOrigin.textContent = `${art.year} //${art.origin}`;
       modalStory.textContent = art.story;
 
       modalInquireBtn.onclick = () => {
