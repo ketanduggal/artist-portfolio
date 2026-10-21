@@ -1905,7 +1905,10 @@
     /* Rotunda: each card takes its painting's shape, with the full title underneath. */
     .rotunda-3d-card { top: 50%; height: auto; translate: 0 -50%; display: flex; flex-direction: column; }
     .rotunda-3d-img { height: auto; object-fit: contain; }
-    .rotunda-3d-tag { position: static; margin-top: 8px; display: grid; gap: 3px; text-align: left; white-space: normal; }
+    /* Only the paintings revolve: no mat, frame or caption on the rotunda. */
+    .rotunda-3d-card, body.light-theme .rotunda-3d-card, .rotunda-3d-card:hover { padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }
+    .rotunda-3d-img { border-radius: 0; box-shadow: var(--shadow-hung-lg); }
+    .rotunda-3d-tag { display: none; }
 
     /* Archive drops: the whole painting hung on a strip of gallery wall. */
     .drop-archive-img { display: flex; align-items: center; justify-content: center; padding: 16px 24px 22px 16px; background: linear-gradient(145deg, #d9d1c4, #c8beaf); }
@@ -2082,7 +2085,7 @@
       <div class="kage-chapters-grid">
         <div class="kage-panel kage-chapter-card" onclick="filterEra('phase1')">
           <span class="kage-chapter-num">ERA 01 // 2011–2014</span>
-          <h3 class="kage-chapter-title">Raw Roots & Heavy Oil</h3>
+          <h3 class="kage-chapter-title">Raw Roots & Psychological Excavation</h3>
           <p class="kage-chapter-desc">
             Raw emotion, deep shadows, and pure introspective oil work straight from the Pilani studio.
           </p>
@@ -2090,7 +2093,7 @@
 
         <div class="kage-panel kage-chapter-card" onclick="filterEra('phase2')">
           <span class="kage-chapter-num">ERA 02 // 2015–2021</span>
-          <h3 class="kage-chapter-title">Fluid Resin & Sydney Drift</h3>
+          <h3 class="kage-chapter-title">Fluid Resin, Drift & Sanctuary</h3>
           <p class="kage-chapter-desc">
             Flow-state resin, ocean blues, gilded detail, and modern abstract energy.
           </p>
@@ -2098,7 +2101,7 @@
 
         <div class="kage-panel kage-chapter-card" onclick="filterEra('phase3')">
           <span class="kage-chapter-num">ERA 03 // 2022–PRESENT</span>
-          <h3 class="kage-chapter-title">Street Pop & Luxury Satire</h3>
+          <h3 class="kage-chapter-title">Street Pop, Social Satire & The Market</h3>
           <p class="kage-chapter-desc">
             Richie enters the scene. Loud, unapologetic street collage calling out luxury hype and flex culture.
           </p>
@@ -2849,78 +2852,78 @@
         id: 0,
         title: "Complex Agony",
         year: "2011",
-        medium: "Oil paint on canvas",
-        dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Birla School, Pilani",
+        medium: "Oil on Canvas",
+        dimensions: "60 × 60 cm (Archival 91 × 91 cm canvas)",
+        origin: "Birla School Studio, Pilani",
         phase: "phase1",
         image: "1. Complex Agony (2011).jpg",
-        story: "The genesis of the artist's visual inquiry. Created over six months as his first canvas painting, this work features a figure clutching her hands over her heart—a visceral excavation of emotional density, self-preservation, and resilience."
+        story: "The genesis of Duggal’s visual inquiry. Painted over eight to twelve months of relentless studio discipline in 11th grade under mentor Prakash Khandey, this piece was forged by physically rubbing dense oil pigments into the raw canvas weave with hands and cloth for hours. The composition depicts a wounded, stabbed figure with visible blood on her t-shirt, yet her hands are pressed tightly over her heart in deliberate, fierce self-preservation. It is not an image of defeat, but of resilience—the raw friction of learning to paint while learning to protect one's innermost humanity against existential turmoil. The layered blacks in the negative space were mixed with deep vermilion, umber, and Prussian blue glazes to create a living, breathing shadow."
       },
       {
         id: 1,
         title: "Splendid Soul",
         year: "2012",
-        medium: "Oil paint on canvas",
+        medium: "Oil on Canvas",
         dimensions: "120 × 150 cm (Landscape)",
-        origin: "Pilani, Rajasthan",
+        origin: "Birla School Studio, Pilani",
         phase: "phase1",
         image: "2. Splendid Soul (2012).JPG",
-        story: "The artist's largest early work; a testament to finding grace, splendor, and internal confidence amidst the chaos of struggle using dramatic, classical chiaroscuro lighting."
+        story: "Following the raw pain of the genesis work, Splendid Soul marks a monumental expansion in scale, ambition, and spirit. Spanning an imposing 1.5-meter canvas, the piece depicts a girl holding open the fold of her frock beneath a tree, catching falling autumn leaves. To capture the tactile reality of nature and fleeting beauty, Duggal dipped actual fallen leaves into heavy vermilion and crimson oil glazes and pressed them directly into the canvas weave. It represents the realization that true grace and splendor are not found in the absence of chaos, but directly within it."
       },
       {
         id: 2,
         title: "The Urban Hermit",
         year: "2012",
-        medium: "Oil paint on canvas",
+        medium: "Oil on Canvas",
         dimensions: "45 × 77 cm (Landscape)",
-        origin: "Pilani, Rajasthan",
+        origin: "Home Studio, Pilani",
         phase: "phase1",
         image: "3. The Urban Hermit (2012).JPG",
-        story: "The definitive archetype of the early period. Captures the quiet weight of introspection and a figure seeking retreat from institutional noise to build an authentic inner voice."
+        story: "The foundational archetype of Duggal’s entire practice. Painted during intense late-night studio marathons after transitioning from the school studio to his home space in Pilani. The composition intentionally pushes a solitary girl all the way to the far-left edge of a wide horizontal canvas, resting her chin on her hands and shielding her head to block out institutional and societal noise. The surrounding void of deep, multi-layered black represents the quiet space necessary to cultivate an authentic voice. It establishes the \"Hermit\"—the observer who chooses silence and self-knowledge before stepping out into the arena of the world."
       },
       {
         id: 3,
         title: "Nothing on you",
         year: "2012",
-        medium: "Oil paint on canvas",
+        medium: "Oil on Canvas",
         dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Pilani, Rajasthan",
+        origin: "Home Studio, Pilani",
         phase: "phase1",
         image: "4. Nothing on you (2012).JPG",
-        story: "A haunting, ethereal portrait using muted atmospheric tones to create a sense of lingering, ghostly presence and quiet emotional resonance."
+        story: "Born out of an uninterrupted 24-hour day-and-night painting sprint. Rendered in vivid, glowing reds and tender blush tones against cool, muted shadows, this piece captures raw instinct taking over intellectual doubt. It was the breakthrough moment where Duggal learned the painter’s ultimate lesson: trusting the subconscious flow and knowing exactly when a painting is complete without overworking the surface. It preserves the ethereal, lingering presence of an intimate emotional memory."
       },
       {
         id: 4,
         title: "Strings Teem Senses",
         year: "2013",
-        medium: "Oil paint on canvas (Triptych)",
-        dimensions: "45 × 45 cm each (3 panels)",
-        origin: "Pilani, Rajasthan",
+        medium: "Oil on Canvas (Triptych, 3 Panels)",
+        dimensions: "45 × 45 cm each (Three Panels)",
+        origin: "Home Studio, Pilani",
         phase: "phase1",
         image: "5. Strings teem senses (1 of 3) (2013).jpg",
-        story: "An exploration of sensory vibration, translating the physical tuning and rhythm of guitar strings (EADGBe) into visual geometry and emotional flow across multiple panels."
+        story: "The artist’s first pure leap into abstract deconstruction. Synthesizing his physical discipline as a school band guitarist with visual geometry, Duggal deconstructed the physical vibration and tuning of guitar strings (EADGBe) across three separate canvases. The flowing lines of an acoustic stringed instrument span seamlessly across the physical gaps between the panels, requiring the viewer’s eye and mind to bridge the silence and resolve the continuous melody."
       },
       {
         id: 5,
         title: "Gaol of Greed",
         year: "2013",
-        medium: "Oil paint on canvas",
+        medium: "Oil on Canvas",
         dimensions: "60 × 83 cm (Landscape)",
         origin: "Home Studio, Pilani",
         phase: "phase1",
         image: "6. Gaol of greed (2013).JPG",
-        story: "A heavy, textured commentary on societal entrapment and the psychological burden of being 'jailed' by material and synthetic desires."
+        story: "A powerful emotional cartography of societal entrapment and the material rat race. In this second major abstract work, the canvas is split into contrasting forces: in the top right, a swirling, golden-red circular void symbolizes the \"Circle of Life\" and the intoxicating vortex of ambition; on the bottom left, grounded, burdened human silhouettes carry the collective weight of societal expectations. It visualizes the psychological prison constructed by unchecked material desires."
       },
       {
         id: 6,
         title: "Trying and Being",
         year: "2014",
-        medium: "Oil paint on canvas",
+        medium: "Oil on Canvas",
         dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Pilani, Rajasthan",
+        origin: "Pilani Studio",
         phase: "phase1",
         image: "7. Trying and being (2014).JPG",
-        story: "A high-intensity study of existence, focusing on the visceral reality of physical presence, identity formation, and internal perseverance."
+        story: "A high-intensity figurative study completed following Duggal's transition and exhibition milestone. The piece explores human discipline \"by the numbers\"—the tension between striving (\"trying\") and existing in true presence (\"being\"). With an upward-directed gaze, textured paint runs, and deep psychological honesty, it serves as a testament to the artist's athletic conditioning: showing up to the canvas every single day, doing the work, and standing firm even when questioning the path."
       },
       {
         id: 7,
@@ -2928,10 +2931,10 @@
         year: "2014",
         medium: "Mixed Medium on Canvas",
         dimensions: "60 × 45 cm (Portrait)",
-        origin: "Pilani, Rajasthan",
+        origin: "Pilani Studio",
         phase: "phase1",
         image: "8. Now you see me,now you dont (2014).JPG",
-        story: "A cool-toned portrait playing with presence and absence; explores the concealed layers of identity we choose to withhold from public view."
+        story: "A cool-toned conceptual portrait investigating the masks, shields, and selective identities individuals present to the outside world. One side of the face remains obscured beneath slate-blue shadows and dripping crimson pigment. It confronts the universal tension between vulnerability and concealment, asking how much of our true selves we dare to reveal to society before retreat becomes necessary."
       },
       {
         id: 8,
@@ -2939,10 +2942,10 @@
         year: "2014",
         medium: "Oil & Acrylic on Canvas",
         dimensions: "45 × 60 cm (Landscape)",
-        origin: "Pilani, Rajasthan",
+        origin: "Pilani Studio",
         phase: "phase1",
         image: "9. The Stripped Tint (2014).JPG",
-        story: "An introspective study of a bowed figure examining moral weight, humility, and the quiet tension of an awakened conscience."
+        story: "Subtitled \"Ethics in Action,\" this piece depicts a bowed silhouette clutching her head in profound introspection and humility. Duggal stripped away decorative colors to focus on tonal gravity and moral weight. It represents a confrontation with personal conscience, asking what remains of human character when external applause, vanity, and superficial labels are stripped bare."
       },
       {
         id: 9,
@@ -2950,10 +2953,10 @@
         year: "2014",
         medium: "Oil on Canvas",
         dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Pilani, Rajasthan",
+        origin: "Pilani Studio",
         phase: "phase1",
         image: "10. The One Who Knew (2014).JPG",
-        story: "A vibrant, warm-toned portrait carrying the symbolic burden and silent reverence of personal memory."
+        story: "Rendered in fiery vermilion, warm amber tones, and contrasting teal accents, this striking sideways-glance portrait carries the quiet gravity of unspoken truths. It is a portrait of memory—holding onto experiences, lessons, and silent realizations that cannot be spoken aloud. The dripping pigment tears reflect the slow, indelible impact of time and lived experience."
       },
       {
         id: 10,
@@ -2961,120 +2964,120 @@
         year: "2014",
         medium: "Oil on Canvas",
         dimensions: "46 × 61 cm (Landscape)",
-        origin: "Pilani, Rajasthan",
+        origin: "Pilani Studio",
         phase: "phase1",
         image: "11. Sneak Peak (2014).JPG",
-        story: "An initial excavation of the concept of sanctuary—the search for a psychological space where one feels most rooted and authentic."
+        story: "The earliest thematic exploration of \"Querencia\"—the mental and physical sanctuary where one feels invincible, safe, and authentically grounded. Featuring an over-the-shoulder gaze framed by a vibrant bubblegum-pink silhouette, the painting catches a fleeting glimpse into the inner world of peace before stepping out into public scrutiny."
       },
       {
         id: 11,
         title: "The Doomed One",
         year: "2014",
-        medium: "Mixed Medium on Canvas",
+        medium: "Mixed Medium / Oil on Canvas",
         dimensions: "61 × 61 cm (Square 1:1)",
-        origin: "Pilani, Rajasthan",
+        origin: "Pilani / UP Studio",
         phase: "phase1",
         image: "12. The Doomed One (2014).JPG",
-        story: "An unflinching look at existential weight; a monochromatic study exploring the raw interplay between human form and fluid paint."
+        story: "The apex and philosophical conclusion of the early Pilani era. A monochromatic, chartreuse-and-olive profile of a seated, hunched figure confronting existential dread. Accompanying Duggal’s defining artist inquiry—\"What is presence and what is its relationship to painting? So we learn our skills, locate what is real for us, show up, and paint\"—this work is an unflinching mirror to modern angst and the courage required to confront the abyss without flinching."
       },
       {
         id: 12,
         title: "Blue Winds",
         year: "2015",
-        medium: "Oil paint on canvas",
+        medium: "Oil on Canvas",
         dimensions: "61 × 61 cm (Square 1:1)",
-        origin: "Delhi, India",
+        origin: "Delhi",
         phase: "phase2",
         image: "13. Blue Winds (2015).JPG",
-        story: "A pivotal transition work moving away from strict figuration into dynamic atmospheric abstraction, using sweeping azure strokes to depict movement."
+        story: "Painted during Duggal’s move to Delhi, this work captures the sensation of motion, geographic transition, and leaving one's comfort zone. Bathed in electric azure, cobalt glazes, and deep indigo shadows, the frontal portrait channels the momentum of change. The \"blue winds\" represent external forces that sweep through our lives, reshaping our perspective and demanding reinvention."
       },
       {
         id: 13,
         title: "Strangers in the night",
         year: "2016",
-        medium: "Acrylic on Canvas",
+        medium: "Acrylic / Oil on Canvas",
         dimensions: "60 × 60 cm (Square 1:1)",
-        origin: "Delhi, India",
+        origin: "Delhi",
         phase: "phase2",
         image: "14. Strangers in the night (2016).JPG",
-        story: "A bridge work moving toward high-intensity emotional abstraction and warm chromatic fields, capturing fleeting urban encounters."
+        story: "An electric, high-heat portrait marked by saturated crimson, amber tones, and an unblinking frontal gaze. Created during the fast-paced urban density of Delhi, the piece bridges classical figuration with raw emotional abstraction. It captures the fleeting, intense encounters between strangers in a crowded metropolis—anonymous souls crossing paths in the dark, exchanging unspoken understanding before disappearing."
       },
       {
         id: 14,
         title: "Burnt Wine",
         year: "2016",
-        medium: "Mixed Media",
+        medium: "Mixed Media on Canvas",
         dimensions: "67 × 48 cm (Portrait)",
-        origin: "Delhi, India",
+        origin: "Delhi",
         phase: "phase2",
         image: "15. Burnt Wine (2016).JPG",
-        story: "Marks the artist's first major move into mixed media, focusing on surface friction, organic unfolding of dense materials, and earthy textures."
+        story: "A decisive technical leap into mixed media. Moving away from purely representational portraiture, Duggal allowed material weathering, organic pigment friction, and fluid branching to lead the composition. Featuring earthy terracotta, deep wine, and burnt sienna tones, the painting treats the canvas like an ancient weathered wall, where texture itself tells an organic story of time, erosion, and endurance."
       },
       {
         id: 15,
         title: "Elucidated",
         year: "2017",
-        medium: "Oil paint on canvas",
+        medium: "Oil on Canvas",
         dimensions: "67 × 48 cm (Portrait)",
-        origin: "Delhi, India",
+        origin: "Delhi",
         phase: "phase2",
         image: "16. Elucidated (2017).JPG",
-        story: "A shift toward luminosity and optical clarity; cool blue and white glazes signaling clarity of thought and artistic maturity."
+        story: "A deliberate move toward light, perspective clarity, and gallery-level sophistication. Rendered in balanced sapphire and cool cerulean tones, Elucidated symbolizes an awakening of vision. After years of exploring dark psychological shadows, this piece signals an elevated, calm perspective where chaotic emotions settle into refined clarity."
       },
       {
         id: 16,
         title: "The Conflict of Love and Chastity",
         year: "2020",
-        medium: "Oil & Mixed Media",
+        medium: "Oil & Mixed Media Glaze",
         dimensions: "61 × 61 cm (Square 1:1)",
         origin: "Sydney, Australia",
         phase: "phase2",
         image: "17. The Conflict of Love and Chastity (2020).JPG",
-        story: "Created in Sydney, this work introduces a high-contrast 'glitch' effect across classical portraiture traditions, capturing contemporary friction."
+        story: "Created during Duggal’s studio years in Sydney, this work boldly disrupts Renaissance portraiture traditions through contemporary digital \"glitch\" aesthetics. Featuring lime-blonde hair, flushed pink tones, and a deliberate chromatic glitch plane sliced across the bridge of the nose, the piece visualizes cognitive dissonance. It encapsulates the psychological tug-of-war between raw impulsive desire (Love) and self-imposed moral restraint (Chastity) in modern life."
       },
       {
         id: 17,
         title: "Study of Balance",
         year: "2020",
-        medium: "Acrylic & Fluid Resin",
+        medium: "Acrylic & Fluid Bio-Resin on Panel",
         dimensions: "51 × 122 cm (Wide Panorama 1:2.4)",
         origin: "Sydney, Australia",
         phase: "phase2",
         image: "18. Study of Balance (2020).jpg",
-        story: "A landmark experiment in fluid resin. Designed as a horizontal liquid landscape, meditating on the delicate balance between intentional control and fluid surrender."
+        story: "A sweeping panoramic liquid landscape and a technical milestone in fluid chemistry. Created in Sydney, this piece represents the ultimate dialogue between control and surrender. By manipulating the viscosity of pouring acrylics and clear high-gloss epoxy bio-resin across a clean white negative-space panel, Duggal relinquished direct brush control to let gravity and chemistry form organic equilibrium. It mirrors the artist's personal quest for stability and zen amidst foreign environments and life transitions."
       },
       {
         id: 18,
         title: "Querencia",
         year: "2021",
-        medium: "Mixed Media & Gold Leaf",
+        medium: "Mixed Media & 24K Gold Leaf on Canvas",
         dimensions: "61 × 91 cm (Landscape 2:3)",
         origin: "Sydney, Australia",
         phase: "phase2",
         image: "19. Querencia (2021).jpg",
-        story: "A mature resolution of the search for a safe space. Incorporates graphic figuration against a luminous gold-leaf background symbolizing psychological sanctuary."
+        story: "The crowning achievement of the Sydney era and the mature resolution of the sanctuary motif. Derived from the Spanish bullfighting concept of \"Querencia\"—the specific spot in the ring where the bull feels invincible and takes its stand—this piece features delicate, expressive figurative line work set against an illuminated, hand-laid 24K gold leaf background. It symbolizes an artist who has weathered internal turmoil, traversed foreign lands, and finally built an impregnable inner fortress of peace."
       },
       {
         id: 19,
         title: "Richie Make Money",
         year: "2022",
-        medium: "Mixed Media & Pop Art",
+        medium: "Mixed Media & Street Pop",
         dimensions: "121 × 91 cm (Portrait 3:4)",
-        origin: "Pilani, Rajasthan",
+        origin: "Home Studio, Pilani",
         phase: "phase3",
         image: "20. Richie Make Money (2022) - final-cropped.jpg",
-        story: "Marks the pivot where 'The Hermit' steps into 'The Market.' A vibrant, satirical inquiry into wealth accumulation and how modern systems define individual worth."
+        story: "The pivotal threshold where \"The Hermit\" steps out into \"The Market.\" Returning to his roots in Pilani with a global perspective, Duggal introduced the satirical motif of Richie Rich. Set beneath a bold, illuminated neon-style \"MAKE MONEY\" marquee, Richie stands holding a sack overflowing with rupee currency notes. It is a razor-sharp Pop Art inquiry into late-stage capitalism, examining how contemporary culture reduces human identity, dignity, and self-worth to sheer monetary accumulation."
       },
       {
         id: 20,
         title: "Richie Carrying Gifts & High Fashion Brands",
         year: "2024",
-        medium: "Mixed Media Collage",
+        medium: "Mixed Media & Luxury Brand Packaging Collage",
         dimensions: "120 × 90 cm (Portrait 3:4)",
-        origin: "Pilani, Rajasthan",
+        origin: "Studio, Pilani",
         phase: "phase3",
         image: "21. Richie Carrying Gifts $ High Fashion Brands (2024) - final2-cropped.jpg",
-        story: "A maximalist critique of hyper-consumerism. The iconic pop figure is portrayed physically burdened by modern luxury status symbols, examining the performance of identity in brand culture."
+        story: "A maximalist, unapologetic Pop Art masterwork interrogating luxury hype and brand idolatry. Incorporating authentic, dissected luxury packaging and shopping boxes (Hermès, Rolex, Patek Philippe, Miu Miu) directly into the 3D mixed-media surface, the canvas depicts Richie Rich physically bent and weighed down by towering designer boxes. The work asks an incisive question for the modern era: Are high-fashion logos and luxury flexes genuine armor for our insecurities, or are they expensive baggage that suffocates the human spirit?"
       }
     ];
 
