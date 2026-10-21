@@ -229,7 +229,7 @@
       transform: rotateY(var(--angle)) translateZ(var(--rotunda-radius, 210px)); backface-visibility: hidden; -webkit-backface-visibility: hidden;
     }
     :root[data-theme="dark"] .rot-card { background: #141419; box-shadow: 0 30px 65px rgba(0, 0, 0, 0.8), 0 0 25px rgba(203, 163, 88, 0.25), inset 0 0 0 5px #101014; }
-    .rot-card img { display: block; width: 100%; height: calc((var(--card-w) - 14px) * var(--r)); object-fit: cover; border-radius: var(--radius-3); pointer-events: none; }
+    .rot-card img { display: block; width: 100%; height: calc(var(--card-w) * var(--r)); object-fit: cover; border-radius: var(--radius-3); pointer-events: none; }
     .rot-tag {
       /* Full title, wrapping onto a second line when it needs to. */
       margin-top: 7px; display: grid; gap: 3px; text-align: left;
@@ -237,6 +237,10 @@
       color: #fff; font-family: var(--font-mono); font-size: 8px; line-height: 1.35; letter-spacing: 0.1em; text-transform: uppercase;
     }
     .rot-tag b { font-weight: 400; text-wrap: balance; }
+    /* Only the paintings revolve: no mat, frame or caption on the rotunda. */
+    .rot-card, :root[data-theme="dark"] .rot-card { padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }
+    .rot-card img { border-radius: 0; box-shadow: var(--shadow-hung-lg); }
+    .rot-tag { display: none; }
     .rot-tag span { color: #cba358; flex: none; }
     .hero-copy { position: relative; text-align: center; display: grid; justify-items: center; gap: var(--space-12); margin-top: var(--space-6); }
     .hero-copy h1 { font-family: var(--font-serif); font-weight: 300; font-size: clamp(36px, 10.5vw, 60px); line-height: 1.15; letter-spacing: 0.04em; text-wrap: balance; }

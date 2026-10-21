@@ -2,11 +2,11 @@
 const CONTACT_EMAIL = 'ketanduggal2k11@gmail.com';
 
 const ERAS = {
-  phase1: { num: '01', years: '2011–2014', title: 'Raw Roots & Heavy Oil', short: 'Raw Roots', cover: 'the-urban-hermit-2012',
+  phase1: { num: '01', years: '2011–2014', title: 'Raw Roots & Psychological Excavation', short: 'Raw Roots', cover: 'the-urban-hermit-2012',
     note: 'Raw emotion, deep shadows and pure introspective oil work straight from the Pilani studio.' },
-  phase2: { num: '02', years: '2015–2021', title: 'Fluid Resin & Sydney Drift', short: 'Fluid Resin', cover: 'study-of-balance-2020',
+  phase2: { num: '02', years: '2015–2021', title: 'Fluid Resin, Drift & Sanctuary', short: 'Fluid Resin', cover: 'study-of-balance-2020',
     note: 'Flow-state resin, ocean blues, gilded detail and modern abstract energy.' },
-  phase3: { num: '03', years: '2022–Present', title: 'Street Pop & Luxury Satire', short: 'Street Pop', cover: 'richie-carrying-gifts-and-high-fashion-brands-2024',
+  phase3: { num: '03', years: '2022–Present', title: 'Street Pop, Social Satire & The Market', short: 'Street Pop', cover: 'richie-carrying-gifts-and-high-fashion-brands-2024',
     note: 'Richie enters the scene. Loud, unapologetic street collage calling out luxury hype and flex culture.' }
 };
 // The same six works the website's 3D rotunda shows.
