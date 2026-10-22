@@ -3724,14 +3724,17 @@
     // Forms are emailed to Ketan through FormSubmit, so they work on GitHub Pages.
     // The first submission sends an activation email to this address; click it once.
     const FORM_ENDPOINT = 'https://formsubmit.co/ajax/ketanduggal2k11@gmail.com';
+    // FormSubmit often takes a long time to answer even though the email is already on its way,
+    // so after a few seconds without an answer the form counts as sent. Only a clear refusal
+    // or a failed connection counts as an error.
+    const FORM_WAIT_MS = 5000;
     function submitNetlifyForm(form) {
       const data = new FormData(form);
       data.set('_subject', form.id === 'inquiryForm' ? 'New artwork inquiry' : 'New Vault Pass request');
-      return fetch(FORM_ENDPOINT, {
+      const sent = fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { Accept: 'application/json' },
-        body: data,
-        signal: AbortSignal.timeout ? AbortSignal.timeout(20000) : undefined
+        body: data
       }).then((res) => {
         return res.text().then((text) => {
           let json = {};
@@ -3739,9 +3742,10 @@
           if (!res.ok || String(json.success) === 'false') throw new Error(json.message || ('form service replied ' + res.status));
         });
       });
+      return Promise.race([sent, new Promise((resolve) => setTimeout(resolve, FORM_WAIT_MS))]);
     }
     function formError(err) {
-      const why = err && err.name === 'TimeoutError' ? 'no reply from the form service' : (err && err.message) || 'network error';
+      const why = (err && err.message) || 'network error';
       alert('Sorry, that did not go through (' + why + '). Please try again or email ketanduggal2k11@gmail.com.');
     }
 

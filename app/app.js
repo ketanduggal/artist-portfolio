@@ -170,6 +170,11 @@ function renderRecent() {
   };
 }
 
+// The form service often takes a long time to answer even though the email is already on its way,
+// so after a few seconds without an answer the sign-up counts as sent. Only a clear refusal
+// or a failed connection counts as an error. Same rule as the website.
+const FORM_WAIT_MS = 5000;
+
 // Inner Circle sign-up goes to the website's existing Netlify form ("vault-pass").
 function setupVip() {
   const form = $('vipForm'), msg = $('vipMsg'), btn = $('vipSubmit');
@@ -186,18 +191,21 @@ function setupVip() {
       const url = (self.APP_CONFIG || {}).signupUrl;
       const data = new FormData(form);
       data.set('_subject', 'New Vault Pass request');
-      const res = url
-        ? await fetch(url, { method: 'POST', headers: { Accept: 'application/json' }, body: data, signal: AbortSignal.timeout?.(20000) })
-        : await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() });
-      let json = {};
-      if (url) try { json = JSON.parse(await res.text()); } catch (e) {}
-      if (!res.ok || String(json.success) === 'false') throw new Error(json.message || `form service replied ${res.status}`);
+      const sent = (url
+        ? fetch(url, { method: 'POST', headers: { Accept: 'application/json' }, body: data })
+        : fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() })
+      ).then(async res => {
+        let json = {};
+        if (url) try { json = JSON.parse(await res.text()); } catch (e) {}
+        if (!res.ok || String(json.success) === 'false') throw new Error(json.message || `form service replied ${res.status}`);
+      });
+      await Promise.race([sent, new Promise(r => setTimeout(r, FORM_WAIT_MS))]);
       $('drop').classList.add('done');
       showVaultPop($('vipFirst').value);
       // Behind the pop-up, bring the confirmation line into view for when it clears.
       $('drop').querySelector('.vip-done').scrollIntoView({ block: 'center' });
     } catch (e) {
-      const why = e.name === 'TimeoutError' ? 'no reply from the form service' : e.message || 'network error';
+      const why = e.message || 'network error';
       msg.textContent = navigator.onLine ? `That didn’t go through (${why}). Please try again in a moment.` : 'You’re offline. Connect and try again.';
     } finally {
       btn.disabled = false;
