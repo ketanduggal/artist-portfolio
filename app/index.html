@@ -415,8 +415,8 @@
     .spec { width: 100%; border-collapse: collapse; font-size: 12px; }
     .spec th, .spec td { padding: 7px 0; border-bottom: 1px solid var(--glass-border); text-align: left; vertical-align: top; }
     .spec th { width: 34%; font-family: var(--font-mono); font-weight: 400; font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
-    .v-story { max-height: 0; overflow: hidden; color: var(--text-muted); font-size: 13px; font-weight: 300; line-height: 1.7; transition: max-height 0.45s var(--ease), margin 0.45s var(--ease); }
-    .v-info.expanded .v-story { max-height: 28vh; overflow-y: auto; margin-top: var(--space-12); }
+    .v-story { white-space: pre-line; max-height: 0; overflow: hidden; color: var(--text-muted); font-size: 13px; font-weight: 300; line-height: 1.7; transition: max-height 0.45s var(--ease), margin 0.45s var(--ease); }
+    .v-info.expanded .v-story { max-height: 36vh; overflow-y: auto; margin-top: var(--space-12); }
     .v-actions { display: flex; flex-wrap: wrap; gap: var(--space-10); margin-top: var(--space-16); }
     .v-actions .btn { flex: 1; padding: 0 var(--space-12); white-space: nowrap; }
     .v-actions .btn.gold { flex-basis: 100%; }
@@ -473,6 +473,14 @@
       .viewer { flex-direction: row; }
       .v-info { width: 380px; flex: none; border-top: 0; border-left: 1px solid var(--glass-border); overflow-y: auto; padding: var(--space-40) var(--space-36); display: flex; flex-direction: column; justify-content: center; }
       .viewer.clean .v-info { display: flex; }
+    }
+
+    /* Phones: the painting always keeps a good share of the screen; if the details run long,
+       the viewer scrolls instead of shrinking the painting to a sliver. */
+    @media (max-width: 719px) {
+      .viewer { overflow-y: auto; overscroll-behavior: contain; }
+      .wall { flex: 1 0 50vh; flex-basis: 50svh; min-height: 50vh; min-height: 50svh; }
+      .v-info { flex: none; }
     }
 
     .ios-hint { position: fixed; left: var(--gutter-l); right: var(--gutter-r); bottom: calc(var(--bottom) + 88px); z-index: 24; display: none; gap: var(--space-12); align-items: center; padding: var(--space-14) var(--space-16); font-size: 12.5px; }
@@ -633,7 +641,7 @@
           <div class="panel"><span class="yr">2023</span><h3>Safarnama</h3><span class="meta">Stainless Art Gallery // Delhi</span></div>
           <div class="panel"><span class="yr">2020</span><h3>Love</h3><span class="meta">White Rhino Artspace // Sydney</span></div>
           <div class="panel"><span class="yr">2014</span><h3>Serendipity</h3><span class="meta">Jawahar Kala Kendra // Jaipur</span></div>
-          <div class="panel"><span class="yr">2011</span><h3>First Canvas Showcase</h3><span class="meta">School &amp; Saraswati Temple // Pilani</span></div>
+          <div class="panel"><span class="yr">2011</span><h3>Cynosure</h3><span class="meta">School &amp; Saraswati Temple // Pilani</span></div>
         </div>
       </div>
 
@@ -685,6 +693,7 @@
         <tr><th scope="row">Medium</th><td id="vMedium"></td></tr>
         <tr><th scope="row">Dimensions</th><td id="vSize"></td></tr>
         <tr><th scope="row">Origin</th><td id="vOrigin"></td></tr>
+        <tr id="vStatusRow" hidden><th scope="row">Collection</th><td id="vStatus"></td></tr>
       </table>
       <p class="v-story" id="vStory"></p>
       <div class="v-actions">

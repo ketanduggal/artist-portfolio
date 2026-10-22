@@ -324,6 +324,8 @@ function setCurrent(i) {
   $('vMedium').textContent = p.medium;
   $('vSize').textContent = p.dimensions;
   $('vOrigin').textContent = p.origin;
+  $('vStatus').textContent = p.status || '';
+  $('vStatusRow').hidden = !p.status;
   $('vStory').textContent = p.story;
   info.classList.remove('expanded');
   $('storyBtn').textContent = 'The story';

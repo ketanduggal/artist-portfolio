@@ -1,411 +1,416 @@
 [
-  {
-    "id": 0,
-    "slug": "complex-agony-2011",
-    "title": "Complex Agony",
-    "year": "2011",
-    "medium": "Oil on Canvas",
-    "dimensions": "60 × 60 cm (Archival 91 × 91 cm canvas)",
-    "origin": "Birla School Studio, Pilani",
-    "phase": "phase1",
-    "story": "The genesis of Duggal’s visual inquiry. Painted over eight to twelve months of relentless studio discipline in 11th grade under mentor Prakash Khandey, this piece was forged by physically rubbing dense oil pigments into the raw canvas weave with hands and cloth for hours. The composition depicts a wounded, stabbed figure with visible blood on her t-shirt, yet her hands are pressed tightly over her heart in deliberate, fierce self-preservation. It is not an image of defeat, but of resilience—the raw friction of learning to paint while learning to protect one's innermost humanity against existential turmoil. The layered blacks in the negative space were mixed with deep vermilion, umber, and Prussian blue glazes to create a living, breathing shadow.",
-    "images": [
-      {
-        "file": "complex-agony-2011.jpg",
-        "w": 1591,
-        "h": 1592
-      }
-    ],
-    "tone": "#636460"
-  },
-  {
-    "id": 1,
-    "slug": "splendid-soul-2012",
-    "title": "Splendid Soul",
-    "year": "2012",
-    "medium": "Oil on Canvas",
-    "dimensions": "120 × 150 cm (Landscape)",
-    "origin": "Birla School Studio, Pilani",
-    "phase": "phase1",
-    "story": "Following the raw pain of the genesis work, Splendid Soul marks a monumental expansion in scale, ambition, and spirit. Spanning an imposing 1.5-meter canvas, the piece depicts a girl holding open the fold of her frock beneath a tree, catching falling autumn leaves. To capture the tactile reality of nature and fleeting beauty, Duggal dipped actual fallen leaves into heavy vermilion and crimson oil glazes and pressed them directly into the canvas weave. It represents the realization that true grace and splendor are not found in the absence of chaos, but directly within it.",
-    "images": [
-      {
-        "file": "splendid-soul-2012.jpg",
-        "w": 960,
-        "h": 727
-      }
-    ],
-    "tone": "#a32e25"
-  },
-  {
-    "id": 2,
-    "slug": "the-urban-hermit-2012",
-    "title": "The Urban Hermit",
-    "year": "2012",
-    "medium": "Oil on Canvas",
-    "dimensions": "45 × 77 cm (Landscape)",
-    "origin": "Home Studio, Pilani",
-    "phase": "phase1",
-    "story": "The foundational archetype of Duggal’s entire practice. Painted during intense late-night studio marathons after transitioning from the school studio to his home space in Pilani. The composition intentionally pushes a solitary girl all the way to the far-left edge of a wide horizontal canvas, resting her chin on her hands and shielding her head to block out institutional and societal noise. The surrounding void of deep, multi-layered black represents the quiet space necessary to cultivate an authentic voice. It establishes the \"Hermit\"—the observer who chooses silence and self-knowledge before stepping out into the arena of the world.",
-    "images": [
-      {
-        "file": "the-urban-hermit-2012.jpg",
-        "w": 960,
-        "h": 528
-      }
-    ],
-    "tone": "#272923"
-  },
-  {
-    "id": 3,
-    "slug": "nothing-on-you-2012",
-    "title": "Nothing on you",
-    "year": "2012",
-    "medium": "Oil on Canvas",
-    "dimensions": "60 × 60 cm (Square 1:1)",
-    "origin": "Home Studio, Pilani",
-    "phase": "phase1",
-    "story": "Born out of an uninterrupted 24-hour day-and-night painting sprint. Rendered in vivid, glowing reds and tender blush tones against cool, muted shadows, this piece captures raw instinct taking over intellectual doubt. It was the breakthrough moment where Duggal learned the painter’s ultimate lesson: trusting the subconscious flow and knowing exactly when a painting is complete without overworking the surface. It preserves the ethereal, lingering presence of an intimate emotional memory.",
-    "images": [
-      {
-        "file": "nothing-on-you-2012.jpg",
-        "w": 457,
-        "h": 454
-      }
-    ],
-    "tone": "#584e59"
-  },
-  {
-    "id": 4,
-    "slug": "strings-teem-senses-2013",
-    "title": "Strings Teem Senses",
-    "year": "2013",
-    "medium": "Oil on Canvas (Triptych, 3 Panels)",
-    "dimensions": "45 × 45 cm each (Three Panels)",
-    "origin": "Home Studio, Pilani",
-    "phase": "phase1",
-    "story": "The artist’s first pure leap into abstract deconstruction. Synthesizing his physical discipline as a school band guitarist with visual geometry, Duggal deconstructed the physical vibration and tuning of guitar strings (EADGBe) across three separate canvases. The flowing lines of an acoustic stringed instrument span seamlessly across the physical gaps between the panels, requiring the viewer’s eye and mind to bridge the silence and resolve the continuous melody.",
-    "images": [
-      {
-        "file": "strings-teem-senses-2013-1.jpg",
-        "w": 1125,
-        "h": 1125
-      },
-      {
-        "file": "strings-teem-senses-2013-2.jpg",
-        "w": 1125,
-        "h": 1125
-      },
-      {
-        "file": "strings-teem-senses-2013-3.jpg",
-        "w": 1125,
-        "h": 1125
-      }
-    ],
-    "tone": "#603129"
-  },
-  {
-    "id": 5,
-    "slug": "gaol-of-greed-2013",
-    "title": "Gaol of Greed",
-    "year": "2013",
-    "medium": "Oil on Canvas",
-    "dimensions": "60 × 83 cm (Landscape)",
-    "origin": "Home Studio, Pilani",
-    "phase": "phase1",
-    "story": "A powerful emotional cartography of societal entrapment and the material rat race. In this second major abstract work, the canvas is split into contrasting forces: in the top right, a swirling, golden-red circular void symbolizes the \"Circle of Life\" and the intoxicating vortex of ambition; on the bottom left, grounded, burdened human silhouettes carry the collective weight of societal expectations. It visualizes the psychological prison constructed by unchecked material desires.",
-    "images": [
-      {
-        "file": "gaol-of-greed-2013.jpg",
-        "w": 622,
-        "h": 417
-      }
-    ],
-    "tone": "#763f22"
-  },
-  {
-    "id": 6,
-    "slug": "trying-and-being-2014",
-    "title": "Trying and Being",
-    "year": "2014",
-    "medium": "Oil on Canvas",
-    "dimensions": "60 × 60 cm (Square 1:1)",
-    "origin": "Pilani Studio",
-    "phase": "phase1",
-    "story": "A high-intensity figurative study completed following Duggal's transition and exhibition milestone. The piece explores human discipline \"by the numbers\"—the tension between striving (\"trying\") and existing in true presence (\"being\"). With an upward-directed gaze, textured paint runs, and deep psychological honesty, it serves as a testament to the artist's athletic conditioning: showing up to the canvas every single day, doing the work, and standing firm even when questioning the path.",
-    "images": [
-      {
-        "file": "trying-and-being-2014.jpg",
-        "w": 1600,
-        "h": 1600
-      }
-    ],
-    "tone": "#463324"
-  },
-  {
-    "id": 7,
-    "slug": "now-you-see-me-now-you-don-t-2014",
-    "title": "Now you see me, now you don't",
-    "year": "2014",
-    "medium": "Mixed Medium on Canvas",
-    "dimensions": "60 × 45 cm (Portrait)",
-    "origin": "Pilani Studio",
-    "phase": "phase1",
-    "story": "A cool-toned conceptual portrait investigating the masks, shields, and selective identities individuals present to the outside world. One side of the face remains obscured beneath slate-blue shadows and dripping crimson pigment. It confronts the universal tension between vulnerability and concealment, asking how much of our true selves we dare to reveal to society before retreat becomes necessary.",
-    "images": [
-      {
-        "file": "now-you-see-me-now-you-don-t-2014.jpg",
-        "w": 663,
-        "h": 960
-      }
-    ],
-    "tone": "#5d666a"
-  },
-  {
-    "id": 8,
-    "slug": "the-stripped-tint-2014",
-    "title": "The Stripped Tint",
-    "year": "2014",
-    "medium": "Oil & Acrylic on Canvas",
-    "dimensions": "45 × 60 cm (Landscape)",
-    "origin": "Pilani Studio",
-    "phase": "phase1",
-    "story": "Subtitled \"Ethics in Action,\" this piece depicts a bowed silhouette clutching her head in profound introspection and humility. Duggal stripped away decorative colors to focus on tonal gravity and moral weight. It represents a confrontation with personal conscience, asking what remains of human character when external applause, vanity, and superficial labels are stripped bare.",
-    "images": [
-      {
-        "file": "the-stripped-tint-2014.jpg",
-        "w": 1600,
-        "h": 1235
-      }
-    ],
-    "tone": "#63543d"
-  },
-  {
-    "id": 9,
-    "slug": "the-one-who-knew-2014",
-    "title": "The One Who Knew",
-    "year": "2014",
-    "medium": "Oil on Canvas",
-    "dimensions": "60 × 60 cm (Square 1:1)",
-    "origin": "Pilani Studio",
-    "phase": "phase1",
-    "story": "Rendered in fiery vermilion, warm amber tones, and contrasting teal accents, this striking sideways-glance portrait carries the quiet gravity of unspoken truths. It is a portrait of memory—holding onto experiences, lessons, and silent realizations that cannot be spoken aloud. The dripping pigment tears reflect the slow, indelible impact of time and lived experience.",
-    "images": [
-      {
-        "file": "the-one-who-knew-2014.jpg",
-        "w": 960,
-        "h": 938
-      }
-    ],
-    "tone": "#552818"
-  },
-  {
-    "id": 10,
-    "slug": "sneak-peak-2014",
-    "title": "Sneak Peak",
-    "year": "2014",
-    "medium": "Oil on Canvas",
-    "dimensions": "46 × 61 cm (Landscape)",
-    "origin": "Pilani Studio",
-    "phase": "phase1",
-    "story": "The earliest thematic exploration of \"Querencia\"—the mental and physical sanctuary where one feels invincible, safe, and authentically grounded. Featuring an over-the-shoulder gaze framed by a vibrant bubblegum-pink silhouette, the painting catches a fleeting glimpse into the inner world of peace before stepping out into public scrutiny.",
-    "images": [
-      {
-        "file": "sneak-peak-2014.jpg",
-        "w": 960,
-        "h": 702
-      }
-    ],
-    "tone": "#482011"
-  },
-  {
-    "id": 11,
-    "slug": "the-doomed-one-2014",
-    "title": "The Doomed One",
-    "year": "2014",
-    "medium": "Mixed Medium / Oil on Canvas",
-    "dimensions": "61 × 61 cm (Square 1:1)",
-    "origin": "Pilani / UP Studio",
-    "phase": "phase1",
-    "story": "The apex and philosophical conclusion of the early Pilani era. A monochromatic, chartreuse-and-olive profile of a seated, hunched figure confronting existential dread. Accompanying Duggal’s defining artist inquiry—\"What is presence and what is its relationship to painting? So we learn our skills, locate what is real for us, show up, and paint\"—this work is an unflinching mirror to modern angst and the courage required to confront the abyss without flinching.",
-    "images": [
-      {
-        "file": "the-doomed-one-2014.jpg",
-        "w": 1570,
-        "h": 1600
-      }
-    ],
-    "tone": "#464a27"
-  },
-  {
-    "id": 12,
-    "slug": "blue-winds-2015",
-    "title": "Blue Winds",
-    "year": "2015",
-    "medium": "Oil on Canvas",
-    "dimensions": "61 × 61 cm (Square 1:1)",
-    "origin": "Delhi",
-    "phase": "phase2",
-    "story": "Painted during Duggal’s move to Delhi, this work captures the sensation of motion, geographic transition, and leaving one's comfort zone. Bathed in electric azure, cobalt glazes, and deep indigo shadows, the frontal portrait channels the momentum of change. The \"blue winds\" represent external forces that sweep through our lives, reshaping our perspective and demanding reinvention.",
-    "images": [
-      {
-        "file": "blue-winds-2015.jpg",
-        "w": 960,
-        "h": 960
-      }
-    ],
-    "tone": "#2c3107"
-  },
-  {
-    "id": 13,
-    "slug": "strangers-in-the-night-2016",
-    "title": "Strangers in the night",
-    "year": "2016",
-    "medium": "Acrylic / Oil on Canvas",
-    "dimensions": "60 × 60 cm (Square 1:1)",
-    "origin": "Delhi",
-    "phase": "phase2",
-    "story": "An electric, high-heat portrait marked by saturated crimson, amber tones, and an unblinking frontal gaze. Created during the fast-paced urban density of Delhi, the piece bridges classical figuration with raw emotional abstraction. It captures the fleeting, intense encounters between strangers in a crowded metropolis—anonymous souls crossing paths in the dark, exchanging unspoken understanding before disappearing.",
-    "images": [
-      {
-        "file": "strangers-in-the-night-2016.jpg",
-        "w": 1498,
-        "h": 1600
-      }
-    ],
-    "tone": "#45180b"
-  },
-  {
-    "id": 14,
-    "slug": "burnt-wine-2016",
-    "title": "Burnt Wine",
-    "year": "2016",
-    "medium": "Mixed Media on Canvas",
-    "dimensions": "67 × 48 cm (Portrait)",
-    "origin": "Delhi",
-    "phase": "phase2",
-    "story": "A decisive technical leap into mixed media. Moving away from purely representational portraiture, Duggal allowed material weathering, organic pigment friction, and fluid branching to lead the composition. Featuring earthy terracotta, deep wine, and burnt sienna tones, the painting treats the canvas like an ancient weathered wall, where texture itself tells an organic story of time, erosion, and endurance.",
-    "images": [
-      {
-        "file": "burnt-wine-2016.jpg",
-        "w": 1188,
-        "h": 1600
-      }
-    ],
-    "tone": "#944809"
-  },
-  {
-    "id": 15,
-    "slug": "elucidated-2017",
-    "title": "Elucidated",
-    "year": "2017",
-    "medium": "Oil on Canvas",
-    "dimensions": "67 × 48 cm (Portrait)",
-    "origin": "Delhi",
-    "phase": "phase2",
-    "story": "A deliberate move toward light, perspective clarity, and gallery-level sophistication. Rendered in balanced sapphire and cool cerulean tones, Elucidated symbolizes an awakening of vision. After years of exploring dark psychological shadows, this piece signals an elevated, calm perspective where chaotic emotions settle into refined clarity.",
-    "images": [
-      {
-        "file": "elucidated-2017.jpg",
-        "w": 1595,
-        "h": 1600
-      }
-    ],
-    "tone": "#161a17"
-  },
-  {
-    "id": 16,
-    "slug": "the-conflict-of-love-and-chastity-2020",
-    "title": "The Conflict of Love and Chastity",
-    "year": "2020",
-    "medium": "Oil & Mixed Media Glaze",
-    "dimensions": "61 × 61 cm (Square 1:1)",
-    "origin": "Sydney, Australia",
-    "phase": "phase2",
-    "story": "Created during Duggal’s studio years in Sydney, this work boldly disrupts Renaissance portraiture traditions through contemporary digital \"glitch\" aesthetics. Featuring lime-blonde hair, flushed pink tones, and a deliberate chromatic glitch plane sliced across the bridge of the nose, the piece visualizes cognitive dissonance. It encapsulates the psychological tug-of-war between raw impulsive desire (Love) and self-imposed moral restraint (Chastity) in modern life.",
-    "images": [
-      {
-        "file": "the-conflict-of-love-and-chastity-2020.jpg",
-        "w": 1600,
-        "h": 1600
-      }
-    ],
-    "tone": "#53382e"
-  },
-  {
-    "id": 17,
-    "slug": "study-of-balance-2020",
-    "title": "Study of Balance",
-    "year": "2020",
-    "medium": "Acrylic & Fluid Bio-Resin on Panel",
-    "dimensions": "51 × 122 cm (Wide Panorama 1:2.4)",
-    "origin": "Sydney, Australia",
-    "phase": "phase2",
-    "story": "A sweeping panoramic liquid landscape and a technical milestone in fluid chemistry. Created in Sydney, this piece represents the ultimate dialogue between control and surrender. By manipulating the viscosity of pouring acrylics and clear high-gloss epoxy bio-resin across a clean white negative-space panel, Duggal relinquished direct brush control to let gravity and chemistry form organic equilibrium. It mirrors the artist's personal quest for stability and zen amidst foreign environments and life transitions.",
-    "images": [
-      {
-        "file": "study-of-balance-2020.jpg",
-        "w": 1600,
-        "h": 670
-      }
-    ],
-    "tone": "#a4a3a1"
-  },
-  {
-    "id": 18,
-    "slug": "querencia-2021",
-    "title": "Querencia",
-    "year": "2021",
-    "medium": "Mixed Media & 24K Gold Leaf on Canvas",
-    "dimensions": "61 × 91 cm (Landscape 2:3)",
-    "origin": "Sydney, Australia",
-    "phase": "phase2",
-    "story": "The crowning achievement of the Sydney era and the mature resolution of the sanctuary motif. Derived from the Spanish bullfighting concept of \"Querencia\"—the specific spot in the ring where the bull feels invincible and takes its stand—this piece features delicate, expressive figurative line work set against an illuminated, hand-laid 24K gold leaf background. It symbolizes an artist who has weathered internal turmoil, traversed foreign lands, and finally built an impregnable inner fortress of peace.",
-    "images": [
-      {
-        "file": "querencia-2021.jpg",
-        "w": 1600,
-        "h": 1076
-      }
-    ],
-    "tone": "#58575a"
-  },
-  {
-    "id": 19,
-    "slug": "richie-make-money-2022",
-    "title": "Richie Make Money",
-    "year": "2022",
-    "medium": "Mixed Media & Street Pop",
-    "dimensions": "121 × 91 cm (Portrait 3:4)",
-    "origin": "Home Studio, Pilani",
-    "phase": "phase3",
-    "story": "The pivotal threshold where \"The Hermit\" steps out into \"The Market.\" Returning to his roots in Pilani with a global perspective, Duggal introduced the satirical motif of Richie Rich. Set beneath a bold, illuminated neon-style \"MAKE MONEY\" marquee, Richie stands holding a sack overflowing with rupee currency notes. It is a razor-sharp Pop Art inquiry into late-stage capitalism, examining how contemporary culture reduces human identity, dignity, and self-worth to sheer monetary accumulation.",
-    "images": [
-      {
-        "file": "richie-make-money-2022.jpg",
-        "w": 378,
-        "h": 512
-      }
-    ],
-    "tone": "#775141"
-  },
-  {
-    "id": 20,
-    "slug": "richie-carrying-gifts-and-high-fashion-brands-2024",
-    "title": "Richie Carrying Gifts & High Fashion Brands",
-    "year": "2024",
-    "medium": "Mixed Media & Luxury Brand Packaging Collage",
-    "dimensions": "120 × 90 cm (Portrait 3:4)",
-    "origin": "Studio, Pilani",
-    "phase": "phase3",
-    "story": "A maximalist, unapologetic Pop Art masterwork interrogating luxury hype and brand idolatry. Incorporating authentic, dissected luxury packaging and shopping boxes (Hermès, Rolex, Patek Philippe, Miu Miu) directly into the 3D mixed-media surface, the canvas depicts Richie Rich physically bent and weighed down by towering designer boxes. The work asks an incisive question for the modern era: Are high-fashion logos and luxury flexes genuine armor for our insecurities, or are they expensive baggage that suffocates the human spirit?",
-    "images": [
-      {
-        "file": "richie-carrying-gifts-and-high-fashion-brands-2024.jpg",
-        "w": 970,
-        "h": 1282
-      }
-    ],
-    "tone": "#827549"
-  }
+ {
+  "id": 0,
+  "slug": "complex-agony-2011",
+  "title": "Complex Agony",
+  "year": "2011",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "60 × 60 cm (Archival 91 × 91 cm canvas)",
+  "origin": "Birla School Art Room, Pilani",
+  "phase": "phase1",
+  "story": "In 2011, as Ketan entered the 11th grade at Birla School in Pilani, the school had no formal arts curriculum. However, under the mentorship and encouragement of art teacher Prakash Khandey, he took the leap onto stretched canvas. This initiative sparked a collective movement inside the school: seeing him begin, nine other students joined in to paint their own canvases in the school art room. Working during school hours and quiet evening sessions, Ketan spent nearly one full year (eight to twelve months) immersed in this single canvas.\n\nAt the center of the composition stands a girl who has been stabbed, with blood visibly staining her t-shirt. Yet her posture defies victimhood: she presses both hands tightly over her heart. To match the emotional weight of this image, Ketan eschewed standard brushwork in favor of an obsessive, athletic \"hand-rubbing\" technique—physically grinding dense linseed oil pigments into the raw canvas weave for hours at a time until the agony was literally etched into the fabric. The surrounding darkness is not flat black, but a three-dimensional, \"living black\" mixed from layered glazes of vermilion, burnt umber, and Prussian blue.\n\nComplex Agony is not a portrait of defeat; it is an act of fierce self-preservation. While the exterior (the shirt and body) can be wounded by the world, her hands fiercely guard her core—the heart and soul. When this painting was later sold after the 21-day exhibition in Jaipur, the initial thrill of the sale quickly gave way to a profound sense of grief and emptiness—teaching Ketan early on that his canvases were not commercial commodities, but living pieces of his own identity.",
+  "images": [
+   {
+    "file": "complex-agony-2011.jpg",
+    "w": 1591,
+    "h": 1592
+   }
+  ],
+  "tone": "#636460",
+  "status": "Sold"
+ },
+ {
+  "id": 1,
+  "slug": "splendid-soul-2012",
+  "title": "Splendid Soul",
+  "year": "2012",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "120 × 150 cm (Landscape)",
+  "origin": "Birla School Art Room, Pilani",
+  "phase": "phase1",
+  "story": "By 2012, now in the 12th grade, Ketan responded to the inward claustrophobia of Complex Agony by expanding his ambition to a monumental scale: a 120 × 150 cm canvas, his largest early work. Painted over six to seven months during school hours and evenings in the Birla School art room, this piece marked the first time he invested in large, single-color professional tubes of oil paint—specifically vibrant reds.\n\nThe composition features a solitary girl standing at the center of the canvas beneath an overarching tree in the background and top plane. She holds open the fold of her frock to catch autumn leaves as they fall from above. Seeking tactile realism, Ketan gathered real fallen leaves from the ground, coated them in heavy vermilion and crimson oil glazes, and stamped them directly onto the canvas weave to replicate the organic imprint of falling foliage.\n\nIf Complex Agony was about closing and protecting the heart against a wound, Splendid Soul represents opening the heart (symbolized by the outstretched frock) to gather grace amidst the chaos of internal struggle. It captures the fleeting splendor of youth just before the threshold of adulthood, proving that beauty and resilience exist directly inside turbulent environments.",
+  "images": [
+   {
+    "file": "splendid-soul-2012.jpg",
+    "w": 960,
+    "h": 727
+   }
+  ],
+  "tone": "#a32e25"
+ },
+ {
+  "id": 2,
+  "slug": "the-urban-hermit-2012",
+  "title": "The Urban Hermit",
+  "year": "2012",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "45 × 77 cm (Landscape)",
+  "origin": "Private Home Studio, Pilani",
+  "phase": "phase1",
+  "story": "The Urban Hermit marks Ketan's artistic \"Independence Day.\" For the first time, he moved his practice out of the shared, institutional Birla School art room and into the private sanctuary of his home in Pilani. Free from school bells and the gaze of teachers or peers, the creative tempo shifted dramatically: instead of laboring for a year, he completed this work in a high-intensity, one-week sprint of all-night painting sessions.\n\nAcross a wide horizontal canvas (45 × 77 cm), a vast, consuming void of multi-layered black dominates the right and central planes. Pushed all the way to the far-left edge sits a contemplative girl, pressing her hands against her head and resting her chin in her palms to physically block out external noise. Here, Ketan mastered the lesson that \"black\" on canvas is never flat; it is a delicate, three-dimensional balance of underlying tones creating a living darkness.\n\nThis canvas establishes the foundational archetype of Ketan's entire 15-year career: The Hermit. By placing the figure off-center at the extreme edge of the void, he captured the psychological tension of modern isolation—choosing to retreat into midnight silence to protect mental peace and cultivate an authentic inner voice before stepping into the loud marketplace.",
+  "images": [
+   {
+    "file": "the-urban-hermit-2012.jpg",
+    "w": 960,
+    "h": 528
+   }
+  ],
+  "tone": "#272923"
+ },
+ {
+  "id": 3,
+  "slug": "nothing-on-you-2012",
+  "title": "Nothing on you",
+  "year": "2012",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "60 × 60 cm (Square 1:1)",
+  "origin": "Private Home Studio, Pilani",
+  "phase": "phase1",
+  "story": "If the first painting took a year and the third took a week of all-nighters, Nothing on you was a pure lightning strike. Locked inside his home studio in Pilani, Ketan painted continuously through one single day and night (a non-stop 24-hour marathon), finishing the entire canvas in a single sitting.\n\nRendered wet-on-wet with fearless velocity, the portrait features a figure with striking lime-blonde/greenish parted hair and luminescent, flushed crimson and blush-pink facial highlights set against cool, muted indigo and slate shadows. Because it was executed in a single 24-hour flow state, the brushwork retains an electric, unhesitating immediacy.\n\nThis marathon session taught Ketan one of the hardest lessons in painting: knowing when to stop. Quality does not always require months of brooding deliberation; sometimes an artist must outrun self-doubt and trust pure instinct. The title Nothing on you reflects both the untouchable emotional presence of the subject and the purity of a canvas that has nothing overworked or artificial added to it.",
+  "images": [
+   {
+    "file": "nothing-on-you-2012.jpg",
+    "w": 457,
+    "h": 454
+   }
+  ],
+  "tone": "#584e59"
+ },
+ {
+  "id": 4,
+  "slug": "strings-teem-senses-2013",
+  "title": "Strings Teem Senses",
+  "year": "2013",
+  "medium": "Oil Paint on Canvas (Triptych)",
+  "dimensions": "45 × 45 cm each (Three Panels)",
+  "origin": "Private Home Studio, Pilani",
+  "phase": "phase1",
+  "story": "Following four intense figurative works, Strings Teem Senses marks Ketan's first major leap into pure abstraction and spatial deconstruction. As a guitarist in his school band, he didn't merely listen to music—he felt the physical vibration and tension of strings beneath his fingertips. He translated that auditory and tactile passion onto canvas, splitting a single vision across three separate 45 × 45 cm frames.\n\nWhile rooted in his experience as a guitarist and the harmonic alignment of standard guitar tuning (EADGBe), he chose the classical form of a violin as the visual vessel. When all three panels are aligned side by side, the abstract geometry of the instrument emerges: the violin's bow sweeps continuously from the left panel, cuts through the heart of the center canvas, and resolves on the right.\n\nStrings Teem Senses represents the convergence of the Musician and the Visual Artist. By fragmenting the instrument across three separate canvases, he forced the viewer's eye and brain to assemble the melody across the physical silence between the frames—proving he no longer needed a literal human face to convey deep human emotion.",
+  "images": [
+   {
+    "file": "strings-teem-senses-2013-1.jpg",
+    "w": 867,
+    "h": 867
+   },
+   {
+    "file": "strings-teem-senses-2013-2.jpg",
+    "w": 867,
+    "h": 867
+   },
+   {
+    "file": "strings-teem-senses-2013-3.jpg",
+    "w": 867,
+    "h": 867
+   }
+  ],
+  "tone": "#603129"
+ },
+ {
+  "id": 5,
+  "slug": "gaol-of-greed-2013",
+  "title": "Gaol of Greed",
+  "year": "2013",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "60 × 83 cm (Landscape)",
+  "origin": "Private Home Studio, Pilani",
+  "phase": "phase1",
+  "story": "Created at home in Pilani as his second purely abstract work, Gaol of Greed (\"Jail of Greed\") was painted during the high-velocity run-up to the national group exhibition at Jawahar Kala Kendra in Jaipur. Having deconstructed musical harmony in Strings Teem Senses, Ketan turned abstraction toward mapping raw emotional and societal pressure.\n\nSpanning a horizontal 60 × 83 cm canvas, the composition is a split dual-toned field of contrasting forces. In the top-right zone, a stormy, swirling crimson and burgundy vortex represents the \"Circle of Life\" and the intoxicating loop of ambition. Counterbalancing this in the bottom-left zone is an airy, smoky golden-yellow field with rising vertical stalks and grounded, burdened human figures carrying the heavy gravitational pull of material desire.\n\nIf the first four paintings examined the internal Self, Gaol of Greed is the earliest inquiry into the external System—foreshadowing the Richie series a decade later. It maps the \"mixture of pure emotions\" that occurs when human ambition hardens into a psychological prison (\"gaol\") of material entrapment.",
+  "images": [
+   {
+    "file": "gaol-of-greed-2013.jpg",
+    "w": 622,
+    "h": 417
+   }
+  ],
+  "tone": "#763f22"
+ },
+ {
+  "id": 6,
+  "slug": "trying-and-being-2014",
+  "title": "Trying and Being",
+  "year": "2014",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "60 × 60 cm (Square 1:1)",
+  "origin": "Pilani Studio",
+  "phase": "phase1",
+  "story": "Returning to the canvas in 2014 after the Jaipur exhibition and his gap-year search, Trying and Being channels Ketan's conditioning as a national-level athlete into a high-intensity figurative study. It addresses the daily grind of existence \"by the numbers\"—the friction between striving to become something (\"trying\") and simply existing in authentic presence (\"being\").\n\nOn a square 60 × 60 cm canvas, an expressive portrait gazes upward and to the right, rendered in muted teal/cyan, warm ochre, deep crimson, and atmospheric slate-black textures. Vertical paint drips run down the surface, preserving the raw physical energy of the session.\n\nThe painting is a manifesto on studio and life discipline: showing up to the canvas every single day, staying real, and doing the work even when questioning the process.",
+  "images": [
+   {
+    "file": "trying-and-being-2014.jpg",
+    "w": 1600,
+    "h": 1600
+   }
+  ],
+  "tone": "#463324"
+ },
+ {
+  "id": 7,
+  "slug": "now-you-see-me-now-you-don-t-2014",
+  "title": "Now you see me, now you don't",
+  "year": "2014",
+  "medium": "Oil / Mixed Medium on Canvas",
+  "dimensions": "60 × 45 cm (Portrait)",
+  "origin": "Pilani Studio",
+  "phase": "phase1",
+  "story": "Painted during the introspective 2014 Pilani cycle, this work investigates the duality of visibility and concealment—how individuals navigate public expectations by wearing selective social masks.\n\nA haunting, cool-toned vertical portrait (60 × 45 cm) bathed in washed slate blue, charcoal black, and stark white highlights. Half of the face dissolves into textured marks, while a vivid, visceral crimson wash slashes across one eye with vertical dripping paint runs.\n\nIt confronts the universal vulnerability of self-revelation: how much of our true internal state we allow the world to see before retreating behind protective filters.",
+  "images": [
+   {
+    "file": "now-you-see-me-now-you-don-t-2014.jpg",
+    "w": 663,
+    "h": 960
+   }
+  ],
+  "tone": "#5d666a"
+ },
+ {
+  "id": 8,
+  "slug": "the-stripped-tint-2014",
+  "title": "The Stripped Tint",
+  "year": "2014",
+  "medium": "Oil & Acrylic on Canvas",
+  "dimensions": "45 × 60 cm (Landscape)",
+  "origin": "Pilani Studio",
+  "phase": "phase1",
+  "story": "Subtitled \"Ethics in Action\" in the early archive, The Stripped Tint turns the painterly lens toward internal conscience, moral gravity, and humility.\n\nSet against a muted white background, a distressed figure bows forward, clutching their head in both hands. Heavy, raw brushstrokes of forest green, deep crimson, ochre, and peach carve the posture out of the negative space.\n\nBy stripping away ornamental color (\"tint\"), the painting asks what remains of human character and integrity when external applause, ego, and superficial distractions are removed.",
+  "images": [
+   {
+    "file": "the-stripped-tint-2014.jpg",
+    "w": 1600,
+    "h": 1235
+   }
+  ],
+  "tone": "#63543d"
+ },
+ {
+  "id": 9,
+  "slug": "the-one-who-knew-2014",
+  "title": "The One Who Knew",
+  "year": "2014",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "60 × 60 cm (Square 1:1)",
+  "origin": "Pilani Studio",
+  "phase": "phase1",
+  "story": "Created in 2014, this piece explores the silent weight of personal memory—the unspoken truths and lived lessons that an individual carries through time.\n\nA close-up expressive portrait glancing sideways, ignited by a fiery palette of saturated crimson and orange hair, earthy umber shadows, contrasting teal-blue lips, and vertical dripping pigment tears.\n\nThe One Who Knew serves as a visual anchor for memory: a reminder that our personal timeline holds silent realizations we cannot run away from, and that wisdom is often carried in quiet observation.",
+  "images": [
+   {
+    "file": "the-one-who-knew-2014.jpg",
+    "w": 960,
+    "h": 938
+   }
+  ],
+  "tone": "#552818"
+ },
+ {
+  "id": 10,
+  "slug": "sneak-peak-2014",
+  "title": "Sneak Peak",
+  "year": "2014",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "46 × 61 cm (Landscape)",
+  "origin": "Pilani Studio",
+  "phase": "phase1",
+  "story": "In the early studio archive, this work was associated with the House of Bourbon metadata tag and served as Ketan's very first conceptual excavation of Querencia—the psychological search for an untouchable inner sanctuary where one feels safe and at home.\n\nAn over-the-shoulder expressionist portrait framed by a bold, iconic bubblegum-pink hair silhouette, warm ochre and emerald facial highlights, deep crimson undertones, and cascading drip layers against charcoal black.\n\nTrue to its title, Sneak Peak offers a fleeting glimpse over the shoulder into Ketan's private mental fortress—a preview of the inner peace that would fully mature seven years later in Sydney.",
+  "images": [
+   {
+    "file": "sneak-peak-2014.jpg",
+    "w": 960,
+    "h": 702
+   }
+  ],
+  "tone": "#482011"
+ },
+ {
+  "id": 11,
+  "slug": "the-doomed-one-2014",
+  "title": "The Doomed One",
+  "year": "2014",
+  "medium": "Oil / Mixed Medium on Canvas",
+  "dimensions": "61 × 61 cm (Square 1:1)",
+  "origin": "Pilani / UP Studio",
+  "phase": "phase1",
+  "story": "Standing as the philosophical apex and conclusion of Era 01, The Doomed One is accompanied by the defining studio caption:\"What is presence and what is its relationship to painting? So we learn our skills, locate what is real for us, show up, and paint.\"\n\nA heavy, monochromatic profile of a solitary figure seated and hunched forward, carved out of an atmospheric, dripping wash of olive drab, muted chartreuse yellow, dark moss green, and slate gray. The features are blurred and weighted with impasto, evoking a soul struggling against the gravity of its own thoughts.\n\nThe Doomed One confronts existential dread without flinching. Rather than escaping anxiety, Ketan used the physical act of showing up in front of the canvas to transmute overwhelming mental weight into enduring form.",
+  "images": [
+   {
+    "file": "the-doomed-one-2014.jpg",
+    "w": 1570,
+    "h": 1600
+   }
+  ],
+  "tone": "#464a27"
+ },
+ {
+  "id": 12,
+  "slug": "blue-winds-2015",
+  "title": "Blue Winds",
+  "year": "2015",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "61 × 61 cm (Square 1:1)",
+  "origin": "New Delhi",
+  "phase": "phase2",
+  "story": "Painted during relocation from Pilani to the fast-paced metropolis of New Delhi, Blue Winds captures the kinetic energy of leaving one's comfort zone and allowing a new environment to reshape visual language.\n\nA direct, unblinking frontal portrait bathed in cool neon undertones—electric cyan, cerulean, and cobalt glazes emerging from deep violet-black ambient shadows, accented by soft magenta-pink lips.\n\nMoving away from the earthy, somber shadows of Pilani, the \"blue winds\" symbolize the external currents of change, value, and momentum that sweep an artist into a new chapter.",
+  "images": [
+   {
+    "file": "blue-winds-2015.jpg",
+    "w": 960,
+    "h": 960
+   }
+  ],
+  "tone": "#2c3107"
+ },
+ {
+  "id": 13,
+  "slug": "strangers-in-the-night-2016",
+  "title": "Strangers in the night",
+  "year": "2016",
+  "medium": "Oil / Acrylic on Canvas",
+  "dimensions": "60 × 60 cm (Square 1:1)",
+  "origin": "New Delhi",
+  "phase": "phase2",
+  "story": "When starting this canvas in 2016, Ketan wrote in his studio log: \"So I have started a new painting and this is going to be my best one.\" Created in Delhi, it functions as a crucial bridge between classical figurative portraiture and high-intensity emotional abstraction.\n\nA fierce, direct frontal close-up radiating saturated fiery orange and crimson heat, contrasted against cobalt/teal lips, dark charcoal shadows, and vertical dripping paint tears.\n\nStrangers in the night captures the electric, anonymous encounters of crowded city nights—the brief, unspoken psychological heat shared between strangers passing in the dark.",
+  "images": [
+   {
+    "file": "strangers-in-the-night-2016.jpg",
+    "w": 1498,
+    "h": 1600
+   }
+  ],
+  "tone": "#45180b"
+ },
+ {
+  "id": 14,
+  "slug": "burnt-wine-2016",
+  "title": "Burnt Wine",
+  "year": "2016",
+  "medium": "Mixed Media on Canvas",
+  "dimensions": "67 × 48 cm (Portrait)",
+  "origin": "New Delhi",
+  "phase": "phase2",
+  "story": "Accompanied by the enigmatic caption \"I will write the story of this painting. Its not here,\" Burnt Wine marks the first major technical pivot into Mixed Media.\n\nStepping away from traditional brushwork, Ketan allowed physical texture, chemical weathering, and pigment friction across a 67 × 48 cm canvas to dictate the composition. Rich wine, terracotta, and burnt umber layers interact to create a weathered, organic surface.\n\nBy stating that the story \"is not here\" in words, Ketan discovered that material texture itself is a storyteller—the physical friction of mixed media carries an unfolding narrative that cannot be reduced to a literal figure.",
+  "images": [
+   {
+    "file": "burnt-wine-2016.jpg",
+    "w": 1188,
+    "h": 1600
+   }
+  ],
+  "tone": "#944809"
+ },
+ {
+  "id": 15,
+  "slug": "elucidated-2017",
+  "title": "Elucidated",
+  "year": "2017",
+  "medium": "Oil Paint on Canvas",
+  "dimensions": "67 × 48 cm (Portrait)",
+  "origin": "New Delhi",
+  "phase": "phase2",
+  "story": "With the declaration \"So I will actually start painting,\" Elucidated signals a moment of professional clarity and gallery-standard refinement before his move to Australia.\n\nA composed, blue-toned portrait (67 × 48 cm) presented in a formal gallery frame, utilizing luminous sapphire and cerulean glazes to bring structural light and calm perspective to the face.\n\nTo \"elucidate\" is to make clear: after six years of wrestling with dark psychological turmoil and raw surface friction, this piece marks the resolution of early angst into lucid, self-assured mastery.",
+  "images": [
+   {
+    "file": "elucidated-2017.jpg",
+    "w": 1595,
+    "h": 1600
+   }
+  ],
+  "tone": "#161a17"
+ },
+ {
+  "id": 16,
+  "slug": "the-conflict-of-love-and-chastity-2020",
+  "title": "The Conflict of Love and Chastity",
+  "year": "2020",
+  "medium": "Oil & Mixed Media Glaze on Canvas",
+  "dimensions": "61 × 61 cm (Square 1:1)",
+  "origin": "Marsden Park, Sydney, NSW, Australia",
+  "phase": "phase2",
+  "story": "Created in Sydney during a period of intense geographic, cultural, and personal transition (and showcased in the 2020 Love exhibition at White Rhino Artspace, Sydney), this painting reconfigures classical Renaissance portraiture through a contemporary, digital-age lens.\n\nAcross a 61 × 61 cm square canvas, luminous yellow-ochre highlights and flushed pinks contrast against deep cerulean and indigo shadows. The defining visual strike is a calculated, high-resolution chromatic \"glitch\" sliced horizontally across the bridge of the nose and facial plane, fracturing classical symmetry.\n\nThe visual \"glitch\" embodies modern cognitive dissonance—the internal tug-of-war between raw, impulsive passion (Love) and self-imposed moral discipline (Chastity). It captures how contemporary human identity fractures and recalibrates under emotional pressure.",
+  "images": [
+   {
+    "file": "the-conflict-of-love-and-chastity-2020.jpg",
+    "w": 1600,
+    "h": 1600
+   }
+  ],
+  "tone": "#53382e",
+  "status": "Private Collection"
+ },
+ {
+  "id": 17,
+  "slug": "study-of-balance-2020",
+  "title": "Study of Balance",
+  "year": "2020",
+  "medium": "Acrylic & Fluid Bio-Resin on Panel",
+  "dimensions": "51 × 122 cm (Wide Panorama 1:2.4)",
+  "origin": "Sydney, NSW, Australia",
+  "phase": "phase2",
+  "story": "Born on the shores of Sydney amidst the solitude and intensity of life abroad, Study of Balance represents a radical departure into elemental fluid chemistry. After being sold to a private collector in Melbourne in 2020, its personal significance to his timeline led Ketan to reacquire the work for his permanent collection in 2023.\n\nSpanning a sweeping 51 × 122 cm horizontal panorama, deep indigo, ocean blue, and luminous currents flow across crisp negative space, frozen in suspended animation beneath an ultra-clear, glass-like coat of fluid bio-resin. Working with resin required relinquishing traditional brush control and negotiating viscosity, gravity, and curing chemistry in real time.\n\nStudy of Balance is a physical meditation on control versus surrender. It mirrors the personal quest for emotional grounding and equilibrium when navigating turbulent, unfamiliar environments—learning when to guide the current and when to let the material find its own level.",
+  "images": [
+   {
+    "file": "study-of-balance-2020.jpg",
+    "w": 1600,
+    "h": 670
+   }
+  ],
+  "tone": "#a4a3a1",
+  "status": "Private Collection"
+ },
+ {
+  "id": 18,
+  "slug": "querencia-2021",
+  "title": "Querencia",
+  "year": "2021",
+  "medium": "Mixed Media (Oil/Acrylic) & 24K Gold Leaf on Stretched Canvas",
+  "dimensions": "61 × 91 cm (Landscape 2:3)",
+  "origin": "Marsden Park, Sydney, NSW, Australia",
+  "phase": "phase2",
+  "story": "Completed in Sydney in May 2021, Querencia is the mature culmination of the sanctuary theme first glimpsed in 2014's Sneak Peak. Derived from the Spanish metaphysical concept of querencia—the exact spot in the arena where a bull feels completely safe, grounded, and gathers its deepest strength—this work marks the resolution of a decade of inward psychological excavation.\n\nAn expressive, modern graphic figurative portrait is set against a radiant, hand-gilded 24K-style gold leaf background. Merging intimate black-and-white figurative line work with sacred gold iconography, the reflective surface shifts dynamically with the ambient light of the room.\n\nQuerencia symbolizes a mind that has finally found its home within itself. Having achieved internal peace and built an unshakeable inner sanctuary, the \"Hermit\" was finally ready to turn his gaze outward toward the systems and absurdities of the global marketplace.",
+  "images": [
+   {
+    "file": "querencia-2021.jpg",
+    "w": 1600,
+    "h": 1076
+   }
+  ],
+  "tone": "#58575a",
+  "status": "Private Collection"
+ },
+ {
+  "id": 19,
+  "slug": "richie-make-money-2022",
+  "title": "Richie Make Money",
+  "year": "2022",
+  "medium": "Mixed Media (Oil, Acrylic & Street Pop) on Canvas",
+  "dimensions": "121 × 91 cm (Portrait 3:4)",
+  "origin": "Home Studio, Pilani",
+  "phase": "phase3",
+  "story": "Returning to his home studio in Pilani after years in Sydney, Richie Make Money marks the pivotal threshold where \"The Hermit\" steps out into \"The Market.\" Having healed the internal agony of youth and found sanctuary in Querencia, Ketan shifted from examining the pain of existence to critiquing the rules of modern existence.\n\nExploding with high-voltage Pop Art color—vivid orange, kelly green, canary yellow, cobalt blue, and crisp white—the large 91 × 121 cm canvas features the iconic cartoon billionaire Richie Rich. He stands clutching a sack overflowing with Indian Rupee (₹) currency notes against a Monopoly-inspired marquee boldly emblazoned with \"MAKE MONEY\".\n\nThere is a sharp philosophical irony connecting the 2011 genesis (Complex Agony) and the 2022 return (Richie Make Money): both examine human desire and survival, but from opposite ends of the telescope. Using nostalgia and street-pop satire, the painting interrogates late-stage capitalism's relentless money chase and asks how modern society reduces human dignity and worth to a bank balance.",
+  "images": [
+   {
+    "file": "richie-make-money-2022.jpg",
+    "w": 1092,
+    "h": 1452
+   }
+  ],
+  "tone": "#775141"
+ },
+ {
+  "id": 20,
+  "slug": "richie-carrying-gifts-and-high-fashion-brands-2024",
+  "title": "Richie Carrying Gifts & High Fashion Brands",
+  "year": "2024",
+  "medium": "Mixed Media & Authentic Luxury Brand Packaging Collage on Canvas",
+  "dimensions": "120 × 90 cm (Portrait 3:4)",
+  "origin": "Pilani Studio",
+  "phase": "phase3",
+  "story": "Unveiled in his 2024–2025 studio cycle, Richie Carrying Gifts & High Fashion Brands escalates the Richie narrative into a maximalist 3D critique of hyper-consumerism, brand idolatry, and modern \"flex culture.\"\n\nSpanning a commanding 120 × 90 cm vertical frame, the mixed-media surface incorporates dissected, authentic luxury shopping bags and packaging boxes collaged directly onto the canvas alongside graffiti-style typography. Surrounded by the emblems of Hermès, Rolex, Patek Philippe, Richard Mille, and Miu Miu, Richie Rich is depicted physically straining under a towering stack of designer gift boxes.\n\nBy portraying the ultimate symbol of wealth literally weighed down by status symbols, the work poses a piercing question for our era: Are high-fashion logos genuine armor for our insecurities, or are they just expensive baggage? It completes the 15-year transmutation of Ketan—from the solitary teenager rubbing oil paint into raw canvas in a school room to the sovereign observer deconstructing the theatre of global luxury.",
+  "images": [
+   {
+    "file": "richie-carrying-gifts-and-high-fashion-brands-2024.jpg",
+    "w": 970,
+    "h": 1282
+   }
+  ],
+  "tone": "#827549",
+  "status": "Private Collection"
+ }
 ]
