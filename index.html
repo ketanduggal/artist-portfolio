@@ -1387,6 +1387,21 @@
       margin-top: 20px;
     }
 
+    /* After a Vault Pass request: the confirmation line in the drop card's pop style, matching the app */
+    #collectors-circle .form-success-msg {
+      max-width: 440px;
+      margin: 24px auto 0;
+      padding: 16px;
+      background: #ffffff;
+      border: 2px solid #17171d;
+      color: #17171d;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+      text-transform: none;
+    }
+
     /* Archival Series Grid */
     .archival-drops-grid {
       display: grid;
@@ -1953,6 +1968,141 @@
     .drop-archive-img { display: flex; align-items: center; justify-content: center; padding: 16px 24px 22px 16px; background: linear-gradient(145deg, #d9d1c4, #c8beaf); }
     body:not(.light-theme) .drop-archive-img { background: linear-gradient(145deg, #3a3834, #242321); }
     .drop-archive-img img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: var(--shadow-hung); }
+
+    /* ================================================= */
+    /* VAULT PASS CONFIRMATION POP-UP                     */
+    /* Same block in the website and the app.             */
+    /* ================================================= */
+    .vp-overlay {
+      position: fixed; inset: 0; z-index: 5000; overflow: hidden;
+      display: grid; place-items: center; padding: 64px 22px 28px;
+      background-color: rgba(23, 23, 29, 0.62);
+      background-image: radial-gradient(rgba(255, 214, 0, 0.3) 1.4px, transparent 1.9px);
+      background-size: 13px 13px;
+      -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+      cursor: pointer; -webkit-tap-highlight-color: transparent;
+      animation: vp-fade 0.3s ease-out both;
+    }
+    .vp-overlay.vp-out { animation: vp-fade-out 0.45s ease-in 0.12s both; }
+    .vp-stage { position: relative; width: min(380px, 100%); }
+    .vp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* Comic starburst behind the card */
+    .vp-burst { position: absolute; left: 50%; top: 50%; width: 138%; aspect-ratio: 1; translate: -50% -50%; filter: drop-shadow(5px 5px 0 #17171d); pointer-events: none; }
+    .vp-burst i {
+      position: absolute; inset: 0; display: block;
+      clip-path: polygon(50% 0%, 57% 14.7%, 69.1% 3.8%, 70% 20.1%, 85.4% 14.6%, 79.9% 30%, 96.2% 30.9%, 85.3% 43%, 100% 50%, 85.3% 57%, 96.2% 69.1%, 79.9% 70%, 85.4% 85.4%, 70% 79.9%, 69.1% 96.2%, 57% 85.3%, 50% 100%, 43% 85.3%, 30.9% 96.2%, 30% 79.9%, 14.6% 85.4%, 20.1% 70%, 3.8% 69.1%, 14.7% 57%, 0% 50%, 14.7% 43%, 3.8% 30.9%, 20.1% 30%, 14.6% 14.6%, 30% 20.1%, 30.9% 3.8%, 43% 14.7%);
+    }
+    .vp-burst .vp-b1 { background: #ff3f72; animation: vp-grow 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) 0.05s both, vp-spin 16s linear infinite; }
+    .vp-burst .vp-b2 { inset: 10%; background: #ffd600; animation: vp-grow 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) 0.14s both, vp-spin 22s linear infinite reverse; }
+    .vp-out .vp-burst { animation: vp-shrink 0.4s ease-in both; }
+
+    /* The card, in the same pop colours as the drop card */
+    .vp-card {
+      position: relative; padding: 58px calc(5% + 20px) 22px; text-align: center; color: #17171d; border-radius: 14px;
+      background-color: #f8f0df;
+      background-image:
+        linear-gradient(90deg, #ff3f72 0 5%, transparent 5% 95%, #00b8d4 95% 100%),
+        linear-gradient(180deg, #ffd600 0 5%, transparent 5% 95%, #f26b45 95% 100%),
+        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.75), transparent 62%);
+      border: 3px solid #17171d;
+      box-shadow: 9px 9px 0 #ff3f72, 0 26px 60px rgba(0, 0, 0, 0.35);
+      rotate: -2deg; cursor: default;
+      animation: vp-card-in 0.8s ease-out both;
+    }
+    .vp-out .vp-card { animation: vp-card-out 0.5s cubic-bezier(0.55, 0, 0.8, 0.3) both; }
+    .vp-close {
+      position: absolute; top: 12px; right: calc(5% + 8px); width: 30px; height: 30px; padding: 0;
+      display: grid; place-items: center; border: 2px solid #17171d; border-radius: 50%;
+      background: #ffffff; color: #17171d; box-shadow: 2px 2px 0 #17171d;
+      font: 700 17px/1 'Space Grotesk', -apple-system, sans-serif; cursor: pointer;
+    }
+
+    /* Approval stamp with a hand-drawn tick */
+    .vp-stamp {
+      position: absolute; left: 50%; top: -46px; width: 88px; height: 88px; margin-left: -44px;
+      display: grid; place-items: center; border-radius: 50%;
+      background: #ff3f72; border: 3px solid #17171d; box-shadow: 5px 5px 0 #00b8d4;
+      animation: vp-stamp 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) 0.3s both;
+    }
+    .vp-stamp::after { content: ''; position: absolute; inset: -4px; border: 3px solid #ffd600; border-radius: 50%; animation: vp-ring 0.7s ease-out 0.62s both; }
+    .vp-stamp svg { width: 48px; height: 48px; overflow: visible; }
+    .vp-stamp path { fill: none; stroke: #ffffff; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; animation: vp-tick 0.4s ease-out 0.68s forwards; }
+
+    .vp-badge {
+      display: inline-block; padding: 6px 12px; rotate: 1.5deg;
+      font: 700 10px/1.2 'Space Grotesk', -apple-system, monospace; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #17171d; background: #ffd600; border: 2px solid #17171d; box-shadow: 3px 3px 0 #00b8d4;
+      animation: vp-rise 0.4s ease-out 0.45s both;
+    }
+    .vp-title {
+      margin: 16px 0 10px; white-space: nowrap;
+      font-family: 'Permanent Marker', 'Space Grotesk', cursive, sans-serif; font-weight: 400;
+      font-size: clamp(34px, 11vw, 46px); line-height: 1.05; letter-spacing: 0.05em; text-transform: uppercase;
+      color: #17171d; text-shadow: 3px 3px 0 #ffd600;
+    }
+    .vp-title span[style] { display: inline-block; animation: vp-letter 0.5s cubic-bezier(0.3, 1.7, 0.5, 1) calc(0.5s + var(--i) * 45ms) both; }
+    .vp-text {
+      max-width: 30ch; margin: 0 auto;
+      font-family: 'Montserrat', -apple-system, sans-serif; font-size: 13px; line-height: 1.65; color: #4a4740;
+      animation: vp-rise 0.45s ease-out 0.85s both;
+    }
+    .vp-text strong { color: #17171d; font-weight: 700; }
+    .vp-timer { width: 62%; height: 7px; margin: 20px auto 0; border: 2px solid #17171d; border-radius: 4px; background: #ffffff; overflow: hidden; }
+    .vp-timer i { display: block; height: 100%; background: #17171d; transform-origin: left center; animation: vp-timer var(--vp-run, 3.9s) linear 0.3s both; }
+
+    /* Confetti: rupee notes, leaves, dots and stars */
+    .vp-bits { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; }
+    .vp-bit { position: absolute; left: 0; top: 0; display: block; opacity: 0; }
+    .vp-bit.note { width: 42px; height: 23px; border: 2px solid #17171d; background: #70c9a2; box-shadow: 3px 3px 0 #17171d; }
+    .vp-bit.note::after { content: '\20B9'; position: absolute; inset: 3px 11px; display: grid; place-items: center; border: 1.5px solid rgba(23, 23, 29, 0.7); border-radius: 50%; font: 700 10px/1 'Space Grotesk', -apple-system, sans-serif; color: #17171d; }
+    .vp-bit.note.amber { background: #ffca3a; }
+    .vp-bit.leaf { width: 32px; height: 16px; border: 2px solid #17171d; border-radius: 100% 0 100% 0; background: #65b985; }
+    .vp-bit.leaf.rose { background: #ff5e7d; }
+    .vp-bit.dot { width: 13px; height: 13px; border: 2px solid #17171d; border-radius: 50%; background: #00b8d4; }
+    .vp-bit.dot.pink { background: #ff3f72; }
+    .vp-bit.dot.yellow { background: #ffd600; }
+    .vp-bit.star { width: 24px; height: 24px; background: #ffd600; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+
+    @keyframes vp-fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes vp-fade-out { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes vp-grow { from { scale: 0; } to { scale: 1; } }
+    @keyframes vp-shrink { from { scale: 1; opacity: 1; } to { scale: 0.2; opacity: 0; } }
+    @keyframes vp-spin { to { rotate: 360deg; } }
+    @keyframes vp-card-in {
+      0% { opacity: 0; scale: 0.35; rotate: -14deg; translate: 0 40px; }
+      16% { opacity: 1; }
+      45% { opacity: 1; scale: 1.08; rotate: 3deg; translate: 0 -6px; }
+      65% { scale: 0.96; rotate: -3.5deg; translate: 0 2px; }
+      82% { scale: 1.02; rotate: -1.4deg; translate: 0 0; }
+      100% { opacity: 1; scale: 1; rotate: -2deg; translate: 0 0; }
+    }
+    @keyframes vp-card-out {
+      0% { opacity: 1; scale: 1; rotate: -2deg; translate: 0 0; }
+      25% { opacity: 1; scale: 1.05; rotate: -4deg; translate: 0 -8px; }
+      100% { opacity: 0; scale: 0.55; rotate: 10deg; translate: 0 70px; }
+    }
+    @keyframes vp-stamp { from { opacity: 0; scale: 2.4; rotate: -35deg; } to { opacity: 1; scale: 1; rotate: -8deg; } }
+    @keyframes vp-ring { from { opacity: 1; scale: 1; } to { opacity: 0; scale: 1.9; } }
+    @keyframes vp-tick { to { stroke-dashoffset: 0; } }
+    @keyframes vp-rise { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
+    @keyframes vp-letter { from { opacity: 0; translate: 0 26px; scale: 0.4; rotate: -20deg; } to { opacity: 1; translate: 0 0; scale: 1; rotate: 0deg; } }
+    @keyframes vp-timer { from { scale: 1 1; } to { scale: 0 1; } }
+    /* Short screens (phones held sideways, or with the keyboard open): a more compact card */
+    @media (max-height: 520px) {
+      .vp-overlay { padding: 44px 16px 12px; }
+      .vp-card { padding: 38px calc(5% + 18px) 14px; }
+      .vp-stamp { width: 64px; height: 64px; top: -34px; margin-left: -32px; box-shadow: 4px 4px 0 #00b8d4; }
+      .vp-stamp svg { width: 36px; height: 36px; }
+      .vp-title { margin: 8px 0 6px; font-size: 32px; }
+      .vp-text { font-size: 12px; line-height: 1.5; }
+      .vp-timer { margin-top: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .vp-overlay *, .vp-overlay *::after { animation: none !important; }
+      .vp-stamp path { stroke-dashoffset: 0; }
+      .vp-bits, .vp-timer { display: none; }
+    }
   </style>
 </head>
 <body class="light-theme">
@@ -3595,16 +3745,106 @@
       alert('Sorry, that did not go through (' + why + '). Please try again or email ketanduggal2k11@gmail.com.');
     }
 
+    // Vault Pass confirmation: a pop-art card bursts in, then clears itself after a few seconds.
+    // The same pop-up lives in the website and the app; keep the two in step.
+    const VAULT_POP_MS = 4200;
+    function showVaultPop(firstName) {
+      const old = document.querySelector('.vp-overlay');
+      if (old) old.remove();
+      const name = String(firstName || '').trim().split(/\s+/)[0];
+      const title = 'You’re in!';
+      const pop = document.createElement('div');
+      pop.className = 'vp-overlay';
+      pop.setAttribute('role', 'status');
+      pop.setAttribute('aria-live', 'polite');
+      pop.style.setProperty('--vp-run', (VAULT_POP_MS - 300) + 'ms');
+      pop.innerHTML =
+        '<div class="vp-stage">' +
+          '<div class="vp-burst" aria-hidden="true"><i class="vp-b1"></i><i class="vp-b2"></i></div>' +
+          '<div class="vp-bits" aria-hidden="true"></div>' +
+          '<div class="vp-card">' +
+            '<button type="button" class="vp-close" aria-label="Close">&times;</button>' +
+            '<div class="vp-stamp" aria-hidden="true"><svg viewBox="0 0 52 52"><path d="M13 27l9 9 17-19"/></svg></div>' +
+            '<span class="vp-badge">Vault Pass requested</span>' +
+            '<p class="vp-title"><span class="vp-sr">' + title + '</span>' +
+              Array.from(title).map((c, i) => '<span aria-hidden="true" style="--i:' + i + '">' + (c === ' ' ? '&nbsp;' : c) + '</span>').join('') +
+            '</p>' +
+            '<p class="vp-text"></p>' +
+            '<div class="vp-timer" aria-hidden="true"><i></i></div>' +
+          '</div>' +
+        '</div>';
+      const text = pop.querySelector('.vp-text');
+      text.append('Welcome to the Inner Circle' + (name ? ', ' : '. '));
+      if (name) {
+        const who = document.createElement('strong');
+        who.textContent = name + '.';
+        text.append(who, ' ');
+      }
+      text.append('Your drop pass and vault access will reach your inbox before release.');
+
+      let timer;
+      const onKey = (e) => { if (e.key === 'Escape') close(); };
+      const close = () => {
+        if (pop.classList.contains('vp-out')) return;
+        clearTimeout(timer);
+        document.removeEventListener('keydown', onKey);
+        pop.classList.add('vp-out');
+        setTimeout(() => pop.remove(), 650);
+      };
+      pop.addEventListener('click', close);
+      document.addEventListener('keydown', onKey);
+      document.body.appendChild(pop);
+
+      // Confetti (rupee notes, leaves, dots, stars) flies out from behind the card and stays on screen.
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const card = pop.querySelector('.vp-card');
+        const bits = pop.querySelector('.vp-bits');
+        const halfW = card.offsetWidth / 2, halfH = card.offsetHeight / 2;
+        const maxX = innerWidth / 2 - 16, maxY = innerHeight / 2 - 16;
+        const spread = innerWidth > 700 ? 150 : 90;
+        const kinds = ['note', 'leaf', 'dot', 'star', 'note amber', 'leaf rose', 'dot pink', 'dot yellow'];
+        const count = 20;
+        for (let i = 0; i < count; i++) {
+          const a = (i / count) * Math.PI * 2 + Math.random() * 0.3;
+          const cos = Math.cos(a), sin = Math.sin(a);
+          const edge = Math.min(halfW / (Math.abs(cos) || 1e-6), halfH / (Math.abs(sin) || 1e-6));
+          const d = edge + 26 + Math.random() * spread;
+          const dx = Math.max(-maxX, Math.min(maxX, cos * d));
+          const dy = Math.max(-maxY, Math.min(maxY, sin * d));
+          const r = Math.random() * 540 - 270;
+          const bit = document.createElement('i');
+          bit.className = 'vp-bit ' + kinds[i % kinds.length];
+          bits.appendChild(bit);
+          const timing = { duration: 2300, delay: 250 + Math.random() * 150, fill: 'both' };
+          bit.animate([
+            { offset: 0, transform: 'translate(-50%, -50%) translate(0px, 0px) rotate(0deg) scale(0.2)', easing: 'cubic-bezier(0.12, 0.75, 0.3, 1)' },
+            { offset: 0.5, transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) rotate(${r}deg) scale(1)`, easing: 'cubic-bezier(0.5, 0, 0.9, 0.6)' },
+            { offset: 1, transform: `translate(-50%, -50%) translate(${dx}px, ${dy + 130}px) rotate(${r * 1.7}deg) scale(0.9)` }
+          ], timing);
+          bit.animate([{ opacity: 0 }, { opacity: 1, offset: 0.08 }, { opacity: 1, offset: 0.6 }, { opacity: 0 }], timing);
+        }
+      }
+      timer = setTimeout(close, VAULT_POP_MS);
+      if (navigator.vibrate) navigator.vibrate([14, 60, 14]);
+    }
+
     document.getElementById('innerCircleForm').addEventListener('submit', (e) => {
       e.preventDefault();
       const form = e.target;
       const btn = form.querySelector('button[type="submit"]');
+      const label = btn.textContent;
       btn.disabled = true;
+      btn.textContent = 'Sending…';
       submitNetlifyForm(form).then(() => {
+        showVaultPop(form.elements.first_name.value);
         form.style.display = 'none';
-        document.getElementById('innerCircleSuccess').style.display = 'block';
+        const success = document.getElementById('innerCircleSuccess');
+        success.style.display = 'block';
+        // Behind the pop-up, bring the confirmation line into view for when it clears.
+        success.scrollIntoView({ block: 'center' });
       }).catch((err) => {
         btn.disabled = false;
+        btn.textContent = label;
         formError(err);
       });
     });

@@ -193,6 +193,9 @@ function setupVip() {
       if (url) try { json = JSON.parse(await res.text()); } catch (e) {}
       if (!res.ok || String(json.success) === 'false') throw new Error(json.message || `form service replied ${res.status}`);
       $('drop').classList.add('done');
+      showVaultPop($('vipFirst').value);
+      // Behind the pop-up, bring the confirmation line into view for when it clears.
+      $('drop').querySelector('.vip-done').scrollIntoView({ block: 'center' });
     } catch (e) {
       const why = e.name === 'TimeoutError' ? 'no reply from the form service' : e.message || 'network error';
       msg.textContent = navigator.onLine ? `That didn’t go through (${why}). Please try again in a moment.` : 'You’re offline. Connect and try again.';
@@ -201,6 +204,89 @@ function setupVip() {
       btn.textContent = 'Request Vault Pass';
     }
   });
+}
+
+// Vault Pass confirmation: a pop-art card bursts in, then clears itself after a few seconds.
+// The same pop-up lives in the website and the app; keep the two in step.
+const VAULT_POP_MS = 4200;
+function showVaultPop(firstName) {
+  const old = document.querySelector('.vp-overlay');
+  if (old) old.remove();
+  const name = String(firstName || '').trim().split(/\s+/)[0];
+  const title = 'You’re in!';
+  const pop = document.createElement('div');
+  pop.className = 'vp-overlay';
+  pop.setAttribute('role', 'status');
+  pop.setAttribute('aria-live', 'polite');
+  pop.style.setProperty('--vp-run', (VAULT_POP_MS - 300) + 'ms');
+  pop.innerHTML =
+    '<div class="vp-stage">' +
+      '<div class="vp-burst" aria-hidden="true"><i class="vp-b1"></i><i class="vp-b2"></i></div>' +
+      '<div class="vp-bits" aria-hidden="true"></div>' +
+      '<div class="vp-card">' +
+        '<button type="button" class="vp-close" aria-label="Close">&times;</button>' +
+        '<div class="vp-stamp" aria-hidden="true"><svg viewBox="0 0 52 52"><path d="M13 27l9 9 17-19"/></svg></div>' +
+        '<span class="vp-badge">Vault Pass requested</span>' +
+        '<p class="vp-title"><span class="vp-sr">' + title + '</span>' +
+          Array.from(title).map((c, i) => '<span aria-hidden="true" style="--i:' + i + '">' + (c === ' ' ? '&nbsp;' : c) + '</span>').join('') +
+        '</p>' +
+        '<p class="vp-text"></p>' +
+        '<div class="vp-timer" aria-hidden="true"><i></i></div>' +
+      '</div>' +
+    '</div>';
+  const text = pop.querySelector('.vp-text');
+  text.append('Welcome to the Inner Circle' + (name ? ', ' : '. '));
+  if (name) {
+    const who = document.createElement('strong');
+    who.textContent = name + '.';
+    text.append(who, ' ');
+  }
+  text.append('Your drop pass and vault access will reach your inbox before release.');
+
+  let timer;
+  const onKey = (e) => { if (e.key === 'Escape') close(); };
+  const close = () => {
+    if (pop.classList.contains('vp-out')) return;
+    clearTimeout(timer);
+    document.removeEventListener('keydown', onKey);
+    pop.classList.add('vp-out');
+    setTimeout(() => pop.remove(), 650);
+  };
+  pop.addEventListener('click', close);
+  document.addEventListener('keydown', onKey);
+  document.body.appendChild(pop);
+
+  // Confetti (rupee notes, leaves, dots, stars) flies out from behind the card and stays on screen.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const card = pop.querySelector('.vp-card');
+    const bits = pop.querySelector('.vp-bits');
+    const halfW = card.offsetWidth / 2, halfH = card.offsetHeight / 2;
+    const maxX = innerWidth / 2 - 16, maxY = innerHeight / 2 - 16;
+    const spread = innerWidth > 700 ? 150 : 90;
+    const kinds = ['note', 'leaf', 'dot', 'star', 'note amber', 'leaf rose', 'dot pink', 'dot yellow'];
+    const count = 20;
+    for (let i = 0; i < count; i++) {
+      const a = (i / count) * Math.PI * 2 + Math.random() * 0.3;
+      const cos = Math.cos(a), sin = Math.sin(a);
+      const edge = Math.min(halfW / (Math.abs(cos) || 1e-6), halfH / (Math.abs(sin) || 1e-6));
+      const d = edge + 26 + Math.random() * spread;
+      const dx = Math.max(-maxX, Math.min(maxX, cos * d));
+      const dy = Math.max(-maxY, Math.min(maxY, sin * d));
+      const r = Math.random() * 540 - 270;
+      const bit = document.createElement('i');
+      bit.className = 'vp-bit ' + kinds[i % kinds.length];
+      bits.appendChild(bit);
+      const timing = { duration: 2300, delay: 250 + Math.random() * 150, fill: 'both' };
+      bit.animate([
+        { offset: 0, transform: 'translate(-50%, -50%) translate(0px, 0px) rotate(0deg) scale(0.2)', easing: 'cubic-bezier(0.12, 0.75, 0.3, 1)' },
+        { offset: 0.5, transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) rotate(${r}deg) scale(1)`, easing: 'cubic-bezier(0.5, 0, 0.9, 0.6)' },
+        { offset: 1, transform: `translate(-50%, -50%) translate(${dx}px, ${dy + 130}px) rotate(${r * 1.7}deg) scale(0.9)` }
+      ], timing);
+      bit.animate([{ opacity: 0 }, { opacity: 1, offset: 0.08 }, { opacity: 1, offset: 0.6 }, { opacity: 0 }], timing);
+    }
+  }
+  timer = setTimeout(close, VAULT_POP_MS);
+  if (navigator.vibrate) navigator.vibrate([14, 60, 14]);
 }
 
 // ---------- Vault ----------

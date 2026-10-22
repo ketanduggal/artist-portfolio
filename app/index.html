@@ -491,6 +491,141 @@
     .toast { position: fixed; left: 50%; bottom: calc(var(--bottom) + 100px); z-index: 40; transform: translate(-50%, 10px); opacity: 0; pointer-events: none; background: var(--text-main); color: var(--bg-primary); border-radius: var(--radius-30); padding: 10px 18px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; transition: var(--transition); white-space: nowrap; }
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
     @media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important; } }
+
+    /* ================================================= */
+    /* VAULT PASS CONFIRMATION POP-UP                     */
+    /* Same block in the website and the app.             */
+    /* ================================================= */
+    .vp-overlay {
+      position: fixed; inset: 0; z-index: 5000; overflow: hidden;
+      display: grid; place-items: center; padding: 64px 22px 28px;
+      background-color: rgba(23, 23, 29, 0.62);
+      background-image: radial-gradient(rgba(255, 214, 0, 0.3) 1.4px, transparent 1.9px);
+      background-size: 13px 13px;
+      -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+      cursor: pointer; -webkit-tap-highlight-color: transparent;
+      animation: vp-fade 0.3s ease-out both;
+    }
+    .vp-overlay.vp-out { animation: vp-fade-out 0.45s ease-in 0.12s both; }
+    .vp-stage { position: relative; width: min(380px, 100%); }
+    .vp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* Comic starburst behind the card */
+    .vp-burst { position: absolute; left: 50%; top: 50%; width: 138%; aspect-ratio: 1; translate: -50% -50%; filter: drop-shadow(5px 5px 0 #17171d); pointer-events: none; }
+    .vp-burst i {
+      position: absolute; inset: 0; display: block;
+      clip-path: polygon(50% 0%, 57% 14.7%, 69.1% 3.8%, 70% 20.1%, 85.4% 14.6%, 79.9% 30%, 96.2% 30.9%, 85.3% 43%, 100% 50%, 85.3% 57%, 96.2% 69.1%, 79.9% 70%, 85.4% 85.4%, 70% 79.9%, 69.1% 96.2%, 57% 85.3%, 50% 100%, 43% 85.3%, 30.9% 96.2%, 30% 79.9%, 14.6% 85.4%, 20.1% 70%, 3.8% 69.1%, 14.7% 57%, 0% 50%, 14.7% 43%, 3.8% 30.9%, 20.1% 30%, 14.6% 14.6%, 30% 20.1%, 30.9% 3.8%, 43% 14.7%);
+    }
+    .vp-burst .vp-b1 { background: #ff3f72; animation: vp-grow 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) 0.05s both, vp-spin 16s linear infinite; }
+    .vp-burst .vp-b2 { inset: 10%; background: #ffd600; animation: vp-grow 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) 0.14s both, vp-spin 22s linear infinite reverse; }
+    .vp-out .vp-burst { animation: vp-shrink 0.4s ease-in both; }
+
+    /* The card, in the same pop colours as the drop card */
+    .vp-card {
+      position: relative; padding: 58px calc(5% + 20px) 22px; text-align: center; color: #17171d; border-radius: 14px;
+      background-color: #f8f0df;
+      background-image:
+        linear-gradient(90deg, #ff3f72 0 5%, transparent 5% 95%, #00b8d4 95% 100%),
+        linear-gradient(180deg, #ffd600 0 5%, transparent 5% 95%, #f26b45 95% 100%),
+        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.75), transparent 62%);
+      border: 3px solid #17171d;
+      box-shadow: 9px 9px 0 #ff3f72, 0 26px 60px rgba(0, 0, 0, 0.35);
+      rotate: -2deg; cursor: default;
+      animation: vp-card-in 0.8s ease-out both;
+    }
+    .vp-out .vp-card { animation: vp-card-out 0.5s cubic-bezier(0.55, 0, 0.8, 0.3) both; }
+    .vp-close {
+      position: absolute; top: 12px; right: calc(5% + 8px); width: 30px; height: 30px; padding: 0;
+      display: grid; place-items: center; border: 2px solid #17171d; border-radius: 50%;
+      background: #ffffff; color: #17171d; box-shadow: 2px 2px 0 #17171d;
+      font: 700 17px/1 'Space Grotesk', -apple-system, sans-serif; cursor: pointer;
+    }
+
+    /* Approval stamp with a hand-drawn tick */
+    .vp-stamp {
+      position: absolute; left: 50%; top: -46px; width: 88px; height: 88px; margin-left: -44px;
+      display: grid; place-items: center; border-radius: 50%;
+      background: #ff3f72; border: 3px solid #17171d; box-shadow: 5px 5px 0 #00b8d4;
+      animation: vp-stamp 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) 0.3s both;
+    }
+    .vp-stamp::after { content: ''; position: absolute; inset: -4px; border: 3px solid #ffd600; border-radius: 50%; animation: vp-ring 0.7s ease-out 0.62s both; }
+    .vp-stamp svg { width: 48px; height: 48px; overflow: visible; }
+    .vp-stamp path { fill: none; stroke: #ffffff; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; animation: vp-tick 0.4s ease-out 0.68s forwards; }
+
+    .vp-badge {
+      display: inline-block; padding: 6px 12px; rotate: 1.5deg;
+      font: 700 10px/1.2 'Space Grotesk', -apple-system, monospace; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #17171d; background: #ffd600; border: 2px solid #17171d; box-shadow: 3px 3px 0 #00b8d4;
+      animation: vp-rise 0.4s ease-out 0.45s both;
+    }
+    .vp-title {
+      margin: 16px 0 10px; white-space: nowrap;
+      font-family: 'Permanent Marker', 'Space Grotesk', cursive, sans-serif; font-weight: 400;
+      font-size: clamp(34px, 11vw, 46px); line-height: 1.05; letter-spacing: 0.05em; text-transform: uppercase;
+      color: #17171d; text-shadow: 3px 3px 0 #ffd600;
+    }
+    .vp-title span[style] { display: inline-block; animation: vp-letter 0.5s cubic-bezier(0.3, 1.7, 0.5, 1) calc(0.5s + var(--i) * 45ms) both; }
+    .vp-text {
+      max-width: 30ch; margin: 0 auto;
+      font-family: 'Montserrat', -apple-system, sans-serif; font-size: 13px; line-height: 1.65; color: #4a4740;
+      animation: vp-rise 0.45s ease-out 0.85s both;
+    }
+    .vp-text strong { color: #17171d; font-weight: 700; }
+    .vp-timer { width: 62%; height: 7px; margin: 20px auto 0; border: 2px solid #17171d; border-radius: 4px; background: #ffffff; overflow: hidden; }
+    .vp-timer i { display: block; height: 100%; background: #17171d; transform-origin: left center; animation: vp-timer var(--vp-run, 3.9s) linear 0.3s both; }
+
+    /* Confetti: rupee notes, leaves, dots and stars */
+    .vp-bits { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; }
+    .vp-bit { position: absolute; left: 0; top: 0; display: block; opacity: 0; }
+    .vp-bit.note { width: 42px; height: 23px; border: 2px solid #17171d; background: #70c9a2; box-shadow: 3px 3px 0 #17171d; }
+    .vp-bit.note::after { content: '\20B9'; position: absolute; inset: 3px 11px; display: grid; place-items: center; border: 1.5px solid rgba(23, 23, 29, 0.7); border-radius: 50%; font: 700 10px/1 'Space Grotesk', -apple-system, sans-serif; color: #17171d; }
+    .vp-bit.note.amber { background: #ffca3a; }
+    .vp-bit.leaf { width: 32px; height: 16px; border: 2px solid #17171d; border-radius: 100% 0 100% 0; background: #65b985; }
+    .vp-bit.leaf.rose { background: #ff5e7d; }
+    .vp-bit.dot { width: 13px; height: 13px; border: 2px solid #17171d; border-radius: 50%; background: #00b8d4; }
+    .vp-bit.dot.pink { background: #ff3f72; }
+    .vp-bit.dot.yellow { background: #ffd600; }
+    .vp-bit.star { width: 24px; height: 24px; background: #ffd600; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+
+    @keyframes vp-fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes vp-fade-out { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes vp-grow { from { scale: 0; } to { scale: 1; } }
+    @keyframes vp-shrink { from { scale: 1; opacity: 1; } to { scale: 0.2; opacity: 0; } }
+    @keyframes vp-spin { to { rotate: 360deg; } }
+    @keyframes vp-card-in {
+      0% { opacity: 0; scale: 0.35; rotate: -14deg; translate: 0 40px; }
+      16% { opacity: 1; }
+      45% { opacity: 1; scale: 1.08; rotate: 3deg; translate: 0 -6px; }
+      65% { scale: 0.96; rotate: -3.5deg; translate: 0 2px; }
+      82% { scale: 1.02; rotate: -1.4deg; translate: 0 0; }
+      100% { opacity: 1; scale: 1; rotate: -2deg; translate: 0 0; }
+    }
+    @keyframes vp-card-out {
+      0% { opacity: 1; scale: 1; rotate: -2deg; translate: 0 0; }
+      25% { opacity: 1; scale: 1.05; rotate: -4deg; translate: 0 -8px; }
+      100% { opacity: 0; scale: 0.55; rotate: 10deg; translate: 0 70px; }
+    }
+    @keyframes vp-stamp { from { opacity: 0; scale: 2.4; rotate: -35deg; } to { opacity: 1; scale: 1; rotate: -8deg; } }
+    @keyframes vp-ring { from { opacity: 1; scale: 1; } to { opacity: 0; scale: 1.9; } }
+    @keyframes vp-tick { to { stroke-dashoffset: 0; } }
+    @keyframes vp-rise { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
+    @keyframes vp-letter { from { opacity: 0; translate: 0 26px; scale: 0.4; rotate: -20deg; } to { opacity: 1; translate: 0 0; scale: 1; rotate: 0deg; } }
+    @keyframes vp-timer { from { scale: 1 1; } to { scale: 0 1; } }
+    /* Short screens (phones held sideways, or with the keyboard open): a more compact card */
+    @media (max-height: 520px) {
+      .vp-overlay { padding: 44px 16px 12px; }
+      .vp-card { padding: 38px calc(5% + 18px) 14px; }
+      .vp-stamp { width: 64px; height: 64px; top: -34px; margin-left: -32px; box-shadow: 4px 4px 0 #00b8d4; }
+      .vp-stamp svg { width: 36px; height: 36px; }
+      .vp-title { margin: 8px 0 6px; font-size: 32px; }
+      .vp-text { font-size: 12px; line-height: 1.5; }
+      .vp-timer { margin-top: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .vp-overlay *, .vp-overlay *::after { animation: none !important; }
+      .vp-stamp path { stroke-dashoffset: 0; }
+      .vp-bits, .vp-timer { display: none; }
+    }
   </style>
 </head>
 <body>
