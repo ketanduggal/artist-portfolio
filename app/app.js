@@ -189,11 +189,13 @@ function setupVip() {
       const res = url
         ? await fetch(url, { method: 'POST', headers: { Accept: 'application/json' }, body: data, signal: AbortSignal.timeout?.(20000) })
         : await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() });
-      if (!res.ok) throw new Error(res.status);
-      if (url && String((await res.json()).success) === 'false') throw new Error('not accepted');
+      let json = {};
+      if (url) try { json = JSON.parse(await res.text()); } catch (e) {}
+      if (!res.ok || String(json.success) === 'false') throw new Error(json.message || `form service replied ${res.status}`);
       $('drop').classList.add('done');
     } catch (e) {
-      msg.textContent = navigator.onLine ? 'That didn’t go through. Please try again in a moment.' : 'You’re offline. Connect and try again.';
+      const why = e.name === 'TimeoutError' ? 'no reply from the form service' : e.message || 'network error';
+      msg.textContent = navigator.onLine ? `That didn’t go through (${why}). Please try again in a moment.` : 'You’re offline. Connect and try again.';
     } finally {
       btn.disabled = false;
       btn.textContent = 'Request Vault Pass';

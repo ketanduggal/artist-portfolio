@@ -3583,9 +3583,16 @@
         body: data,
         signal: AbortSignal.timeout ? AbortSignal.timeout(20000) : undefined
       }).then((res) => {
-        if (!res.ok) throw new Error(res.status);
-        return res.json();
-      }).then((json) => { if (String(json.success) === 'false') throw new Error('not accepted'); });
+        return res.text().then((text) => {
+          let json = {};
+          try { json = JSON.parse(text); } catch (err) {}
+          if (!res.ok || String(json.success) === 'false') throw new Error(json.message || ('form service replied ' + res.status));
+        });
+      });
+    }
+    function formError(err) {
+      const why = err && err.name === 'TimeoutError' ? 'no reply from the form service' : (err && err.message) || 'network error';
+      alert('Sorry, that did not go through (' + why + '). Please try again or email ketanduggal2k11@gmail.com.');
     }
 
     document.getElementById('innerCircleForm').addEventListener('submit', (e) => {
@@ -3596,9 +3603,9 @@
       submitNetlifyForm(form).then(() => {
         form.style.display = 'none';
         document.getElementById('innerCircleSuccess').style.display = 'block';
-      }).catch(() => {
+      }).catch((err) => {
         btn.disabled = false;
-        alert('Sorry, that did not go through. Please try again or email ketanduggal2k11@gmail.com.');
+        formError(err);
       });
     });
 
@@ -3610,9 +3617,9 @@
       submitNetlifyForm(form).then(() => {
         form.reset();
         btn.textContent = 'Inquiry Received';
-      }).catch(() => {
+      }).catch((err) => {
         btn.disabled = false;
-        alert('Sorry, that did not go through. Please try again or email ketanduggal2k11@gmail.com.');
+        formError(err);
       });
     });
 
