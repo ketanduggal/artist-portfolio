@@ -1,6 +1,6 @@
 // Offline support for the paintings app.
 // Bump VERSION whenever index.html, app.js, paintings.json or any image changes.
-const VERSION = 'v23';
+const VERSION = 'v24';
 const SHELL = `shell-${VERSION}`;
 const IMAGES = `images-${VERSION}`;
 const FONTS = 'fonts';
