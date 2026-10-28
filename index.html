@@ -325,9 +325,6 @@
       font-size: 12px;
       color: var(--text-muted);
       line-height: 1.5;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       max-width: 100%;
     }
 
@@ -814,6 +811,15 @@
       background: var(--accent-gold);
       color: #08080a;
       box-shadow: 0 10px 30px var(--accent-gold-glow);
+    }
+
+    .btn-luxury.unavailable {
+      pointer-events: none;
+      cursor: default;
+      color: var(--text-muted);
+      background: transparent;
+      border-color: var(--glass-border);
+      box-shadow: none;
     }
 
     #collectors-circle .drop-featured-card > .kage-badge {
@@ -2270,29 +2276,29 @@
         </p>
       </div>
 
-      <!-- Kage 3-Chapter Era Cards Overlay -->
+      <!-- Era cards: one per chapter of my life -->
       <div class="kage-chapters-grid">
         <div class="kage-panel kage-chapter-card" onclick="filterEra('phase1')">
-          <span class="kage-chapter-num">ERA 01 // 2011–2014</span>
-          <h3 class="kage-chapter-title">Raw Roots & Psychological Excavation</h3>
+          <span class="kage-chapter-num">ERA 01 // 2011–2013</span>
+          <h3 class="kage-chapter-title">Raw Roots</h3>
           <p class="kage-chapter-desc">
-            Raw emotion, deep shadows, and pure introspective oil work straight from the Pilani studio.
+            My first canvases, painted in the Birla School art room and my home studio in Pilani. Raw emotion, deep shadows and my first leap into abstraction.
           </p>
         </div>
 
         <div class="kage-panel kage-chapter-card" onclick="filterEra('phase2')">
-          <span class="kage-chapter-num">ERA 02 // 2015–2021</span>
-          <h3 class="kage-chapter-title">Fluid Resin, Drift & Sanctuary</h3>
+          <span class="kage-chapter-num">ERA 02 // 2014–2017</span>
+          <h3 class="kage-chapter-title">Bold Strokes</h3>
           <p class="kage-chapter-desc">
-            Flow-state resin, ocean blues, gilded detail, and modern abstract energy.
+            My boldest, most social years. I came back to the canvas in 2014 with a whole new style and painted through all of it, first in Pilani and then in New Delhi.
           </p>
         </div>
 
         <div class="kage-panel kage-chapter-card" onclick="filterEra('phase3')">
-          <span class="kage-chapter-num">ERA 03 // 2022–PRESENT</span>
-          <h3 class="kage-chapter-title">Street Pop, Social Satire & The Market</h3>
+          <span class="kage-chapter-num">ERA 03 // 2020–PRESENT</span>
+          <h3 class="kage-chapter-title">Second Wind</h3>
           <p class="kage-chapter-desc">
-            Richie enters the scene. Loud, unapologetic street collage calling out luxury hype and flex culture.
+            I started painting again in Australia, then came home to Pilani. Oil, resin, collage and street pop now sit side by side.
           </p>
         </div>
       </div>
@@ -2300,9 +2306,9 @@
       <!-- Filter Controls -->
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">All Vault Pieces (21)</button>
-        <button class="filter-btn" data-filter="phase1">Era 01: Roots (12)</button>
-        <button class="filter-btn" data-filter="phase2">Era 02: Fluidity (7)</button>
-        <button class="filter-btn" data-filter="phase3">Era 03: Street Pop (2)</button>
+        <button class="filter-btn" data-filter="phase1">Era 01: Raw Roots (6)</button>
+        <button class="filter-btn" data-filter="phase2">Era 02: Bold Strokes (10)</button>
+        <button class="filter-btn" data-filter="phase3">Era 03: Second Wind (5)</button>
       </div>
 
       <!-- True Proportion Masonry Gallery with all 21 paintings in 3D Stretched Canvas -->
@@ -2399,7 +2405,7 @@
         </div>
 
         <!-- 7. Trying and Being (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(6)">
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(6)">
           <div class="artwork-frame">
             <img src="thumbs/7.%20Trying%20and%20being%20(2014).JPG" width="800" height="800" alt="Trying and Being" loading="lazy">
           </div>
@@ -2414,7 +2420,7 @@
         </div>
 
         <!-- 8. Now you see me, now you don't (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(7)">
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(7)">
           <div class="artwork-frame">
             <img src="thumbs/8.%20Now%20you%20see%20me,now%20you%20dont%20(2014).JPG" width="663" height="960" alt="Now you see me" loading="lazy">
           </div>
@@ -2429,7 +2435,7 @@
         </div>
 
         <!-- 9. The Stripped Tint (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(8)">
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(8)">
           <div class="artwork-frame">
             <img src="thumbs/9.%20The%20Stripped%20Tint%20(2014).JPG" width="800" height="618" alt="The Stripped Tint" loading="lazy">
           </div>
@@ -2444,7 +2450,7 @@
         </div>
 
         <!-- 10. The One Who Knew (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(9)">
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(9)">
           <div class="artwork-frame">
             <img src="thumbs/10.%20The%20One%20Who%20Knew%20(2014).JPG" width="800" height="782" alt="The One Who Knew" loading="lazy">
           </div>
@@ -2459,7 +2465,7 @@
         </div>
 
         <!-- 11. Sneak Peak (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(10)">
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(10)">
           <div class="artwork-frame">
             <img src="thumbs/11.%20Sneak%20Peak%20(2014).JPG" width="800" height="585" alt="Sneak Peak" loading="lazy">
           </div>
@@ -2474,7 +2480,7 @@
         </div>
 
         <!-- 12. The Doomed One (2014) -->
-        <div class="gallery-item" data-phase="phase1" onclick="openViewingRoom(11)">
+        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(11)">
           <div class="artwork-frame">
             <img src="thumbs/12.%20The%20Doomed One%20(2014).JPG" width="800" height="815" alt="The Doomed One" loading="lazy">
           </div>
@@ -2544,12 +2550,12 @@
           </div>
           <div class="artwork-details">
             <span>Oil on canvas</span>
-            <span>67 &times; 48 cm</span>
+            <span>61 &times; 61 cm</span>
           </div>
         </div>
 
         <!-- 17. The Conflict of Love and Chastity (2020) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(16)">
+        <div class="gallery-item" data-phase="phase3" onclick="openViewingRoom(16)">
           <div class="artwork-frame">
             <img src="thumbs/17.%20The%20Conflict%20of%20Love%20and%20Chastity%20(2020).JPG" width="800" height="800" alt="The Conflict of Love and Chastity" loading="lazy">
           </div>
@@ -2564,7 +2570,7 @@
         </div>
 
         <!-- 18. Study of Balance (2020) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(17)">
+        <div class="gallery-item" data-phase="phase3" onclick="openViewingRoom(17)">
           <div class="artwork-frame">
             <img src="thumbs/18.%20Study%20of%20Balance%20(2020).jpg" width="800" height="335" alt="Study of Balance" loading="lazy">
           </div>
@@ -2579,7 +2585,7 @@
         </div>
 
         <!-- 19. Querencia (2021) -->
-        <div class="gallery-item" data-phase="phase2" onclick="openViewingRoom(18)">
+        <div class="gallery-item" data-phase="phase3" onclick="openViewingRoom(18)">
           <div class="artwork-frame">
             <img src="thumbs/19.%20Querencia%20(2021).jpg" width="800" height="538" alt="Querencia" loading="lazy">
           </div>
@@ -2588,7 +2594,7 @@
             <span class="artwork-year">2021</span>
           </div>
           <div class="artwork-details">
-            <span>Mixed Media & 24K Gold Leaf</span>
+            <span>Mixed Media & Acrylic Gold</span>
             <span>61 &times; 91 cm</span>
           </div>
         </div>
@@ -2634,7 +2640,7 @@
         <span class="kage-badge">CHAPTER 02 // STUDIO DISCIPLINES</span>
         <h2 class="section-title" style="margin-top: 14px;">The 3 Studio Disciplines</h2>
         <p class="section-desc">
-          Old-master layering meets hyper-modern fluid chemistry. How raw ideas are materialized in the Pilani studio.
+          Old-master layering meets hyper-modern fluid chemistry. This is how my raw ideas take shape in my Pilani studio.
         </p>
       </div>
 
@@ -2643,7 +2649,7 @@
           <span class="kage-craft-idx">01 // IMPASTO & GLAZES</span>
           <h3 class="kage-craft-title">Heavy Oil Glazing</h3>
           <p class="kage-craft-desc">
-            Traditional multi-layered oil glazes built over months of studio retreat. Creating rich, light-trapping shadows and emotional density.
+            I build traditional oil glazes layer by layer over months in the studio, creating rich, light-trapping shadows and emotional density.
           </p>
         </div>
 
@@ -2651,7 +2657,7 @@
           <span class="kage-craft-idx">02 // LIQUID FLOW STATES</span>
           <h3 class="kage-craft-title">Clear Bio-Resin</h3>
           <p class="kage-craft-desc">
-            High-gloss, ultra-transparent spatial surfaces that freeze fluid acrylic pigments in suspended glass-like animation.
+            I pour high-gloss, ultra-clear resin surfaces that freeze fluid acrylic pigments in glass-like, suspended motion.
           </p>
         </div>
 
@@ -2659,7 +2665,7 @@
           <span class="kage-craft-idx">03 // HYPE CULTURE CRITIQUE</span>
           <h3 class="kage-craft-title">Pop Luxury Satire</h3>
           <p class="kage-craft-desc">
-            Maximalist street collage examining modern flex culture, luxury brand obsessions, and how status is traded in contemporary society.
+            My maximalist street collage takes on modern flex culture, luxury brand obsessions, and how status is traded in today's society.
           </p>
         </div>
       </div>
@@ -2688,7 +2694,7 @@
         <span class="kage-badge">NEXT STUDIO DROP</span>
         <h3 class="drop-title" style="margin-top: 16px;">RAGS TO RICHES</h3>
         <p style="font-size: 13px; color: var(--text-muted); max-width: 620px; margin: 0 auto; line-height: 1.7;">
-          A limited street-luxury studio series tearing into hyper-consumerism, flex culture, and wealth symbolism straight from the Pilani studio. Locked behind password access for Circle members.
+          A limited street-luxury studio series tearing into hyper-consumerism, flex culture, and wealth symbolism straight from my Pilani studio. Locked behind password access for Circle members.
         </p>
 
         <!-- Live Countdown Overlay Clock -->
@@ -2748,7 +2754,7 @@
           
           <label class="consent-label">
             <input type="checkbox" name="consent" value="yes" required>
-            <span>Lock me in for private vault drop passes, unreleased canvas previews, and direct studio dispatches from Ketan Duggal.</span>
+            <span>Lock me in for private vault drop passes, unreleased canvas previews, and direct dispatches from the studio.</span>
           </label>
 
           <button type="submit" class="btn-luxury gold" style="width: 100%; margin-top: 10px;">Request Vault Pass</button>
@@ -2773,7 +2779,7 @@
           <span class="drop-status-soldout">&#9679; Sold</span>
           <h4 class="drop-archive-title">Complex Agony</h4>
           <p class="drop-archive-desc">
-            Ketan's first canvas, painted over almost a year in the Birla School art room. It was sold at the 21-day Serendipity exhibition at Jawahar Kala Kendra, Jaipur.
+            My first canvas, painted over almost a year in the Birla School art room. It sold at the 21-day Serendipity exhibition at Jawahar Kala Kendra, Jaipur.
           </p>
         </div>
 
@@ -2784,7 +2790,7 @@
           <span class="drop-status-soldout drop-status-private">&#9679; Private Collection</span>
           <h4 class="drop-archive-title">The Conflict of Love and Chastity</h4>
           <p class="drop-archive-desc">
-            Renaissance portraiture split by a chromatic glitch. Painted in Sydney and shown in the 2020 Love exhibition at White Rhino Artspace.
+            Renaissance portraiture split by a colour glitch. I painted it in Sydney and showed it in the 2020 Love exhibition at White Rhino Artspace.
           </p>
         </div>
 
@@ -2795,7 +2801,7 @@
           <span class="drop-status-soldout drop-status-private">&#9679; Private Collection</span>
           <h4 class="drop-archive-title">Study of Balance</h4>
           <p class="drop-archive-desc">
-            A sweeping 122 cm resin panorama made in Sydney: a meditation on when to guide the current and when to let the material find its own level.
+            A sweeping 122 cm resin panorama I made in Sydney, about when to guide the current and when to let the material find its own level.
           </p>
         </div>
 
@@ -2806,7 +2812,7 @@
           <span class="drop-status-soldout drop-status-private">&#9679; Private Collection</span>
           <h4 class="drop-archive-title">Querencia</h4>
           <p class="drop-archive-desc">
-            Figurative line work on a hand-gilded gold leaf ground. The sanctuary Ketan spent a decade searching for, completed in Sydney.
+            Figurative line work on a painted gold ground. The sanctuary I spent a decade searching for, finished in Sydney.
           </p>
         </div>
 
@@ -2817,7 +2823,7 @@
           <span class="drop-status-soldout drop-status-private">&#9679; Private Collection</span>
           <h4 class="drop-archive-title">Richie Carrying Gifts &amp; High Fashion Brands</h4>
           <p class="drop-archive-desc">
-            Richie Rich weighed down by real Herm&egrave;s, Rolex and Patek Philippe boxes. Ketan's maximalist question about luxury and flex culture.
+            Richie Rich weighed down by real Herm&egrave;s, Rolex and Patek Philippe boxes. My maximalist question about luxury and flex culture.
           </p>
         </div>
       </div>
@@ -2839,9 +2845,9 @@
             <span class="kage-badge">STUDIO BASE</span>
             <h3 style="font-family: var(--font-heading); font-size: 26px; margin: 14px 0 6px 0;">Pilani, Rajasthan</h3>
             <p style="font-size: 12px; color: var(--text-muted);">
-              28.3639&deg; N, 75.6010&deg; E. The place where every canvas starts, gets messy, and comes to life.
+              Where every one of my canvases starts, gets messy, and comes to life.
             </p>
-            <a href="https://share.google/sFgvxJUcVUxZcecxk" target="_blank" rel="noopener" style="display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; color: var(--accent-gold); text-decoration: underline; text-underline-offset: 3px;">FIND THE STUDIO ON GOOGLE MAPS &#8599;</a>
+            <a href="https://share.google/sFgvxJUcVUxZcecxk" target="_blank" rel="noopener" style="display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; color: var(--accent-gold); text-decoration: underline; text-underline-offset: 3px;">FIND MY STUDIO ON GOOGLE MAPS &#8599;</a>
           </div>
           <div style="margin-top: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold);">
             LOCAL TIME: <span id="studioClock">IST 05:30 PM</span>
@@ -2866,7 +2872,7 @@
             <span class="kage-badge">MADE TO LAST</span>
             <h3 style="font-family: var(--font-heading); font-size: 26px; margin: 14px 0 6px 0;">Built for the Long Run</h3>
             <p style="font-size: 12px; color: var(--text-muted);">
-              Cotton and linen canvas, UV-stabilized resin, and lightfast pigments made to hold up for generations.
+              I use cotton and linen canvas, UV-stabilized resin, and lightfast pigments, made to hold up for generations.
             </p>
           </div>
           <div style="margin-top: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold);">
@@ -2883,7 +2889,7 @@
       <div class="section-header">
         <span class="kage-badge">CHAPTER 04 // TIMELINE</span>
         <h2 class="section-title" style="margin-top: 14px;">Showcase History</h2>
-        <p class="section-desc">Selected juried exhibitions, institutional showcases, and independent studio platforms.</p>
+        <p class="section-desc">Shows I've been part of: juried exhibitions, institutional showcases, and independent studio platforms.</p>
       </div>
 
       <div class="exhibitions-kage-list">
@@ -2921,17 +2927,17 @@
 
       <div class="bio-kage-grid">
         <div class="kage-panel bio-img-panel">
-          <img src="thumbs/2.%20Splendid%20Soul%20(2012).JPG" width="800" height="606" alt="Splendid Soul by Ketan Duggal" loading="lazy">
+          <img src="thumbs/2.%20Splendid%20Soul%20(2012).JPG" width="800" height="606" alt="Splendid Soul (2012)" loading="lazy">
         </div>
         <div class="bio-text">
           <div class="quote-statement">
             "My canvas is a visual ledger — transmuting personal isolation into societal critique."
           </div>
           <p style="margin-bottom: 18px; color: var(--text-muted); font-size: 13.5px; line-height: 1.8;">
-            Started in 2011 with raw, gritty figurative oils in Pilani. Early pieces were unapologetic excavations of mental gravity, emotional density, and spiritual hunger. Over 15 years of studio grind, the canvas transformed from an introspective mirror into an observation deck.
+            I started working in oil on canvas in 2011, with raw, gritty figurative pieces in Pilani. My early paintings dug unapologetically into mental gravity, emotional density, and spiritual hunger. Over 15 years of studio grind, my canvas has turned from an introspective mirror into an observation deck.
           </p>
           <p style="margin-bottom: 24px; color: var(--text-muted); font-size: 13.5px; line-height: 1.8;">
-            Blending old-master glazing with modern acrylics, clear bio-resin, 24k gold leaf, and high-voltage pop iconography, recent works like the <em>Richie</em> series dissect how clout, luxury hype, and identity are traded in a hyper-consumerist world.
+            Blending old-master glazing with modern acrylics, clear bio-resin, and high-voltage pop iconography, my recent works like the <em>Richie</em> series dissect how clout, luxury hype, and identity are traded in a hyper-consumerist world.
           </p>
           <div class="kage-badge">
             PILANI, RAJASTHAN // FORMER STUDIO: SYDNEY, NSW
@@ -2948,10 +2954,10 @@
         <span class="kage-badge">CHAPTER 06 // DIRECT LINE</span>
         <h2 class="section-title" style="margin-top: 14px;">Private Collector Inquiries</h2>
         <p style="color: var(--text-muted); margin-top: 10px; font-size: 13px;">
-          For original piece acquisitions, bespoke commissions, or private viewings, hit the direct line below.
+          For original pieces, commissions, or private viewings, reach me directly below.
         </p>
         <p style="color: var(--text-muted); margin-top: 8px; font-size: 13px;">
-          Studio visits in Pilani by appointment. <a href="https://share.google/sFgvxJUcVUxZcecxk" target="_blank" rel="noopener" style="color: var(--accent-gold); text-decoration: underline; text-underline-offset: 3px;">Find the studio on Google Maps &#8599;</a>
+          Studio visits in Pilani by appointment. <a href="https://share.google/sFgvxJUcVUxZcecxk" target="_blank" rel="noopener" style="color: var(--accent-gold); text-decoration: underline; text-underline-offset: 3px;">Find my studio on Google Maps &#8599;</a>
         </p>
 
         <form class="inquiry-form" id="inquiryForm" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
@@ -2986,7 +2992,7 @@
         <div>
           <div class="footer-brand">&#9670; K E T A N &nbsp;/&nbsp; D U G G A L</div>
           <p style="color: var(--text-muted); max-width: 420px; font-size: 12px; line-height: 1.7;">
-            Independent studio practice blending classical fine art foundations with contemporary street luxury, spatial depth, and material fluidity.
+            My independent studio practice blends classical fine art foundations with contemporary street luxury, spatial depth, and material fluidity.
           </p>
         </div>
         <div>
@@ -3078,7 +3084,7 @@
         status: "Sold",
         phase: "phase1",
         image: "1. Complex Agony (2011).jpg",
-        story: "In 2011, as Ketan entered the 11th grade at Birla School in Pilani, the school had no formal arts curriculum. However, under the mentorship and encouragement of art teacher Prakash Khandey, he took the leap onto stretched canvas. This initiative sparked a collective movement inside the school: seeing him begin, nine other students joined in to paint their own canvases in the school art room. Working during school hours and quiet evening sessions, Ketan spent nearly one full year (eight to twelve months) immersed in this single canvas.\n\nAt the center of the composition stands a girl who has been stabbed, with blood visibly staining her t-shirt. Yet her posture defies victimhood: she presses both hands tightly over her heart. To match the emotional weight of this image, Ketan eschewed standard brushwork in favor of an obsessive, athletic \"hand-rubbing\" technique—physically grinding dense linseed oil pigments into the raw canvas weave for hours at a time until the agony was literally etched into the fabric. The surrounding darkness is not flat black, but a three-dimensional, \"living black\" mixed from layered glazes of vermilion, burnt umber, and Prussian blue.\n\nComplex Agony is not a portrait of defeat; it is an act of fierce self-preservation. While the exterior (the shirt and body) can be wounded by the world, her hands fiercely guard her core—the heart and soul. When this painting was later sold after the 21-day exhibition in Jaipur, the initial thrill of the sale quickly gave way to a profound sense of grief and emptiness—teaching Ketan early on that his canvases were not commercial commodities, but living pieces of his own identity."
+        story: "In 2011 I was in 11th grade at Birla School in Pilani. The school had no formal art classes, but with the encouragement of my art teacher, Prakash Khandey, I took the leap onto stretched canvas. Once the others saw me start, nine more students joined in and painted their own canvases in the school art room. I worked on this one during school hours and quiet evenings for nearly a whole year, eight to twelve months on a single canvas.\n\nAt the centre stands a girl who has been stabbed, with blood staining her t-shirt. Yet she refuses to be a victim: she presses both hands tightly over her heart. To match the weight of that image, I didn't use normal brushwork. I rubbed dense linseed oil paint into the raw canvas with my hands and a cloth, for hours at a time, until the agony felt worked into the fabric itself. The darkness around her isn't flat black either. I mixed it from layered glazes of vermilion, burnt umber and Prussian blue, so it feels alive.\n\nComplex Agony isn't about defeat; it's about fiercely protecting yourself. The world can wound the outside, the shirt and the body, but her hands guard the core: the heart and the soul. It sold at the 21-day Serendipity exhibition in Jaipur, and the thrill of that first sale quickly turned into grief and emptiness. It taught me early that my canvases aren't products. They are living pieces of who I am."
       },
       {
         id: 1,
@@ -3089,7 +3095,7 @@
         origin: "Birla School Art Room, Pilani",
         phase: "phase1",
         image: "2. Splendid Soul (2012).JPG",
-        story: "By 2012, now in the 12th grade, Ketan responded to the inward claustrophobia of Complex Agony by expanding his ambition to a monumental scale: a 120 × 150 cm canvas, his largest early work. Painted over six to seven months during school hours and evenings in the Birla School art room, this piece marked the first time he invested in large, single-color professional tubes of oil paint—specifically vibrant reds.\n\nThe composition features a solitary girl standing at the center of the canvas beneath an overarching tree in the background and top plane. She holds open the fold of her frock to catch autumn leaves as they fall from above. Seeking tactile realism, Ketan gathered real fallen leaves from the ground, coated them in heavy vermilion and crimson oil glazes, and stamped them directly onto the canvas weave to replicate the organic imprint of falling foliage.\n\nIf Complex Agony was about closing and protecting the heart against a wound, Splendid Soul represents opening the heart (symbolized by the outstretched frock) to gather grace amidst the chaos of internal struggle. It captures the fleeting splendor of youth just before the threshold of adulthood, proving that beauty and resilience exist directly inside turbulent environments."
+        story: "By 2012 I was in 12th grade. After the closed-in feeling of Complex Agony, I wanted to go big: this canvas is 120 × 150 cm, the largest of my early works. I painted it over six to seven months, during school hours and evenings in the Birla School art room, and it was the first time I invested in large professional tubes of single colours, especially bright reds.\n\nA girl stands alone at the centre, beneath a big tree that fills the background and the top of the canvas. She holds open the fold of her frock to catch the autumn leaves falling from above. I wanted the leaves to feel real, so I gathered fallen leaves from the ground, coated them in heavy vermilion and crimson oil glazes, and pressed them straight onto the canvas.\n\nIf Complex Agony was about closing and protecting the heart against a wound, Splendid Soul is about opening it. The open frock gathers grace in the middle of all the struggle inside. It holds that short, splendid time of youth just before you become an adult, and shows that beauty and strength can live right inside the chaos."
       },
       {
         id: 2,
@@ -3100,7 +3106,7 @@
         origin: "Private Home Studio, Pilani",
         phase: "phase1",
         image: "3. The Urban Hermit (2012).JPG",
-        story: "The Urban Hermit marks Ketan's artistic \"Independence Day.\" For the first time, he moved his practice out of the shared, institutional Birla School art room and into the private sanctuary of his home in Pilani. Free from school bells and the gaze of teachers or peers, the creative tempo shifted dramatically: instead of laboring for a year, he completed this work in a high-intensity, one-week sprint of all-night painting sessions.\n\nAcross a wide horizontal canvas (45 × 77 cm), a vast, consuming void of multi-layered black dominates the right and central planes. Pushed all the way to the far-left edge sits a contemplative girl, pressing her hands against her head and resting her chin in her palms to physically block out external noise. Here, Ketan mastered the lesson that \"black\" on canvas is never flat; it is a delicate, three-dimensional balance of underlying tones creating a living darkness.\n\nThis canvas establishes the foundational archetype of Ketan's entire 15-year career: The Hermit. By placing the figure off-center at the extreme edge of the void, he captured the psychological tension of modern isolation—choosing to retreat into midnight silence to protect mental peace and cultivate an authentic inner voice before stepping into the loud marketplace."
+        story: "The Urban Hermit was my own Independence Day. For the first time, I moved out of the shared Birla School art room and painted at home in Pilani, in a room that was all mine. With no school bells and no teachers or classmates watching, my pace changed completely: instead of spending a year on a canvas, I finished this one in a single week of all-night sessions.\n\nAcross the wide 45 × 77 cm canvas, a deep, many-layered black fills the centre and the right side. Pushed all the way to the far-left edge sits a girl deep in thought, pressing her hands against her head and resting her chin in her palms to block out the noise. Here I learned that black on canvas is never flat; it's a balance of hidden tones underneath that makes the darkness feel alive.\n\nThis is where the hermit in my work began. Placing her at the very edge of that empty space was my way of showing what isolation feels like today: choosing midnight silence to protect your peace and find your own voice before stepping out into the loud marketplace of the world."
       },
       {
         id: 3,
@@ -3111,7 +3117,7 @@
         origin: "Private Home Studio, Pilani",
         phase: "phase1",
         image: "4. Nothing on you (2012).JPG",
-        story: "If the first painting took a year and the third took a week of all-nighters, Nothing on you was a pure lightning strike. Locked inside his home studio in Pilani, Ketan painted continuously through one single day and night (a non-stop 24-hour marathon), finishing the entire canvas in a single sitting.\n\nRendered wet-on-wet with fearless velocity, the portrait features a figure with striking lime-blonde/greenish parted hair and luminescent, flushed crimson and blush-pink facial highlights set against cool, muted indigo and slate shadows. Because it was executed in a single 24-hour flow state, the brushwork retains an electric, unhesitating immediacy.\n\nThis marathon session taught Ketan one of the hardest lessons in painting: knowing when to stop. Quality does not always require months of brooding deliberation; sometimes an artist must outrun self-doubt and trust pure instinct. The title Nothing on you reflects both the untouchable emotional presence of the subject and the purity of a canvas that has nothing overworked or artificial added to it."
+        story: "If my first painting took a year and the third took a week of all-nighters, Nothing on you was a lightning strike. I locked myself in my home studio in Pilani and painted straight through one day and one night, 24 hours without a break, and finished the whole canvas in a single sitting.\n\nI painted it wet-on-wet and fast. The figure has striking lime-blonde, greenish parted hair and glowing, flushed crimson and blush-pink highlights against cool, muted indigo and slate shadows. Because it all came out in one 24-hour flow, the brushwork still has that electric, unhesitating energy.\n\nThat session taught me one of the hardest lessons in painting: knowing when to stop. Good work doesn't always need months of overthinking; sometimes you have to outrun your self-doubt and trust your instinct. The title is about the subject's untouchable presence, and about a canvas with nothing overworked or fake added to it."
       },
       {
         id: 4,
@@ -3122,7 +3128,7 @@
         origin: "Private Home Studio, Pilani",
         phase: "phase1",
         image: "5. Strings Teem Senses triptych (2013).webp",
-        story: "Following four intense figurative works, Strings Teem Senses marks Ketan's first major leap into pure abstraction and spatial deconstruction. As a guitarist in his school band, he didn't merely listen to music—he felt the physical vibration and tension of strings beneath his fingertips. He translated that auditory and tactile passion onto canvas, splitting a single vision across three separate 45 × 45 cm frames.\n\nWhile rooted in his experience as a guitarist and the harmonic alignment of standard guitar tuning (EADGBe), he chose the classical form of a violin as the visual vessel. When all three panels are aligned side by side, the abstract geometry of the instrument emerges: the violin's bow sweeps continuously from the left panel, cuts through the heart of the center canvas, and resolves on the right.\n\nStrings Teem Senses represents the convergence of the Musician and the Visual Artist. By fragmenting the instrument across three separate canvases, he forced the viewer's eye and brain to assemble the melody across the physical silence between the frames—proving he no longer needed a literal human face to convey deep human emotion."
+        story: "After four intense figurative paintings, Strings Teem Senses was my first real leap into pure abstraction. I played guitar in my school band, and I didn't just listen to music; I felt the vibration and tension of the strings under my fingertips. I wanted to put that feeling on canvas, so I split one picture across three separate 45 × 45 cm canvases.\n\nThe idea comes from the guitar and its standard tuning (EADGBe), but I chose the classic shape of a violin to carry it. When the three panels hang side by side, the instrument appears: the violin's bow sweeps out of the left panel, cuts through the heart of the centre canvas and comes to rest on the right.\n\nThis is where the musician and the painter in me met. By breaking the instrument across three canvases, I let your eye put the melody back together across the silent gaps between them, and I realised I no longer needed a face to show deep human emotion."
       },
       {
         id: 5,
@@ -3133,7 +3139,7 @@
         origin: "Private Home Studio, Pilani",
         phase: "phase1",
         image: "6. Gaol of greed (2013).JPG",
-        story: "Created at home in Pilani as his second purely abstract work, Gaol of Greed (\"Jail of Greed\") was painted just after the national group exhibition at Jawahar Kala Kendra in Jaipur, before his 12th board exams kept him busy with studies. Having deconstructed musical harmony in Strings Teem Senses, Ketan turned abstraction toward mapping raw emotional and societal pressure.\n\nSpanning a horizontal 60 × 83 cm canvas, the composition is a split dual-toned field of contrasting forces. In the top-right zone, a stormy, swirling crimson and burgundy vortex represents the \"Circle of Life\" and the intoxicating loop of ambition. Counterbalancing this in the bottom-left zone is an airy, smoky golden-yellow field with rising vertical stalks and grounded, burdened human figures carrying the heavy gravitational pull of material desire.\n\nIf the first four paintings examined the internal Self, Gaol of Greed is the earliest inquiry into the external System—foreshadowing the Richie series a decade later. It maps the \"mixture of pure emotions\" that occurs when human ambition hardens into a psychological prison (\"gaol\") of material entrapment."
+        story: "Gaol of Greed (\"Jail of Greed\") is my second purely abstract painting. I made it at home in Pilani just after the national group exhibition at Jawahar Kala Kendra in Jaipur, before my 12th board exams kept me busy with studies. After breaking down musical harmony in Strings Teem Senses, I turned abstraction towards mapping raw emotional and social pressure.\n\nThe horizontal 60 × 83 cm canvas is split between two opposing forces. In the top right, a stormy, swirling vortex of crimson and burgundy stands for the \"Circle of Life\" and the intoxicating loop of ambition. Balancing it in the bottom left is an airy, smoky golden-yellow field with rising vertical stalks and grounded, burdened human figures carrying the heavy pull of material desire.\n\nMy first four paintings looked inward, at the self. Gaol of Greed was my first look at the system outside, a decade before the Richie series. It maps the \"mixture of pure emotions\" that comes when ambition hardens into a prison, a \"gaol\", of material things."
       },
       {
         id: 6,
@@ -3142,9 +3148,9 @@
         medium: "Oil Paint on Canvas",
         dimensions: "60 × 60 cm (Square 1:1)",
         origin: "Pilani Studio",
-        phase: "phase1",
+        phase: "phase2",
         image: "7. Trying and being (2014).JPG",
-        story: "Returning to the canvas in 2014 after the Jaipur exhibition and his gap-year search, Trying and Being channels Ketan's conditioning as a national-level athlete into a high-intensity figurative study. It addresses the daily grind of existence \"by the numbers\"—the friction between striving to become something (\"trying\") and simply existing in authentic presence (\"being\").\n\nOn a square 60 × 60 cm canvas, an expressive portrait gazes upward and to the right, rendered in muted teal/cyan, warm ochre, deep crimson, and atmospheric slate-black textures. Vertical paint drips run down the surface, preserving the raw physical energy of the session.\n\nThe painting is a manifesto on studio and life discipline: showing up to the canvas every single day, staying real, and doing the work even when questioning the process."
+        story: "After my 12th board exams I stepped away from painting for a while, and a lot happened in that time. When I came back to the canvas in 2014, I changed my whole style to deal with everything I was carrying. Trying and Being is the first painting in that new style, and the next few works followed it.\n\nOn a square 60 × 60 cm canvas, an expressive face gazes up and to the right, in muted teal and cyan, warm ochre, deep crimson and smoky slate-black textures. Vertical drips run down the surface and keep the raw physical energy of that session.\n\nThe title holds the friction I felt then, between trying to become something and simply being who you are. It's also about showing up to the canvas and doing the work, even when you're questioning the process."
       },
       {
         id: 7,
@@ -3153,9 +3159,9 @@
         medium: "Oil / Mixed Medium on Canvas",
         dimensions: "60 × 45 cm (Portrait)",
         origin: "Pilani Studio",
-        phase: "phase1",
+        phase: "phase2",
         image: "8. Now you see me,now you dont (2014).JPG",
-        story: "Painted during the introspective 2014 Pilani cycle, this work investigates the duality of visibility and concealment—how individuals navigate public expectations by wearing selective social masks.\n\nA haunting, cool-toned vertical portrait (60 × 45 cm) bathed in washed slate blue, charcoal black, and stark white highlights. Half of the face dissolves into textured marks, while a vivid, visceral crimson wash slashes across one eye with vertical dripping paint runs.\n\nIt confronts the universal vulnerability of self-revelation: how much of our true internal state we allow the world to see before retreating behind protective filters."
+        story: "I painted this in Pilani in 2014, during a very inward-looking time for me. It's about being seen and hiding: the social masks we choose to wear to get through what people expect of us.\n\nIt's a haunting, cool-toned vertical portrait (60 × 45 cm) in washed slate blue, charcoal black and stark white highlights. Half of the face dissolves into textured marks, while a vivid crimson wash slashes across one eye and drips down the canvas.\n\nIt asks how vulnerable it is to let yourself be seen: how much of what's really going on inside we show the world before we retreat behind our filters."
       },
       {
         id: 8,
@@ -3164,9 +3170,9 @@
         medium: "Oil & Acrylic on Canvas",
         dimensions: "45 × 60 cm (Landscape)",
         origin: "Pilani Studio",
-        phase: "phase1",
+        phase: "phase2",
         image: "9. The Stripped Tint (2014).JPG",
-        story: "Subtitled \"Ethics in Action\" in the early archive, The Stripped Tint turns the painterly lens toward internal conscience, moral gravity, and humility.\n\nSet against a muted white background, a distressed figure bows forward, clutching their head in both hands. Heavy, raw brushstrokes of forest green, deep crimson, ochre, and peach carve the posture out of the negative space.\n\nBy stripping away ornamental color (\"tint\"), the painting asks what remains of human character and integrity when external applause, ego, and superficial distractions are removed."
+        story: "In my early archive I gave this one the subtitle \"Ethics in Action\". With The Stripped Tint I turned the painting inward, towards conscience, moral weight and humility.\n\nAgainst a muted white background, a distressed figure bows forward, clutching their head in both hands. Heavy, raw brushstrokes of forest green, deep crimson, ochre and peach carve the pose out of the empty space.\n\nBy stripping away decorative colour, the \"tint\", I wanted to ask what's left of a person's character and integrity once the applause, the ego and all the distractions are taken away."
       },
       {
         id: 9,
@@ -3175,9 +3181,9 @@
         medium: "Oil Paint on Canvas",
         dimensions: "60 × 60 cm (Square 1:1)",
         origin: "Pilani Studio",
-        phase: "phase1",
+        phase: "phase2",
         image: "10. The One Who Knew (2014).JPG",
-        story: "Created in 2014, this piece explores the silent weight of personal memory—the unspoken truths and lived lessons that an individual carries through time.\n\nA close-up expressive portrait glancing sideways, ignited by a fiery palette of saturated crimson and orange hair, earthy umber shadows, contrasting teal-blue lips, and vertical dripping pigment tears.\n\nThe One Who Knew serves as a visual anchor for memory: a reminder that our personal timeline holds silent realizations we cannot run away from, and that wisdom is often carried in quiet observation."
+        story: "I painted The One Who Knew in 2014. It's about the silent weight of memory: the unspoken truths and lessons we carry with us through time.\n\nIt's a close-up, expressive face glancing sideways, lit up by fiery crimson and orange hair, with earthy umber shadows, contrasting teal-blue lips and paint dripping down like tears.\n\nFor me it's an anchor for memory, a reminder that our own past holds quiet realisations we can't run away from, and that wisdom is often found in quietly watching."
       },
       {
         id: 10,
@@ -3186,9 +3192,9 @@
         medium: "Oil Paint on Canvas",
         dimensions: "46 × 61 cm (Landscape)",
         origin: "Pilani Studio",
-        phase: "phase1",
+        phase: "phase2",
         image: "11. Sneak Peak (2014).JPG",
-        story: "In the early studio archive, this work was associated with the House of Bourbon metadata tag and served as Ketan's very first conceptual excavation of Querencia—the psychological search for an untouchable inner sanctuary where one feels safe and at home.\n\nAn over-the-shoulder expressionist portrait framed by a bold, iconic bubblegum-pink hair silhouette, warm ochre and emerald facial highlights, deep crimson undertones, and cascading drip layers against charcoal black.\n\nTrue to its title, Sneak Peak offers a fleeting glimpse over the shoulder into Ketan's private mental fortress—a preview of the inner peace that would fully mature seven years later in Sydney."
+        story: "Sneak Peak was my very first exploration of querencia: the search for an inner sanctuary, a place where you feel completely safe and at home.\n\nIt's an over-the-shoulder portrait framed by a bold, bubblegum-pink silhouette of hair, with warm ochre and emerald highlights on the face, deep crimson undertones and layers of drips cascading over charcoal black.\n\nTrue to its name, it gives a quick glimpse over the shoulder into my private inner world, a first preview of the peace I would fully find seven years later in Sydney, with Querencia."
       },
       {
         id: 11,
@@ -3197,9 +3203,9 @@
         medium: "Oil / Mixed Medium on Canvas",
         dimensions: "61 × 61 cm (Square 1:1)",
         origin: "Pilani / UP Studio",
-        phase: "phase1",
+        phase: "phase2",
         image: "12. The Doomed One (2014).JPG",
-        story: "Standing as the philosophical apex and conclusion of Era 01, The Doomed One is accompanied by the defining studio caption:\"What is presence and what is its relationship to painting? So we learn our skills, locate what is real for us, show up, and paint.\"\n\nA heavy, monochromatic profile of a solitary figure seated and hunched forward, carved out of an atmospheric, dripping wash of olive drab, muted chartreuse yellow, dark moss green, and slate gray. The features are blurred and weighted with impasto, evoking a soul struggling against the gravity of its own thoughts.\n\nThe Doomed One confronts existential dread without flinching. Rather than escaping anxiety, Ketan used the physical act of showing up in front of the canvas to transmute overwhelming mental weight into enduring form."
+        story: "The Doomed One closes my first era. Before this canvas I hadn't painted for a while, and things were hard with people close to me. I was angry and anxious, so I sat down and painted to sort myself out.\n\nA solitary figure sits hunched forward in profile, carved out of dripping washes of olive drab, muted chartreuse yellow, dark moss green and slate grey. The features are blurred and heavy with thick paint, like a soul struggling against the weight of its own thoughts.\n\nWhen I shared it, I paired it with these words: \"What is presence and what is its relationship to painting? So we learn our skills, locate what is real for us, show up, and paint.\" She looks doomed, but painting her is what saved me."
       },
       {
         id: 12,
@@ -3209,8 +3215,9 @@
         dimensions: "61 × 61 cm (Square 1:1)",
         origin: "New Delhi",
         phase: "phase2",
+        available: false,
         image: "13. Blue Winds (2015).JPG",
-        story: "Painted during relocation from Pilani to the fast-paced metropolis of New Delhi, Blue Winds captures the kinetic energy of leaving one's comfort zone and allowing a new environment to reshape visual language.\n\nA direct, unblinking frontal portrait bathed in cool neon undertones—electric cyan, cerulean, and cobalt glazes emerging from deep violet-black ambient shadows, accented by soft magenta-pink lips.\n\nMoving away from the earthy, somber shadows of Pilani, the \"blue winds\" symbolize the external currents of change, value, and momentum that sweep an artist into a new chapter."
+        story: "I painted Blue Winds in New Delhi in 2015. It's no longer with me, but I still remember making it, and this photograph is how the painting lives on.\n\nA crouched figure, head bowed onto her knees, half dissolves into washes of moss, olive and yellow-green. Dark hair falls forward, and soft vertical strokes sweep across the background like wind moving through leaves."
       },
       {
         id: 13,
@@ -3221,7 +3228,7 @@
         origin: "New Delhi",
         phase: "phase2",
         image: "14. Strangers in the night (2016).JPG",
-        story: "When starting this canvas in 2016, Ketan wrote in his studio log: \"So I have started a new painting and this is going to be my best one.\" Created in Delhi, it functions as a crucial bridge between classical figurative portraiture and high-intensity emotional abstraction.\n\nA fierce, direct frontal close-up radiating saturated fiery orange and crimson heat, contrasted against cobalt/teal lips, dark charcoal shadows, and vertical dripping paint tears.\n\nStrangers in the night captures the electric, anonymous encounters of crowded city nights—the brief, unspoken psychological heat shared between strangers passing in the dark."
+        story: "When I started this canvas in Delhi in 2016, I felt it would be my best painting yet. It began as a completely different painting and changed as I worked: I painted one face, then painted a new face over it. That first face is still hidden beneath the one you see.\n\nIt's a fierce, direct close-up glowing with fiery orange and crimson, set against cobalt-teal lips, dark charcoal shadows and paint dripping down like tears.\n\nStrangers in the night is about the electric, anonymous moments of crowded city nights: the brief, unspoken heat between strangers passing in the dark."
       },
       {
         id: 14,
@@ -3231,19 +3238,20 @@
         dimensions: "67 × 48 cm (Portrait)",
         origin: "New Delhi",
         phase: "phase2",
+        available: false,
         image: "15. Burnt Wine (2016).JPG",
-        story: "Accompanied by the enigmatic caption \"I will write the story of this painting. Its not here,\" Burnt Wine marks the first major technical pivot into Mixed Media.\n\nStepping away from traditional brushwork, Ketan allowed physical texture, chemical weathering, and pigment friction across a 67 × 48 cm canvas to dictate the composition. Rich wine, terracotta, and burnt umber layers interact to create a weathered, organic surface.\n\nBy stating that the story \"is not here\" in words, Ketan discovered that material texture itself is a storyteller—the physical friction of mixed media carries an unfolding narrative that cannot be reduced to a literal figure."
+        story: "Burnt Wine is my first mixed media painting, and the name is literal. I was painting in Delhi with a glass of wine in my hand when the power went out, so I lit the room with candles and started dripping wax onto the canvas. Then I held a flame close, saw the surface start to blacken, and decided to try burning the painting on purpose. When I realised it was really burning, I put the fire out with the wine in my hand.\n\nThe black patch near the top is the burn. Around it, rich orange, terracotta and burnt umber layers carry the wax drips and wine stains, with a lone figure turned away in the glow (67 × 48 cm).\n\nI once wrote about it: \"I will write the story of this painting. It's not here.\" This is that story: wax first, then fire, then wine."
       },
       {
         id: 15,
         title: "Elucidated",
         year: "2017",
         medium: "Oil Paint on Canvas",
-        dimensions: "67 × 48 cm (Portrait)",
+        dimensions: "61 × 61 cm (Square 1:1)",
         origin: "New Delhi",
         phase: "phase2",
         image: "16. Elucidated (2017).JPG",
-        story: "With the declaration \"So I will actually start painting,\" Elucidated signals a moment of professional clarity and gallery-standard refinement before his move to Australia.\n\nA composed, blue-toned portrait (67 × 48 cm) presented in a formal gallery frame, utilizing luminous sapphire and cerulean glazes to bring structural light and calm perspective to the face.\n\nTo \"elucidate\" is to make clear: after six years of wrestling with dark psychological turmoil and raw surface friction, this piece marks the resolution of early angst into lucid, self-assured mastery."
+        story: "I painted Elucidated in New Delhi in 2017, and it began with me not knowing what to paint. So I played with new colours, looking for a new feel and a cooler vibe.\n\nIt's a square 61 × 61 cm portrait in deep sapphire and cerulean, with green-lit eyes and soft pink lips emerging from near-black shadow.\n\nIt came out dark, but it was a really good time for me. After finishing it, I decided to take a break from painting for a while, and about seven or eight months later I moved to Australia."
       },
       {
         id: 16,
@@ -3253,9 +3261,9 @@
         dimensions: "61 × 61 cm (Square 1:1)",
         origin: "Marsden Park, Sydney, NSW, Australia",
         status: "Private Collection",
-        phase: "phase2",
+        phase: "phase3",
         image: "17. The Conflict of Love and Chastity (2020).JPG",
-        story: "Created in Sydney during a period of intense geographic, cultural, and personal transition (and showcased in the 2020 Love exhibition at White Rhino Artspace, Sydney), this painting reconfigures classical Renaissance portraiture through a contemporary, digital-age lens.\n\nAcross a 61 × 61 cm square canvas, luminous yellow-ochre highlights and flushed pinks contrast against deep cerulean and indigo shadows. The defining visual strike is a calculated, high-resolution chromatic \"glitch\" sliced horizontally across the bridge of the nose and facial plane, fracturing classical symmetry.\n\nThe visual \"glitch\" embodies modern cognitive dissonance—the internal tug-of-war between raw, impulsive passion (Love) and self-imposed moral discipline (Chastity). It captures how contemporary human identity fractures and recalibrates under emotional pressure."
+        story: "This was my first painting in Australia, and the next one after Elucidated. When I got there, I didn't paint at all for a few months. Then, around the end of my first semester, I bought canvases and paints and started this one. It took me almost two years to finish.\n\nEverything was changing for me then: the country I lived in, the culture around me and my personal life. In this painting I took classical Renaissance portraiture and looked at it through a modern, digital-age lens. I showed it in the 2020 Love exhibition at White Rhino Artspace in Sydney.\n\nOn a 61 × 61 cm square canvas, luminous yellow-ochre highlights and flushed pinks sit against deep cerulean and indigo shadows. The strongest moment is a sharp, deliberate colour \"glitch\" sliced across the bridge of the nose and the face, breaking the classical symmetry.\n\nThat glitch is the tug-of-war inside us between raw, impulsive passion (Love) and the discipline we impose on ourselves (Chastity). It shows how who we are cracks and resets under emotional pressure."
       },
       {
         id: 17,
@@ -3265,21 +3273,21 @@
         dimensions: "51 × 122 cm (Wide Panorama 1:2.4)",
         origin: "Sydney, NSW, Australia",
         status: "Private Collection",
-        phase: "phase2",
+        phase: "phase3",
         image: "18. Study of Balance (2020).jpg",
-        story: "Born on the shores of Sydney amidst the solitude and intensity of life abroad, Study of Balance represents a radical departure into elemental fluid chemistry. After being sold to a private collector in Melbourne in 2020, its personal significance to his timeline led Ketan to reacquire the work for his permanent collection in 2023.\n\nSpanning a sweeping 51 × 122 cm horizontal panorama, deep indigo, ocean blue, and luminous currents flow across crisp negative space, frozen in suspended animation beneath an ultra-clear, glass-like coat of fluid bio-resin. Working with resin required relinquishing traditional brush control and negotiating viscosity, gravity, and curing chemistry in real time.\n\nStudy of Balance is a physical meditation on control versus surrender. It mirrors the personal quest for emotional grounding and equilibrium when navigating turbulent, unfamiliar environments—learning when to guide the current and when to let the material find its own level."
+        story: "I made Study of Balance in Sydney a few months after The Conflict of Love and Chastity, in the solitude and intensity of life abroad. It was a big change of direction for me, into fluid paint and resin. It sold to a private collector in Melbourne in 2020, but it meant so much to my journey that I bought it back in 2023.\n\nAcross a sweeping 51 × 122 cm panorama, deep indigo, ocean blue and luminous currents flow over clean white space, frozen in place under an ultra-clear, glass-like coat of resin. Working with resin meant giving up the control of a brush and dealing with thickness, gravity and curing in real time.\n\nFor me it's about control and letting go. It mirrors my own search for grounding and balance in a turbulent, unfamiliar place: learning when to guide the current and when to let the material find its own level."
       },
       {
         id: 18,
         title: "Querencia",
         year: "2021",
-        medium: "Mixed Media (Oil/Acrylic) & 24K Gold Leaf on Stretched Canvas",
+        medium: "Mixed Media (Oil/Acrylic) & Acrylic Gold Paint on Stretched Canvas",
         dimensions: "61 × 91 cm (Landscape 2:3)",
         origin: "Marsden Park, Sydney, NSW, Australia",
         status: "Private Collection",
-        phase: "phase2",
+        phase: "phase3",
         image: "19. Querencia (2021).jpg",
-        story: "Completed in Sydney in May 2021, Querencia is the mature culmination of the sanctuary theme first glimpsed in 2014's Sneak Peak. Derived from the Spanish metaphysical concept of querencia—the exact spot in the arena where a bull feels completely safe, grounded, and gathers its deepest strength—this work marks the resolution of a decade of inward psychological excavation.\n\nAn expressive, modern graphic figurative portrait is set against a radiant, hand-gilded 24K-style gold leaf background. Merging intimate black-and-white figurative line work with sacred gold iconography, the reflective surface shifts dynamically with the ambient light of the room.\n\nQuerencia symbolizes a mind that has finally found its home within itself. Having achieved internal peace and built an unshakeable inner sanctuary, the \"Hermit\" was finally ready to turn his gaze outward toward the systems and absurdities of the global marketplace."
+        story: "I finished Querencia in Sydney in May 2021. It's where the idea of an inner sanctuary, which I first explored in Sneak Peak back in 2014, finally came together. The name comes from the Spanish word querencia: the exact spot in the bullring where the bull feels completely safe and grounded, and gathers its deepest strength. For me it closed a decade of looking inward.\n\nAn expressive, graphic figurative portrait sits on a radiant background that I painted in acrylic gold. The intimate black-and-white line work meets the gold, and its sheen changes with the light in the room.\n\nQuerencia is a mind that has finally found its home within itself. Once I had that peace and that inner sanctuary, I was ready to turn my eyes outward, towards the systems and absurdities of the global marketplace."
       },
       {
         id: 19,
@@ -3290,7 +3298,7 @@
         origin: "Home Studio, Pilani",
         phase: "phase3",
         image: "20. Richie Make Money (2022).jpg",
-        story: "Returning to his home studio in Pilani after years in Sydney, Richie Make Money marks the pivotal threshold where \"The Hermit\" steps out into \"The Market.\" Having healed the internal agony of youth and found sanctuary in Querencia, Ketan shifted from examining the pain of existence to critiquing the rules of modern existence.\n\nExploding with high-voltage Pop Art color—vivid orange, kelly green, canary yellow, cobalt blue, and crisp white—the large 91 × 121 cm canvas features the iconic cartoon billionaire Richie Rich. He stands clutching a sack overflowing with Indian Rupee (₹) currency notes against a Monopoly-inspired marquee boldly emblazoned with \"MAKE MONEY\".\n\nThere is a sharp philosophical irony connecting the 2011 genesis (Complex Agony) and the 2022 return (Richie Make Money): both examine human desire and survival, but from opposite ends of the telescope. Using nostalgia and street-pop satire, the painting interrogates late-stage capitalism's relentless money chase and asks how modern society reduces human dignity and worth to a bank balance."
+        story: "I painted Richie Make Money back in my home studio in Pilani after years in Sydney, and it's where I stepped out of my own head and into the market. I had healed the agony of my youth and found my sanctuary in Querencia, so I moved from looking at the pain of existing to questioning the rules we live by.\n\nIt explodes with high-voltage Pop Art colour: vivid orange, kelly green, canary yellow, cobalt blue and crisp white. On the large 121 × 91 cm canvas, the cartoon billionaire Richie Rich stands clutching a sack overflowing with Indian rupee (₹) notes, in front of a Monopoly-style marquee that boldly reads \"MAKE MONEY\".\n\nThere's a sharp irony between my first painting in 2011, Complex Agony, and this return in 2022: both are about desire and survival, but seen from opposite ends of the telescope. With nostalgia and street-pop satire, this one questions late-stage capitalism's endless chase for money and asks how modern society reduces a person's dignity and worth to a bank balance."
       },
       {
         id: 20,
@@ -3302,7 +3310,7 @@
         status: "Private Collection",
         phase: "phase3",
         image: "21. Richie Carrying Gifts $ High Fashion Brands (2024) - final2-cropped.jpg",
-        story: "Unveiled in his 2024–2025 studio cycle, Richie Carrying Gifts & High Fashion Brands escalates the Richie narrative into a maximalist 3D critique of hyper-consumerism, brand idolatry, and modern \"flex culture.\"\n\nSpanning a commanding 120 × 90 cm vertical frame, the mixed-media surface incorporates dissected, authentic luxury shopping bags and packaging boxes collaged directly onto the canvas alongside graffiti-style typography. Surrounded by the emblems of Hermès, Rolex, Patek Philippe, Richard Mille, and Miu Miu, Richie Rich is depicted physically straining under a towering stack of designer gift boxes.\n\nBy portraying the ultimate symbol of wealth literally weighed down by status symbols, the work poses a piercing question for our era: Are high-fashion logos genuine armor for our insecurities, or are they just expensive baggage? It completes the 15-year transmutation of Ketan—from the solitary teenager rubbing oil paint into raw canvas in a school room to the sovereign observer deconstructing the theatre of global luxury."
+        story: "I made Richie Carrying Gifts & High Fashion Brands in my 2024–2025 studio cycle, pushing the Richie story into a maximalist 3D critique of hyper-consumerism, brand worship and modern \"flex culture\".\n\nOn a commanding 120 × 90 cm vertical canvas, I collaged real luxury shopping bags and packaging boxes, cut apart, straight onto the surface, alongside graffiti-style lettering. Surrounded by the logos of Hermès, Rolex, Patek Philippe, Richard Mille and Miu Miu, Richie Rich strains under a towering stack of designer gift boxes.\n\nBy showing the ultimate symbol of wealth literally weighed down by status symbols, I'm asking a question for our times: are high-fashion logos real armour for our insecurities, or just expensive baggage? It completes my fifteen-year journey, from the teenager rubbing oil paint into raw canvas in a school art room to someone taking apart the theatre of global luxury."
       }
     ];
 
@@ -3679,7 +3687,15 @@
       document.getElementById('modalStatusRow').hidden = !art.status;
       modalStory.textContent = art.story;
 
+      // Sold, private-collection and unavailable paintings cannot be acquired.
+      const closedLabel = art.available === false ? 'Not available' : (art.status || '');
+      const available = !closedLabel;
+      modalInquireBtn.textContent = available ? 'Inquire Acquisition' : closedLabel;
+      modalInquireBtn.classList.toggle('unavailable', !available);
+      if (available) modalInquireBtn.setAttribute('href', '#contact');
+      else modalInquireBtn.removeAttribute('href');
       modalInquireBtn.onclick = () => {
+        if (!available) return;
         closeViewingRoom();
         inquiryArtwork.value = `${art.title} (${art.year})`;
       };
@@ -3751,7 +3767,7 @@
     }
     function formError(err) {
       const why = (err && err.message) || 'network error';
-      alert('Sorry, that did not go through (' + why + '). Please try again or email ketanduggal2k11@gmail.com.');
+      alert('Sorry, that did not go through (' + why + '). Please try again or email me at ketanduggal2k11@gmail.com.');
     }
 
     // Vault Pass confirmation: a pop-art card bursts in, then clears itself after a few seconds.

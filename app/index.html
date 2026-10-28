@@ -420,6 +420,7 @@
     .v-actions { display: flex; flex-wrap: wrap; gap: var(--space-10); margin-top: var(--space-16); }
     .v-actions .btn { flex: 1; padding: 0 var(--space-12); white-space: nowrap; }
     .v-actions .btn.gold { flex-basis: 100%; }
+    .v-actions .btn.gold.unavailable { pointer-events: none; background: transparent; border-color: var(--glass-border); color: var(--text-muted); box-shadow: none; }
 
     /* ---------- See it on your wall: the painting at true scale beside a sofa or a person ---------- */
     .wallview { position: fixed; inset: 0; z-index: 35; background: var(--bg-primary); display: flex; flex-direction: column; animation: view-in 0.4s var(--ease); }
@@ -692,7 +693,7 @@
           <div class="pop" aria-hidden="true"><i class="note n1"></i><i class="note n2"></i><i class="leaf l1"></i><i class="leaf l2"></i></div>
           <span class="badge">Next studio drop</span>
           <h2>Rags to Riches</h2>
-          <p>A limited street-luxury studio series tearing into hyper-consumerism, flex culture and wealth symbolism, straight from the Pilani studio.</p>
+          <p>A limited street-luxury studio series tearing into hyper-consumerism, flex culture and wealth symbolism, straight from my Pilani studio.</p>
           <p class="when">Drop date announced soon. Join the Circle to hear first.</p>
           <div class="alerts">
             <button class="alert-btn" data-alerts aria-pressed="false">Turn on drop alerts</button>
@@ -707,7 +708,7 @@
             <input type="email" class="input-field" id="vipEmail" name="email" placeholder="Email address" autocomplete="email" required>
             <input type="tel" class="input-field" id="vipPhone" name="phone" placeholder="Phone / WhatsApp (optional)" autocomplete="tel">
             <label class="consent"><input type="checkbox" id="vipConsent" name="consent" value="yes" required>
-              <span>Send me private drop passes, unreleased canvas previews and studio news from Ketan Duggal.</span></label>
+              <span>Send me private drop passes, unreleased canvas previews and studio news.</span></label>
             <button type="submit" class="pop-btn" id="vipSubmit">Request Vault Pass</button>
             <p class="vip-msg" id="vipMsg" role="status"></p>
           </form>
@@ -717,8 +718,8 @@
 
       <div class="block gutter">
         <p class="quote">“My canvas is a visual ledger, transmuting personal isolation into societal critique.”</p>
-        <p class="micro" style="margin: 14px 0 0 26px;">Ketan Duggal // Studio philosophy</p>
-        <div style="margin-top: 22px;"><button class="btn gold" data-go="studio">Meet the artist</button></div>
+        <p class="micro" style="margin: 14px 0 0 26px;">My studio philosophy</p>
+        <div style="margin-top: 22px;"><button class="btn gold" data-go="studio">About me</button></div>
       </div>
     </div>
   </section>
@@ -750,8 +751,8 @@
         <p class="quote">“My canvas is a visual ledger, transmuting personal isolation into societal critique.”</p>
       </div>
       <div class="prose" style="margin-top: 22px;">
-        <p>Started in 2011 with raw, gritty figurative oils in Pilani. Early pieces were unapologetic excavations of mental gravity, emotional density and spiritual hunger. Over 15 years of studio work, the canvas turned from an introspective mirror into an observation deck.</p>
-        <p>Blending old-master glazing with modern acrylics, clear bio-resin, 24k gold leaf and high-voltage pop iconography, recent works like the Richie series dissect how clout, luxury hype and identity are traded in a hyper-consumerist world.</p>
+        <p>I started working in oil on canvas in 2011, with raw, gritty figurative pieces in Pilani. My early paintings dug unapologetically into mental gravity, emotional density and spiritual hunger. Over 15 years of studio work, my canvas has turned from an introspective mirror into an observation deck.</p>
+        <p>Blending old-master glazing with modern acrylics, clear bio-resin and high-voltage pop iconography, my recent works like the Richie series dissect how clout, luxury hype and identity are traded in a hyper-consumerist world.</p>
         <p class="meta">Pilani, Rajasthan // Former studio: Sydney, NSW</p>
       </div>
 
@@ -761,9 +762,9 @@
           <h2 class="section-title">The 3 Studio Disciplines</h2>
         </div>
         <div class="disc">
-          <div class="panel"><span class="era-label">01 // Impasto &amp; Glazes</span><h3>Heavy Oil Glazing</h3><p>Traditional multi-layered oil glazes built over months of studio retreat, creating rich, light-trapping shadows and emotional density.</p></div>
-          <div class="panel"><span class="era-label">02 // Liquid Flow States</span><h3>Clear Bio-Resin</h3><p>High-gloss, ultra-transparent surfaces that freeze fluid acrylic pigments in suspended, glass-like animation.</p></div>
-          <div class="panel"><span class="era-label">03 // Hype Culture Critique</span><h3>Pop Luxury Satire</h3><p>Maximalist street collage examining flex culture, luxury brand obsession and how status is traded today.</p></div>
+          <div class="panel"><span class="era-label">01 // Impasto &amp; Glazes</span><h3>Heavy Oil Glazing</h3><p>I build traditional oil glazes layer by layer over months in the studio, creating rich, light-trapping shadows and emotional density.</p></div>
+          <div class="panel"><span class="era-label">02 // Liquid Flow States</span><h3>Clear Bio-Resin</h3><p>I pour high-gloss, ultra-clear resin surfaces that freeze fluid acrylic pigments in glass-like, suspended motion.</p></div>
+          <div class="panel"><span class="era-label">03 // Hype Culture Critique</span><h3>Pop Luxury Satire</h3><p>My maximalist street collage takes on flex culture, luxury brand obsession and how status is traded today.</p></div>
         </div>
       </div>
 

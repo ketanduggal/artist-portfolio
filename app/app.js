@@ -2,12 +2,12 @@
 const CONTACT_EMAIL = 'ketanduggal2k11@gmail.com';
 
 const ERAS = {
-  phase1: { num: '01', years: '2011–2014', title: 'Raw Roots & Psychological Excavation', short: 'Raw Roots', cover: 'the-urban-hermit-2012',
-    note: 'Raw emotion, deep shadows and pure introspective oil work straight from the Pilani studio.' },
-  phase2: { num: '02', years: '2015–2021', title: 'Fluid Resin, Drift & Sanctuary', short: 'Fluid Resin', cover: 'study-of-balance-2020',
-    note: 'Flow-state resin, ocean blues, gilded detail and modern abstract energy.' },
-  phase3: { num: '03', years: '2022–Present', title: 'Street Pop, Social Satire & The Market', short: 'Street Pop', cover: 'richie-carrying-gifts-and-high-fashion-brands-2024',
-    note: 'Richie enters the scene. Loud, unapologetic street collage calling out luxury hype and flex culture.' }
+  phase1: { num: '01', years: '2011–2013', title: 'Raw Roots', short: 'Raw Roots', cover: 'complex-agony-2011',
+    note: 'My first canvases, painted in the Birla School art room and my home studio in Pilani. Raw emotion, deep shadows and my first leap into abstraction.' },
+  phase2: { num: '02', years: '2014–2017', title: 'Bold Strokes', short: 'Bold Strokes', cover: 'trying-and-being-2014',
+    note: 'My boldest, most social years. I came back to the canvas in 2014 with a whole new style and painted through all of it, first in Pilani and then in New Delhi.' },
+  phase3: { num: '03', years: '2020–Present', title: 'Second Wind', short: 'Second Wind', cover: 'study-of-balance-2020',
+    note: 'I started painting again in Australia, then came home to Pilani. Oil, resin, collage and street pop now sit side by side.' }
 };
 // The same six works the website's 3D rotunda shows.
 const ROTUNDA = [18, 1, 17, 19, 16, 20];
@@ -183,7 +183,7 @@ function setupVip() {
     msg.textContent = '';
     if (!$('vipFirst').value.trim() || !$('vipLast').value.trim()) return (msg.textContent = 'Add your first and last name.');
     if (!$('vipEmail').validity.valid || !$('vipEmail').value) return (msg.textContent = 'Add a valid email address.');
-    if (!$('vipConsent').checked) return (msg.textContent = 'Tick the box so Ketan can email you.');
+    if (!$('vipConsent').checked) return (msg.textContent = 'Tick the box so I can email you.');
     btn.disabled = true;
     btn.textContent = 'Sending…';
     try {
@@ -426,7 +426,12 @@ function setCurrent(i) {
   info.classList.remove('expanded');
   $('storyBtn').textContent = 'The story';
   $('storyBtn').setAttribute('aria-expanded', 'false');
-  $('inquireBtn').href = inquiryLink(p);
+  // Sold, private-collection and unavailable paintings cannot be acquired.
+  const inquire = $('inquireBtn'), closedLabel = p.available === false ? 'Not available' : (p.status || ''), available = !closedLabel;
+  inquire.textContent = available ? 'Inquire acquisition' : closedLabel;
+  inquire.classList.toggle('unavailable', !available);
+  if (available) inquire.href = inquiryLink(p);
+  else inquire.removeAttribute('href');
   $('prevBtn').style.visibility = i > 0 ? 'visible' : 'hidden';
   $('nextBtn').style.visibility = i < list.length - 1 ? 'visible' : 'hidden';
   if (history.state?.viewer && location.hash.slice(1) !== p.slug) history.replaceState({ viewer: true }, '', '#' + p.slug);
