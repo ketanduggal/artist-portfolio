@@ -305,21 +305,28 @@
         linear-gradient(180deg, var(--pop-yellow) 0 7%, transparent 7% 93%, var(--pop-orange) 93% 100%),
         radial-gradient(circle at 3% 17%, rgba(23, 23, 29, 0.8) 0 4px, transparent 5px),
         radial-gradient(circle at 97% 74%, rgba(23, 23, 29, 0.72) 0 5px, transparent 6px),
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.55), transparent 58%);
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.55), transparent 58%),
+        linear-gradient(180deg, #9fd8f6 0, #c4e8fa 20%, rgba(248, 240, 223, 0) 42%);
       border: 2px solid var(--pop-ink); box-shadow: var(--shadow-pop-card); position: relative; overflow: hidden;
     }
     .drop > :not(.pop) { position: relative; z-index: 1; }
     .pop { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
     .pop i { position: absolute; display: block; }
-    .pop .note { width: 96px; height: 54px; border: 2px solid var(--pop-ink); background: var(--pop-mint); box-shadow: 5px 5px 0 var(--pop-ink); }
-    .pop .note::before { content: ''; position: absolute; inset: 9px; border: 2px solid rgba(23, 23, 29, 0.7); border-radius: 50%; }
-    .pop .note::after { content: ''; position: absolute; left: 20px; right: 20px; top: 24px; border-top: 2px solid rgba(23, 23, 29, 0.7); box-shadow: 0 7px 0 rgba(23, 23, 29, 0.45); }
-    .pop .n1 { top: 34px; left: -22px; transform: rotate(-14deg); }
-    .pop .n2 { right: -48px; bottom: 30px; background: var(--pop-amber); transform: rotate(12deg); }
-    .pop .leaf { width: 64px; height: 32px; border: 3px solid var(--pop-ink); border-radius: 100% 0 100% 0; background: var(--pop-leaf); }
-    .pop .leaf::after { content: ''; position: absolute; left: 7px; top: 14px; width: 54px; border-top: 2px solid var(--pop-ink); transform: rotate(-25deg); transform-origin: left; }
-    .pop .l1 { top: 112px; right: 10px; transform: rotate(28deg); }
-    .pop .l2 { left: 16px; bottom: 150px; background: var(--pop-rose); transform: rotate(204deg) scale(0.82); }
+    /* Pop-art sky over the drop card: puffy clouds, a gull and flying rupee notes, drawn in SVG */
+    .pop .pa-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+    .pop svg:not(.pa-defs) { position: absolute; display: block; overflow: visible; }
+    .pop .pa-cloud-a { top: 2px; left: -30px; width: 132px; height: 60px; }
+    .pop .pa-cloud-b { top: 24px; right: -24px; width: 110px; height: 50px; }
+    .pop .pa-bird { top: 112px; right: 4px; width: 60px; height: 25px; transform: scaleX(-1) rotate(-6deg); }
+    .pop .pa-note { width: 64px; height: 35px; filter: drop-shadow(3px 3px 0 var(--pop-ink)); }
+    .pop .pa-pink { color: #ff8cc6; } .pop .pa-blue { color: #5cb8f2; } .pop .pa-mint { color: var(--pop-mint); }
+    .pop .pa-note-a { top: 280px; left: -18px; transform: rotate(-17deg) skewX(-6deg); }
+    .pop .pa-note-b { top: 352px; right: -18px; transform: rotate(14deg) skewY(5deg); }
+    .pop .pa-note-c { bottom: 110px; left: -22px; width: 56px; height: 30px; transform: rotate(24deg); }
+    .pop .pa-note-d { bottom: 26px; right: -20px; transform: rotate(-11deg) skewX(8deg); }
+    .pop .pa-splat { width: 52px; height: 52px; }
+    .pop .pa-splat-a { top: 4px; right: 34%; fill: var(--pop-pink); }
+    .pop .pa-splat-b { top: 200px; left: 4px; fill: #8a4fd6; width: 40px; height: 40px; }
     .drop .badge { color: var(--pop-ink); background: var(--pop-yellow); border: 2px solid var(--pop-ink); box-shadow: var(--shadow-pop-badge); margin-top: var(--space-10); }
     .drop .badge::before { background: var(--pop-pink); box-shadow: none; }
     .drop h2 { font-family: var(--font-marker); font-weight: 400; font-size: clamp(30px, 11vw, 48px); letter-spacing: 0.06em; line-height: 1.1; margin: var(--space-16) 0 var(--space-14); text-transform: uppercase; text-shadow: 3px 3px 0 var(--pop-yellow); }
@@ -366,6 +373,13 @@
     .timeline .panel { padding: var(--space-22) var(--space-28); display: grid; gap: var(--space-4); }
     .timeline .yr { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.15em; color: var(--accent-gold); }
     .timeline h3 { font-family: var(--font-serif); font-weight: 400; font-size: 21px; line-height: 1.4; }
+    .services { padding: var(--space-24) var(--space-24); display: grid; }
+    .services .row { display: grid; grid-template-columns: 34px 1fr; gap: var(--space-10); padding: var(--space-14) 0; border-bottom: 1px solid var(--glass-border); }
+    .services .row:first-child { padding-top: 0; }
+    .services .row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .services .era-label { padding-top: 6px; }
+    .services h3 { font-family: var(--font-serif); font-weight: 400; font-size: 20px; line-height: 1.35; }
+    .services p { color: var(--text-muted); font-size: 12px; line-height: 1.6; margin-top: 2px; }
     .contact { padding: var(--space-24) var(--space-24); display: grid; }
     .contact > * { display: flex; justify-content: space-between; align-items: center; gap: var(--space-10); padding: var(--space-14) 0; border-bottom: 1px solid var(--glass-border); }
     .contact > *:first-child { padding-top: 0; }
@@ -690,7 +704,45 @@
           <p class="lede">Private access to new drops, previews and studio-only perks.</p>
         </div>
         <div class="drop" id="drop">
-          <div class="pop" aria-hidden="true"><i class="note n1"></i><i class="note n2"></i><i class="leaf l1"></i><i class="leaf l2"></i></div>
+          <div class="pop" aria-hidden="true">
+          <svg class="pa-defs" width="0" height="0" focusable="false">
+            <symbol id="paCloud" viewBox="0 0 220 100">
+              <path d="M30 90 C10 90 6 68 24 63 C17 43 43 31 58 45 C62 18 104 10 117 37 C127 20 161 23 163 48 C185 39 212 58 197 78 C210 82 205 91 193 91 Z" fill="#ffffff" stroke="#17171d" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M30 86 C70 80 150 80 193 86" fill="none" stroke="#cfe3f2" stroke-width="7" stroke-linecap="round"/>
+              <path d="M62 54 C66 45 77 42 84 47 M121 45 C127 36 140 36 145 43 M170 64 C174 57 183 57 187 62 M40 72 C48 74 56 72 60 68" fill="none" stroke="#17171d" stroke-width="2.6" stroke-linecap="round"/>
+            </symbol>
+            <symbol id="paBird" viewBox="0 0 170 70">
+              <path d="M92 34 C102 18 121 8 147 6 C131 16 117 28 109 40 Z" fill="#c9d6ea" stroke="#17171d" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M147 6 C139 9 132 14 125 20 C130 13 138 8 147 6 Z" fill="#3f55a8" stroke="#17171d" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M44 44 L28 38 L33 50 Z" fill="#ffffff" stroke="#17171d" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M44 44 C60 34 96 30 124 38 C134 35 145 38 151 44 C143 49 133 51 123 49 C100 55 66 55 44 44 Z" fill="#ffffff" stroke="#17171d" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M72 38 C57 22 32 13 6 18 C24 23 40 31 52 44 Z" fill="#e8eef6" stroke="#17171d" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M6 18 C16 15 27 16 35 20 C27 23 17 23 6 18 Z" fill="#3f55a8" stroke="#17171d" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M151 43 L166 45.5 L151 48 Z" fill="#ffc928" stroke="#17171d" stroke-width="1.8" stroke-linejoin="round"/>
+              <circle cx="141" cy="41.5" r="2.2" fill="#17171d"/>
+            </symbol>
+            <symbol id="paNote" viewBox="0 0 120 64">
+              <rect x="2" y="2" width="116" height="60" rx="3" fill="currentColor" stroke="#17171d" stroke-width="3"/>
+              <rect x="9" y="9" width="102" height="46" rx="2" fill="none" stroke="#17171d" stroke-width="1.6" stroke-opacity="0.65"/>
+              <circle cx="60" cy="32" r="17" fill="#ffffff" fill-opacity="0.55" stroke="#17171d" stroke-width="2.2"/>
+              <text x="60" y="41" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#17171d">&#8377;</text>
+              <text x="15" y="22" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" fill="#17171d">500</text>
+              <text x="105" y="50" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" fill="#17171d">500</text>
+            </symbol>
+            <symbol id="paSplat" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="7"/><circle cx="68" cy="38" r="3.5"/><circle cx="34" cy="64" r="4"/><circle cx="78" cy="58" r="2.2"/><circle cx="22" cy="40" r="2.6"/><circle cx="58" cy="76" r="2"/><circle cx="44" cy="26" r="1.8"/><circle cx="86" cy="30" r="1.5"/><circle cx="12" cy="70" r="1.6"/><circle cx="64" cy="58" r="1.4"/>
+            </symbol>
+          </svg>
+          <svg class="pa-cloud pa-cloud-a"><use href="#paCloud"/></svg>
+          <svg class="pa-cloud pa-cloud-b"><use href="#paCloud"/></svg>
+          <svg class="pa-bird"><use href="#paBird"/></svg>
+          <svg class="pa-note pa-pink pa-note-a"><use href="#paNote"/></svg>
+          <svg class="pa-note pa-blue pa-note-b"><use href="#paNote"/></svg>
+          <svg class="pa-note pa-mint pa-note-c"><use href="#paNote"/></svg>
+          <svg class="pa-note pa-pink pa-note-d"><use href="#paNote"/></svg>
+          <svg class="pa-splat pa-splat-a"><use href="#paSplat"/></svg>
+          <svg class="pa-splat pa-splat-b"><use href="#paSplat"/></svg>
+          </div>
           <span class="badge">Next studio drop</span>
           <h2>Rags to Riches</h2>
           <p>A limited street-luxury studio series tearing into hyper-consumerism, flex culture and wealth symbolism, straight from my Pilani studio.</p>
@@ -778,6 +830,20 @@
           <div class="panel"><span class="yr">2020</span><h3>Love</h3><span class="meta">White Rhino Artspace // Sydney</span></div>
           <div class="panel"><span class="yr">2012</span><h3>Serendipity</h3><span class="meta">Jawahar Kala Kendra // Jaipur</span></div>
           <div class="panel"><span class="yr">2011</span><h3>Cynosure</h3><span class="meta">School &amp; Saraswati Temple // Pilani</span></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="section-head">
+          <span class="badge">For Collectors // Services</span>
+          <h2 class="section-title">Services I provide</h2>
+        </div>
+        <div class="panel services">
+          <div class="row"><span class="era-label">01</span><div><h3>Certificate of Authenticity</h3><p>Every original I sell comes with a signed certificate of authenticity from my studio.</p></div></div>
+          <div class="row"><span class="era-label">02</span><div><h3>On-Site Consultation</h3><p>I can visit your home or office to help you choose a work and find the right wall for it.</p></div></div>
+          <div class="row"><span class="era-label">03</span><div><h3>Appraisal from the Studio</h3><p>I can give a written valuation of any of my works, issued directly from my studio.</p></div></div>
+          <div class="row"><span class="era-label">04</span><div><h3>Worldwide Shipping</h3><p>I have each painting carefully packed and shipped to collectors anywhere in the world.</p></div></div>
+          <div class="row"><span class="era-label">05</span><div><h3>Professional Art Installation</h3><p>I arrange professional hanging so the painting sits just right in your space.</p></div></div>
         </div>
       </div>
 

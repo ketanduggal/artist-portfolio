@@ -503,6 +503,12 @@
       margin-bottom: 6px;
     }
 
+    .kage-services-grid { grid-template-columns: repeat(5, 1fr); max-width: 1320px; }
+    .kage-services-grid .kage-craft-title { font-size: 21px; line-height: 1.3; margin-bottom: 10px; }
+    @media (max-width: 1180px) { .kage-services-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 820px) { .kage-services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .kage-services-grid { grid-template-columns: 1fr; } }
+
     .kage-craft-desc {
       font-size: 12px;
       color: var(--text-muted);
@@ -1078,7 +1084,8 @@
         linear-gradient(180deg, #ffd600 0 7%, transparent 7% 93%, #f26b45 93% 100%),
         radial-gradient(circle at 3% 17%, rgba(23, 23, 29, 0.8) 0 4px, transparent 5px),
         radial-gradient(circle at 97% 74%, rgba(23, 23, 29, 0.72) 0 5px, transparent 6px),
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.55), transparent 58%);
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.55), transparent 58%),
+        linear-gradient(180deg, #9fd8f6 0, #c4e8fa 20%, rgba(248, 240, 223, 0) 42%);
       border: 2px solid #17171d;
       box-shadow: 8px 8px 0 #ff3f72, 0 20px 40px rgba(0, 0, 0, 0.18);
     }
@@ -1142,81 +1149,66 @@
       overflow: hidden;
     }
 
-    .pop-note,
-    .pop-leaf {
+    /* Pop-art sky over the drop card: puffy clouds, a gull and flying rupee notes, drawn in SVG */
+    .pa-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+    .drop-pop-decor svg:not(.pa-defs) {
       position: absolute;
       display: block;
+      overflow: visible;
     }
 
-    .pop-note {
+    .pa-cloud { width: 210px; height: 96px; }
+    .pa-cloud-a { top: 4px; left: -34px; }
+    .pa-cloud-b { top: 34px; right: -26px; width: 180px; height: 82px; }
+    .pa-cloud-c { top: 182px; left: -44px; width: 120px; height: 55px; }
+
+    .pa-bird {
+      top: 112px;
+      right: 34px;
       width: 112px;
-      height: 62px;
-      border: 2px solid #17171d;
-      background: #70c9a2;
-      box-shadow: 5px 5px 0 #17171d;
+      height: 46px;
+      transform: scaleX(-1) rotate(-6deg);
     }
 
-    .pop-note::before {
-      content: '';
-      position: absolute;
-      inset: 10px;
-      border: 2px solid rgba(23, 23, 29, 0.7);
-      border-radius: 50%;
+    .pa-note {
+      width: 104px;
+      height: 56px;
+      filter: drop-shadow(4px 4px 0 #17171d);
     }
 
-    .pop-note::after {
-      content: '';
-      position: absolute;
-      left: 23px;
-      right: 23px;
-      top: 28px;
-      border-top: 2px solid rgba(23, 23, 29, 0.7);
-      box-shadow: 0 7px 0 rgba(23, 23, 29, 0.45);
-    }
+    .pa-pink { color: #ff8cc6; }
+    .pa-blue { color: #5cb8f2; }
+    .pa-mint { color: #70c9a2; }
 
-    .note-one {
-      top: 32px;
-      left: 24px;
-      transform: rotate(-14deg);
-    }
+    .pa-note-a { top: 258px; left: 8px; transform: rotate(-17deg) skewX(-6deg); }
+    .pa-note-b { top: 452px; right: 6px; transform: rotate(14deg) skewY(5deg); }
+    .pa-note-c { top: 560px; left: -18px; width: 88px; height: 48px; transform: rotate(24deg); }
+    .pa-note-d { bottom: 40px; right: -22px; transform: rotate(-11deg) skewX(8deg); }
+    .pa-note-e { top: 58px; left: 182px; width: 64px; height: 34px; transform: rotate(-24deg) skewY(-8deg); }
 
-    .note-two {
-      right: -48px;
-      bottom: 28px;
-      background: #ffca3a;
-      transform: rotate(12deg);
-    }
+    .pa-splat { width: 80px; height: 80px; }
+    .pa-splat-a { top: 8px; right: 168px; fill: #ff3f72; }
+    .pa-splat-b { top: 210px; right: 46px; fill: #8a4fd6; width: 60px; height: 60px; }
+    .pa-splat-c { bottom: 104px; left: 26px; fill: #ffd600; }
+    .pa-splat-d { top: 380px; left: 30px; fill: #00b8d4; width: 56px; height: 56px; }
 
-    .pop-leaf {
-      width: 76px;
-      height: 38px;
-      border: 3px solid #17171d;
-      border-radius: 100% 0 100% 0;
-      background: #65b985;
-    }
-
-    .pop-leaf::after {
-      content: '';
-      position: absolute;
-      left: 8px;
-      top: 17px;
-      width: 64px;
-      border-top: 2px solid #17171d;
-      transform: rotate(-25deg);
-      transform-origin: left;
-    }
-
-    .leaf-one {
-      top: 116px;
-      right: 22px;
-      transform: rotate(28deg);
-    }
-
-    .leaf-two {
-      left: 24px;
-      bottom: 62px;
-      background: #ff5e7d;
-      transform: rotate(204deg) scale(0.82);
+    @media (max-width: 680px) {
+      .pa-cloud-a { width: 132px; height: 60px; top: 2px; left: -30px; }
+      .pa-cloud-b { width: 110px; height: 50px; top: 24px; right: -24px; }
+      .drop-pop-decor svg.pa-cloud-c,
+      .drop-pop-decor svg.pa-note-e,
+      .drop-pop-decor svg.pa-splat-b,
+      .drop-pop-decor svg.pa-splat-d,
+      .drop-pop-decor svg.pa-note-d,
+      .drop-pop-decor svg.pa-splat-c { display: none; }
+      .pa-bird { top: 226px; right: 12px; width: 60px; height: 25px; }
+      .pa-note { width: 64px; height: 35px; filter: drop-shadow(3px 3px 0 #17171d); }
+      .pa-note-a { top: 270px; left: -18px; }
+      .pa-note-b { top: 300px; right: -18px; }
+      .pa-note-c { top: 470px; left: -22px; width: 56px; height: 30px; }
+      .pa-splat { width: 52px; height: 52px; }
+      .pa-splat-a { top: 4px; right: 96px; }
     }
 
     /* Graffiti Style Street Pop Title */
@@ -1360,6 +1352,23 @@
     body.light-theme .input-field {
       background: rgba(255, 255, 255, 0.8);
     }
+
+    /* The Vault Pass card stays cream in both themes, so its fields stay light and readable in dark mode too */
+    .vip-vault-form .input-field {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(23, 23, 29, 0.18);
+      color: #17171d;
+    }
+    .vip-vault-form .input-field::placeholder { color: #77716a; opacity: 1; }
+
+    /* The whole Rags to Riches card is cream in both themes: give its text the light-theme colours in dark mode too */
+    .drop-featured-card {
+      --text-main: #121214;
+      --text-muted: #6a6964;
+      --glass-border: rgba(0, 0, 0, 0.12);
+    }
+    .drop-featured-card .countdown-lbl { color: #3a3935; font-weight: 600; }
+    .drop-featured-card .consent-label input[type="checkbox"] { accent-color: #17171d; }
 
     .input-field:focus {
       outline: none;
@@ -2686,10 +2695,47 @@
       <!-- Featured Drop Panel (RAGS TO RICHES // GRAFFITI TITLE) -->
       <div class="kage-panel drop-featured-card">
         <div class="drop-pop-decor" aria-hidden="true">
-          <span class="pop-note note-one"></span>
-          <span class="pop-note note-two"></span>
-          <span class="pop-leaf leaf-one"></span>
-          <span class="pop-leaf leaf-two"></span>
+          <svg class="pa-defs" width="0" height="0" focusable="false">
+            <symbol id="paCloud" viewBox="0 0 220 100">
+              <path d="M30 90 C10 90 6 68 24 63 C17 43 43 31 58 45 C62 18 104 10 117 37 C127 20 161 23 163 48 C185 39 212 58 197 78 C210 82 205 91 193 91 Z" fill="#ffffff" stroke="#17171d" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M30 86 C70 80 150 80 193 86" fill="none" stroke="#cfe3f2" stroke-width="7" stroke-linecap="round"/>
+              <path d="M62 54 C66 45 77 42 84 47 M121 45 C127 36 140 36 145 43 M170 64 C174 57 183 57 187 62 M40 72 C48 74 56 72 60 68" fill="none" stroke="#17171d" stroke-width="2.6" stroke-linecap="round"/>
+            </symbol>
+            <symbol id="paBird" viewBox="0 0 170 70">
+              <path d="M92 34 C102 18 121 8 147 6 C131 16 117 28 109 40 Z" fill="#c9d6ea" stroke="#17171d" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M147 6 C139 9 132 14 125 20 C130 13 138 8 147 6 Z" fill="#3f55a8" stroke="#17171d" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M44 44 L28 38 L33 50 Z" fill="#ffffff" stroke="#17171d" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M44 44 C60 34 96 30 124 38 C134 35 145 38 151 44 C143 49 133 51 123 49 C100 55 66 55 44 44 Z" fill="#ffffff" stroke="#17171d" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M72 38 C57 22 32 13 6 18 C24 23 40 31 52 44 Z" fill="#e8eef6" stroke="#17171d" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M6 18 C16 15 27 16 35 20 C27 23 17 23 6 18 Z" fill="#3f55a8" stroke="#17171d" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M151 43 L166 45.5 L151 48 Z" fill="#ffc928" stroke="#17171d" stroke-width="1.8" stroke-linejoin="round"/>
+              <circle cx="141" cy="41.5" r="2.2" fill="#17171d"/>
+            </symbol>
+            <symbol id="paNote" viewBox="0 0 120 64">
+              <rect x="2" y="2" width="116" height="60" rx="3" fill="currentColor" stroke="#17171d" stroke-width="3"/>
+              <rect x="9" y="9" width="102" height="46" rx="2" fill="none" stroke="#17171d" stroke-width="1.6" stroke-opacity="0.65"/>
+              <circle cx="60" cy="32" r="17" fill="#ffffff" fill-opacity="0.55" stroke="#17171d" stroke-width="2.2"/>
+              <text x="60" y="41" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#17171d">&#8377;</text>
+              <text x="15" y="22" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" fill="#17171d">500</text>
+              <text x="105" y="50" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" fill="#17171d">500</text>
+            </symbol>
+            <symbol id="paSplat" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="7"/><circle cx="68" cy="38" r="3.5"/><circle cx="34" cy="64" r="4"/><circle cx="78" cy="58" r="2.2"/><circle cx="22" cy="40" r="2.6"/><circle cx="58" cy="76" r="2"/><circle cx="44" cy="26" r="1.8"/><circle cx="86" cy="30" r="1.5"/><circle cx="12" cy="70" r="1.6"/><circle cx="64" cy="58" r="1.4"/>
+            </symbol>
+          </svg>
+          <svg class="pa-cloud pa-cloud-a"><use href="#paCloud"/></svg>
+          <svg class="pa-cloud pa-cloud-b"><use href="#paCloud"/></svg>
+          <svg class="pa-cloud pa-cloud-c"><use href="#paCloud"/></svg>
+          <svg class="pa-bird"><use href="#paBird"/></svg>
+          <svg class="pa-note pa-pink pa-note-a"><use href="#paNote"/></svg>
+          <svg class="pa-note pa-blue pa-note-b"><use href="#paNote"/></svg>
+          <svg class="pa-note pa-mint pa-note-c"><use href="#paNote"/></svg>
+          <svg class="pa-note pa-pink pa-note-d"><use href="#paNote"/></svg>
+          <svg class="pa-note pa-blue pa-note-e"><use href="#paNote"/></svg>
+          <svg class="pa-splat pa-splat-a"><use href="#paSplat"/></svg>
+          <svg class="pa-splat pa-splat-b"><use href="#paSplat"/></svg>
+          <svg class="pa-splat pa-splat-c"><use href="#paSplat"/></svg>
+          <svg class="pa-splat pa-splat-d"><use href="#paSplat"/></svg>
         </div>
         <span class="kage-badge">NEXT STUDIO DROP</span>
         <h3 class="drop-title" style="margin-top: 16px;">RAGS TO RICHES</h3>
@@ -2947,6 +2993,51 @@
     </div>
   </section>
 
+  <!-- COLLECTOR SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="kage-badge">FOR COLLECTORS // SERVICES</span>
+        <h2 class="section-title" style="margin-top: 14px;">Services I Provide</h2>
+        <p class="section-desc">
+          When one of my paintings goes home with you, I look after it from my studio to your wall.
+        </p>
+      </div>
+
+      <div class="kage-craft-grid kage-services-grid">
+        <div class="kage-panel kage-craft-card">
+          <span class="kage-craft-idx">01 // SERVICE</span>
+          <h3 class="kage-craft-title">Certificate of Authenticity</h3>
+          <p class="kage-craft-desc">Every original I sell comes with a signed certificate of authenticity from my studio.</p>
+        </div>
+        <div class="kage-panel kage-craft-card">
+          <span class="kage-craft-idx">02 // SERVICE</span>
+          <h3 class="kage-craft-title">On-Site Consultation</h3>
+          <p class="kage-craft-desc">I can visit your home or office to help you choose a work and find the right wall for it.</p>
+        </div>
+        <div class="kage-panel kage-craft-card">
+          <span class="kage-craft-idx">03 // SERVICE</span>
+          <h3 class="kage-craft-title">Appraisal from the Studio</h3>
+          <p class="kage-craft-desc">I can give a written valuation of any of my works, issued directly from my studio.</p>
+        </div>
+        <div class="kage-panel kage-craft-card">
+          <span class="kage-craft-idx">04 // SERVICE</span>
+          <h3 class="kage-craft-title">Worldwide Shipping</h3>
+          <p class="kage-craft-desc">I have each painting carefully packed and shipped to collectors anywhere in the world.</p>
+        </div>
+        <div class="kage-panel kage-craft-card">
+          <span class="kage-craft-idx">05 // SERVICE</span>
+          <h3 class="kage-craft-title">Professional Art Installation</h3>
+          <p class="kage-craft-desc">I arrange professional hanging so the painting sits just right in your space.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 36px;">
+        <a href="#contact" class="btn-luxury gold">Ask About a Service</a>
+      </div>
+    </div>
+  </section>
+
   <!-- DIRECT LINE // CONTACT -->
   <section id="contact">
     <div class="container">
@@ -3003,6 +3094,7 @@
             <li><a href="#collectors-circle">VIP Circle Drops</a></li>
             <li><a href="#exhibitions">Showcase History</a></li>
             <li><a href="#about">Studio Manifesto</a></li>
+            <li><a href="#services">Collector Services</a></li>
             <li><a href="#contact">Direct Line</a></li>
           </ul>
         </div>
