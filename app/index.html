@@ -641,6 +641,16 @@
       .vp-stamp path { stroke-dashoffset: 0; }
       .vp-bits, .vp-timer { display: none; }
     }
+
+    /* KD x PR No. 01 band (launch 14 Nov 2026) */
+    .kxb { display: block; text-decoration: none; color: inherit; background: var(--bg-secondary); padding: 30px 0 32px; }
+    .kxb img { display: block; width: 100%; height: auto; box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2); }
+    .kxb-k { display: block; margin-top: 22px; font: 500 11px/1 Montserrat, Arial, sans-serif; letter-spacing: .32em; text-transform: uppercase; color: var(--accent-gold); }
+    .kxb-t { font: 400 44px/1.05 'Cormorant Garamond', Georgia, serif; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1; margin: 12px 0 4px; color: var(--text-main); white-space: nowrap; }
+    .kxb-t i { color: var(--accent-gold); font-size: .62em; }
+    .kxb p { font: 400 14px/1.7 Montserrat, Arial, sans-serif; color: var(--text-muted); margin: 10px 0 20px; }
+    .kxb-b { display: inline-block; font: 500 11px/1 Montserrat, Arial, sans-serif; letter-spacing: .28em; text-transform: uppercase; background: var(--text-main); color: var(--bg-primary); padding: 15px 22px; }
+    @media (min-width: 760px) { .kxb .gutter { display: flex; gap: 36px; align-items: center; max-width: 1100px; margin: 0 auto; } .kxb img { width: 52%; } .kxb-k { margin-top: 0; } }
   </style>
 </head>
 <body>
@@ -670,6 +680,18 @@
         </div>
       </div>
     </div>
+
+    <a class="kxb" href="../kdxpr/01/" target="_blank" rel="noopener" aria-label="See KD × PR No. 01">
+      <div class="gutter">
+        <img src="img/kdxpr-01.jpg" alt="KD × PR No. 01, the first painting from the joint collection of Ketan Duggal and Prateek Roongta" width="1200" height="800">
+        <div>
+          <span class="kxb-k">New &nbsp;·&nbsp; Out now</span>
+          <div class="kxb-t">KD <i>×</i> PR &nbsp;No. 01</div>
+          <p>The first painting from my joint collection with Prateek Roongta. Poured in one night in Pilani. Original, one of one.</p>
+          <span class="kxb-b">See the painting →</span>
+        </div>
+      </div>
+    </a>
 
     <div class="wrap">
       <div class="gutter" style="margin-top: 22px;">
