@@ -204,7 +204,7 @@
 <!-- 2. Journey: scrolling travels through the painting while the story is told -->
 <section class="journey" id="journey" aria-label="The story of No. 01">
   <div class="stage">
-    <div class="lens" id="lens"><img src="painting.jpg" alt="" width="4800" height="3200" decoding="async"></div>
+    <div class="lens" id="lens"><img src="painting-2400.jpg" data-hi="painting.jpg" alt="" width="4800" height="3200" decoding="async" fetchpriority="low"></div>
     <div class="captions">
       <div class="cap"><div class="n">I</div><p>We made this in one night. Three, maybe four hours.</p></div>
       <div class="cap"><div class="n">II</div><p>Every colour was mixed and measured before it touched the canvas.</p></div>
@@ -224,7 +224,7 @@
 
 <!-- 4. Film of the resin surface -->
 <section class="film">
-  <video src="glide.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Slow camera glide across the resin surface"></video>
+  <video data-src="glide.mp4" muted loop playsinline preload="none" aria-label="Slow camera glide across the resin surface"></video>
   <div class="over reveal"><p class="eyebrow gold" style="margin-bottom:10px">The surface</p><p>The resin moves with the light as you walk past it.</p></div>
 </section>
 
@@ -429,6 +429,28 @@
   // ---- gentle reveals ----
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // ---- light first load: the lens starts with the 2400px file and swaps to the full 4800px file once the page has settled;
+  // the film only downloads when it comes near the screen ----
+  (function () {
+    const li = document.querySelector('#lens img');
+    const slow = navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || ''));
+    function upgrade() {
+      if (!li || !li.dataset.hi || slow) return;
+      const hi = new Image();
+      hi.src = li.dataset.hi;
+      (hi.decode ? hi.decode() : Promise.resolve()).then(() => { li.src = hi.src; }).catch(() => {});
+    }
+    if (document.readyState === 'complete') setTimeout(upgrade, 1500);
+    else addEventListener('load', () => setTimeout(upgrade, 1500), { once: true });
+    const v = document.querySelector('.film video');
+    if (v && 'IntersectionObserver' in window) {
+      new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting) { if (!v.src) { v.src = v.dataset.src; v.load(); } const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+        else if (v.src) v.pause();
+      }), { rootMargin: '400px 0px' }).observe(v);
+    } else if (v) { v.src = v.dataset.src; v.play && v.play().catch(() => {}); }
+  })();
 
   // ---- inquiry: same FormSubmit inbox as the main site; FormSubmit can be slow,
   // so after 5 seconds without a refusal the inquiry counts as sent ----
