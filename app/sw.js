@@ -1,6 +1,6 @@
 // Offline support for the paintings app.
 // Bump VERSION whenever index.html, app.js, paintings.json or any image changes.
-const VERSION = 'v38';
+const VERSION = 'v39';
 const SHELL = `shell-${VERSION}`;
 const IMAGES = `images-${VERSION}`;
 const FONTS = 'fonts';
@@ -57,6 +57,8 @@ self.addEventListener('fetch', event => {
     return;
   }
   if (url.origin !== location.origin) return;
+  // The No. 01 page's photos and video live outside the app folder: let the browser fetch them itself.
+  if (url.pathname.includes('/kdxpr/')) return;
 
   if (url.pathname.includes('/img/')) {
     event.respondWith(cacheFirst(req, IMAGES));

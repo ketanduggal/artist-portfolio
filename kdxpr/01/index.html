@@ -424,7 +424,7 @@
 
   // ---- always open at the top of the page ----
   try { history.scrollRestoration = 'manual'; } catch (x) {}
-  if (!location.hash) { window.scrollTo(0, 0); window.addEventListener('load', () => { window.scrollTo(0, 0); document.querySelector('.bar').scrollIntoView({ block: 'start' }); }); }
+  if (!location.hash) window.scrollTo(0, 0);
 
   // ---- gentle reveals ----
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.15 });
