@@ -88,6 +88,9 @@
   .film .over p { font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); line-height: 1.2; text-shadow: 0 2px 18px rgba(0,0,0,.6); }
   .film::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,8,9,.7), transparent 45%); pointer-events: none; }
   .film .over { z-index: 1; }
+  .film .play { position: absolute; z-index: 2; left: 50%; top: 45%; transform: translate(-50%, -50%); width: 76px; height: 76px; border-radius: 50%; border: 1px solid rgba(255,255,255,.7); background: rgba(10,10,11,.45); color: #fff; display: none; place-items: center; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  .film .play svg { width: 26px; height: 26px; margin-left: 4px; }
+  .film.blocked .play { display: grid; }
 
 
   /* ---------- swipe gallery of details ---------- */
@@ -225,6 +228,7 @@
 <!-- 4. Film of the resin surface -->
 <section class="film">
   <video data-src="glide.mp4" muted loop playsinline preload="none" aria-label="Slow camera glide across the resin surface"></video>
+  <button class="play" type="button" aria-label="Play the film"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
   <div class="over reveal"><p class="eyebrow gold" style="margin-bottom:10px">The surface</p><p>The resin moves with the light as you walk past it.</p></div>
 </section>
 
@@ -444,12 +448,29 @@
     if (document.readyState === 'complete') setTimeout(upgrade, 1500);
     else addEventListener('load', () => setTimeout(upgrade, 1500), { once: true });
     const v = document.querySelector('.film video');
+    const film = v && v.closest('.film');
     if (v && 'IntersectionObserver' in window) {
       new IntersectionObserver((es) => es.forEach((e) => {
-        if (e.isIntersecting) { if (!v.src) { v.src = v.dataset.src; v.load(); } const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+        if (e.isIntersecting) { if (!v.src) { v.src = v.dataset.src; v.load(); } tryPlay(); }
         else if (v.src) v.pause();
       }), { rootMargin: '400px 0px' }).observe(v);
-    } else if (v) { v.src = v.dataset.src; v.play && v.play().catch(() => {}); }
+    } else if (v) { v.src = v.dataset.src; tryPlay(); }
+    // iPhone in Low Power Mode (and some data-saver modes) blocks videos that start on their own:
+    // then show a play button, and also start the film on the visitor's first tap anywhere.
+    function tryPlay() {
+      if (!v) return;
+      const p = v.play();
+      if (p && p.then) p.then(() => film.classList.remove('blocked')).catch(() => film.classList.add('blocked'));
+    }
+    if (film) {
+      const btn = film.querySelector('.play');
+      const go = () => { if (!v.src) { v.src = v.dataset.src; v.load(); } v.muted = true; tryPlay(); };
+      if (btn) btn.addEventListener('click', go);
+      v.addEventListener('playing', () => film.classList.remove('blocked'));
+      const once = () => { if (v.paused && film.getBoundingClientRect().top < innerHeight) go(); };
+      addEventListener('touchend', once, { once: true, passive: true });
+      addEventListener('click', once, { once: true });
+    }
   })();
 
   // ---- inquiry: same FormSubmit inbox as the main site; FormSubmit can be slow,
